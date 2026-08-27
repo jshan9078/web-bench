@@ -18,6 +18,15 @@ Matrix:
 
 **18 configs × 7 tasks × 1 attempt (pass@1) = 126 runs.**
 
+## Results
+
+Every configuration passed all 7 tasks (pass@1) — there is no accuracy axis, only the **cost of getting
+there**: time, tokens, CLI calls, and dollars per task (medians).
+
+![WebBench: cost vs time per configuration](https://raw.githubusercontent.com/jshan9078/web-bench/main/docs/webbench-graph.png)
+
+![WebBench results table](https://raw.githubusercontent.com/jshan9078/web-bench/main/docs/webbench-table.png)
+
 ## Capture-first: never re-run models to re-verify
 
 Every run writes a durable **raw bundle** *before* any judging:
