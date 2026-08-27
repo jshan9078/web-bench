@@ -1,6 +1,6 @@
 # x_projects, verifier
 
-**Method:** LLM-as-judge (`gemini-2.5-flash`).
+**Method:** LLM-as-judge (Claude).
 
 Judging is **fully offline** from a captured evidence bundle, so a verdict can be re-derived without re-running the model. For each run the judge is given:
 

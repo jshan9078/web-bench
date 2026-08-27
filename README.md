@@ -33,7 +33,7 @@ Each task has its own directory under [`tasks/`](tasks/) with the verbatim `prom
 source), a `task.md` (kind, site, what it tests, verdict), and a `verifier.md` explaining exactly how the
 run is scored. Read tasks target **current** data (unanswerable from training, the agent must navigate
 and read); `pixel_click` is checked programmatically by the canvas server, and the rest are graded by an
-LLM judge (`gemini-2.5-flash`) offline from the captured evidence.
+LLM judge (Claude) offline from the captured evidence.
 
 ## Methodology
 
