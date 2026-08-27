@@ -1,0 +1,4 @@
+Add BOTH of these Amazon products to the cart, quantity 1 each:
+  1. https://www.amazon.ca/dp/0735211299
+  2. https://www.amazon.ca/dp/0132350882
+For each: open the product page and click 'Add to Cart'. If any upsell pop-up appears (warranty, subscription, audiobook/Kindle, 'protect your purchase'), dismiss it (no thanks / skip). When done, open the cart so both items are visible. Do NOT proceed to checkout or place an order.

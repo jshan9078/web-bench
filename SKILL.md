@@ -15,9 +15,9 @@ This skill enables an agent to control a local Playwright browser through `brows
 
 ## Decision Guide
 
-**`browser capture <url>` (standalone)** — you only need a screenshot of a public/localhost page, no interaction, no daemon.
+**`browser capture <url>` (standalone)**: you only need a screenshot of a public/localhost page, no interaction, no daemon.
 
-**Daemon commands** — anything interactive, authenticated, or multi-step.
+**Daemon commands**: anything interactive, authenticated, or multi-step.
 
 ## Quick Capture
 
@@ -43,7 +43,7 @@ If a site needs login: `browser <id> show` → ask the user to log in in the win
 
 ## Session Model
 
-- IDs are 8-char hex. By default all sessions share one persistent **profile** (logins are shared, like tabs in one browser — see Profiles below); use `browser profile ephemeral` or a separate named profile when you need isolated cookies.
+- IDs are 8-char hex. By default all sessions share one persistent **profile** (logins are shared, like tabs in one browser, see Profiles below); use `browser profile ephemeral` or a separate named profile when you need isolated cookies.
 - Sessions persist across daemon restarts; `delete` forgets a session (not the profile's logins).
 - Hidden sessions are frozen/hibernated when idle; sending the next command wakes them.
 - Viewport 1280x800 desktop; `navigator.webdriver` hidden.
@@ -51,12 +51,12 @@ If a site needs login: `browser <id> show` → ask the user to log in in the win
 ## Profiles (persistent logins)
 
 - **Default is a persistent profile named `default`.** The first `create` opens a visible window so the user signs in once; every later session reuses that authenticated profile. Do not ask for credentials; the user logs in in the window.
-- `browser profile status` — show the active profile and list existing ones.
-- `browser profile <name>` / `browser profile new <name>` — switch to / create a named persistent profile (e.g. a second account). Restart the daemon (`browser shutdown`) to apply.
-- `browser profile ephemeral` — make throwaway the default for new sessions.
+- `browser profile status`, show the active profile and list existing ones.
+- `browser profile <name>` / `browser profile new <name>`, switch to / create a named persistent profile (e.g. a second account). Restart the daemon (`browser shutdown`) to apply.
+- `browser profile ephemeral`, make throwaway the default for new sessions.
 - **Show/hide is seamless:** `browser <id> show` / `hide` flips a persistent profile between a visible window and headless without closing sessions (they stay, tabs reload, login persists).
 - **Per session:** `browser create --profile <name>` gives that session its own persistent login; `--profile` differs across sessions run them concurrently and isolated (each its own Chrome), while the same `--profile` shares one login across sessions (separate tabs). `browser create --ephemeral` is a throwaway isolated session.
-- **`browser profile delete <name>` — delete a profile when it is no longer needed.** Each profile is a full Chrome profile on disk (~100 MB and growing with cache/history), so remove ones you do not need to reclaim space. This erases that profile's logins.
+- **`browser profile delete <name>`, delete a profile when it is no longer needed.** Each profile is a full Chrome profile on disk (~100 MB and growing with cache/history), so remove ones you do not need to reclaim space. This erases that profile's logins.
 
 ## Command Reference
 
@@ -73,7 +73,7 @@ browser shutdown
 browser <id> navigate <url> [-s]        # -s on any action: append a fresh snapshot
 browser <id> snapshot [scope] [--all] [--max N] [--json]
 browser <id> click <target> [--double] [-s]
-browser <id> click --at X,Y [--double]   # click raw viewport pixels (canvas / vision — no DOM target)
+browser <id> click --at X,Y [--double]   # click raw viewport pixels (canvas / vision, no DOM target)
 browser <id> type <target> <text> [--sequential] [--submit] [-s]   # alias: fill
 browser <id> press <key> [target]       # Enter, Tab, Escape, Control+a
 browser <id> hover <target>
@@ -88,7 +88,7 @@ browser <id> back | forward
 browser <id> batch                      # JSON lines on stdin, one round-trip
 ```
 
-**Targets:** `@e12` (ref from snapshot — preferred) · `--text "Create"` · `--role button --name Create` · `--label "Email"` · `--placeholder Search` · CSS selector. Ambiguous CSS selectors are refused; use a ref or text. For canvas / vision cases with no DOM target, `click --at X,Y` clicks raw viewport pixels (take a `screenshot` first; its pixels map 1:1 to click coordinates).
+**Targets:** `@e12` (ref from snapshot, preferred) · `--text "Create"` · `--role button --name Create` · `--label "Email"` · `--placeholder Search` · CSS selector. Ambiguous CSS selectors are refused; use a ref or text. For canvas / vision cases with no DOM target, `click --at X,Y` clicks raw viewport pixels (take a `screenshot` first; its pixels map 1:1 to click coordinates).
 
 ## Snapshot Format
 
@@ -102,7 +102,7 @@ h1 "Sign in to GitHub"
 @e8 link "Create an account" href="/signup?source=login"
 ```
 
-One line per visible interactive element (plus h1–h3 and live regions), **including elements inside same-origin iframes (marked `[frame]`) and open shadow DOM** — target them like any other element. `@eN` refs are stable until navigation; `[below]`/`[above]` mark elements outside the viewport (clicking scrolls automatically). Hidden elements are omitted. Use a scope selector or `--max` on very long pages; `--json` adds bounding boxes and unique selectors.
+One line per visible interactive element (plus h1–h3 and live regions), **including elements inside same-origin iframes (marked `[frame]`) and open shadow DOM**: target them like any other element. `@eN` refs are stable until navigation; `[below]`/`[above]` mark elements outside the viewport (clicking scrolls automatically). Hidden elements are omitted. Use a scope selector or `--max` on very long pages; `--json` adds bounding boxes and unique selectors.
 
 ## Agent Workflow
 

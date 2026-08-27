@@ -63,54 +63,22 @@ _dp = lambda i: f"https://{AMAZON}/dp/{i['asin']}"
 # data that cannot be in any training set and are graded by LLM-as-judge from the captured evidence
 # (raw bundle: agent answer + full stream + end_state). Action tasks keep a programmatic state check.
 TASKS = {
-    # ---- read-only navigation, current real-world data, judged later by an LLM from evidence -------
-    "mlb_latest": {"kind": "judge", "prompt": (
-        "Find the results of the latest completed MLB game day (yesterday's games). For each game, report "
-        "the two teams and the final score. THEN, for the Chicago Cubs' most recent game, open its box "
-        "score and list every Cubs player who scored a run (the Cubs' scorers). On Chrome, just searching "
-        "mlb shows the scores; open the Cubs game for the box score. Base your answer only on what the "
-        "pages show. End with (1) the list of games and scores, and (2) the Cubs' scorers.")},
-    "hn_summary": {"kind": "judge", "prompt": (
-        "Open Hacker News (https://news.ycombinator.com) and read the current front page. Write a concise "
-        "summary of what's on the front page right now, grouping the notable stories by theme. Include a "
-        "DEDICATED section titled 'Agents / agentic harnesses' listing any front-page stories about AI "
-        "agents, agentic coding tools/harnesses, or LLM tool-use (give their titles); if there are none, "
-        "say so explicitly. Base your summary only on the stories actually shown on the page (you may open "
-        "a story or its comments to clarify). End with the themed summary including that dedicated "
-        "section.")},
-    "weather_nyc": {"kind": "judge", "prompt": (
-        "Using the U.S. National Weather Service site (https://forecast.weather.gov), find the current "
-        "forecast for New York, NY (Central Park). Report today's forecasted conditions and high/low "
-        "temperature as shown on the page.")},
-    "x_projects": {"profile": True, "kind": "judge", "prompt": (
-        f"Open the X (Twitter) profile at https://x.com/{X_HANDLE}. Based on what's shown there (bio, pinned "
-        "post, posts) and the links it points to, produce: (1) a list of ALL the projects this person has "
-        "built or worked on, (2) a direct link to each project, and (3) for the on-device SLM "
-        "vulnerability-detection research project specifically, which models were benchmarked — you will "
-        "likely need to open that project's article/blog link and read it. Base your answer only on what "
-        "you actually read on the pages. End with the project list (name + link each) and, for the SLM "
-        "research, the list of benchmarked models.")},
-    # ---- actions, programmatic state check --------------------------------------------------------
-    "amazon_cart": {"profile": True, "kind": "judge", "cart": True, "prompt": (
-        "Add BOTH of these Amazon products to the cart, quantity 1 each:\n"
-        f"  1. {_dp(AMAZON_ITEMS[0])}\n  2. {_dp(AMAZON_ITEMS[1])}\n"
-        "For each: open the product page and click 'Add to Cart'. If any upsell pop-up appears (warranty, "
-        "subscription, audiobook/Kindle, 'protect your purchase'), dismiss it (no thanks / skip). When done, "
-        "open the cart so both items are visible. Do NOT proceed to checkout or place an order.")},
-    "amazon_search_add": {"profile": True, "kind": "judge", "cart": True, "prompt": (
-        f"On Amazon ({AMAZON}), use the search box to search for `stainless steel water bottle`. Open the "
-        "first genuine product result, then click 'Add to Cart'. Dismiss any upsell pop-up (no thanks). "
-        "When done, open the cart so the item is visible. Do NOT proceed to checkout or place an order.")},
-    # ---- vision + pixel-click: a canvas challenge on localhost (needs `browser install`-level coord click)
-    "pixel_click": {"kind": "pixelstate", "app": True, "prompt": (
-        "Open http://127.0.0.1:8791/ . It shows several numbered colored circles rendered as an "
-        "image — they are NOT in the DOM, so `snapshot`/`text`/`eval` reveal nothing. Take a `screenshot` to "
-        "SEE the circles and their numbers, then CLICK them in ASCENDING numeric order (1, then 2, …) using "
-        "raw pixel coordinates: `browser <sid> click --at X,Y` (the screenshot's pixels map 1:1 to click "
-        "coordinates; the image is at the top-left origin). Take another screenshot to confirm if needed. "
-        "Finish once you've clicked every circle in ascending order. Do NOT read the page source or call the "
-        "site's HTTP API — interact visually.")},
+    # read-only navigation over current real-world data, judged offline by an LLM from captured evidence
+    "mlb_latest": {"kind": "judge"},
+    "hn_summary": {"kind": "judge"},
+    "weather_nyc": {"kind": "judge"},
+    "x_projects": {"profile": True, "kind": "judge"},
+    # cart actions, judged from a cart screenshot + the command trace
+    "amazon_cart": {"profile": True, "kind": "judge", "cart": True},
+    "amazon_search_add": {"profile": True, "kind": "judge", "cart": True},
+    # vision + pixel-click, verified programmatically by the canvas server
+    "pixel_click": {"kind": "pixelstate", "app": True},
 }
+# Prompts live in tasks/<name>/prompt.txt (one subdirectory per task; see tasks/<name>/verifier.md for
+# how each run is scored). This directory is the source of truth for task prompts.
+_TDIR = HERE / "tasks"
+for _name, _spec in TASKS.items():
+    _spec["prompt"] = (_TDIR / _name / "prompt.txt").read_text().strip()
 
 
 def run_cli(*args, sid=None, timeout=60):
