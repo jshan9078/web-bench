@@ -1,0 +1,434 @@
+{
+ "mlb_latest.opus-low": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.opus-medium": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.opus-high": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.opus-xhigh": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.opus-max": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.sonnet-low": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.sonnet-medium": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.sonnet-high": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.sonnet-xhigh": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.sonnet-max": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.haiku-low": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.haiku-medium": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.haiku-high": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.haiku-xhigh": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.haiku-max": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.gemini-3.7-flash-low": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.gemini-3.7-flash-medium": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "mlb_latest.gemini-3.7-flash-high": {
+  "pass": true,
+  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+ },
+ "hn_summary.opus-low": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.opus-medium": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.opus-high": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.opus-xhigh": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.opus-max": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.sonnet-low": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.sonnet-medium": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.sonnet-high": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.sonnet-xhigh": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.sonnet-max": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.haiku-low": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.haiku-medium": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.haiku-high": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.haiku-xhigh": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.haiku-max": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.gemini-3.7-flash-low": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.gemini-3.7-flash-medium": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "hn_summary.gemini-3.7-flash-high": {
+  "pass": true,
+  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+ },
+ "weather_nyc.opus-low": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.opus-medium": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.opus-high": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.opus-xhigh": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.opus-max": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.sonnet-low": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.sonnet-medium": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.sonnet-high": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.sonnet-xhigh": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.sonnet-max": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.haiku-low": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.haiku-medium": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.haiku-high": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.haiku-xhigh": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.haiku-max": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.gemini-3.7-flash-low": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.gemini-3.7-flash-medium": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "weather_nyc.gemini-3.7-flash-high": {
+  "pass": true,
+  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+ },
+ "x_projects.opus-low": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.opus-medium": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.opus-high": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.opus-xhigh": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.opus-max": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.sonnet-low": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.sonnet-medium": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.sonnet-high": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.sonnet-xhigh": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.sonnet-max": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.haiku-low": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.haiku-medium": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.haiku-high": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.haiku-xhigh": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.haiku-max": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.gemini-3.7-flash-low": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.gemini-3.7-flash-medium": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "x_projects.gemini-3.7-flash-high": {
+  "pass": true,
+  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+ },
+ "amazon_cart.opus-low": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.opus-low": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.opus-medium": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.opus-medium": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.opus-high": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.opus-high": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.opus-xhigh": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.opus-xhigh": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.opus-max": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.opus-max": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.sonnet-low": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.sonnet-low": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.sonnet-medium": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.sonnet-medium": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.sonnet-high": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.sonnet-high": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.sonnet-xhigh": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.sonnet-xhigh": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.sonnet-max": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.sonnet-max": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.haiku-low": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.haiku-low": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.haiku-medium": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.haiku-medium": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.haiku-high": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.haiku-high": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.haiku-xhigh": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.haiku-xhigh": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.haiku-max": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.haiku-max": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.gemini-3.7-flash-low": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.gemini-3.7-flash-low": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.gemini-3.7-flash-medium": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.gemini-3.7-flash-medium": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ },
+ "amazon_cart.gemini-3.7-flash-high": {
+  "pass": true,
+  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+ },
+ "amazon_search_add.gemini-3.7-flash-high": {
+  "pass": true,
+  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+ }
+}

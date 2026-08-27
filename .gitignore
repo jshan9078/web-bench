@@ -1,0 +1,12 @@
+# large local run artifacts (videos, screenshots, full traces) — results/ JSONs are published
+raw/
+archive/
+*.mp4
+# python caches / local
+__pycache__/
+*.pyc
+.venv/
+.env
+*.log
+results/*.out
+results/*.html
