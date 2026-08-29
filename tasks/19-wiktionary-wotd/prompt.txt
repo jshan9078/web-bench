@@ -1,0 +1,4 @@
+Open English Wiktionary (https://en.wiktionary.org) and find today's Word of the Day. Open the
+word's full entry and report: the word, its part of speech, the definition given for the Word of
+the Day sense, and one example sentence or quotation from the entry (shortened is fine). End with
+those four items.

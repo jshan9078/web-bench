@@ -1,0 +1,4 @@
+On Google Maps (https://www.google.com/maps), get TRANSIT directions from Union Station, Toronto to
+Toronto Pearson International Airport, departing now. Report the TOP-LISTED route card (line or
+service name), its total duration, the departure time it shows, and the service frequency if
+stated (for example every 15 min). End with route, duration, departure time, and frequency.

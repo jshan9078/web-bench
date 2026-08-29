@@ -1,0 +1,4 @@
+Open GitHub trending for Python, daily view (https://github.com/trending/python?since=daily). Take
+the top repository. Open it and report: its one-line description, the stars gained today (from the
+trending page), total stars, the latest release tag and its date (from the Releases page; say so if
+there are no releases), and the current number of open issues. End with those five facts.

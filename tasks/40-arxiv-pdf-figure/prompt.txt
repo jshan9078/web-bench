@@ -1,0 +1,5 @@
+Open today's arXiv new submissions for cs.LG (https://arxiv.org/list/cs.LG/new) and open the PDF of
+the FIRST paper in the listing, in the browser. The PDF renders as a canvas: take a SCREENSHOT of
+page 1. From the screenshot, report the paper title, the number of authors listed, and whether
+page 1 contains a figure; if it does, describe the figure in one sentence. End with title, author
+count, and the figure note.

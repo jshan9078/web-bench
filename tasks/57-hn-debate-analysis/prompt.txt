@@ -1,0 +1,5 @@
+On Hacker News (https://news.ycombinator.com), open the comments thread of the CURRENT #1 story.
+Read the top of the thread (open more comments if needed). Report: the story title and points, the
+main SUPPORTING argument made by a commenter (with that commenter's username), and the main
+COUNTERARGUMENT or criticism (with that commenter's username), each summarized in one sentence in
+your own words. End with the story, the two arguments, and the two usernames.

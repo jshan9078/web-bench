@@ -1,0 +1,4 @@
+On the npm registry (https://www.npmjs.com/package/express), report for the package express: the
+latest published version, how long ago THAT version was published, using the recency shown right next to the version at the top of the page (not the sidebar Last publish field, which can reflect a different tag), and the current weekly
+downloads figure. Then follow the repository link to GitHub and report the current number of open
+issues. End with version, publish recency, weekly downloads, and open issues.

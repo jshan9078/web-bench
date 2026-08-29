@@ -1,0 +1,5 @@
+On OpenStreetMap (https://www.openstreetmap.org), search for the Distillery District in Toronto
+and zoom in until individual street names around it are legible on the map. Take a SCREENSHOT of
+the map. From the rendered map (not from any sidebar text), read and report TWO street names that
+border or cross the district, and also report the coordinates from the page URL after zooming.
+End with the two street names and the URL coordinates.

@@ -1,0 +1,7 @@
+Open Excalidraw (https://excalidraw.com). The drawing area is a canvas: take a SCREENSHOT first to
+locate the toolbar, then work with pixel clicks (click --at X,Y). Excalidraw's shape tools need
+dragging, which you do not have, so build the diagram from TEXT elements only: select the text
+tool, click a spot on the left side of the canvas, type IN, and commit it (press Escape or click
+elsewhere). Repeat to place WORK in the middle and OUT on the right, so the three labels read left
+to right; optionally place -> between them the same way. Take a final screenshot showing the row
+of labels. End by stating what the final screenshot shows.

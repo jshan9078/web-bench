@@ -1,0 +1,5 @@
+On Google Flights (https://www.google.com/travel/flights), search a ROUND TRIP from Toronto (YYZ)
+to Tokyo, Japan as a city destination (search Tokyo generally, covering both NRT and HND; picking a single airport can leave only one nonstop result). Departure: the first Monday of the month after next; return: one week
+later. Use the date picker, then apply the NONSTOP-only filter. Report the TWO cheapest nonstop
+options: airline, total price, and departure times for the outbound leg. End with the exact dates
+you selected and the two options.

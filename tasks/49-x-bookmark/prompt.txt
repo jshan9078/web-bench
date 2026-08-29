@@ -1,0 +1,5 @@
+You are running on a browser profile where the user is already signed in. If a login page appears anyway, show the window and ask the user to sign in, then continue. On X (https://x.com), open the profile @AnthropicAI. Identify its MOST RECENT post
+(ignore any pinned post, which is labeled pinned). Report the post's first sentence (or the whole
+post if short) and its relative timestamp. BOOKMARK that post (a private action), then open your
+Bookmarks page and take a screenshot showing it. Do not like, repost, or reply. End with the post
+summary, its timestamp, and bookmark confirmation.

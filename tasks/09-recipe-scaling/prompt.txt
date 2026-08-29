@@ -1,0 +1,5 @@
+On AllRecipes (https://www.allrecipes.com), find a chocolate chip cookie recipe with a rating of at
+least 4.5 stars and at least 1,000 ratings. Report the recipe name, its CURRENT star rating and
+ratings count as shown, and the stated yield. Then scale THREE core ingredients (flour, butter,
+sugar) to a yield of 36 cookies, showing your arithmetic. End with the recipe name, rating, ratings
+count, and the three scaled quantities.

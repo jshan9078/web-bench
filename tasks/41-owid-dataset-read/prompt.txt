@@ -1,0 +1,5 @@
+On Our World in Data (https://ourworldindata.org), open the Life Expectancy page and its
+interactive chart. Restrict or highlight the series for Japan. Using the chart's own display (the
+line endpoint, tooltip, or the Table tab), report the MOST RECENT year available in the dataset
+for Japan and the life-expectancy value for that year, exactly as the tool shows. Take a
+screenshot of the chart or table showing the value. End with the year and the value.

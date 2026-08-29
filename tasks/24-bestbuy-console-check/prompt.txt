@@ -1,0 +1,3 @@
+On Best Buy Canada (https://www.bestbuy.ca), find the current standard PlayStation 5 console
+listing (disc edition if both exist). Report the exact product name, current price, star rating
+and number of reviews, and whether it is shown as available for online purchase right now. Best Buy sometimes shows an access-denied bot wall; if that happens, retry the navigation or start a fresh session and continue. End with those four facts.

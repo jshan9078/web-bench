@@ -1,0 +1,6 @@
+Open regex101 (https://regex101.com). Paste this exact text into the TEST STRING box:
+Launch 2031-04-01, retro 1999-12-31, draft 2025-3-07, backup 2030-11-15, note 20301115, end
+2028-02-29. Then write a regular expression that matches ONLY complete dates in strict
+YYYY-MM-DD form (four digits, dash, two digits, dash, two digits) appearing in the text. Report
+your regex and the number of matches regex101 itself displays. Take a screenshot showing the
+pattern, the highlighted matches, and the match count. End with the regex and the tool's count.

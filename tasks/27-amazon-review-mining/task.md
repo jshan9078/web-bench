@@ -1,0 +1,22 @@
+# 27-amazon-review-mining
+
+- **kind**: read (LLM-judge)
+- **site**: amazon.ca
+- **what it tests**: review filtering and synthesis of recurring complaints from recent reviews
+- **verification**: see [`verifier.md`](verifier.md)
+- **verdict**: Judge: the complaints are supported by critical reviews captured this run, each dated within the last year.
+- **requires**: signed-in browser profile
+
+## Prompt (`TASK:` text sent to the agent)
+
+See [`prompt.txt`](prompt.txt) (the runtime source). Verbatim:
+
+```
+You are running on a browser profile where the user is signed in to Amazon (critical reviews
+are only visible signed in; if a login page appears, show the window and ask the user). On Amazon
+(https://www.amazon.ca), open the product page for the Instant Pot Duo 7-in-1 (any
+size). Report its overall star rating and total ratings count. Then filter or navigate to CRITICAL
+(1-2 star) reviews and identify the three most recurring complaints across recent reviews. For
+each complaint, give a short paraphrase of one supporting review and its review date; use only
+reviews from the past 12 months. End with rating, count, and the three complaints with dates.
+```

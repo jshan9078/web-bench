@@ -1,0 +1,5 @@
+On OpenStreetMap (https://www.openstreetmap.org), use the directions feature to get FOOT (walking)
+directions from Union Station, Toronto to St. Lawrence Market, Toronto. Report the total distance
+and estimated time the routing panel shows, plus the first TWO turn-by-turn instructions. Take a
+SCREENSHOT showing the route line drawn on the map. End with the distance, the time, and the two
+instructions.

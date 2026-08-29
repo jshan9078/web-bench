@@ -35,6 +35,29 @@ run is scored. Read tasks target **current** data (unanswerable from training, t
 and read); `pixel_click` is checked programmatically by the canvas server, and the rest are graded by an
 LLM judge (Claude) offline from the captured evidence.
 
+## Extended task set (08-57)
+
+Fifty additional tasks expand the suite beyond the original seven, under the same rules: every
+prompt carries the navigate-don't-recall instruction, every run captures full evidence before
+judging, and every verifier enforces grounding (a correct-sounding answer with no supporting
+navigation in the trace fails). Tasks are deliberately pretraining-proof: they target live data
+(prices, feeds, schedules, rankings), account-private state, or state the agent must create and
+screenshot. Each task directory (`tasks/NN-name/`) holds its `prompt.txt`, `task.md`, and
+`verifier.md`.
+
+| range | theme | techniques |
+|---|---|---|
+| 08-20 | multi-hop research over live data (flights, quakes, markets, arXiv, transit) | DOM navigation, cross-site reads, arithmetic |
+| 21-28 | e-commerce: constrained shopping, comparisons, review mining | filters, sorting, carts (no checkout), cross-retailer checks |
+| 29-41 | vision, canvas, and pixel work (drawing, chess, maps, PDFs, charts, games) | screenshots, `click --at X,Y`, keyboard play, visual reading |
+| 42-49 | signed-in productivity on the user's profile (YouTube, Gmail, Calendar, Docs, GitHub, Reddit, Spotify, X) | private, reversible account state: drafts, saves, bookmarks, playlists |
+| 50-57 | live web utilities and widgets (flights, revision history, regex tool, caniuse, Wayback, sun times, HN threads) | date pickers, interactive tools, tables, archives |
+
+Signed-in tasks assume the browser profile is already authenticated; agents are instructed never
+to handle credentials (the user signs in through a visible window). Action tasks may add items to
+carts but never check out, and account changes are private and reversible (drafts saved not sent,
+bookmarks, saves, playlists).
+
 ## Methodology
 
 - **Capture-first.** Each run writes a durable raw bundle, full model trace, end-state evidence,

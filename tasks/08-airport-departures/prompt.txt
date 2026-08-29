@@ -1,0 +1,6 @@
+On FlightAware (https://www.flightaware.com), open the live departures board for Toronto Pearson
+(YYZ). Find the next THREE departures headed to any United States airport. For each, report the
+flight number, airline, destination airport, and scheduled departure time from the board; the
+board itself shows no status column, so OPEN EACH FLIGHT'S own page and report its current status
+line (for example EN ROUTE, Scheduled, or a lateness note) from there. Base your answer only on
+what those pages show right now. End with the three flights, one line each.

@@ -1,0 +1,5 @@
+On Google Maps (https://www.google.com/maps), center the map on downtown Toronto and enable the
+live TRAFFIC layer. Zoom so the Gardiner Expressway corridor is visible, take a SCREENSHOT, and
+from the traffic colors on the map report the CURRENT congestion along the Gardiner: roughly what
+share looks green versus orange versus red, and where the worst stretch is. Also state what the
+map legend says the worst color you saw means. End with the congestion report.

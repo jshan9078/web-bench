@@ -1,0 +1,5 @@
+On the USGS earthquakes site (https://earthquake.usgs.gov/earthquakes/map/), configure the feed to
+show earthquakes from the past 24 hours worldwide (any magnitude range that includes the largest).
+Identify the LARGEST magnitude event in that window, open its event page, and report: magnitude,
+the named location, depth in km, and the UTC origin time. End with those four facts plus the event
+page URL.

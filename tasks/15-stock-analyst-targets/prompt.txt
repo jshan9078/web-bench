@@ -1,0 +1,5 @@
+On Yahoo Finance (https://finance.yahoo.com), open the quote page for NVDA. Report the current or
+last-close price, the day's range, market cap, and the next earnings date shown. Then open the
+Analysis tab, or the Analyst Price Targets widget on the summary page, and report the average
+analyst price target (either source is fine). End with those five values
+exactly as displayed, noting whether the market was open.
