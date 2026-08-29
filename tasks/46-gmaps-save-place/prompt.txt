@@ -1,0 +1,7 @@
+You are running on a browser profile where the user is already signed in to Google. If a login
+page appears anyway, show the window and ask the user to sign in, then continue. On Google Maps
+(https://www.google.com/maps), search for the CN Tower, Toronto. From its place card, report the
+current star rating and number of reviews, then use the Save control to add it to the WANT TO GO
+list. Open your saved places (Saved, then Want to go) and take a screenshot showing the CN Tower
+in the list. Do not modify any other saved places or lists. End with the rating, the review
+count, and confirmation it appears in Want to go.

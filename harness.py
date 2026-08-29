@@ -113,7 +113,7 @@ TASKS = {
     "43-gmail-self-draft": {"profile": True, "kind": "judge"},
     "44-gcal-event": {"profile": True, "kind": "judge"},
     "45-gdocs-hn-note": {"profile": True, "kind": "judge"},
-    "46-github-account-audit": {"profile": True, "kind": "judge"},
+    "46-gmaps-save-place": {"profile": True, "kind": "judge"},
     "47-reddit-save": {"profile": True, "kind": "judge"},
     "48-spotify-playlist": {"profile": True, "kind": "judge"},
     "49-x-bookmark": {"profile": True, "kind": "judge"},

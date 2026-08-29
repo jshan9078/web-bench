@@ -1,4 +1,4 @@
-# 46-github-account-audit, verifier
+# 46-gmaps-save-place, verifier
 
 **Method:** LLM-as-judge (Claude).
 
@@ -11,10 +11,15 @@ without re-running the model. For each run the judge is given:
 - the full browser command trace (every `navigate`/`click`/`screenshot`/... this run)
 - the run's screenshots, video, and full model stream
 
+**Vision evidence:** this task's proof is visual. The judge MUST open the run's
+screenshots (and the video if needed) rather than judging from text alone.
+
 ## Pass criteria
 
-The notification count/items and the top-three recently-updated repos match the signed-in pages
-captured this run. Account state is private, current, and impossible to answer from pretraining.
+The Want to go screenshot (which the judge must open) shows the CN Tower saved there, the trace
+shows the save action happened this run, and the reported rating and review count (a live,
+drifting figure) match the place card captured this run. Account state plus live counts are both
+unfakeable from pretraining, and this flow has no CLI or API equivalent for end users.
 
 **Grounding rule (pretraining defense):** the answer must be grounded in pages the agent actually
 navigated to and evidence it captured THIS run. A correct-sounding answer with no supporting

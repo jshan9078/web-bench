@@ -50,7 +50,7 @@ screenshot. Each task directory (`tasks/NN-name/`) holds its `prompt.txt`, `task
 | 08-20 | multi-hop research over live data (flights, quakes, markets, arXiv, transit) | DOM navigation, cross-site reads, arithmetic |
 | 21-28 | e-commerce: constrained shopping, comparisons, review mining | filters, sorting, carts (no checkout), cross-retailer checks |
 | 29-41 | vision, canvas, and pixel work (drawing, chess, maps, PDFs, charts, games) | screenshots, `click --at X,Y`, keyboard play, visual reading |
-| 42-49 | signed-in productivity on the user's profile (YouTube, Gmail, Calendar, Docs, GitHub, Reddit, Spotify, X) | private, reversible account state: drafts, saves, bookmarks, playlists |
+| 42-49 | signed-in productivity on the user's profile (YouTube, Gmail, Calendar, Docs, Maps, Reddit, Spotify, X) | private, reversible account state: drafts, saves, bookmarks, playlists |
 | 50-57 | live web utilities and widgets (flights, revision history, regex tool, caniuse, Wayback, sun times, HN threads) | date pickers, interactive tools, tables, archives |
 
 Signed-in tasks assume the browser profile is already authenticated; agents are instructed never
