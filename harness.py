@@ -18,7 +18,7 @@ applies verifiers from those bundles. Change a verifier later -> just re-run `sc
   harness.py compare                                -> per-config medians + pass@k (the video's numbers)
 
 Env: BROWSER_CLI/BROWSER_DAEMON select the impl. BENCH_VISIBLE=1 -> headed. BENCH_PROFILE=<name> ->
-     persistent profile (amazon_cart/x_projects need a logged-in one). BENCH_HARNESS=agy -> emit an
+     override the persistent profile for signed-in tasks (default: the daemon's active profile). BENCH_HARNESS=agy -> emit an
      agy-flavored prompt (agy has no /browser-cli skill, so it reads SKILL.md instead).
 """
 import json, os, shutil, statistics, subprocess, sys, time
@@ -232,7 +232,11 @@ def setup(task, run=None):
     if os.environ.get("BENCH_VISIBLE"):
         create.append("--show")
     if t.get("profile"):
-        create += ["--profile", os.environ.get("BENCH_PROFILE", "default")]
+        # BENCH_PROFILE overrides; otherwise the daemon's active default profile applies
+        # (sign in once there: `browser create --show`).
+        bp = os.environ.get("BENCH_PROFILE")
+        if bp:
+            create += ["--profile", bp]
     else:
         create.append("--ephemeral")
     sid = subprocess.run(create, capture_output=True, text=True, env=ENV).stdout.strip()
