@@ -17,7 +17,9 @@ screenshots (and the video if needed) rather than judging from text alone.
 ## Pass criteria
 
 The reported post is the newest non-pinned post on the captured profile, and the Bookmarks
-screenshot (which the judge must open) plus trace show it bookmarked this run. A just-posted
+screenshot (which the judge must open) plus trace show it bookmarked this run. The bookmark icon
+can flash without persisting, so an icon-state screenshot alone is NOT sufficient evidence: the
+Bookmarks page (or the Added to your Bookmarks toast) is required. A just-posted
 timeline is strictly post-training data.
 
 **Grounding rule (pretraining defense):** the answer must be grounded in pages the agent actually
