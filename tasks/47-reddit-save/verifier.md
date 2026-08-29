@@ -20,6 +20,11 @@ The post is the week's #1 ORGANIC post in r/programming as captured (pinned high
 page, and the saved-items screenshot (which the judge must open) plus trace show it saved this
 run. Weekly rankings and account state are both live.
 
+**Repeatability:** the verification screenshot is taken BEFORE the cleanup and is the pass
+evidence; the trace must then show the created state undone (unsave the post)
+so a rerun starts fresh. Removing residue from an earlier run at the start does not count as
+this run's work, and a run that skips the cleanup fails.
+
 **Grounding rule (pretraining defense):** the answer must be grounded in pages the agent actually
 navigated to and evidence it captured THIS run. A correct-sounding answer with no supporting
 navigation or capture in the trace fails, and where the live page disagrees with the answer, the

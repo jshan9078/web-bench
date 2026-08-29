@@ -70,6 +70,11 @@ bookmarks, saves, playlists).
   offline without ever re-running the models.
 - **Held constant.** Same tasks, same browser tool, same session setup, same turn limit across every
   configuration; only the model, thinking level, and the harness exposing it vary.
+- **Repeatable.** Every task starts fresh on any rerun: non-signed-in tasks run in throwaway
+  ephemeral browser contexts (site state dies with the session), Amazon cart tasks begin from a
+  harness-cleared cart (with before/after snapshots as the judging backstop), and signed-in tasks
+  (42-49) both remove any residue at the start and undo their own created state after the
+  verification screenshot, with the undo required by the verifier.
 - **Pretraining-proof.** Current-data reads + state-change verification + a navigate-don't-recall
   instruction in every prompt, with every browser call captured (an answer with no navigation fails).
 

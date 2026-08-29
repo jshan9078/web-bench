@@ -12,11 +12,11 @@
 See [`prompt.txt`](prompt.txt) (the runtime source). Verbatim:
 
 ```
-You are running on a browser profile where the user is already signed in. If a login page appears anyway, show the window and ask the user to sign in, then continue. First open Hacker News (https://news.ycombinator.com), open the CURRENT #1 story's
+You are running on a browser profile where the user is already signed in. If a login page appears anyway, show the window and ask the user to sign in, then continue. Reruns must start fresh: if a leftover webbench-notes document exists from a previous run, move it to trash first so you start clean. First open Hacker News (https://news.ycombinator.com), open the CURRENT #1 story's
 link or discussion, and understand what it is about. Then open Google Docs
 (https://docs.google.com), create a NEW blank document, title it: webbench-notes, and type a
 three-line note: line 1 the story title, line 2 a one-sentence summary in your own words, line 3
 today's date. The Docs editor can swallow punctuation typed as raw key presses; verify each line
-rendered (screenshot) and keep the lines punctuation-light if characters drop. Take a screenshot of the document. End with the story title and the summary line
+rendered (screenshot) and keep the lines punctuation-light if characters drop. Take a screenshot of the document. Finally, AFTER taking the verification screenshot, undo your change: move the document to trash (File menu) and confirm it is gone, so a rerun starts fresh; note the cleanup in your final answer. End with the story title and the summary line
 you wrote.
 ```

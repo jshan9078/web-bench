@@ -19,6 +19,11 @@ screenshots (and the video if needed) rather than judging from text alone.
 The trace shows the save action this run and the Watch Later screenshot (which the judge must
 open) contains the reported video. Account state is unknowable and unfakeable without doing it.
 
+**Repeatability:** the verification screenshot is taken BEFORE the cleanup and is the pass
+evidence; the trace must then show the created state undone (remove the video from Watch Later)
+so a rerun starts fresh. Removing residue from an earlier run at the start does not count as
+this run's work, and a run that skips the cleanup fails.
+
 **Grounding rule (pretraining defense):** the answer must be grounded in pages the agent actually
 navigated to and evidence it captured THIS run. A correct-sounding answer with no supporting
 navigation or capture in the trace fails, and where the live page disagrees with the answer, the
