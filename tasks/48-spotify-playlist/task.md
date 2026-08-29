@@ -13,7 +13,8 @@ See [`prompt.txt`](prompt.txt) (the runtime source). Verbatim:
 
 ```
 You are running on a browser profile where the user is already signed in. If a login page appears anyway, show the window and ask the user to sign in, then continue. On the Spotify web player (https://open.spotify.com), create a NEW playlist named:
-webbench mix. Then search for the song Bohemian Rhapsody by Queen and add it to that playlist.
+webbench mix, and immediately make it private (use the playlist's menu: Remove from profile /
+Make private) so it never appears publicly. Then search for the song Bohemian Rhapsody by Queen and add it to that playlist.
 Open the playlist and take a screenshot showing the track listed in it. Do not play, follow, or
 modify anything else. End with the playlist name and the exact track title and artist you added.
 ```

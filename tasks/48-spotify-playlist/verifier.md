@@ -17,7 +17,7 @@ screenshots (and the video if needed) rather than judging from text alone.
 ## Pass criteria
 
 The screenshot (which the judge must open) shows a playlist named webbench mix containing the
-Queen track, and the trace shows the creation and add actions this run. Created account state.
+Queen track, and the trace shows the creation, the make-private/remove-from-profile action, and the add, all this run. Created account state, kept off the public profile.
 
 **Grounding rule (pretraining defense):** the answer must be grounded in pages the agent actually
 navigated to and evidence it captured THIS run. A correct-sounding answer with no supporting
