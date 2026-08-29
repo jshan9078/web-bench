@@ -13,6 +13,9 @@
 #   BENCH_PROFILE  override the profile for signed-in tasks (default: the daemon's active
 #                  profile, which must be signed into the task sites; see tasks/*/task.md)
 #   SKIP_CLAUDE=1 / SKIP_AGY=1 to run only one side.
+#   RUN_TAG=<tag>  suffix every run label (e.g. haiku-low-val); use a fresh tag to rerun configs
+#                  that already have recorded runs without colliding with their raw bundles,
+#                  verdicts, or results.
 #
 # Task selection (default: every task in harness.py tasks):
 #   TASKS="01-mlb-latest 42-youtube-watch-later"   run exactly these task names (space-separated)
@@ -69,14 +72,14 @@ for a in $(seq 1 "$ATT"); do
   for t in $SELECTED; do
     if [ "${SKIP_CLAUDE:-0}" != 1 ]; then
       for m in $CLAUDE_MODELS; do for e in $EFFORTS; do
-        run="$m-$e$sfx"
+        run="$m-$e${RUN_TAG:+-$RUN_TAG}$sfx"
         if skip_done "$t.$run"; then echo "--- skip (done): $t $run"; continue; fi
         echo "=== [$a] $t  $run ==="; ./run_one.sh "$t" "$m" "$e" "$run"
       done; done
     fi
     if [ "${SKIP_AGY:-0}" != 1 ]; then
       for s in $AGY_MODELS; do
-        run="$s$sfx"
+        run="$s${RUN_TAG:+-$RUN_TAG}$sfx"
         if skip_done "$t.$run"; then echo "--- skip (done): $t $run"; continue; fi
         echo "=== [$a] $t  $run ==="; ./agy_one.sh "$t" "$s" "$run"
       done
