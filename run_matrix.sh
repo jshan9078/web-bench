@@ -9,7 +9,7 @@
 # Env:
 #   CLAUDE_MODELS  (default "opus sonnet haiku")
 #   EFFORTS        (default "low medium high xhigh max")
-#   AGY_MODELS     (default "gemini-3.6-flash-high gemini-3.6-flash-medium"; set to the slugs you want)
+#   AGY_MODELS     (default "gemini-3.7-flash-low gemini-3.7-flash-medium gemini-3.7-flash-high")
 #   BENCH_PROFILE  override the profile for signed-in tasks (default: the daemon's active
 #                  profile, which must be signed into the task sites; see tasks/*/task.md)
 #   SKIP_CLAUDE=1 / SKIP_AGY=1 to run only one side.
