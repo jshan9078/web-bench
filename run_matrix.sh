@@ -10,7 +10,7 @@
 #   CLAUDE_MODELS  (default "opus sonnet haiku")
 #   EFFORTS        (default "low medium high xhigh max")
 #   AGY_MODELS     (default "gemini-3.6-flash-high gemini-3.6-flash-medium"; set to the slugs you want)
-#   BENCH_PROFILE  (default "default"; must be logged into Amazon + X for amazon_cart / x_projects)
+#   BENCH_PROFILE  (default "default"; must be logged into the task sites; see tasks/ for which need the signed-in profile)
 #   SKIP_CLAUDE=1 / SKIP_AGY=1 to run only one side.
 # Everything is captured raw first (raw/*.json); scoring is re-runnable via `harness.py score`.
 set -u

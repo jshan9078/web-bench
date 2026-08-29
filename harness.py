@@ -13,7 +13,7 @@ applies verifiers from those bundles. Change a verifier later -> just re-run `sc
   harness.py setup  <task>                          -> ensure daemon+session, print the agent prompt
   harness.py record <task> run=.. harness=.. model=.. effort=.. config=.. stream=<file> [cpu=<file>]
                                                     -> capture raw bundle (NO judging)
-  harness.py score  [<task>.<run>]                  -> (re)apply verifiers + metrics -> results/*.json
+  harness.py score  [<task>.<run>]                  -> (re)apply verifiers + metrics -> results/<task>/<run>.json
   harness.py report                                 -> flat table (from results/)
   harness.py compare                                -> per-config medians + pass@k (the video's numbers)
 
@@ -64,15 +64,15 @@ _dp = lambda i: f"https://{AMAZON}/dp/{i['asin']}"
 # (raw bundle: agent answer + full stream + end_state). Action tasks keep a programmatic state check.
 TASKS = {
     # read-only navigation over current real-world data, judged offline by an LLM from captured evidence
-    "mlb_latest": {"kind": "judge"},
-    "hn_summary": {"kind": "judge"},
-    "weather_nyc": {"kind": "judge"},
-    "x_projects": {"profile": True, "kind": "judge"},
+    "01-mlb-latest": {"kind": "judge"},
+    "02-hn-summary": {"kind": "judge"},
+    "03-weather-nyc": {"kind": "judge"},
+    "04-x-projects": {"profile": True, "kind": "judge"},
     # cart actions, judged from a cart screenshot + the command trace
-    "amazon_cart": {"profile": True, "kind": "judge", "cart": True},
-    "amazon_search_add": {"profile": True, "kind": "judge", "cart": True},
+    "05-amazon-cart": {"profile": True, "kind": "judge", "cart": True},
+    "06-amazon-search-add": {"profile": True, "kind": "judge", "cart": True},
     # vision + pixel-click, verified programmatically by the canvas server
-    "pixel_click": {"kind": "pixelstate", "app": True},
+    "07-pixel-click": {"kind": "pixelstate", "app": True},
     # ---- extended task set (08-57): live-data, vision/pixel, and signed-in tasks;
     # all LLM-judged offline from the captured evidence (see tasks/<name>/verifier.md)
     "08-airport-departures": {"kind": "judge"},
@@ -131,6 +131,16 @@ TASKS = {
 _TDIR = HERE / "tasks"
 for _name, _spec in TASKS.items():
     _spec["prompt"] = (_TDIR / _name / "prompt.txt").read_text().strip()
+
+# The original seven tasks were renamed with 01-07 prefixes; old raw bundles and verdict keys still
+# carry the unprefixed names, so canonicalize wherever a task name is read back.
+LEGACY_NAMES = {
+    "mlb_latest": "01-mlb-latest", "hn_summary": "02-hn-summary", "weather_nyc": "03-weather-nyc",
+    "x_projects": "04-x-projects", "amazon_cart": "05-amazon-cart",
+    "amazon_search_add": "06-amazon-search-add", "pixel_click": "07-pixel-click",
+}
+def canon(t):
+    return LEGACY_NAMES.get(t, t)
 
 
 def run_cli(*args, sid=None, timeout=60):
@@ -208,6 +218,7 @@ def _clear_cart(sid, rounds=15):
 
 # ------------------------------------------------------------------ setup
 def setup(task, run=None):
+    task = canon(task)
     t = TASKS[task]
     ensure_daemon()
     if t.get("app"):
@@ -284,6 +295,7 @@ def _answer_from(text):
 
 
 def record(task, kw):
+    task = canon(task)
     meta = json.loads(META.read_text()); sid = meta["sid"]; t0 = meta["t0"]
     t1 = time.time(); cpu1 = tree_cpu(daemon_pid())
     harness = kw.get("harness", "claude"); run = kw["run"]
@@ -414,9 +426,10 @@ def _verdicts():
 def score(only=None):
     verdicts = _verdicts(); n = 0
     for f in sorted(RAW.glob("*.json")):
-        if only and f.stem != only:
+        stem_task, _, stem_run = f.stem.partition(".")
+        if only and f"{canon(stem_task)}.{stem_run}" != only:
             continue
-        b = json.loads(f.read_text()); task = b["task"]; key = f"{task}.{b['run']}"
+        b = json.loads(f.read_text()); task = canon(b["task"]); key = f"{task}.{b['run']}"
         raw_v = _judge(task, b)          # bool for programmatic kinds, None for LLM-judged
         needs_judge = raw_v is None
         success, note = raw_v, None
@@ -426,9 +439,9 @@ def score(only=None):
              "harness": b.get("harness", "claude"), "model": b.get("model", ""), "effort": b.get("effort", ""),
              "visible": b.get("visible", False), "success": success, "needs_judge": needs_judge,
              "judge_note": note, "answer": b.get("answer"), **_metrics(b)}
-        (RES / f"{task}.{r['run']}.json").write_text(json.dumps(r, indent=1)); n += 1
-    pend = sum(1 for f in RES.glob("*.json") if f.name not in ("current.json", "verdicts.json")
-               and json.loads(f.read_text()).get("needs_judge"))
+        d = RES / task; d.mkdir(exist_ok=True)
+        (d / f"{r['run']}.json").write_text(json.dumps(r, indent=1)); n += 1
+    pend = sum(1 for f in RES.glob("*/*.json") if json.loads(f.read_text()).get("needs_judge"))
     print(f"scored {n} run(s) -> results/  ({pend} awaiting LLM judgment; run `judge_manifest`)")
 
 
@@ -436,7 +449,7 @@ def judge_manifest():
     """Emit the evidence for every run still awaiting an LLM verdict, as JSON for a judge to act on."""
     out = []
     for f in sorted(RAW.glob("*.json")):
-        b = json.loads(f.read_text()); task = b["task"]; key = f"{task}.{b['run']}"
+        b = json.loads(f.read_text()); task = canon(b["task"]); key = f"{task}.{b['run']}"
         if _judge(task, b) is not None or key in _verdicts():
             continue
         es = b.get("end_state") or {}
@@ -457,6 +470,7 @@ def judge_manifest():
 
 
 def set_verdict(key, passed, note=None):
+    t, _, r = key.partition("."); key = f"{canon(t)}.{r}"
     v = _verdicts(); v[key] = {"pass": bool(passed), "note": note or ""}
     VERDICTS.write_text(json.dumps(v, indent=1))
     score(key)   # re-score just this run so results/ reflects the verdict
@@ -468,7 +482,8 @@ def is_done(key):
     """A run is 'done' (skip on resume) if it PASSED, or — for LLM-judge tasks — it captured real
     data and is awaiting judgment. Empty (0 cli calls) or programmatically-failed runs are NOT done,
     so a resume retries them."""
-    f = RES / f"{key}.json"
+    t, _, r = key.partition(".")
+    f = RES / canon(t) / f"{r}.json"
     if not f.exists():
         return False
     try:
@@ -483,8 +498,7 @@ def is_done(key):
 
 
 def _rows():
-    return [json.loads(f.read_text()) for f in sorted(RES.glob("*.json"))
-            if f.name not in ("current.json", "verdicts.json")]
+    return [json.loads(f.read_text()) for f in sorted(RES.glob("*/*.json"))]
 
 
 def _ok(r):

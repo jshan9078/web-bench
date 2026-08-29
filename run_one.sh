@@ -44,7 +44,7 @@ export BENCH_RECORD=1
 prompt=$($PY harness.py setup "$TASK" "$RUN") || { echo "setup failed"; exit 1; }
 SID=$($PY -c "import json;print(json.load(open('results/current.json'))['sid'])")
 
-STREAM=$(mktemp); CPU=$RES/$TASK.$RUN.cpu.jsonl
+STREAM=$(mktemp); mkdir -p "$RES/$TASK"; CPU=$RES/$TASK/$RUN.cpu.jsonl
 $PY sample_cpu.py "$CPU" 0.25 & SAMPLER=$!
 $PY record_cdp.py "$SID" "$RAW_MP4" 2>>"$LOG" & REC=$!    # headless video of this run
 sleep 1.5                                                  # let the recorder attach to the target

@@ -19,7 +19,7 @@ EFFORTS = ["low", "medium", "high", "xhigh", "max"]
 
 def load_results():
     out = []
-    for f in sorted(RES.glob("*.json")):
+    for f in sorted(RES.glob("*/*.json")):
         if f.name in ("current.json", "verdicts.json"):
             continue
         try:

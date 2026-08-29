@@ -33,7 +33,7 @@ export BENCH_PROFILE=${BENCH_PROFILE:-default}
 PY=python3
 OUT=results/footage; mkdir -p "$OUT"
 MP4=$OUT/$TASK.$MODEL.mp4
-CPU=results/$TASK.$MODEL-rec.cpu.jsonl
+mkdir -p "results/$TASK"; CPU=results/$TASK/$MODEL-rec.cpu.jsonl
 
 prompt=$($PY harness.py setup "$TASK") || { echo "setup failed"; exit 1; }
 echo ">> window open. Maximize it, then press ENTER to start recording."; read -r _
@@ -50,7 +50,7 @@ kill $SAMPLER 2>/dev/null
 
 text=$(printf '%s' "$out" | $PY -c "import sys,json;print(json.load(sys.stdin).get('result',''))" 2>/dev/null)
 tokens=$(printf '%s' "$out" | $PY -c "import sys,json;u=json.load(sys.stdin).get('usage',{});print(sum(u.get(k,0) for k in ('input_tokens','output_tokens','cache_read_input_tokens','cache_creation_input_tokens')))" 2>/dev/null || echo 0)
-ans=""; [ "$TASK" != "amazon_cart" ] && ans=$(printf '%s\n' "$text" | grep -E '^ANSWER:' | tail -1 | sed 's/^ANSWER:[[:space:]]*//')
+ans=""; [ "$TASK" != "05-amazon-cart" ] && ans=$(printf '%s\n' "$text" | grep -E '^ANSWER:' | tail -1 | sed 's/^ANSWER:[[:space:]]*//')
 if [ -n "$ans" ]; then CPU_SERIES=$CPU $PY harness.py verify "$TASK" "answer=$ans" "tokens=$tokens" "run=$MODEL-rec"
 else CPU_SERIES=$CPU $PY harness.py verify "$TASK" "tokens=$tokens" "run=$MODEL-rec"; fi
 echo ">> saved $MP4"

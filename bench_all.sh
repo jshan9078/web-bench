@@ -4,7 +4,7 @@
 # RUN THIS IN YOUR OWN TERMINAL (the agents authenticate with your normal Claude login).
 # Usage: EFFORT=high ./bench_all.sh [attempts]   (attempts default 2)
 # Env: EFFORT = thinking level for ALL models (low|medium|high|xhigh|max, default high).
-# Produces results/*.json; see them with:  python3 harness.py compare
+# Produces results/<task>/<run>.json; see them with:  python3 harness.py compare
 set -u
 cd "$(dirname "$0")"
 ATT=${1:-2}
