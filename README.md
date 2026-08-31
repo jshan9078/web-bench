@@ -14,8 +14,11 @@ so the numbering has gaps where culled candidates used to sit.
 ## Results (full matrix, 2026-08-29/30)
 
 **18 configurations x 45 tasks = 810 runs, all judged, pass@1.** Four model families: **Claude
-Opus 5, Sonnet 5, and Haiku 4.5** (five thinking levels each) via Claude Code, and **Gemini 3.7
-Flash** (its three levels) via Antigravity. Every run used the same browser tool
+Opus 5, Sonnet 5, and Haiku 4.5** via Claude Code, and **Gemini 3.7 Flash** (its three levels)
+via Antigravity. Opus and Sonnet swept five thinking levels each. Haiku 4.5 does not support the
+effort parameter (Claude Code silently ignores `--effort` on it; run telemetry confirms zero
+dose-response in thinking volume, turns, or time), so its five sweeps are replicate runs of one
+configuration and are reported below as a single averaged row. Every run used the same browser tool
 ([browser-automation-cli](https://github.com/jshan9078/browser-automation-cli)), the same 60-turn
 budget, and ran serially on one dedicated machine (M4, 10 cores). Every LLM-judged verdict was
 issued by a Claude Sonnet judge from captured evidence (screenshots, full traces, cart/end-state
@@ -25,11 +28,7 @@ answers an hour apart.
 
 | model | thinking | pass | rate | median time | median cost |
 |---|---|---|---|---|---|
-| Haiku 4.5 | low | 31/45 | 68.9% | 64s | $0.224 |
-| Haiku 4.5 | medium | 28/45 | 62.2% | 51s | $0.210 |
-| Haiku 4.5 | high | 32/45 | 71.1% | 52s | $0.203 |
-| Haiku 4.5 | xhigh | 30/45 | 66.7% | 45s | $0.207 |
-| Haiku 4.5 | max | 31/45 | 68.9% | 56s | $0.171 |
+| Haiku 4.5 | n/a (5 replicate sweeps) | 152/225 | 67.6% | 53s | $0.203 |
 | Gemini 3.7 Flash | low | 43/45 | 95.6% | 26s | $0.118 |
 | Gemini 3.7 Flash | medium | 45/45 | 100.0% | 46s | $0.237 |
 | Gemini 3.7 Flash | high | 44/45 | 97.8% | 35s | $0.176 |
@@ -62,8 +61,9 @@ output including thinking, $0.075/M cache read; these rates double on 2027-01-01
   interaction-dense tasks while over-verifying.
 - **Sonnet 5 is the speed frontier.** Sonnet-low's 23s median is the fastest config in the
   matrix at 95.6%, making it the best latency-sensitive pick.
-- **Haiku 4.5 is the cautionary tale.** A flat 62-71% band across ALL five thinking levels: its
-  failures are browsing discipline, not reasoning budget. Recurring patterns, invariant across
+- **Haiku 4.5 is the cautionary tale.** Its five sweeps (62-71% each, binomial noise around the
+  67.6% pooled rate) double as a run-to-run variance estimate for the suite, and its failures
+  are browsing discipline, not reasoning budget. Recurring patterns, invariant across
   tiers: trusting URL parameters instead of the page's own state (an invalid IMDb sort parameter
   silently fell back to popularity order at every tier), accepting the first search autocomplete
   without verifying it (OSM resolved "St. Lawrence Market" to Union Station five times out of
@@ -72,8 +72,11 @@ output including thinking, $0.075/M cache read; these rates double on 2027-01-01
 
 ### Shortcomings and lessons
 
-- **More thinking does not buy better browsing.** No family shows a positive accuracy slope with
-  thinking level; Opus and Sonnet peak at low. Fifteen of the 23 upper-tier Claude failures were
+- **More thinking does not buy better browsing.** The effort knob demonstrably worked where the
+  model supports it (Opus and Sonnet scale monotonically from low to max: 2.4x output tokens, up
+  to 2x tool calls, 3x wall time), yet no family shows a positive accuracy slope; Opus and
+  Sonnet peak at low. Two caveats: Opus is near ceiling at 97.8%, and with 45 tasks per cell
+  only effects of roughly eight points or more are statistically detectable. Fifteen of the 23 upper-tier Claude failures were
   60-turn budget exhaustion on keystroke-heavy widget tasks: higher tiers spend turns
   re-verifying where low tiers act, an over-verification tax. Opus-low passed the Desmos task
   that all four higher Opus tiers timed out on.
