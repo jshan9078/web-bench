@@ -11,7 +11,9 @@ set -u
 cd "$(dirname "$0")"
 TASK=$1; SLUG=$2; RUN=$3
 CONFIG="$SLUG"
-export BENCH_PROFILE=${BENCH_PROFILE:-default}
+# BENCH_PROFILE: only pass through if the caller set it (see run_one.sh note; empty = daemon's
+# active signed-in profile).
+export BENCH_PROFILE=${BENCH_PROFILE:-}
 export BENCH_HARNESS=agy    # setup emits a prompt that tells agy to read SKILL.md (no /browser-cli skill)
 RES=results; LOG=$RES/suite.log; PY=python3
 mkdir -p raw; RAW_MP4=raw/$TASK.$RUN.mp4

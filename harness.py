@@ -54,7 +54,13 @@ PREAMBLE = (
     "sign up, enter payment details, or place/confirm any order; decline cookie/consent banners (reject "
     "non-essential). IMPORTANT: answer ONLY from what you actually navigate to and read on the page RIGHT NOW "
     "— do not answer from prior knowledge; if you didn't see it on the page, go find it. When done, reply with "
-    "a concise summary of what you found, and if asked for a value make the LAST line exactly `ANSWER: <value>`."
+    "a concise summary of what you found, and if asked for a value make the LAST line exactly `ANSWER: <value>`. "
+    "If a CAPTCHA, robot check, or forced re-login wall stops you: first, if it looks like an automated "
+    "browser check (e.g. 'Pardon Our Interruption', 'Checking your browser'), WAIT about ten seconds and "
+    "retry once — these often clear on their own. If it persists or needs human input, do NOT try to "
+    "bypass it and do NOT report it as a normal failure: run `browser {sid} show` to make the window "
+    "visible so the user can solve it, say exactly what they need to do, and make the LAST line exactly "
+    "`BLOCKED: <which site/wall stopped you>`."
 )
 
 AMAZON = "www.amazon.ca"   # marketplace; book ASINs (ISBN-10) are the same across marketplaces
@@ -83,7 +89,6 @@ TASKS = {
     "13-usgs-quake-report": {"kind": "judge"},
     "14-imdb-yearly-top": {"kind": "judge"},
     "15-stock-analyst-targets": {"kind": "judge"},
-    "16-transit-directions": {"kind": "judge"},
     "17-currency-meal-budget": {"kind": "judge"},
     "18-npm-package-audit": {"kind": "judge"},
     "19-wiktionary-wotd": {"kind": "judge"},
@@ -91,35 +96,24 @@ TASKS = {
     "21-amazon-office-bundle": {"profile": True, "kind": "judge", "cart": True},
     "22-amazon-earbud-compare": {"profile": True, "kind": "judge", "cart": True},
     "23-amazon-filter-hunt": {"profile": True, "kind": "judge", "cart": True},
-    "24-bestbuy-console-check": {"kind": "judge"},
-    "25-walmart-grocery-pricing": {"kind": "judge"},
     "26-ebay-keyboard-hunt": {"kind": "judge"},
     "27-amazon-review-mining": {"profile": True, "kind": "judge"},
-    "28-price-cross-check": {"profile": True, "kind": "judge"},
     "29-excalidraw-pipeline": {"kind": "judge"},
-    "30-lichess-puzzle": {"kind": "judge"},
-    "31-wordle-daily": {"kind": "judge"},
     "32-desmos-intersections": {"kind": "judge"},
     "33-osm-street-read": {"kind": "judge"},
     "34-osm-route-measure": {"kind": "judge"},
-    "35-gmaps-traffic-read": {"kind": "judge"},
     "36-jspaint-poster": {"kind": "judge"},
-    "37-gmaps-poi-hunt": {"kind": "judge"},
-    "38-seterra-europe": {"kind": "judge"},
     "39-youtube-frame-describe": {"kind": "judge"},
     "40-arxiv-pdf-figure": {"kind": "judge"},
     "41-owid-dataset-read": {"kind": "judge"},
     "42-youtube-watch-later": {"profile": True, "kind": "judge"},
     "43-gmail-self-draft": {"profile": True, "kind": "judge"},
     "44-gcal-event": {"profile": True, "kind": "judge"},
-    "45-gdocs-hn-note": {"profile": True, "kind": "judge"},
-    "46-gmaps-save-place": {"profile": True, "kind": "judge"},
     "47-reddit-save": {"profile": True, "kind": "judge"},
     "48-spotify-playlist": {"profile": True, "kind": "judge"},
     "49-x-bookmark": {"profile": True, "kind": "judge"},
     "50-google-flights-nonstop": {"kind": "judge"},
     "51-wikipedia-revision-audit": {"kind": "judge"},
-    "52-regex101-dates": {"kind": "judge"},
     "53-caniuse-feature": {"kind": "judge"},
     "54-stackoverflow-live": {"kind": "judge"},
     "55-wayback-snapshot": {"kind": "judge"},
@@ -291,11 +285,23 @@ def _parse_stream(path, harness):
     return text, usage
 
 
-def _answer_from(text):
+def _tagline(text, tag):
+    """Find the last `TAG: value` line, tolerating markdown wrappers like `**TAG:** value`."""
     for line in reversed((text or "").splitlines()):
-        if line.strip().upper().startswith("ANSWER:"):
-            return line.split(":", 1)[1].strip()
+        s = line.strip().lstrip("*#>_-` ").rstrip()
+        if s.upper().startswith(tag + ":"):
+            return s.split(":", 1)[1].strip().strip("*_` ").strip()
     return None
+
+
+def _answer_from(text):
+    return _tagline(text, "ANSWER")
+
+
+def _blocked_from(text):
+    """Agent-declared environment wall (CAPTCHA / robot check / forced re-login) per the PREAMBLE
+    protocol. A blocked run is neither pass nor fail: it needs the user present to clear the wall."""
+    return _tagline(text, "BLOCKED")
 
 
 def record(task, kw):
@@ -309,7 +315,7 @@ def record(task, kw):
     if stream_src and Path(stream_src).exists():
         stream_dst = f"{task}.{run}.stream.txt"; shutil.copyfile(stream_src, RAW / stream_dst)
     text, usage = _parse_stream(stream_src, harness) if stream_src else ("", {})
-    answer = _answer_from(text)
+    answer = _answer_from(text); blocked = _blocked_from(text)
     # everything the model did through the CLI, verbatim from the daemon log
     reqs = []
     for line in (RLOG.read_text().splitlines() if RLOG.exists() else []):
@@ -350,7 +356,7 @@ def record(task, kw):
         "task": task, "run": run, "harness": harness, "model": kw.get("model", ""),
         "effort": kw.get("effort", ""), "config": kw.get("config", run),
         "visible": meta.get("visible", False), "sid": sid, "t0": t0, "t1": t1,
-        "agent_result_text": text, "agent_usage_raw": usage, "answer": answer,
+        "agent_result_text": text, "agent_usage_raw": usage, "answer": answer, "blocked": blocked,
         "stream_file": stream_dst, "video_file": video,
         "cart_before": cart_before, "cart_after": cart_after, "pixel_state": pixel_state,
         "requests_log": reqs, "cpu_series": cpu_series,
@@ -436,13 +442,23 @@ def score(only=None):
         b = json.loads(f.read_text()); task = canon(b["task"]); key = f"{task}.{b['run']}"
         raw_v = _judge(task, b)          # bool for programmatic kinds, None for LLM-judged
         needs_judge = raw_v is None
-        success, note = raw_v, None
-        if needs_judge and key in verdicts:                     # a prior LLM verdict exists -> use it
-            success = bool(verdicts[key].get("pass")); note = verdicts[key].get("note"); needs_judge = False
+        success, note, blocked = raw_v, None, False
+        if key in verdicts:                                     # a durable verdict exists -> it wins
+            v = verdicts[key]
+            if v.get("blocked"):
+                success, needs_judge, blocked = None, False, True
+            elif needs_judge:
+                success, needs_judge = bool(v.get("pass")), False
+            note = v.get("note") or note
+        elif b.get("blocked") and success is not True:
+            # agent declared an environment wall (CAPTCHA / robot check / forced re-login):
+            # neither pass nor fail; rerun interactively with the user present to clear it.
+            success, needs_judge, blocked = None, False, True
+            note = f"BLOCKED: {b['blocked']}"
         r = {"task": task, "run": b["run"], "config": b.get("config", b["run"]),
              "harness": b.get("harness", "claude"), "model": b.get("model", ""), "effort": b.get("effort", ""),
              "visible": b.get("visible", False), "success": success, "needs_judge": needs_judge,
-             "judge_note": note, "answer": b.get("answer"), **_metrics(b)}
+             "blocked": blocked, "judge_note": note, "answer": b.get("answer"), **_metrics(b)}
         d = RES / task; d.mkdir(exist_ok=True)
         (d / f"{r['run']}.json").write_text(json.dumps(r, indent=1)); n += 1
     pend = sum(1 for f in RES.glob("*/*.json") if json.loads(f.read_text()).get("needs_judge"))
@@ -462,6 +478,9 @@ def judge_manifest():
         cmds = [(e.get("action") or "") + (":" + json.dumps(e.get("params"))[:50] if e.get("params") else "")
                 for e in reqs]
         out.append({"key": key, "task": task, "is_cart": bool(TASKS[task].get("cart")),
+                    # agent-declared wall: auto-scored BLKD; judge confirms from evidence and may
+                    # override with set_verdict fail if the claim is bogus (no wall in video/stream)
+                    "blocked_claim": b.get("blocked"),
                     "prompt": TASKS[task]["prompt"], "answer": b.get("answer"),
                     "agent_result_text": (b.get("agent_result_text") or "")[:1500],
                     "end_url": es.get("url"), "end_text_excerpt": (es.get("text") or "")[:1200],
@@ -473,12 +492,21 @@ def judge_manifest():
     print(json.dumps(out, indent=1))
 
 
-def set_verdict(key, passed, note=None):
+def set_verdict(key, verdict, note=None):
+    """verdict: 'pass' | 'fail' | 'blocked'. 'blocked' = environment wall (CAPTCHA/robot check/
+    forced re-login) confirmed in the evidence: excluded from pass/fail, rerun with the user present."""
     t, _, r = key.partition("."); key = f"{canon(t)}.{r}"
-    v = _verdicts(); v[key] = {"pass": bool(passed), "note": note or ""}
+    verdict = str(verdict).lower()
+    if verdict in ("pass", "true", "1"):
+        entry = {"pass": True, "note": note or ""}
+    elif verdict == "blocked":
+        entry = {"pass": None, "blocked": True, "note": note or ""}
+    else:
+        entry = {"pass": False, "note": note or ""}
+    v = _verdicts(); v[key] = entry
     VERDICTS.write_text(json.dumps(v, indent=1))
     score(key)   # re-score just this run so results/ reflects the verdict
-    print(f"verdict {key} = {'PASS' if passed else 'FAIL'}")
+    print(f"verdict {key} = {'BLOCKED' if entry.get('blocked') else ('PASS' if entry['pass'] else 'FAIL')}")
 
 
 # ------------------------------------------------------------------ report / compare
@@ -487,6 +515,11 @@ def is_done(key):
     data and is awaiting judgment. Empty (0 cli calls) or programmatically-failed runs are NOT done,
     so a resume retries them."""
     t, _, r = key.partition(".")
+    # A recorded verdict (pass, fail, or blocked) is FINAL: one attempt per run. Without this,
+    # resume would silently retry judged-fail runs, overwriting their evidence and giving
+    # failures a second chance that passes never get.
+    if f"{canon(t)}.{r}" in _verdicts():
+        return True
     f = RES / canon(t) / f"{r}.json"
     if not f.exists():
         return False
@@ -498,6 +531,10 @@ def is_done(key):
         return True
     if r.get("needs_judge") and (r.get("cli_calls") or 0) > 0:
         return True
+    if r.get("blocked"):
+        # environment wall: headless retries just re-hit it; rerun interactively (BENCH_VISIBLE=1,
+        # user present) instead of hammering the site on resume.
+        return True
     return False
 
 
@@ -506,6 +543,8 @@ def _rows():
 
 
 def _ok(r):
+    if r.get("blocked"):
+        return "BLKD"
     return "PEND" if r.get("needs_judge") else ("PASS" if r["success"] else "FAIL")
 
 
@@ -530,6 +569,8 @@ def compare():
           f"{'med cpu s':>9s} {'med rss':>7s}")
     for cfg in sorted(cfgs):
         att = cfgs[cfg]
+        # blocked runs (CAPTCHA/bot wall/forced re-login) are neither pass nor fail: exclude entirely
+        att = [r for r in att if not r.get("blocked")]
         judged = [r for r in att if not r.get("needs_judge")]
         tasks = sorted({r["task"] for r in judged})   # pass@1 over judged tasks only
         pend = len({r["task"] for r in att if r.get("needs_judge")} - set(tasks))
@@ -556,10 +597,10 @@ if __name__ == "__main__":
         sys.exit(0 if is_done(sys.argv[2]) else 1)
     elif cmd == "judge_manifest":
         judge_manifest()
-    elif cmd == "set_verdict":     # set_verdict <task>.<run> <pass|fail> [note...]
-        key = sys.argv[2]; passed = sys.argv[3].lower() in ("pass", "true", "1", "ok")
+    elif cmd == "set_verdict":     # set_verdict <task>.<run> <pass|fail|blocked> [note...]
+        key = sys.argv[2]; verdict = sys.argv[3]
         note = " ".join(sys.argv[4:]) or None
-        set_verdict(key, passed, note)
+        set_verdict(key, verdict, note)
     elif cmd == "report":
         report()
     elif cmd == "compare":

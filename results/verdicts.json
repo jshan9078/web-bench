@@ -1,434 +1,3170 @@
 {
- "01-mlb-latest.opus-low": {
+ "01-mlb-latest.gemini-3.7-flash-low-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Games list and Cubs box score match captured page [judge: sonnet batch00]"
  },
- "01-mlb-latest.opus-medium": {
+ "01-mlb-latest.haiku-low-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "MLB.com gameday page confirms same 7 Cubs scorers [judge: sonnet batch00]"
  },
- "01-mlb-latest.opus-high": {
+ "02-hn-summary.gemini-3.7-flash-low-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Front-page eval dump confirms all listed stories [judge: sonnet batch00]"
  },
- "01-mlb-latest.opus-xhigh": {
+ "02-hn-summary.haiku-low-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Includes real multi-agent story in Agents section [judge: sonnet batch00]"
  },
- "01-mlb-latest.opus-max": {
+ "03-weather-nyc.gemini-3.7-flash-low-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Central Park coords page matches answer exactly [judge: sonnet batch00]"
  },
- "01-mlb-latest.sonnet-low": {
+ "03-weather-nyc.haiku-low-val": {
+  "pass": false,
+  "note": "Used generic NYC point not Central Park; wrong Low 68 vs 64 [judge: sonnet batch00]"
+ },
+ "08-airport-departures.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "1010Z=06:10 EDT and per-flight statuses correct [judge: sonnet batch00]"
+ },
+ "08-airport-departures.haiku-low-val": {
+  "pass": false,
+  "note": "Misconverted 1010Z to 06:00; flattened status to Scheduled [judge: sonnet batch00]"
+ },
+ "09-recipe-scaling.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Page confirms ratings/yield; scaling math correct [judge: sonnet batch01]"
+ },
+ "09-recipe-scaling.haiku-low-val": {
+  "pass": true,
+  "note": "Grounded via navigation; ratings, yield, scaling correct [judge: sonnet batch01]"
+ },
+ "10-arxiv-agents-paper.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Regex-tested listing order; correct first agent-mention [judge: sonnet batch01]"
+ },
+ "10-arxiv-agents-paper.haiku-low-val": {
+  "pass": false,
+  "note": "Own captured text shows earlier match; picked wrong later paper [judge: sonnet batch01]"
+ },
+ "11-github-trending-audit.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "All fields match captured pages [judge: sonnet batch01]"
+ },
+ "11-github-trending-audit.haiku-low-val": {
+  "pass": true,
+  "note": "Trace confirms issues, release, stars [judge: sonnet batch01]"
+ },
+ "12-wikipedia-current-events.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "All 3 items verified with correct categories [judge: sonnet batch01]"
+ },
+ "12-wikipedia-current-events.haiku-low-val": {
+  "pass": true,
+  "note": "Snapshot confirms all 3 linked articles under Aug 28 [judge: sonnet batch01]"
+ },
+ "13-usgs-quake-report.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Event page matches magnitude/location/depth/time [judge: sonnet batch02]"
+ },
+ "13-usgs-quake-report.haiku-low-val": {
+  "pass": true,
+  "note": "End-page text matches M5.0, 10km depth, origin time [judge: sonnet batch02]"
+ },
+ "14-imdb-yearly-top.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Correct rating sort; director page confirms titles [judge: sonnet batch02]"
+ },
+ "14-imdb-yearly-top.haiku-low-val": {
+  "pass": false,
+  "note": "Invalid sort param (popularity asc); wrong top-rated film [judge: sonnet batch02]"
+ },
+ "15-stock-analyst-targets.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Quote+analysis pages match corroborated values [judge: sonnet batch02]"
+ },
+ "15-stock-analyst-targets.haiku-low-val": {
+  "pass": true,
+  "note": "End-page shows price/range/cap/target matching answer [judge: sonnet batch02]"
+ },
+ "26-ebay-keyboard-hunt.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Item+cart screenshots confirm; stopped at cart [judge: sonnet batch04]"
+ },
+ "26-ebay-keyboard-hunt.haiku-low-val": {
+  "pass": false,
+  "note": "Add-to-cart failed, no cart screenshot, listing page only [judge: sonnet batch04]"
+ },
+ "29-excalidraw-pipeline.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Final screenshot shows IN -> WORK -> OUT layout [judge: sonnet batch04]"
+ },
+ "32-desmos-intersections.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Screenshot shows curves and intersection label matching answer [judge: sonnet batch04]"
+ },
+ "32-desmos-intersections.haiku-low-val": {
+  "pass": false,
+  "note": "Null answer; garbled expression entry, no result [judge: sonnet batch04]"
+ },
+ "33-osm-street-read.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Screenshot shows streets legible; coords match zoom17 [judge: sonnet batch05]"
+ },
+ "33-osm-street-read.haiku-low-val": {
+  "pass": true,
+  "note": "Screenshot shows 3 streets legible at zoom19; coords match [judge: sonnet batch05]"
+ },
+ "34-osm-route-measure.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Panel shows 975m/0:13 route to St Lawrence Market [judge: sonnet batch05]"
+ },
+ "36-jspaint-poster.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Screenshot shows red canvas, 5 black dots in X [judge: sonnet batch05]"
+ },
+ "17-currency-meal-budget.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "XE rate and Numbeo price match; floor=239 correct [judge: sonnet batch03]"
+ },
+ "17-currency-meal-budget.haiku-low-val": {
+  "pass": true,
+  "note": "Captured XE/Numbeo values match; floor=239 correct [judge: sonnet batch03]"
+ },
+ "18-npm-package-audit.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Header 5.2.1, downloads, Issues 105 captured [judge: sonnet batch03]"
+ },
+ "18-npm-package-audit.haiku-low-val": {
+  "pass": true,
+  "note": "Same header/downloads/issues confirmed [judge: sonnet batch03]"
+ },
+ "19-wiktionary-wotd.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "WOTD nullifidian, def and 1892 quote verbatim [judge: sonnet batch03]"
+ },
+ "19-wiktionary-wotd.haiku-low-val": {
+  "pass": true,
+  "note": "nullifidian def and 1816 Scott quote match page [judge: sonnet batch03]"
+ },
+ "20-nasa-apod-vision.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Description matches real Eclipse Pair image [judge: sonnet batch03]"
+ },
+ "20-nasa-apod-vision.haiku-low-val": {
+  "pass": true,
+  "note": "Screenshot reviewed; title/date/gist correct [judge: sonnet batch03]"
+ },
+ "57-hn-debate-analysis.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Thread comments match verbatim, correctly summarized [judge: sonnet batch11]"
+ },
+ "57-hn-debate-analysis.haiku-low-val": {
+  "pass": true,
+  "note": "Comments verified verbatim in trace, accurately summarized [judge: sonnet batch11]"
+ },
+ "53-caniuse-feature.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Screenshot confirms 94.07%, Firefox 121 last green [judge: sonnet batch10]"
+ },
+ "53-caniuse-feature.haiku-low-val": {
+  "pass": true,
+  "note": "Screenshot confirms same table values [judge: sonnet batch10]"
+ },
+ "54-stackoverflow-live.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Live eval captured matching post details [judge: sonnet batch10]"
+ },
+ "54-stackoverflow-live.haiku-low-val": {
+  "pass": true,
+  "note": "Snapshot captured same post live this run [judge: sonnet batch10]"
+ },
+ "56-sunrise-reykjavik.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Table row 30 values match answer exactly [judge: sonnet batch10]"
+ },
+ "56-sunrise-reykjavik.haiku-low-val": {
+  "pass": true,
+  "note": "Page text includes row 30 values verbatim [judge: sonnet batch10]"
+ },
+ "47-reddit-save.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Score/comments match; saved screenshot and unsave confirmed [judge: sonnet batch08]"
+ },
+ "47-reddit-save.haiku-low-val": {
+  "pass": false,
+  "note": "Never visited saved-items page; no verification screenshot [judge: sonnet batch08]"
+ },
+ "48-spotify-playlist.haiku-low-val": {
+  "pass": true,
+  "note": "Trace shows rename, private, track, screenshot, delete cleanup [judge: sonnet batch08]"
+ },
+ "41-owid-dataset-read.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Japan 2023=84.7 years matches chart endpoint [judge: sonnet batch07]"
+ },
+ "41-owid-dataset-read.haiku-low-val": {
+  "pass": true,
+  "note": "Table screenshot Japan 2023 84.7 matches [judge: sonnet batch07]"
+ },
+ "42-youtube-watch-later.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Saved to Watch Later; removal and empty end state [judge: sonnet batch07]"
+ },
+ "42-youtube-watch-later.haiku-low-val": {
+  "pass": true,
+  "note": "Video saved; Remove from Watch later cleanup [judge: sonnet batch07]"
+ },
+ "43-gmail-self-draft.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Draft matches real HN #1; discarded after [judge: sonnet batch07]"
+ },
+ "43-gmail-self-draft.haiku-low-val": {
+  "pass": true,
+  "note": "Draft matched; no saved drafts confirms cleanup [judge: sonnet batch07]"
+ },
+ "44-gcal-event.gemini-3.7-flash-low-val": {
+  "pass": false,
+  "note": "Deleted own verification screenshot with rm -f [judge: sonnet batch07]"
+ },
+ "44-gcal-event.haiku-low-val": {
+  "pass": false,
+  "note": "Event hidden behind dialog in screenshot; not verifiable [judge: sonnet batch07]"
+ },
+ "49-x-bookmark.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Correct post bookmarked; cleanup removed it after [judge: sonnet batch09]"
+ },
+ "49-x-bookmark.haiku-low-val": {
+  "pass": true,
+  "note": "Bookmarks page matches post; bookmark then cleanup verified [judge: sonnet batch09]"
+ },
+ "50-google-flights-nonstop.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Correct Oct 5/12 dates, nonstop filter, options match [judge: sonnet batch09]"
+ },
+ "51-wikipedia-revision-audit.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Date/editor/summary match; ref count grounded [judge: sonnet batch09]"
+ },
+ "51-wikipedia-revision-audit.haiku-low-val": {
+  "pass": false,
+  "note": "Edit summary incomplete vs captured page [judge: sonnet batch09]"
+ },
+ "39-youtube-frame-describe.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Screenshot matches frame description; views/title match [judge: sonnet batch06]"
+ },
+ "39-youtube-frame-describe.haiku-low-val": {
+  "pass": true,
+  "note": "Latest sort confirmed; exact caption verified [judge: sonnet batch06]"
+ },
+ "40-arxiv-pdf-figure.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "end_url matches first listing paper; content verified [judge: sonnet batch06]"
+ },
+ "40-arxiv-pdf-figure.haiku-low-val": {
+  "pass": true,
+  "note": "Title, 1 author, no figure confirmed; first entry [judge: sonnet batch06]"
+ },
+ "36-jspaint-poster.haiku-low-val": {
+  "pass": false,
+  "note": "WebGL error dialog unhandled; only partial rectangle, zero dots (gemini passed same env) [judge: sonnet makeup3]"
+ },
+ "48-spotify-playlist.gemini-3.7-flash-low-val": {
+  "pass": false,
+  "note": "Re-toggled playlist to Public after privatizing, violating privacy requirement; playlist was deleted in cleanup [judge: sonnet makeup3]"
+ },
+ "04-x-projects.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Full project list + correct SLM models, grounded [judge: sonnet makeup0]"
+ },
+ "04-x-projects.haiku-low-val": {
+  "pass": false,
+  "note": "Missing Clarity project; never scrolled X timeline [judge: sonnet makeup0]"
+ },
+ "05-amazon-cart.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Cart screenshot shows both books; adds in trace [judge: sonnet makeup0]"
+ },
+ "05-amazon-cart.haiku-low-val": {
+  "pass": true,
+  "note": "Cart shows both books; both adds in trace [judge: sonnet makeup0]"
+ },
+ "06-amazon-search-add.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "First genuine result added; cart confirms [judge: sonnet makeup0]"
+ },
+ "06-amazon-search-add.haiku-low-val": {
+  "pass": true,
+  "note": "Same result clicked, added, cart confirmed [judge: sonnet makeup0]"
+ },
+ "27-amazon-review-mining.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Rating/count and 3 complaints grounded, dates within 12mo [judge: sonnet makeup2]"
+ },
+ "27-amazon-review-mining.haiku-low-val": {
+  "pass": true,
+  "note": "4.6/7,023 and complaints match captured review text [judge: sonnet makeup2]"
+ },
+ "29-excalidraw-pipeline.haiku-low-val": {
+  "pass": true,
+  "note": "Screenshot shows IN WORK OUT left-to-right [judge: sonnet makeup2]"
+ },
+ "21-amazon-office-bundle.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Cart shows both items, prices/ratings/subtotal confirmed [judge: sonnet makeup1]"
+ },
+ "21-amazon-office-bundle.haiku-low-val": {
+  "pass": true,
+  "note": "Cart confirms lamp + mouse, subtotal, ratings grounded [judge: sonnet makeup1]"
+ },
+ "22-amazon-earbud-compare.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Higher-rated Btootos added, cart matches, grounded [judge: sonnet makeup1]"
+ },
+ "22-amazon-earbud-compare.haiku-low-val": {
+  "pass": true,
+  "note": "Same higher-rated pick added, cart confirms [judge: sonnet makeup1]"
+ },
+ "23-amazon-filter-hunt.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Correct category/filter/sort path, dates monotonic, cart confirms [judge: sonnet makeup1]"
+ },
+ "23-amazon-filter-hunt.haiku-low-val": {
+  "pass": false,
+  "note": "Generic keyword search instead of category+filter+sort; implausible result [judge: sonnet makeup1]"
+ },
+ "03-weather-nyc.haiku-max-val": {
+  "pass": true,
+  "note": "NWS Central Park; 79/67 matches page [judge: sonnet exp01]"
+ },
+ "03-weather-nyc.haiku-medium-val": {
+  "pass": true,
+  "note": "NWS Central Park; 79/67 matches page [judge: sonnet exp01]"
+ },
+ "03-weather-nyc.haiku-xhigh-val": {
+  "pass": true,
+  "note": "NWS Central Park; 79/67 matches page [judge: sonnet exp01]"
+ },
+ "04-x-projects.haiku-high-val": {
+  "pass": true,
+  "note": "Project list and 6 models match; grounded via blog [judge: sonnet exp01]"
+ },
+ "04-x-projects.haiku-max-val": {
+  "pass": true,
+  "note": "List and models match; click-into article grounded [judge: sonnet exp01]"
+ },
+ "04-x-projects.haiku-medium-val": {
+  "pass": true,
+  "note": "Correct list and models via t.co redirects [judge: sonnet exp01]"
+ },
+ "04-x-projects.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Blog navigated; list and models match [judge: sonnet exp01]"
+ },
+ "05-amazon-cart.haiku-high-val": {
+  "pass": true,
+  "note": "cart_before empty, cart_after both books $61.49 [judge: sonnet exp01]"
+ },
+ "05-amazon-cart.haiku-max-val": {
+  "pass": true,
+  "note": "cart_before empty, cart_after both books $61.49 [judge: sonnet exp01]"
+ },
+ "11-github-trending-audit.haiku-max-val": {
+  "pass": true,
+  "note": "All fields grounded in captured pages [judge: sonnet exp04]"
+ },
+ "11-github-trending-audit.haiku-medium-val": {
+  "pass": true,
+  "note": "Stars/release/issues match captured trace [judge: sonnet exp04]"
+ },
+ "11-github-trending-audit.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Stars/release/issues grounded in trace [judge: sonnet exp04]"
+ },
+ "12-wikipedia-current-events.haiku-high-val": {
+  "pass": true,
+  "note": "All three Aug 28 items verbatim in portal text [judge: sonnet exp04]"
+ },
+ "12-wikipedia-current-events.haiku-max-val": {
+  "pass": true,
+  "note": "Dated subpage visited; items grounded [judge: sonnet exp04]"
+ },
+ "12-wikipedia-current-events.haiku-medium-val": {
+  "pass": true,
+  "note": "All three items grounded in trace [judge: sonnet exp04]"
+ },
+ "12-wikipedia-current-events.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Subpage visited; items grounded [judge: sonnet exp04]"
+ },
+ "13-usgs-quake-report.haiku-max-val": {
+  "pass": true,
+  "note": "Past Day feed; M5.1 matches event page [judge: sonnet exp04]"
+ },
+ "01-mlb-latest.haiku-high-val": {
+  "pass": true,
+  "note": "15 games, box score, scorers match R column [judge: sonnet exp00]"
+ },
+ "01-mlb-latest.haiku-max-val": {
+  "pass": true,
+  "note": "Box score navigated; scorers match exactly [judge: sonnet exp00]"
+ },
+ "01-mlb-latest.haiku-medium-val": {
+  "pass": true,
+  "note": "Box score end state; scorers match [judge: sonnet exp00]"
+ },
+ "01-mlb-latest.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Scoring plays visited; scorers match [judge: sonnet exp00]"
+ },
+ "02-hn-summary.haiku-high-val": {
+  "pass": true,
+  "note": "Section present; ambiguous story correctly excluded [judge: sonnet exp00]"
+ },
+ "02-hn-summary.haiku-max-val": {
+  "pass": true,
+  "note": "Section lists stories confirmed on front page [judge: sonnet exp00]"
+ },
+ "02-hn-summary.haiku-medium-val": {
+  "pass": true,
+  "note": "Section present, stories verified on snapshot [judge: sonnet exp00]"
+ },
+ "02-hn-summary.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Section present, cited stories confirmed [judge: sonnet exp00]"
+ },
+ "03-weather-nyc.haiku-high-val": {
+  "pass": true,
+  "note": "Central Park page; 79/67 match exactly [judge: sonnet exp00]"
+ },
+ "05-amazon-cart.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Cart shows both books qty 1; adds traced [judge: sonnet exp02]"
+ },
+ "06-amazon-search-add.haiku-high-val": {
+  "pass": true,
+  "note": "Cart shows bottle; search/open/add traced [judge: sonnet exp02]"
+ },
+ "06-amazon-search-add.haiku-max-val": {
+  "pass": true,
+  "note": "First non-sponsored via DOM check; cart confirms [judge: sonnet exp02]"
+ },
+ "06-amazon-search-add.haiku-medium-val": {
+  "pass": true,
+  "note": "Correct bottle; sequence in trace [judge: sonnet exp02]"
+ },
+ "06-amazon-search-add.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Correct bottle; sequence in trace [judge: sonnet exp02]"
+ },
+ "09-recipe-scaling.haiku-high-val": {
+  "pass": true,
+  "note": "Correct recipe, ratings match, scaling correct [judge: sonnet exp03]"
+ },
+ "09-recipe-scaling.haiku-max-val": {
+  "pass": true,
+  "note": "Rating/count match page, scaling correct [judge: sonnet exp03]"
+ },
+ "09-recipe-scaling.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Correct recipe, ratings match, scaling correct [judge: sonnet exp03]"
+ },
+ "10-arxiv-agents-paper.haiku-high-val": {
+  "pass": true,
+  "note": "First agent-mention paper correct; details match [judge: sonnet exp03]"
+ },
+ "10-arxiv-agents-paper.haiku-max-val": {
+  "pass": true,
+  "note": "Correctly found first agent-mention [judge: sonnet exp03]"
+ },
+ "11-github-trending-audit.haiku-high-val": {
+  "pass": true,
+  "note": "Repo/stars/issues match; release grounded [judge: sonnet exp03]"
+ },
+ "13-usgs-quake-report.haiku-medium-val": {
+  "pass": true,
+  "note": "M5.1 SW Indian Ridge matches event page [judge: sonnet exp-w2]"
+ },
+ "13-usgs-quake-report.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Full list scan confirms 5.1 largest [judge: sonnet exp-w2]"
+ },
+ "14-imdb-yearly-top.haiku-max-val": {
+  "pass": false,
+  "note": "CORRECTED: same invalid sort fallback to popularity [judge: sonnet exp-w3]"
+ },
+ "15-stock-analyst-targets.haiku-high-val": {
+  "pass": true,
+  "note": "All five values grounded in captured pages [judge: sonnet exp-w2]"
+ },
+ "15-stock-analyst-targets.haiku-max-val": {
+  "pass": true,
+  "note": "All five values grounded [judge: sonnet exp-w2]"
+ },
+ "15-stock-analyst-targets.haiku-medium-val": {
+  "pass": true,
+  "note": "All 5 values grounded in Yahoo snapshot [judge: sonnet exp-w2]"
+ },
+ "15-stock-analyst-targets.haiku-xhigh-val": {
+  "pass": true,
+  "note": "All 5 values grounded in Yahoo snapshot [judge: sonnet exp-w2]"
+ },
+ "17-currency-meal-budget.haiku-high-val": {
+  "pass": true,
+  "note": "Rate/amount/price grounded; floor 239 correct [judge: sonnet exp-w2]"
+ },
+ "17-currency-meal-budget.haiku-max-val": {
+  "pass": true,
+  "note": "Rate/amount/price grounded; floor 239 correct [judge: sonnet exp-w2]"
+ },
+ "17-currency-meal-budget.haiku-medium-val": {
+  "pass": true,
+  "note": "XE/Numbeo grounded; 239 correct [judge: sonnet exp-w2]"
+ },
+ "17-currency-meal-budget.haiku-xhigh-val": {
+  "pass": true,
+  "note": "XE/Numbeo grounded; 239 correct [judge: sonnet exp-w2]"
+ },
+ "18-npm-package-audit.haiku-high-val": {
+  "pass": true,
+  "note": "Version/downloads/issues captured in trace [judge: sonnet exp-w2]"
+ },
+ "18-npm-package-audit.haiku-max-val": {
+  "pass": true,
+  "note": "Values grounded via npm+GitHub [judge: sonnet exp-w2]"
+ },
+ "18-npm-package-audit.haiku-medium-val": {
+  "pass": true,
+  "note": "Grounded capture matches [judge: sonnet exp-w2]"
+ },
+ "18-npm-package-audit.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Grounded capture matches [judge: sonnet exp-w2]"
+ },
+ "19-wiktionary-wotd.haiku-high-val": {
+  "pass": true,
+  "note": "WOTD entry grounded [judge: sonnet exp-w2]"
+ },
+ "19-wiktionary-wotd.haiku-max-val": {
+  "pass": true,
+  "note": "WOTD Aug 29 confirmed in trace [judge: sonnet exp-w2]"
+ },
+ "19-wiktionary-wotd.haiku-medium-val": {
+  "pass": true,
+  "note": "Entry navigated; definition/example grounded [judge: sonnet exp-w2]"
+ },
+ "19-wiktionary-wotd.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Entry confirmed via navigation [judge: sonnet exp-w2]"
+ },
+ "20-nasa-apod-vision.haiku-high-val": {
+  "pass": true,
+  "note": "Screenshot shows both eclipses; grounded [judge: sonnet exp-w2]"
+ },
+ "20-nasa-apod-vision.haiku-max-val": {
+  "pass": true,
+  "note": "Post-scroll screenshot matches description [judge: sonnet exp-w2]"
+ },
+ "20-nasa-apod-vision.haiku-medium-val": {
+  "pass": true,
+  "note": "Visuals and explanation text grounded [judge: sonnet exp-w2]"
+ },
+ "20-nasa-apod-vision.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Screenshot viewed; description accurate [judge: sonnet exp-w2]"
+ },
+ "21-amazon-office-bundle.haiku-high-val": {
+  "pass": true,
+  "note": "cart_after shows both items, subtotal, ratings [judge: sonnet exp-w2]"
+ },
+ "21-amazon-office-bundle.haiku-medium-val": {
+  "pass": false,
+  "note": "cart_after shows EMPTY cart contradicting claimed 2-item cart [judge: sonnet exp-w2]"
+ },
+ "12-wikipedia-current-events.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "3 items and links under Aug 28 in trace [judge: sonnet exp-w3]"
+ },
+ "12-wikipedia-current-events.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Same items grounded [judge: sonnet exp-w3]"
+ },
+ "13-usgs-quake-report.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "5.1 top of largest-first feed [judge: sonnet exp-w3]"
+ },
+ "13-usgs-quake-report.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Largest event grounded in feed and page [judge: sonnet exp-w3]"
+ },
+ "14-imdb-yearly-top.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Punjab 95 8.8/106K via valid user_rating sort, JSON-LD [judge: sonnet exp-w3]"
+ },
+ "14-imdb-yearly-top.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Same film/director confirmed; credits grounded [judge: sonnet exp-w3]"
+ },
+ "15-stock-analyst-targets.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "All 5 values grounded [judge: sonnet exp-w3]"
+ },
+ "15-stock-analyst-targets.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "All 5 values grounded [judge: sonnet exp-w3]"
+ },
+ "06-amazon-search-add.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Cart screenshot confirms; full sequence traced [judge: sonnet exp-w3]"
+ },
+ "06-amazon-search-add.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Cart screenshot confirms; full sequence traced [judge: sonnet exp-w3]"
+ },
+ "08-airport-departures.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Board and status pages match answer [judge: sonnet exp-w3]"
+ },
+ "08-airport-departures.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Board shows 3rd US flight; statuses confirmed [judge: sonnet exp-w3]"
+ },
+ "09-recipe-scaling.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Values captured; scaling correct [judge: sonnet exp-w3]"
+ },
+ "09-recipe-scaling.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Values captured; scaling correct [judge: sonnet exp-w3]"
+ },
+ "10-arxiv-agents-paper.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Listing+abstract visited; details match [judge: sonnet exp-w3]"
+ },
+ "10-arxiv-agents-paper.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Listing+abstract visited; details match [judge: sonnet exp-w3]"
+ },
+ "11-github-trending-audit.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "All five facts captured this run [judge: sonnet exp-w3]"
+ },
+ "11-github-trending-audit.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "All five facts captured this run [judge: sonnet exp-w3]"
+ },
+ "21-amazon-office-bundle.haiku-max-val": {
+  "pass": true,
+  "note": "Cart shows both items, subtotal, ratings grounded [judge: sonnet exp-w3b4]"
+ },
+ "21-amazon-office-bundle.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Cart matches claim; both 4+ stars grounded [judge: sonnet exp-w3b4]"
+ },
+ "22-amazon-earbud-compare.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Higher-rated added, cart matches, battery grounded [judge: sonnet exp-w3b4]"
+ },
+ "22-amazon-earbud-compare.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Higher-rated added, cart confirms, battery grounded [judge: sonnet exp-w3b4]"
+ },
+ "22-amazon-earbud-compare.haiku-high-val": {
+  "pass": true,
+  "note": "Correct item; battery quote grounded in page [judge: sonnet exp-w3b4]"
+ },
+ "22-amazon-earbud-compare.haiku-max-val": {
+  "pass": false,
+  "note": "Guessed battery life instead of grounding in page data [judge: sonnet exp-w3b4]"
+ },
+ "22-amazon-earbud-compare.haiku-medium-val": {
+  "pass": true,
+  "note": "Correct item; battery grounded [judge: sonnet exp-w3b4]"
+ },
+ "22-amazon-earbud-compare.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Correct item; battery grounded [judge: sonnet exp-w3b4]"
+ },
+ "23-amazon-filter-hunt.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Firestarter 4.5 paperback; cart confirms [judge: sonnet exp-w3b4]"
+ },
+ "23-amazon-filter-hunt.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Same grounded result; cart confirmed [judge: sonnet exp-w3b4]"
+ },
+ "01-mlb-latest.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Games and scorers match box score [judge: sonnet exp-w3b0]"
+ },
+ "01-mlb-latest.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Games and scorers match box score [judge: sonnet exp-w3b0]"
+ },
+ "02-hn-summary.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Stories confirmed on front-page snapshot [judge: sonnet exp-w3b0]"
+ },
+ "02-hn-summary.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "3 stories grounded in snapshot [judge: sonnet exp-w3b0]"
+ },
+ "03-weather-nyc.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Sunny/79/67 matches Central Park page [judge: sonnet exp-w3b0]"
+ },
+ "03-weather-nyc.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Sunny/79/67 matches Central Park page [judge: sonnet exp-w3b0]"
+ },
+ "04-x-projects.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Project list and models correct, grounded [judge: sonnet exp-w3b0]"
+ },
+ "04-x-projects.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Project list and models correct, grounded [judge: sonnet exp-w3b0]"
+ },
+ "05-amazon-cart.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Empty before, both books after qty 1 [judge: sonnet exp-w3b0]"
+ },
+ "05-amazon-cart.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Empty before, both books after qty 1 [judge: sonnet exp-w3b0]"
+ },
+ "17-currency-meal-budget.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Rate/amount/price/count grounded [judge: sonnet exp-w3b3]"
+ },
+ "17-currency-meal-budget.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Matches captured XE/Numbeo values [judge: sonnet exp-w3b3]"
+ },
+ "18-npm-package-audit.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Header recency; values grounded both sites [judge: sonnet exp-w3b3]"
+ },
+ "18-npm-package-audit.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Same grounded values [judge: sonnet exp-w3b3]"
+ },
+ "19-wiktionary-wotd.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Word/POS/definition/quote grounded [judge: sonnet exp-w3b3]"
+ },
+ "19-wiktionary-wotd.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Word/POS/definition/quote grounded [judge: sonnet exp-w3b3]"
+ },
+ "20-nasa-apod-vision.gemini-3.7-flash-high-val": {
+  "pass": false,
+  "note": "Described flare upper right; screenshot shows bottom of disk [judge: sonnet exp-w3b3]"
+ },
+ "20-nasa-apod-vision.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Title/date/gist correct; flare position matches [judge: sonnet exp-w3b3]"
+ },
+ "21-amazon-office-bundle.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Ratings confirmed; cart subtotal verified [judge: sonnet exp-w3b3]"
+ },
+ "21-amazon-office-bundle.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Ratings confirmed; cart subtotal verified [judge: sonnet exp-w3b3]"
+ },
+ "26-ebay-keyboard-hunt.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Cart screenshot confirms item, no checkout [judge: sonnet exp-w3b6]"
+ },
+ "26-ebay-keyboard-hunt.haiku-high-val": {
+  "pass": false,
+  "note": "Never added item; cart empty at end [judge: sonnet exp-w3b6]"
+ },
+ "26-ebay-keyboard-hunt.haiku-medium-val": {
+  "pass": false,
+  "note": "Cart shows 0 items; final screenshot is item page [judge: sonnet exp-w3b7]"
+ },
+ "26-ebay-keyboard-hunt.haiku-xhigh-val": {
+  "pass": false,
+  "note": "Cart empty despite Add to Cart click [judge: sonnet exp-w3b7]"
+ },
+ "27-amazon-review-mining.haiku-medium-val": {
+  "pass": false,
+  "note": "Only 1 of 3 complaints has captured review date [judge: sonnet exp-w3b7]"
+ },
+ "23-amazon-filter-hunt.haiku-high-val": {
+  "pass": false,
+  "note": "Cart empty; pub date admitted from common knowledge [judge: sonnet exp-w3b5]"
+ },
+ "23-amazon-filter-hunt.haiku-max-val": {
+  "pass": false,
+  "note": "URL param ignored; every capture shows Sort by Featured [judge: sonnet exp-w3b5]"
+ },
+ "23-amazon-filter-hunt.haiku-medium-val": {
+  "pass": false,
+  "note": "Sort dropdown never applied; stayed Featured [judge: sonnet exp-w3b5]"
+ },
+ "23-amazon-filter-hunt.haiku-xhigh-val": {
+  "pass": false,
+  "note": "Wrong filters and sort (customer review not pub date) [judge: sonnet exp-w3b5]"
+ },
+ "34-osm-route-measure.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "973m/0:12 correct dest, route drawn [judge: sonnet w4b4]"
+ },
+ "34-osm-route-measure.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "975m/0:13 correct dest, route drawn [judge: sonnet w4b4]"
+ },
+ "34-osm-route-measure.haiku-high-val": {
+  "pass": false,
+  "note": "Destination resolved to Union Station not St Lawrence Market [judge: sonnet w4b4]"
+ },
+ "34-osm-route-measure.haiku-max-val": {
+  "pass": false,
+  "note": "Same wrong destination; route stays in Union Station [judge: sonnet w4b4]"
+ },
+ "34-osm-route-measure.haiku-medium-val": {
+  "pass": false,
+  "note": "Same wrong destination; Union Market pin [judge: sonnet w4b4]"
+ },
+ "34-osm-route-measure.haiku-xhigh-val": {
+  "pass": false,
+  "note": "Same wrong destination [judge: sonnet w4b4]"
+ },
+ "36-jspaint-poster.haiku-high-val": {
+  "pass": false,
+  "note": "Maroon fill, no 5-dot X, hit max turns [judge: sonnet w4b4]"
+ },
+ "36-jspaint-poster.haiku-max-val": {
+  "pass": false,
+  "note": "Red fill but zero dots, hit max turns [judge: sonnet w4b4]"
+ },
+ "36-jspaint-poster.haiku-medium-val": {
+  "pass": false,
+  "note": "Canvas white, WebGL dialog unhandled [judge: sonnet w4b4]"
+ },
+ "14-imdb-yearly-top.haiku-xhigh-val": {
+  "pass": false,
+  "note": "Attempt 2: page said Sorted by Popularity; top-rated unverified [judge: sonnet w4b1]"
+ },
+ "27-amazon-review-mining.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Rating/count and 3 dated complaints confirmed [judge: sonnet w4b1]"
+ },
+ "27-amazon-review-mining.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Rating/count and 3 dated complaints confirmed [judge: sonnet w4b1]"
+ },
+ "27-amazon-review-mining.haiku-high-val": {
+  "pass": false,
+  "note": "Cited review outside 12-month window [judge: sonnet w4b1]"
+ },
+ "27-amazon-review-mining.haiku-max-val": {
+  "pass": false,
+  "note": "2019 review, unverified dates, truncated answer [judge: sonnet w4b1]"
+ },
+ "27-amazon-review-mining.haiku-xhigh-val": {
+  "pass": false,
+  "note": "Out-of-window review; third complaint undated [judge: sonnet w4b1]"
+ },
+ "29-excalidraw-pipeline.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Screenshot shows IN WORK OUT left to right [judge: sonnet w4b2]"
+ },
+ "29-excalidraw-pipeline.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Screenshot shows IN WORK OUT left to right [judge: sonnet w4b2]"
+ },
+ "29-excalidraw-pipeline.haiku-high-val": {
+  "pass": true,
+  "note": "Screenshot shows full arrow pipeline [judge: sonnet w4b2]"
+ },
+ "29-excalidraw-pipeline.haiku-max-val": {
+  "pass": true,
+  "note": "Screenshot shows IN WORK OUT left to right [judge: sonnet w4b2]"
+ },
+ "29-excalidraw-pipeline.haiku-medium-val": {
+  "pass": false,
+  "note": "Empty canvas; agent gave up and asked user [judge: sonnet w4b2]"
+ },
+ "29-excalidraw-pipeline.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Order intact with one stray duplicate IN [judge: sonnet w4b2]"
+ },
+ "32-desmos-intersections.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Curves and labeled point match; count 5 verified [judge: sonnet w4b2]"
+ },
+ "32-desmos-intersections.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Label and count match screenshot [judge: sonnet w4b2]"
+ },
+ "32-desmos-intersections.haiku-high-val": {
+  "pass": false,
+  "note": "Max turns; equation never entered [judge: sonnet w4b3]"
+ },
+ "32-desmos-intersections.haiku-max-val": {
+  "pass": false,
+  "note": "Max turns; expression never resolved [judge: sonnet w4b3]"
+ },
+ "32-desmos-intersections.haiku-medium-val": {
+  "pass": false,
+  "note": "Wrong equation entered (4x/3), no answer [judge: sonnet w4b3]"
+ },
+ "32-desmos-intersections.haiku-xhigh-val": {
+  "pass": false,
+  "note": "Equations correct but no labeled intersection [judge: sonnet w4b3]"
+ },
+ "33-osm-street-read.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Streets legible; URL matches coords [judge: sonnet w4b3]"
+ },
+ "33-osm-street-read.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Streets legible; URL matches [judge: sonnet w4b3]"
+ },
+ "33-osm-street-read.haiku-high-val": {
+  "pass": true,
+  "note": "Streets legible; zoom20 coords match [judge: sonnet w4b3]"
+ },
+ "33-osm-street-read.haiku-max-val": {
+  "pass": true,
+  "note": "Streets legible; coords match [judge: sonnet w4b3]"
+ },
+ "33-osm-street-read.haiku-medium-val": {
+  "pass": true,
+  "note": "Tiles show streets; hash coords match [judge: sonnet w4b3]"
+ },
+ "33-osm-street-read.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Streets legible; end_url matches [judge: sonnet w4b3]"
+ },
+ "08-airport-departures.haiku-high-val": {
+  "pass": false,
+  "note": "Excluded earlier flights on own board; not true next three [attempt 2: original overwritten by resume-retry bug] [judge: sonnet w4b0]"
+ },
+ "08-airport-departures.haiku-max-val": {
+  "pass": false,
+  "note": "Derived correct three then reversed to wrong set [attempt 2: original overwritten by resume-retry bug] [judge: sonnet w4b0]"
+ },
+ "08-airport-departures.haiku-medium-val": {
+  "pass": true,
+  "note": "Tables combined correctly; grounded times/statuses [attempt 2: original overwritten by resume-retry bug] [judge: sonnet w4b0]"
+ },
+ "08-airport-departures.haiku-xhigh-val": {
+  "pass": false,
+  "note": "Right flights, wrong status (said En Route, page shows TAXIING) [attempt 2: original overwritten by resume-retry bug] [judge: sonnet w4b0]"
+ },
+ "09-recipe-scaling.haiku-medium-val": {
+  "pass": false,
+  "note": "Reported reviews count as ratings count [attempt 2: original overwritten by resume-retry bug] [judge: sonnet w4b0]"
+ },
+ "10-arxiv-agents-paper.haiku-medium-val": {
+  "pass": true,
+  "note": "Papers 1-6 verified clean; paper 7 correctly first [attempt 2: original overwritten by resume-retry bug] [judge: sonnet w4b0]"
+ },
+ "10-arxiv-agents-paper.haiku-xhigh-val": {
+  "pass": false,
+  "note": "Own listing shows earlier agent-mention paper [attempt 2: original overwritten by resume-retry bug] [judge: sonnet w4b0]"
+ },
+ "13-usgs-quake-report.haiku-high-val": {
+  "pass": true,
+  "note": "43-quake past-day list confirms M5.1 largest [attempt 2: original overwritten by resume-retry bug] [judge: sonnet w4b0]"
+ },
+ "14-imdb-yearly-top.haiku-high-val": {
+  "pass": true,
+  "note": "Correct user_rating sort; Punjab 95 #1 verified [attempt 2: original overwritten by resume-retry bug] [judge: sonnet w4b0]"
+ },
+ "14-imdb-yearly-top.haiku-medium-val": {
+  "pass": false,
+  "note": "Invalid sort param defaulted to popularity [attempt 2: original overwritten by resume-retry bug] [judge: sonnet w4b0]"
+ },
+ "43-gmail-self-draft.haiku-medium-val": {
+  "pass": true,
+  "note": "Draft screenshot matches; drafts empty after [judge: sonnet w5b3]"
+ },
+ "43-gmail-self-draft.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Draft matches; cleanup confirmed [judge: sonnet w5b3]"
+ },
+ "44-gcal-event.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Event saved toast; deleted after [judge: sonnet w5b3]"
+ },
+ "44-gcal-event.haiku-high-val": {
+  "pass": true,
+  "note": "Event screenshot before delete; deletion confirmed [judge: sonnet w5b3]"
+ },
+ "44-gcal-event.haiku-max-val": {
+  "pass": true,
+  "note": "Event visible before delete clicks [judge: sonnet w5b3]"
+ },
+ "44-gcal-event.haiku-medium-val": {
+  "pass": true,
+  "note": "Verification then removal confirmed [judge: sonnet w5b3]"
+ },
+ "44-gcal-event.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Screenshot before delete; No events after [judge: sonnet w5b3]"
+ },
+ "42-youtube-watch-later.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Video in WL; cleanup removed [judge: sonnet w5b2]"
+ },
+ "42-youtube-watch-later.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Video in WL; empty after cleanup [judge: sonnet w5b2]"
+ },
+ "42-youtube-watch-later.haiku-high-val": {
+  "pass": true,
+  "note": "Video shown; Removed toast confirms cleanup [judge: sonnet w5b2]"
+ },
+ "42-youtube-watch-later.haiku-max-val": {
+  "pass": true,
+  "note": "Video shown; toast confirms cleanup [judge: sonnet w5b2]"
+ },
+ "42-youtube-watch-later.haiku-medium-val": {
+  "pass": true,
+  "note": "Video shown; empty after cleanup [judge: sonnet w5b2]"
+ },
+ "42-youtube-watch-later.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Video shown; Removed toast in trace [judge: sonnet w5b2]"
+ },
+ "43-gmail-self-draft.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Draft correct vs live HN; discarded after [judge: sonnet w5b2]"
+ },
+ "43-gmail-self-draft.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Draft correct; discard confirmed [judge: sonnet w5b2]"
+ },
+ "43-gmail-self-draft.haiku-high-val": {
+  "pass": true,
+  "note": "Draft correct; discarded, empty after [judge: sonnet w5b2]"
+ },
+ "43-gmail-self-draft.haiku-max-val": {
+  "pass": true,
+  "note": "Draft correct; discard confirmed [judge: sonnet w5b2]"
+ },
+ "36-jspaint-poster.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Red canvas, 5 dots in X [judge: sonnet w5b0]"
+ },
+ "36-jspaint-poster.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Red canvas, 5 dots in X [judge: sonnet w5b0]"
+ },
+ "39-youtube-frame-describe.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Frame and metadata match [judge: sonnet w5b0]"
+ },
+ "39-youtube-frame-describe.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Caption description matches; grounded [judge: sonnet w5b0]"
+ },
+ "39-youtube-frame-describe.haiku-high-val": {
+  "pass": true,
+  "note": "Caption/scene match; metadata correct [judge: sonnet w5b0]"
+ },
+ "39-youtube-frame-describe.haiku-max-val": {
+  "pass": true,
+  "note": "Frame description matches; metadata correct [judge: sonnet w5b0]"
+ },
+ "39-youtube-frame-describe.haiku-medium-val": {
+  "pass": false,
+  "note": "Claimed ISS interior; screenshot shows mission control room [judge: sonnet w5b0]"
+ },
+ "39-youtube-frame-describe.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Description matches; grounded [judge: sonnet w5b0]"
+ },
+ "40-arxiv-pdf-figure.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "First listing entry; no figure, 1 author [judge: sonnet w5b0]"
+ },
+ "40-arxiv-pdf-figure.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Same paper first; screenshot confirms [judge: sonnet w5b0]"
+ },
+ "40-arxiv-pdf-figure.haiku-high-val": {
+  "pass": true,
+  "note": "Title, 1 author, no figure confirmed [judge: sonnet w5b1]"
+ },
+ "40-arxiv-pdf-figure.haiku-max-val": {
+  "pass": true,
+  "note": "Same confirmations [judge: sonnet w5b1]"
+ },
+ "40-arxiv-pdf-figure.haiku-medium-val": {
+  "pass": true,
+  "note": "Screenshot confirms claims [judge: sonnet w5b1]"
+ },
+ "40-arxiv-pdf-figure.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Screenshot confirms claims [judge: sonnet w5b1]"
+ },
+ "41-owid-dataset-read.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Table filtered to Japan 2023 84.7 [judge: sonnet w5b1]"
+ },
+ "41-owid-dataset-read.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "In-run screenshot + DOM show Japan 84.7 [judge: sonnet w5b1]"
+ },
+ "41-owid-dataset-read.haiku-high-val": {
+  "pass": true,
+  "note": "JPN nav shows 84.7 at 2023 [judge: sonnet w5b1]"
+ },
+ "41-owid-dataset-read.haiku-max-val": {
+  "pass": true,
+  "note": "Selection Japan only, 84.7 at 2023 [judge: sonnet w5b1]"
+ },
+ "41-owid-dataset-read.haiku-medium-val": {
+  "pass": false,
+  "note": "Screenshot shows default continent chart; hallucinated Japan reading [judge: sonnet w5b1]"
+ },
+ "41-owid-dataset-read.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Table filtered to Japan 84.7 [judge: sonnet w5b1]"
+ },
+ "53-caniuse-feature.haiku-max-val": {
+  "pass": true,
+  "note": "94.07% and Firefox 121 match first-support row [judge: sonnet w6b3]"
+ },
+ "53-caniuse-feature.haiku-medium-val": {
+  "pass": false,
+  "note": "Misread current-version row as first-support (154 vs 121) [judge: sonnet w6b3]"
+ },
+ "53-caniuse-feature.haiku-xhigh-val": {
+  "pass": true,
+  "note": "94.07% and Firefox 121 match [judge: sonnet w6b3]"
+ },
+ "44-gcal-event.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Event on Aug 31 shown; delete cleanup in trace [judge: sonnet w6b0]"
+ },
+ "47-reddit-save.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Saved post confirmed; unsave, feed empty after [judge: sonnet w6b0]"
+ },
+ "47-reddit-save.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Saved post matches; cleanup confirmed [judge: sonnet w6b0]"
+ },
+ "47-reddit-save.haiku-high-val": {
+  "pass": true,
+  "note": "Saved post confirmed; Remove from saved clicked [judge: sonnet w6b0]"
+ },
+ "47-reddit-save.haiku-max-val": {
+  "pass": false,
+  "note": "Never saved; no screenshot; empty answer [judge: sonnet w6b0]"
+ },
+ "47-reddit-save.haiku-medium-val": {
+  "pass": false,
+  "note": "Save button unreachable; no verification screenshot [judge: sonnet w6b0]"
+ },
+ "47-reddit-save.haiku-xhigh-val": {
+  "pass": false,
+  "note": "No fresh save this run; only prior-run residue handling [judge: sonnet w6b0]"
+ },
+ "48-spotify-playlist.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Private label + toast; track added; deleted after [judge: sonnet w6b0]"
+ },
+ "48-spotify-playlist.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Private Playlist label with track listed [judge: sonnet w6b0]"
+ },
+ "48-spotify-playlist.haiku-high-val": {
+  "pass": false,
+  "note": "Empty result; playlist empty, no track added [judge: sonnet w6b0]"
+ },
+ "50-google-flights-nonstop.haiku-high-val": {
+  "pass": false,
+  "note": "Nonstop filter never applied; 1-stops in results [judge: sonnet w6b2]"
+ },
+ "51-wikipedia-revision-audit.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Matches captured history fully [judge: sonnet w6b2]"
+ },
+ "51-wikipedia-revision-audit.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Revision row and summary shown in full [judge: sonnet w6b2]"
+ },
+ "51-wikipedia-revision-audit.haiku-high-val": {
+  "pass": false,
+  "note": "Edit summary truncated, missing +ref suffix [judge: sonnet w6b2]"
+ },
+ "51-wikipedia-revision-audit.haiku-max-val": {
+  "pass": false,
+  "note": "Edit summary truncated [judge: sonnet w6b2]"
+ },
+ "51-wikipedia-revision-audit.haiku-medium-val": {
+  "pass": false,
+  "note": "Edit summary incomplete [judge: sonnet w6b2]"
+ },
+ "51-wikipedia-revision-audit.haiku-xhigh-val": {
+  "pass": false,
+  "note": "Edit summary incomplete [judge: sonnet w6b2]"
+ },
+ "53-caniuse-feature.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "94.07% and Firefox 121 confirmed [judge: sonnet w6b2]"
+ },
+ "53-caniuse-feature.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "94.07% and Firefox 121 confirmed [judge: sonnet w6b2]"
+ },
+ "53-caniuse-feature.haiku-high-val": {
+  "pass": true,
+  "note": "94.07% and Firefox 121 confirmed [judge: sonnet w6b2]"
+ },
+ "48-spotify-playlist.haiku-max-val": {
+  "pass": false,
+  "note": "Skipped make-private step entirely [judge: sonnet w6b1]"
+ },
+ "48-spotify-playlist.haiku-xhigh-val": {
+  "pass": false,
+  "note": "Wrong playlist, no privacy step, cleanup incomplete [judge: sonnet w6b1]"
+ },
+ "49-x-bookmark.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Bookmarked, screenshot, removal confirmed [judge: sonnet w6b1]"
+ },
+ "49-x-bookmark.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Bookmarked, cleanup confirmed [judge: sonnet w6b1]"
+ },
+ "49-x-bookmark.haiku-high-val": {
+  "pass": false,
+  "note": "Bookmark attempts failed; never in Bookmarks [judge: sonnet w6b1]"
+ },
+ "49-x-bookmark.haiku-max-val": {
+  "pass": false,
+  "note": "Claimed cleanup but post still bookmarked at end [judge: sonnet w6b1]"
+ },
+ "49-x-bookmark.haiku-medium-val": {
+  "pass": false,
+  "note": "Bookmark never registered [judge: sonnet w6b1]"
+ },
+ "49-x-bookmark.haiku-xhigh-val": {
+  "pass": false,
+  "note": "Cleanup never succeeded; post remains bookmarked [judge: sonnet w6b1]"
+ },
+ "50-google-flights-nonstop.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Correct dates, nonstop on, prices grounded [judge: sonnet w6b1]"
+ },
+ "50-google-flights-nonstop.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Same correct dates and options [judge: sonnet w6b1]"
+ },
+ "57-hn-debate-analysis.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Story/points correct; arguments match comments [judge: sonnet fin3]"
+ },
+ "57-hn-debate-analysis.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Story/points correct; arguments match [judge: sonnet fin3]"
+ },
+ "57-hn-debate-analysis.haiku-high-val": {
+  "pass": true,
+  "note": "Quotes verified in captured full-page text [judge: sonnet fin3]"
+ },
+ "57-hn-debate-analysis.haiku-max-val": {
+  "pass": true,
+  "note": "Arguments match captured comment text [judge: sonnet fin3]"
+ },
+ "57-hn-debate-analysis.haiku-medium-val": {
+  "pass": true,
+  "note": "Comment verified in trace [judge: sonnet fin3]"
+ },
+ "57-hn-debate-analysis.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Arguments match captured comment text [judge: sonnet fin3]"
+ },
+ "54-stackoverflow-live.haiku-high-val": {
+  "pass": true,
+  "note": "Title/asker/counts match newest-sorted page [judge: sonnet fin1]"
+ },
+ "54-stackoverflow-live.haiku-max-val": {
+  "pass": true,
+  "note": "Matches captured data; summary grounded [judge: sonnet fin1]"
+ },
+ "54-stackoverflow-live.haiku-medium-val": {
+  "pass": true,
+  "note": "Details match captured listing [judge: sonnet fin1]"
+ },
+ "54-stackoverflow-live.haiku-xhigh-val": {
+  "pass": true,
+  "note": "End state is question page; excerpt confirms [judge: sonnet fin1]"
+ },
+ "55-wayback-snapshot.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Clean screenshot; headline/nav exact [judge: sonnet fin1]"
+ },
+ "55-wayback-snapshot.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Toolbar only; headline/nav verified [judge: sonnet fin1]"
+ },
+ "55-wayback-snapshot.haiku-high-val": {
+  "pass": false,
+  "note": "Donation banner never dismissed as instructed [judge: sonnet fin1]"
+ },
+ "55-wayback-snapshot.haiku-max-val": {
+  "pass": true,
+  "note": "Clean screenshot; headline and nav confirmed [judge: sonnet fin1]"
+ },
+ "05-amazon-cart.haiku-medium-val": {
+  "pass": true,
+  "note": "Cart shows both books $61.49; clean rerun [judge: sonnet fin0]"
+ },
+ "34-osm-route-measure.haiku-low-val": {
+  "pass": false,
+  "note": "Union Market autocomplete again; consistent with all haiku tiers [judge: sonnet fin0]"
+ },
+ "36-jspaint-poster.haiku-xhigh-val": {
+  "pass": false,
+  "note": "White canvas, 4 red dots, WebGL dialog [judge: sonnet fin0]"
+ },
+ "50-google-flights-nonstop.haiku-low-val": {
+  "pass": true,
+  "note": "Correct dates, nonstop filter, matching options; clean rerun [judge: sonnet fin0]"
+ },
+ "50-google-flights-nonstop.haiku-medium-val": {
+  "pass": true,
+  "note": "Same nonstop options confirmed [judge: sonnet fin0]"
+ },
+ "50-google-flights-nonstop.haiku-xhigh-val": {
+  "pass": true,
+  "note": "Filter applied; snapshot matches options [judge: sonnet fin0]"
+ },
+ "54-stackoverflow-live.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "All details match newest-rust page [judge: sonnet fin0]"
+ },
+ "54-stackoverflow-live.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Question grounded via eval/text captures [judge: sonnet fin0]"
+ },
+ "55-wayback-snapshot.haiku-medium-val": {
+  "pass": true,
+  "note": "Exact headline + valid nav items [judge: sonnet fin2]"
+ },
+ "55-wayback-snapshot.haiku-xhigh-val": {
+  "pass": false,
+  "note": "Misreported product name as headline [judge: sonnet fin2]"
+ },
+ "56-sunrise-reykjavik.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Read highlighted today row; used row 31 for tomorrow [judge: sonnet fin2]"
+ },
+ "56-sunrise-reykjavik.gemini-3.7-flash-medium-val": {
+  "pass": true,
+  "note": "Confirmed highlighted today; correct tomorrow row [judge: sonnet fin2]"
+ },
+ "56-sunrise-reykjavik.haiku-high-val": {
+  "pass": false,
+  "note": "Assumed today from memory; wrong row (UTC date rolled) [judge: sonnet fin2]"
+ },
+ "56-sunrise-reykjavik.haiku-max-val": {
+  "pass": false,
+  "note": "Same assumed-date error [judge: sonnet fin2]"
+ },
+ "56-sunrise-reykjavik.haiku-medium-val": {
+  "pass": false,
+  "note": "Same assumed-date error [judge: sonnet fin2]"
+ },
+ "56-sunrise-reykjavik.haiku-xhigh-val": {
+  "pass": false,
+  "note": "Same assumed-date error [judge: sonnet fin2]"
+ },
+ "55-wayback-snapshot.gemini-3.7-flash-low-val": {
+  "pass": true,
+  "note": "Clean page, full headline + nav match [judge: sonnet last]"
+ },
+ "55-wayback-snapshot.haiku-low-val": {
+  "pass": false,
+  "note": "Incomplete headline; donation banner not dismissed [judge: sonnet last]"
+ },
+ "26-ebay-keyboard-hunt.gemini-3.7-flash-high-val": {
+  "pass": true,
+  "note": "Cart confirms keyboard; BIN filter used [judge: sonnet close]"
+ },
+ "26-ebay-keyboard-hunt.haiku-max-val": {
+  "pass": false,
+  "note": "Cart never populated; empty-cart text twice in trace [judge: sonnet close]"
+ },
+ "48-spotify-playlist.haiku-medium-val": {
+  "pass": true,
+  "note": "Private confirm, toast, track, delete cleanup all evidenced [judge: sonnet close]"
+ },
+ "50-google-flights-nonstop.haiku-max-val": {
+  "pass": true,
+  "note": "Correct dates; both nonstop options match [judge: sonnet close]"
+ },
+ "21-amazon-office-bundle.sonnet-low-val": {
+  "pass": true,
+  "note": "Cart shows both items, ratings, subtotal confirmed [judge: sonnet sl2]"
+ },
+ "22-amazon-earbud-compare.sonnet-low-val": {
+  "pass": true,
+  "note": "Higher-rated added; cart shows price [judge: sonnet sl2]"
+ },
+ "23-amazon-filter-hunt.sonnet-low-val": {
+  "pass": true,
+  "note": "Proper filter path; pub date; cart confirms [judge: sonnet sl2]"
+ },
+ "27-amazon-review-mining.sonnet-low-val": {
+  "pass": true,
+  "note": "Ratings confirmed; 3 dated complaints in window [judge: sonnet sl2]"
+ },
+ "29-excalidraw-pipeline.sonnet-low-val": {
+  "pass": true,
+  "note": "IN WORK OUT left to right on canvas [judge: sonnet sl2]"
+ },
+ "32-desmos-intersections.sonnet-low-val": {
+  "pass": false,
+  "note": "Max turns before second curve; empty answer [judge: sonnet sl2]"
+ },
+ "33-osm-street-read.sonnet-low-val": {
+  "pass": true,
+  "note": "Streets legible; coords match [judge: sonnet sl2]"
+ },
+ "34-osm-route-measure.sonnet-low-val": {
+  "pass": true,
+  "note": "Route panel 1.1km/15min with instructions [judge: sonnet sl2]"
+ },
+ "36-jspaint-poster.sonnet-low-val": {
+  "pass": true,
+  "note": "Red canvas, 5 dots in X [judge: sonnet sl3]"
+ },
+ "39-youtube-frame-describe.sonnet-low-val": {
+  "pass": true,
+  "note": "Metadata and frame description accurate [judge: sonnet sl3]"
+ },
+ "40-arxiv-pdf-figure.sonnet-low-val": {
+  "pass": true,
+  "note": "First listing; title, 1 author, no figure [judge: sonnet sl3]"
+ },
+ "41-owid-dataset-read.sonnet-low-val": {
+  "pass": true,
+  "note": "Japan 84.7 for 2023 in table [judge: sonnet sl3]"
+ },
+ "42-youtube-watch-later.sonnet-low-val": {
+  "pass": true,
+  "note": "Saved video shown; cleanup confirmed [judge: sonnet sl3]"
+ },
+ "43-gmail-self-draft.sonnet-low-val": {
+  "pass": true,
+  "note": "Draft correct; no send; cleanup confirmed [judge: sonnet sl3]"
+ },
+ "44-gcal-event.sonnet-low-val": {
+  "pass": true,
+  "note": "Event on grid with toast; deleted after [judge: sonnet sl3]"
+ },
+ "47-reddit-save.sonnet-low-val": {
+  "pass": true,
+  "note": "Top post matched; saved then unsaved [judge: sonnet sl3]"
+ },
+ "48-spotify-playlist.sonnet-low-val": {
+  "pass": true,
+  "note": "Private toast; track added; deleted after [judge: sonnet sl3]"
+ },
+ "11-github-trending-audit.sonnet-low-val": {
+  "pass": true,
+  "note": "All facts match captured pages [judge: sonnet sl1]"
+ },
+ "12-wikipedia-current-events.sonnet-low-val": {
+  "pass": true,
+  "note": "3 items confirmed under Aug 28 [judge: sonnet sl1]"
+ },
+ "13-usgs-quake-report.sonnet-low-val": {
+  "pass": true,
+  "note": "Largest in past-day feed; event page matches [judge: sonnet sl1]"
+ },
+ "14-imdb-yearly-top.sonnet-low-val": {
+  "pass": true,
+  "note": "Correct filters; Punjab 95 top; titles confirmed [judge: sonnet sl1]"
+ },
+ "15-stock-analyst-targets.sonnet-low-val": {
+  "pass": true,
+  "note": "All values match Yahoo page [judge: sonnet sl1]"
+ },
+ "17-currency-meal-budget.sonnet-low-val": {
+  "pass": true,
+  "note": "Rates captured; floor division correct [judge: sonnet sl1]"
+ },
+ "18-npm-package-audit.sonnet-low-val": {
+  "pass": true,
+  "note": "Header recency; downloads/issues match [judge: sonnet sl1]"
+ },
+ "19-wiktionary-wotd.sonnet-low-val": {
+  "pass": true,
+  "note": "WOTD untiring for Aug 30 confirmed [judge: sonnet sl1]"
+ },
+ "20-nasa-apod-vision.sonnet-low-val": {
+  "pass": true,
+  "note": "Title/date/imagery match [judge: sonnet sl1]"
+ },
+ "49-x-bookmark.sonnet-low-val": {
+  "pass": true,
+  "note": "Bookmarked, screenshot, removal confirmed [judge: sonnet sl4]"
+ },
+ "50-google-flights-nonstop.sonnet-low-val": {
+  "pass": true,
+  "note": "2 nonstop results; prices/dates match [judge: sonnet sl4]"
+ },
+ "51-wikipedia-revision-audit.sonnet-low-val": {
+  "pass": true,
+  "note": "Exact revision/editor/summary; refs via two selectors [judge: sonnet sl4]"
+ },
+ "53-caniuse-feature.sonnet-low-val": {
+  "pass": true,
+  "note": "94.07% and Firefox 121 confirmed [judge: sonnet sl4]"
+ },
+ "54-stackoverflow-live.sonnet-low-val": {
+  "pass": true,
+  "note": "Exact title/asker; views/status confirmed [judge: sonnet sl4]"
+ },
+ "55-wayback-snapshot.sonnet-low-val": {
+  "pass": true,
+  "note": "June 2010 capture; exact headline and nav [judge: sonnet sl4]"
+ },
+ "56-sunrise-reykjavik.sonnet-low-val": {
+  "pass": true,
+  "note": "Correct tomorrow row relative to page today [judge: sonnet sl4]"
+ },
+ "57-hn-debate-analysis.sonnet-low-val": {
+  "pass": true,
+  "note": "Story, points, commenters confirmed [judge: sonnet sl4]"
+ },
+ "01-mlb-latest.sonnet-low-val": {
+  "pass": true,
+  "note": "Games and Cubs scorers grounded in box score [judge: sonnet sl0]"
+ },
+ "02-hn-summary.sonnet-low-val": {
+  "pass": true,
+  "note": "Full front page read; sole agent story named [judge: sonnet sl0]"
+ },
+ "03-weather-nyc.sonnet-low-val": {
+  "pass": true,
+  "note": "Conditions/temps match Central Park page [judge: sonnet sl0]"
+ },
+ "04-x-projects.sonnet-low-val": {
+  "pass": true,
+  "note": "Projects and models match blog read this run [judge: sonnet sl0]"
+ },
+ "05-amazon-cart.sonnet-low-val": {
+  "pass": true,
+  "note": "Both books qty 1, $61.49; adds in trace [judge: sonnet sl0]"
+ },
+ "06-amazon-search-add.sonnet-low-val": {
+  "pass": true,
+  "note": "Sponsored skipped; genuine result added [judge: sonnet sl0]"
+ },
+ "08-airport-departures.sonnet-low-val": {
+  "pass": true,
+  "note": "Statuses grounded; honestly reported gaps [judge: sonnet sl0]"
+ },
+ "09-recipe-scaling.sonnet-low-val": {
+  "pass": true,
+  "note": "Values match; 0.75x scaling correct [judge: sonnet sl0]"
+ },
+ "10-arxiv-agents-paper.sonnet-low-val": {
+  "pass": false,
+  "note": "Earlier agent-mention paper in own captured listing [judge: sonnet sl0]"
+ },
+ "01-mlb-latest.sonnet-high-val": {
+  "pass": true,
+  "note": "Scorers match box score, grounded [judge: sonnet s2b0]"
+ },
+ "01-mlb-latest.sonnet-max-val": {
+  "pass": true,
+  "note": "Games and scorers correct per box score [judge: sonnet s2b0]"
+ },
+ "01-mlb-latest.sonnet-medium-val": {
+  "pass": true,
+  "note": "Grounded despite no ANSWER line [judge: sonnet s2b0]"
+ },
+ "01-mlb-latest.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Scorers match box score page [judge: sonnet s2b0]"
+ },
+ "02-hn-summary.sonnet-high-val": {
+  "pass": true,
+  "note": "Themed summary with Agents section, grounded [judge: sonnet s2b0]"
+ },
+ "02-hn-summary.sonnet-max-val": {
+  "pass": true,
+  "note": "Sole agent story identified, grounded [judge: sonnet s2b0]"
+ },
+ "02-hn-summary.sonnet-medium-val": {
+  "pass": true,
+  "note": "Agents section correct [judge: sonnet s2b0]"
+ },
+ "02-hn-summary.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Verified via story navigation [judge: sonnet s2b0]"
+ },
+ "03-weather-nyc.sonnet-high-val": {
+  "pass": true,
+  "note": "High 84/Low 64 matches page periods [judge: sonnet s2b0]"
+ },
+ "03-weather-nyc.sonnet-max-val": {
+  "pass": true,
+  "note": "High 84/Low 70 matches page periods [judge: sonnet s2b0]"
+ },
+ "12-wikipedia-current-events.sonnet-high-val": {
+  "pass": true,
+  "note": "Aug 29 section; items and links match [judge: sonnet s2b4]"
+ },
+ "12-wikipedia-current-events.sonnet-max-val": {
+  "pass": true,
+  "note": "Section grounded via trace [judge: sonnet s2b4]"
+ },
+ "12-wikipedia-current-events.sonnet-medium-val": {
+  "pass": true,
+  "note": "Different valid items confirmed in page [judge: sonnet s2b4]"
+ },
+ "12-wikipedia-current-events.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Items grounded in Aug 29 section [judge: sonnet s2b4]"
+ },
+ "13-usgs-quake-report.sonnet-high-val": {
+  "pass": true,
+  "note": "M5.1 tops sorted feed; matches event page [judge: sonnet s2b4]"
+ },
+ "13-usgs-quake-report.sonnet-max-val": {
+  "pass": true,
+  "note": "Feed data confirms largest; tie resolved [judge: sonnet s2b4]"
+ },
+ "13-usgs-quake-report.sonnet-medium-val": {
+  "pass": true,
+  "note": "Feed sort and event page match [judge: sonnet s2b4]"
+ },
+ "13-usgs-quake-report.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Details match reported facts [judge: sonnet s2b4]"
+ },
+ "14-imdb-yearly-top.sonnet-high-val": {
+  "pass": true,
+  "note": "Correct filters; Punjab 95 #1; titles confirmed [judge: sonnet s2b4]"
+ },
+ "14-imdb-yearly-top.sonnet-max-val": {
+  "pass": true,
+  "note": "Search grounded; director credits confirm titles [judge: sonnet s2b4]"
+ },
+ "03-weather-nyc.sonnet-medium-val": {
+  "pass": true,
+  "note": "Matches captured NWS page [judge: sonnet s2b1]"
+ },
+ "03-weather-nyc.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Matches own captured page [judge: sonnet s2b1]"
+ },
+ "04-x-projects.sonnet-high-val": {
+  "pass": true,
+  "note": "Blog model table read; matches [judge: sonnet s2b1]"
+ },
+ "04-x-projects.sonnet-max-val": {
+  "pass": true,
+  "note": "Navigation and table grounded [judge: sonnet s2b1]"
+ },
+ "04-x-projects.sonnet-medium-val": {
+  "pass": true,
+  "note": "Blog table matches answer [judge: sonnet s2b1]"
+ },
+ "04-x-projects.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Full blog read; grounded [judge: sonnet s2b1]"
+ },
+ "05-amazon-cart.sonnet-high-val": {
+  "pass": true,
+  "note": "Both books qty 1 $61.49; adds in trace [judge: sonnet s2b1]"
+ },
+ "05-amazon-cart.sonnet-max-val": {
+  "pass": true,
+  "note": "Both books; adds in trace [judge: sonnet s2b1]"
+ },
+ "05-amazon-cart.sonnet-medium-val": {
+  "pass": true,
+  "note": "Both books; adds in trace [judge: sonnet s2b1]"
+ },
+ "05-amazon-cart.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Both books; adds in trace [judge: sonnet s2b1]"
+ },
+ "09-recipe-scaling.sonnet-medium-val": {
+  "pass": true,
+  "note": "Values match; 0.75x scaling correct [judge: sonnet s2b3]"
+ },
+ "09-recipe-scaling.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Scaled both sugars correctly at 0.75x [judge: sonnet s2b3]"
+ },
+ "10-arxiv-agents-paper.sonnet-high-val": {
+  "pass": true,
+  "note": "Entry 7 first agent mention verified [judge: sonnet s2b3]"
+ },
+ "10-arxiv-agents-paper.sonnet-max-val": {
+  "pass": true,
+  "note": "Correct paper, authors, PDF link [judge: sonnet s2b3]"
+ },
+ "10-arxiv-agents-paper.sonnet-medium-val": {
+  "pass": true,
+  "note": "Grounded correct paper [judge: sonnet s2b3]"
+ },
+ "10-arxiv-agents-paper.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Grounded correct paper [judge: sonnet s2b3]"
+ },
+ "11-github-trending-audit.sonnet-high-val": {
+  "pass": true,
+  "note": "All facts match captured pages [judge: sonnet s2b3]"
+ },
+ "11-github-trending-audit.sonnet-max-val": {
+  "pass": true,
+  "note": "Matches pages; live counter tick noted [judge: sonnet s2b3]"
+ },
+ "11-github-trending-audit.sonnet-medium-val": {
+  "pass": true,
+  "note": "Matches captured pages exactly [judge: sonnet s2b3]"
+ },
+ "11-github-trending-audit.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Matches captured pages exactly [judge: sonnet s2b3]"
+ },
+ "06-amazon-search-add.sonnet-high-val": {
+  "pass": true,
+  "note": "Cart correct; search/click/add traced [judge: sonnet s2b2]"
+ },
+ "06-amazon-search-add.sonnet-max-val": {
+  "pass": true,
+  "note": "Cart confirmed; full trace present [judge: sonnet s2b2]"
+ },
+ "06-amazon-search-add.sonnet-medium-val": {
+  "pass": true,
+  "note": "Correct item; no duplicate add [judge: sonnet s2b2]"
+ },
+ "06-amazon-search-add.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Genuine result opened; no checkout [judge: sonnet s2b2]"
+ },
+ "08-airport-departures.sonnet-high-val": {
+  "pass": false,
+  "note": "Wrong 3rd US flight vs own captured board [judge: sonnet s2b2]"
+ },
+ "08-airport-departures.sonnet-max-val": {
+  "pass": true,
+  "note": "Flights/times match board; statuses grounded [judge: sonnet s2b2]"
+ },
+ "08-airport-departures.sonnet-medium-val": {
+  "pass": false,
+  "note": "Stated 06:00 vs board's 06:10 [judge: sonnet s2b2]"
+ },
+ "08-airport-departures.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Flights match board; statuses from flight pages [judge: sonnet s2b2]"
+ },
+ "09-recipe-scaling.sonnet-high-val": {
+  "pass": true,
+  "note": "Grounded quantities; math correct [judge: sonnet s2b2]"
+ },
+ "09-recipe-scaling.sonnet-max-val": {
+  "pass": true,
+  "note": "Grounded; scaling correct [judge: sonnet s2b2]"
+ },
+ "14-imdb-yearly-top.sonnet-medium-val": {
+  "pass": true,
+  "note": "Punjab 95 matches; titles in Known-for [judge: sonnet s3b0]"
+ },
+ "14-imdb-yearly-top.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Titles match Director credits [judge: sonnet s3b0]"
+ },
+ "15-stock-analyst-targets.sonnet-high-val": {
+  "pass": true,
+  "note": "Values match capture and corroborating runs [judge: sonnet s3b0]"
+ },
+ "15-stock-analyst-targets.sonnet-max-val": {
+  "pass": true,
+  "note": "All five values confirmed [judge: sonnet s3b0]"
+ },
+ "15-stock-analyst-targets.sonnet-medium-val": {
+  "pass": true,
+  "note": "Widget value matches excerpt [judge: sonnet s3b0]"
+ },
+ "15-stock-analyst-targets.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Range matches capture [judge: sonnet s3b0]"
+ },
+ "17-currency-meal-budget.sonnet-high-val": {
+  "pass": true,
+  "note": "Rate math and floor correct [judge: sonnet s3b0]"
+ },
+ "17-currency-meal-budget.sonnet-max-val": {
+  "pass": true,
+  "note": "Rate math and floor correct [judge: sonnet s3b0]"
+ },
+ "17-currency-meal-budget.sonnet-medium-val": {
+  "pass": true,
+  "note": "Rate math and floor correct [judge: sonnet s3b0]"
+ },
+ "17-currency-meal-budget.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Rate math and floor correct [judge: sonnet s3b0]"
+ },
+ "18-npm-package-audit.sonnet-high-val": {
+  "pass": true,
+  "note": "All four values match trace [judge: sonnet s3b1]"
+ },
+ "18-npm-package-audit.sonnet-max-val": {
+  "pass": true,
+  "note": "All values match captured evidence [judge: sonnet s3b1]"
+ },
+ "18-npm-package-audit.sonnet-medium-val": {
+  "pass": true,
+  "note": "All values match [judge: sonnet s3b1]"
+ },
+ "18-npm-package-audit.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "All values match [judge: sonnet s3b1]"
+ },
+ "19-wiktionary-wotd.sonnet-high-val": {
+  "pass": true,
+  "note": "untiring details match trace [judge: sonnet s3b1]"
+ },
+ "19-wiktionary-wotd.sonnet-max-val": {
+  "pass": true,
+  "note": "WOTD box and entry confirmed [judge: sonnet s3b1]"
+ },
+ "19-wiktionary-wotd.sonnet-medium-val": {
+  "pass": true,
+  "note": "Details match trace [judge: sonnet s3b1]"
+ },
+ "19-wiktionary-wotd.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Details match trace [judge: sonnet s3b1]"
+ },
+ "20-nasa-apod-vision.sonnet-high-val": {
+  "pass": true,
+  "note": "M74 matches description [judge: sonnet s3b1]"
+ },
+ "20-nasa-apod-vision.sonnet-max-val": {
+  "pass": true,
+  "note": "Visual details match screenshot [judge: sonnet s3b1]"
+ },
+ "26-ebay-keyboard-hunt.sonnet-max-val": {
+  "pass": true,
+  "note": "Cart confirms keyboard; no checkout [judge: sonnet s3b3]"
+ },
+ "26-ebay-keyboard-hunt.sonnet-medium-val": {
+  "pass": true,
+  "note": "Cart confirms AUKEY; no checkout [judge: sonnet s3b3]"
+ },
+ "26-ebay-keyboard-hunt.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Cart confirms keyboard; no checkout [judge: sonnet s3b3]"
+ },
+ "20-nasa-apod-vision.sonnet-medium-val": {
+  "pass": true,
+  "note": "M74 matches; details accurate [judge: sonnet s3b2]"
+ },
+ "20-nasa-apod-vision.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "M74 matches; details accurate [judge: sonnet s3b2]"
+ },
+ "21-amazon-office-bundle.sonnet-high-val": {
+  "pass": true,
+  "note": "Both items, ratings, subtotal under budget [judge: sonnet s3b2]"
+ },
+ "21-amazon-office-bundle.sonnet-max-val": {
+  "pass": true,
+  "note": "Both items confirmed [judge: sonnet s3b2]"
+ },
+ "21-amazon-office-bundle.sonnet-medium-val": {
+  "pass": true,
+  "note": "Both items confirmed [judge: sonnet s3b2]"
+ },
+ "21-amazon-office-bundle.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Both items confirmed [judge: sonnet s3b2]"
+ },
+ "22-amazon-earbud-compare.sonnet-high-val": {
+  "pass": true,
+  "note": "Sponsored skipped; higher-rated added [judge: sonnet s3b2]"
+ },
+ "22-amazon-earbud-compare.sonnet-medium-val": {
+  "pass": true,
+  "note": "Higher-rated added; cart confirms [judge: sonnet s3b2]"
+ },
+ "29-excalidraw-pipeline.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "IN WORK OUT left to right via text tool [judge: sonnet s4b1]"
+ },
+ "32-desmos-intersections.sonnet-high-val": {
+  "pass": false,
+  "note": "Max turns; no answer or labeled screenshot [judge: sonnet s4b1]"
+ },
+ "32-desmos-intersections.sonnet-max-val": {
+  "pass": false,
+  "note": "Max turns; equations never both entered [judge: sonnet s4b1]"
+ },
+ "32-desmos-intersections.sonnet-medium-val": {
+  "pass": false,
+  "note": "Max turns; no labeled coordinate screenshot [judge: sonnet s4b1]"
+ },
+ "32-desmos-intersections.sonnet-xhigh-val": {
+  "pass": false,
+  "note": "Max turns; stuck fighting Desmos input [judge: sonnet s4b1]"
+ },
+ "33-osm-street-read.sonnet-high-val": {
+  "pass": true,
+  "note": "Streets legible; URL matches [judge: sonnet s4b1]"
+ },
+ "33-osm-street-read.sonnet-max-val": {
+  "pass": true,
+  "note": "Streets legible at zoom 18 [judge: sonnet s4b1]"
+ },
+ "33-osm-street-read.sonnet-medium-val": {
+  "pass": true,
+  "note": "Streets legible near marker [judge: sonnet s4b1]"
+ },
+ "33-osm-street-read.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Streets legible; URL matches [judge: sonnet s4b1]"
+ },
+ "34-osm-route-measure.sonnet-high-val": {
+  "pass": true,
+  "note": "Route 975m/13min matches panel [judge: sonnet s4b1]"
+ },
+ "34-osm-route-measure.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Route matches panel [judge: sonnet s4b1]"
+ },
+ "36-jspaint-poster.sonnet-high-val": {
+  "pass": false,
+  "note": "POLICY OVERRIDE of judge pass: dots painted via eval() canvas manipulation, not UI tool strokes; preamble requires interacting through the UI like a person [judge: sonnet s4b1]"
+ },
+ "22-amazon-earbud-compare.sonnet-max-val": {
+  "pass": true,
+  "note": "Cart confirms higher-rated item [judge: sonnet s4]"
+ },
+ "22-amazon-earbud-compare.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Cart confirms same item [judge: sonnet s4]"
+ },
+ "23-amazon-filter-hunt.sonnet-high-val": {
+  "pass": true,
+  "note": "Cart confirms book; pre-order skipped [judge: sonnet s4]"
+ },
+ "23-amazon-filter-hunt.sonnet-max-val": {
+  "pass": true,
+  "note": "Filters honored per trace [judge: sonnet s4]"
+ },
+ "23-amazon-filter-hunt.sonnet-medium-val": {
+  "pass": true,
+  "note": "Filters applied per trace [judge: sonnet s4]"
+ },
+ "23-amazon-filter-hunt.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Consistent with independent runs [judge: sonnet s4]"
+ },
+ "27-amazon-review-mining.sonnet-high-val": {
+  "pass": true,
+  "note": "Critical pages navigated; dates in window [judge: sonnet s4]"
+ },
+ "27-amazon-review-mining.sonnet-max-val": {
+  "pass": true,
+  "note": "Complaints dated within 12mo [judge: sonnet s4]"
+ },
+ "27-amazon-review-mining.sonnet-medium-val": {
+  "pass": true,
+  "note": "Reviews captured, dated properly [judge: sonnet s4]"
+ },
+ "27-amazon-review-mining.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Critical pages fetched; dates match [judge: sonnet s4]"
+ },
+ "29-excalidraw-pipeline.sonnet-high-val": {
+  "pass": true,
+  "note": "IN WORK OUT confirmed [judge: sonnet s4]"
+ },
+ "29-excalidraw-pipeline.sonnet-max-val": {
+  "pass": true,
+  "note": "IN WORK OUT confirmed [judge: sonnet s4]"
+ },
+ "36-jspaint-poster.sonnet-max-val": {
+  "pass": false,
+  "note": "Solid red, no dots, WebGL dialog, max turns [judge: sonnet s4]"
+ },
+ "36-jspaint-poster.sonnet-medium-val": {
+  "pass": false,
+  "note": "No dots ever placed [judge: sonnet s4]"
+ },
+ "36-jspaint-poster.sonnet-xhigh-val": {
+  "pass": false,
+  "note": "No dots placed [judge: sonnet s4]"
+ },
+ "39-youtube-frame-describe.sonnet-high-val": {
+  "pass": true,
+  "note": "Frame and metadata match [judge: sonnet s4]"
+ },
+ "39-youtube-frame-describe.sonnet-max-val": {
+  "pass": true,
+  "note": "Frame and caption match [judge: sonnet s4]"
+ },
+ "39-youtube-frame-describe.sonnet-medium-val": {
+  "pass": true,
+  "note": "Frame and caption match [judge: sonnet s4]"
+ },
+ "39-youtube-frame-describe.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Paused frame and metadata match [judge: sonnet s4]"
+ },
+ "40-arxiv-pdf-figure.sonnet-high-val": {
+  "pass": true,
+  "note": "Title, 1 author, no figure [judge: sonnet s4]"
+ },
+ "40-arxiv-pdf-figure.sonnet-max-val": {
+  "pass": true,
+  "note": "Confirmed [judge: sonnet s4]"
+ },
+ "40-arxiv-pdf-figure.sonnet-medium-val": {
+  "pass": true,
+  "note": "Confirmed [judge: sonnet s4]"
+ },
+ "40-arxiv-pdf-figure.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Confirmed [judge: sonnet s4]"
+ },
+ "41-owid-dataset-read.sonnet-high-val": {
+  "pass": true,
+  "note": "Japan 2023 84.7 matches [judge: sonnet s4]"
+ },
+ "41-owid-dataset-read.sonnet-max-val": {
+  "pass": true,
+  "note": "Japan 84.7 confirmed [judge: sonnet s4]"
+ },
+ "41-owid-dataset-read.sonnet-medium-val": {
+  "pass": true,
+  "note": "Japan 84.7 confirmed [judge: sonnet s4]"
+ },
+ "41-owid-dataset-read.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Japan 84.7 confirmed [judge: sonnet s4]"
+ },
+ "42-youtube-watch-later.sonnet-high-val": {
+  "pass": true,
+  "note": "Saved; cleanup to empty [judge: sonnet s4]"
+ },
+ "42-youtube-watch-later.sonnet-max-val": {
+  "pass": true,
+  "note": "Saved; cleanup to empty [judge: sonnet s4]"
+ },
+ "42-youtube-watch-later.sonnet-medium-val": {
+  "pass": true,
+  "note": "Saved; cleanup to empty [judge: sonnet s4]"
+ },
+ "42-youtube-watch-later.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Saved; cleanup to empty [judge: sonnet s4]"
+ },
+ "43-gmail-self-draft.sonnet-high-val": {
+  "pass": true,
+  "note": "Draft correct; discarded, empty [judge: sonnet s4]"
+ },
+ "43-gmail-self-draft.sonnet-max-val": {
+  "pass": true,
+  "note": "Draft correct; discarded [judge: sonnet s4]"
+ },
+ "43-gmail-self-draft.sonnet-medium-val": {
+  "pass": true,
+  "note": "Draft correct; discarded [judge: sonnet s4]"
+ },
+ "43-gmail-self-draft.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Draft correct; discarded [judge: sonnet s4]"
+ },
+ "44-gcal-event.sonnet-high-val": {
+  "pass": true,
+  "note": "Event correct Monday; deleted after [judge: sonnet s4]"
+ },
+ "49-x-bookmark.sonnet-max-val": {
+  "pass": true,
+  "note": "Bookmark added and removed; correct post [judge: sonnet s4]"
+ },
+ "49-x-bookmark.sonnet-medium-val": {
+  "pass": true,
+  "note": "Added; cleanup removed [judge: sonnet s4]"
+ },
+ "49-x-bookmark.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Added; cleanup confirmed [judge: sonnet s4]"
+ },
+ "50-google-flights-nonstop.sonnet-high-val": {
+  "pass": true,
+  "note": "Dates, filter, prices match [judge: sonnet s4]"
+ },
+ "50-google-flights-nonstop.sonnet-max-val": {
+  "pass": true,
+  "note": "Matches captured end state [judge: sonnet s4]"
+ },
+ "50-google-flights-nonstop.sonnet-medium-val": {
+  "pass": true,
+  "note": "Prices/times match page [judge: sonnet s4]"
+ },
+ "50-google-flights-nonstop.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "AUDIT CORRECTION: answer matched own in-run snapshot twice; end-state price was later live drift [auditor: sonnet reval]"
+ },
+ "44-gcal-event.sonnet-max-val": {
+  "pass": true,
+  "note": "Event on grid; deletion confirmed [judge: sonnet s4b4]"
+ },
+ "44-gcal-event.sonnet-medium-val": {
+  "pass": true,
+  "note": "Event + toast; deletion confirmed [judge: sonnet s4b4]"
+ },
+ "44-gcal-event.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Event on grid; deletion via grid check [judge: sonnet s4b4]"
+ },
+ "47-reddit-save.sonnet-high-val": {
+  "pass": true,
+  "note": "Post matches; saved verified; unsaved [judge: sonnet s4b4]"
+ },
+ "47-reddit-save.sonnet-max-val": {
+  "pass": true,
+  "note": "Saved verified; unsaved confirmed [judge: sonnet s4b4]"
+ },
+ "47-reddit-save.sonnet-medium-val": {
+  "pass": true,
+  "note": "Saved verified; unsaved confirmed [judge: sonnet s4b4]"
+ },
+ "47-reddit-save.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Saved verified; unsaved confirmed [judge: sonnet s4b4]"
+ },
+ "48-spotify-playlist.sonnet-high-val": {
+  "pass": true,
+  "note": "Track + Private; deletion confirmed [judge: sonnet s4b4]"
+ },
+ "48-spotify-playlist.sonnet-max-val": {
+  "pass": false,
+  "note": "Max turns; cleanup never executed [judge: sonnet s4b4]"
+ },
+ "48-spotify-playlist.sonnet-medium-val": {
+  "pass": true,
+  "note": "Track added, private; deletion confirmed [judge: sonnet s4b4]"
+ },
+ "48-spotify-playlist.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Screenshot recovered from stream; cleanup done [judge: sonnet s4b4]"
+ },
+ "49-x-bookmark.sonnet-high-val": {
+  "pass": true,
+  "note": "Bookmarked, verified, removed [judge: sonnet s4b4]"
+ },
+ "55-wayback-snapshot.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Exact headline, nav, no banner [judge: sonnet sfb2]"
+ },
+ "56-sunrise-reykjavik.sonnet-high-val": {
+  "pass": true,
+  "note": "Row 31 grounded in table text [judge: sonnet sfb2]"
+ },
+ "56-sunrise-reykjavik.sonnet-max-val": {
+  "pass": true,
+  "note": "Row 31 values verified [judge: sonnet sfb2]"
+ },
+ "56-sunrise-reykjavik.sonnet-medium-val": {
+  "pass": true,
+  "note": "Row 31 values match [judge: sonnet sfb2]"
+ },
+ "56-sunrise-reykjavik.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Row 31 values match [judge: sonnet sfb2]"
+ },
+ "57-hn-debate-analysis.sonnet-high-val": {
+  "pass": true,
+  "note": "Comments verified verbatim [judge: sonnet sfb2]"
+ },
+ "57-hn-debate-analysis.sonnet-max-val": {
+  "pass": true,
+  "note": "Comments grounded in tree [judge: sonnet sfb2]"
+ },
+ "57-hn-debate-analysis.sonnet-medium-val": {
+  "pass": true,
+  "note": "Comments verified, summarized [judge: sonnet sfb2]"
+ },
+ "57-hn-debate-analysis.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Arguments verified verbatim [judge: sonnet sfb2]"
+ },
+ "29-excalidraw-pipeline.sonnet-medium-val": {
+  "pass": true,
+  "note": "IN WORK OUT with arrows; clean rerun [judge: sonnet sfb0]"
+ },
+ "34-osm-route-measure.sonnet-max-val": {
+  "pass": false,
+  "note": "Never finished; no route details, null answer [judge: sonnet sfb0]"
+ },
+ "34-osm-route-measure.sonnet-medium-val": {
+  "pass": true,
+  "note": "975m/13min foot mode; steps match [judge: sonnet sfb0]"
+ },
+ "51-wikipedia-revision-audit.sonnet-high-val": {
+  "pass": false,
+  "note": "Summary missing +ref suffix; falsely claimed none [judge: sonnet sfb0]"
+ },
+ "51-wikipedia-revision-audit.sonnet-max-val": {
+  "pass": true,
+  "note": "pagehistory confirms all fields [judge: sonnet sfb0]"
+ },
+ "51-wikipedia-revision-audit.sonnet-medium-val": {
+  "pass": true,
+  "note": "pagehistory confirms all fields [judge: sonnet sfb0]"
+ },
+ "51-wikipedia-revision-audit.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Matches pagehistory and ref count [judge: sonnet sfb0]"
+ },
+ "53-caniuse-feature.sonnet-high-val": {
+  "pass": true,
+  "note": "94.07% and Firefox 121 confirmed [judge: sonnet sfb0]"
+ },
+ "53-caniuse-feature.sonnet-max-val": {
+  "pass": true,
+  "note": "94.07% and Firefox 121 confirmed [judge: sonnet sfb0]"
+ },
+ "53-caniuse-feature.sonnet-medium-val": {
+  "pass": true,
+  "note": "94.07% and Firefox 121 grounded [judge: sonnet sfb1]"
+ },
+ "53-caniuse-feature.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "Screenshots confirm values [judge: sonnet sfb1]"
+ },
+ "54-stackoverflow-live.sonnet-high-val": {
+  "pass": true,
+  "note": "Title/asker/views confirmed [judge: sonnet sfb1]"
+ },
+ "54-stackoverflow-live.sonnet-medium-val": {
+  "pass": true,
+  "note": "Details confirmed in captured text [judge: sonnet sfb1]"
+ },
+ "55-wayback-snapshot.sonnet-high-val": {
+  "pass": true,
+  "note": "Banner dismissed; date/headline/nav correct [judge: sonnet sfb1]"
+ },
+ "55-wayback-snapshot.sonnet-max-val": {
+  "pass": true,
+  "note": "Banner dismissed; correct capture [judge: sonnet sfb1]"
+ },
+ "55-wayback-snapshot.sonnet-medium-val": {
+  "pass": false,
+  "note": "Donation banner never dismissed; nav not visible [judge: sonnet sfb1]"
+ },
+ "01-mlb-latest.opus-low-val": {
+  "pass": true,
+  "note": "Score and 6 scorers match box score [judge: sonnet ol0]"
+ },
+ "02-hn-summary.opus-low-val": {
+  "pass": true,
+  "note": "Agents section grounded in navigated stories [judge: sonnet ol0]"
+ },
+ "03-weather-nyc.opus-low-val": {
+  "pass": true,
+  "note": "Conditions/temps match NWS page [judge: sonnet ol0]"
+ },
+ "04-x-projects.opus-low-val": {
+  "pass": true,
+  "note": "Projects and models match blog read [judge: sonnet ol0]"
+ },
+ "05-amazon-cart.opus-low-val": {
+  "pass": true,
+  "note": "Both books; adds in trace [judge: sonnet ol0]"
+ },
+ "06-amazon-search-add.opus-low-val": {
+  "pass": true,
+  "note": "Bottle added; full sequence traced [judge: sonnet ol0]"
+ },
+ "08-airport-departures.opus-low-val": {
+  "pass": true,
+  "note": "Board + 3 flight pages; statuses match [judge: sonnet ol0]"
+ },
+ "09-recipe-scaling.opus-low-val": {
+  "pass": true,
+  "note": "Values confirmed; scaling correct [judge: sonnet ol0]"
+ },
+ "10-arxiv-agents-paper.opus-low-val": {
+  "pass": true,
+  "note": "Entries verified; correct first paper [judge: sonnet ol0]"
+ },
+ "51-wikipedia-revision-audit.opus-low-val": {
+  "pass": true,
+  "note": "Time, editor, summary, refs match [judge: sonnet ol4]"
+ },
+ "53-caniuse-feature.opus-low-val": {
+  "pass": true,
+  "note": "94.07% and Firefox 121 confirmed [judge: sonnet ol4]"
+ },
+ "54-stackoverflow-live.opus-low-val": {
+  "pass": true,
+  "note": "Tag page grounded; all values match [judge: sonnet ol4]"
+ },
+ "55-wayback-snapshot.opus-low-val": {
+  "pass": true,
+  "note": "Exact headline and nav items [judge: sonnet ol4]"
+ },
+ "56-sunrise-reykjavik.opus-low-val": {
+  "pass": true,
+  "note": "Aug 31 row values exact [judge: sonnet ol4]"
+ },
+ "57-hn-debate-analysis.opus-low-val": {
+  "pass": true,
+  "note": "Comments match verbatim [judge: sonnet ol4]"
+ },
+ "11-github-trending-audit.opus-low-val": {
+  "pass": true,
+  "note": "Facts grounded in trending+repo+release captures [judge: sonnet ol1]"
+ },
+ "12-wikipedia-current-events.opus-low-val": {
+  "pass": true,
+  "note": "3 items match Aug 29 section [judge: sonnet ol1]"
+ },
+ "13-usgs-quake-report.opus-low-val": {
+  "pass": true,
+  "note": "Largest quake identified; event page matches [judge: sonnet ol1]"
+ },
+ "14-imdb-yearly-top.opus-low-val": {
+  "pass": true,
+  "note": "Punjab 95 top of filtered search [judge: sonnet ol1]"
+ },
+ "15-stock-analyst-targets.opus-low-val": {
+  "pass": true,
+  "note": "All 5 values match quote page [judge: sonnet ol1]"
+ },
+ "17-currency-meal-budget.opus-low-val": {
+  "pass": true,
+  "note": "Rate and price grounded; 239 correct [judge: sonnet ol1]"
+ },
+ "18-npm-package-audit.opus-low-val": {
+  "pass": true,
+  "note": "Header recency used; values match [judge: sonnet ol1]"
+ },
+ "19-wiktionary-wotd.opus-low-val": {
+  "pass": true,
+  "note": "WOTD confirmed with definition/quote [judge: sonnet ol1]"
+ },
+ "20-nasa-apod-vision.opus-low-val": {
+  "pass": true,
+  "note": "Screenshot verified; all accurate [judge: sonnet ol1]"
+ },
+ "21-amazon-office-bundle.opus-low-val": {
+  "pass": true,
+  "note": "Both items, ratings 4+, subtotal in budget [judge: sonnet ol2]"
+ },
+ "22-amazon-earbud-compare.opus-low-val": {
+  "pass": true,
+  "note": "Sponsored filtered; higher-rated in cart [judge: sonnet ol2]"
+ },
+ "23-amazon-filter-hunt.opus-low-val": {
+  "pass": true,
+  "note": "Firestarter paperback matches [judge: sonnet ol2]"
+ },
+ "26-ebay-keyboard-hunt.opus-low-val": {
+  "pass": true,
+  "note": "Cart confirms Keychron; seller 100% [judge: sonnet ol2]"
+ },
+ "27-amazon-review-mining.opus-low-val": {
+  "pass": true,
+  "note": "Rating and 3 dated complaints match [judge: sonnet ol2]"
+ },
+ "32-desmos-intersections.opus-low-val": {
+  "pass": true,
+  "note": "Labeled point matches answer [judge: sonnet ol2]"
+ },
+ "33-osm-street-read.opus-low-val": {
+  "pass": true,
+  "note": "Streets legible bordering district [judge: sonnet ol2]"
+ },
+ "34-osm-route-measure.opus-low-val": {
+  "pass": true,
+  "note": "Route drawn; panel matches [judge: sonnet ol2]"
+ },
+ "40-arxiv-pdf-figure.opus-low-val": {
+  "pass": true,
+  "note": "Title, 1 author, no figure confirmed [judge: sonnet ol3]"
+ },
+ "41-owid-dataset-read.opus-low-val": {
+  "pass": true,
+  "note": "Japan 2023 84.7 matches [judge: sonnet ol3]"
+ },
+ "42-youtube-watch-later.opus-low-val": {
+  "pass": true,
+  "note": "Saved; pre-check and cleanup in trace [judge: sonnet ol3]"
+ },
+ "43-gmail-self-draft.opus-low-val": {
+  "pass": true,
+  "note": "Draft correct; discarded, no send [judge: sonnet ol3]"
+ },
+ "44-gcal-event.opus-low-val": {
+  "pass": true,
+  "note": "Event correct Monday; deleted [judge: sonnet ol3]"
+ },
+ "47-reddit-save.opus-low-val": {
+  "pass": true,
+  "note": "Saved verified; unsaved after [judge: sonnet ol3]"
+ },
+ "48-spotify-playlist.opus-low-val": {
+  "pass": true,
+  "note": "Private + track; deleted after [judge: sonnet ol3]"
+ },
+ "49-x-bookmark.opus-low-val": {
+  "pass": true,
+  "note": "Bookmarked; removal confirmed [judge: sonnet ol3]"
+ },
+ "50-google-flights-nonstop.opus-low-val": {
+  "pass": true,
+  "note": "Dates, filter, options match [judge: sonnet ol3]"
+ },
+ "39-youtube-frame-describe.opus-low-val": {
+  "pass": true,
+  "note": "Screenshot matches; metadata confirmed [judge: sonnet ol39]"
+ },
+ "01-mlb-latest.opus-high-val": {
+  "pass": true,
+  "note": "Scorers match box score; grounded [judge: sonnet op0]"
+ },
+ "01-mlb-latest.opus-max-val": {
+  "pass": true,
+  "note": "Scorers match panel; grounded [judge: sonnet op0]"
+ },
+ "01-mlb-latest.opus-medium-val": {
+  "pass": true,
+  "note": "Scorers match box score [judge: sonnet op0]"
+ },
+ "01-mlb-latest.opus-xhigh-val": {
+  "pass": true,
+  "note": "Fully grounded [judge: sonnet op0]"
+ },
+ "02-hn-summary.opus-high-val": {
+  "pass": true,
+  "note": "Agents section correct; grounded [judge: sonnet op0]"
+ },
+ "02-hn-summary.opus-max-val": {
+  "pass": true,
+  "note": "Nuanced and grounded [judge: sonnet op0]"
+ },
+ "02-hn-summary.opus-medium-val": {
+  "pass": true,
+  "note": "Section correct; grounded [judge: sonnet op0]"
+ },
+ "02-hn-summary.opus-xhigh-val": {
+  "pass": true,
+  "note": "Section accurate; grounded [judge: sonnet op0]"
+ },
+ "03-weather-nyc.opus-high-val": {
+  "pass": true,
+  "note": "Matches NWS page exactly [judge: sonnet op0]"
+ },
+ "03-weather-nyc.opus-max-val": {
+  "pass": true,
+  "note": "Matches exactly [judge: sonnet op0]"
+ },
+ "03-weather-nyc.opus-medium-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Matches exactly [judge: sonnet op0]"
  },
- "01-mlb-latest.sonnet-medium": {
+ "03-weather-nyc.opus-xhigh-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Matches exactly [judge: sonnet op0]"
  },
- "01-mlb-latest.sonnet-high": {
+ "11-github-trending-audit.opus-high-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Facts grounded via repo pages [judge: sonnet op3]"
  },
- "01-mlb-latest.sonnet-xhigh": {
+ "11-github-trending-audit.opus-max-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Grounded; star drift explained [judge: sonnet op3]"
  },
- "01-mlb-latest.sonnet-max": {
+ "11-github-trending-audit.opus-medium-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Facts grounded via navigation [judge: sonnet op3]"
  },
- "01-mlb-latest.haiku-low": {
+ "11-github-trending-audit.opus-xhigh-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Ends on releases page confirming [judge: sonnet op3]"
  },
- "01-mlb-latest.haiku-medium": {
+ "12-wikipedia-current-events.opus-high-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Correct Aug 29 section; linked articles [judge: sonnet op3]"
  },
- "01-mlb-latest.haiku-high": {
+ "12-wikipedia-current-events.opus-max-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Items grounded via evals [judge: sonnet op3]"
  },
- "01-mlb-latest.haiku-xhigh": {
+ "12-wikipedia-current-events.opus-medium-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Correctly summarized [judge: sonnet op3]"
  },
- "01-mlb-latest.haiku-max": {
+ "12-wikipedia-current-events.opus-xhigh-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Items grounded [judge: sonnet op3]"
  },
- "01-mlb-latest.gemini-3.7-flash-low": {
+ "13-usgs-quake-report.opus-high-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "M5.8 Kermadec grounded [judge: sonnet op3]"
  },
- "01-mlb-latest.gemini-3.7-flash-medium": {
+ "13-usgs-quake-report.opus-max-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Feed used correctly; facts match [judge: sonnet op3]"
  },
- "01-mlb-latest.gemini-3.7-flash-high": {
+ "13-usgs-quake-report.opus-medium-val": {
   "pass": true,
-  "note": "correct Cubs scorers (6, Conforto x2) + games list, grounded in box score"
+  "note": "Sorted feed; facts match [judge: sonnet op3]"
  },
- "02-hn-summary.opus-low": {
+ "13-usgs-quake-report.opus-xhigh-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Facts match event page [judge: sonnet op3]"
  },
- "02-hn-summary.opus-medium": {
+ "04-x-projects.opus-high-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Projects + SLM models grounded [judge: sonnet op1]"
  },
- "02-hn-summary.opus-high": {
+ "04-x-projects.opus-max-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Complete; correctly excluded teacher model [judge: sonnet op1]"
  },
- "02-hn-summary.opus-xhigh": {
+ "04-x-projects.opus-medium-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Complete list with links [judge: sonnet op1]"
  },
- "02-hn-summary.opus-max": {
+ "04-x-projects.opus-xhigh-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Grounded in article read [judge: sonnet op1]"
  },
- "02-hn-summary.sonnet-low": {
+ "05-amazon-cart.opus-high-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Both books qty 1 $61.49 [judge: sonnet op1]"
  },
- "02-hn-summary.sonnet-medium": {
+ "05-amazon-cart.opus-max-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Both books confirmed [judge: sonnet op1]"
  },
- "02-hn-summary.sonnet-high": {
+ "05-amazon-cart.opus-medium-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Both books confirmed [judge: sonnet op1]"
  },
- "02-hn-summary.sonnet-xhigh": {
+ "05-amazon-cart.opus-xhigh-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Both books confirmed [judge: sonnet op1]"
  },
- "02-hn-summary.sonnet-max": {
+ "06-amazon-search-add.opus-high-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "First genuine result added [judge: sonnet op1]"
  },
- "02-hn-summary.haiku-low": {
+ "06-amazon-search-add.opus-max-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Cart shows bottle [judge: sonnet op1]"
  },
- "02-hn-summary.haiku-medium": {
+ "06-amazon-search-add.opus-medium-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Cart shows bottle [judge: sonnet op1]"
  },
- "02-hn-summary.haiku-high": {
+ "06-amazon-search-add.opus-xhigh-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Cart shows bottle [judge: sonnet op1]"
  },
- "02-hn-summary.haiku-xhigh": {
+ "08-airport-departures.opus-high-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Board and flight pages match [judge: sonnet op2]"
  },
- "02-hn-summary.haiku-max": {
+ "08-airport-departures.opus-max-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Correctly used later live read [judge: sonnet op2]"
  },
- "02-hn-summary.gemini-3.7-flash-low": {
+ "08-airport-departures.opus-medium-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Matches captured trace [judge: sonnet op2]"
  },
- "02-hn-summary.gemini-3.7-flash-medium": {
+ "08-airport-departures.opus-xhigh-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Board and status match trace [judge: sonnet op2]"
  },
- "02-hn-summary.gemini-3.7-flash-high": {
+ "09-recipe-scaling.opus-high-val": {
   "pass": true,
-  "note": "grounded front-page digest + dedicated agents section (Headlong etc.)"
+  "note": "Values confirmed; math correct [judge: sonnet op2]"
  },
- "03-weather-nyc.opus-low": {
+ "09-recipe-scaling.opus-max-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Data and scaling verified [judge: sonnet op2]"
  },
- "03-weather-nyc.opus-medium": {
+ "09-recipe-scaling.opus-medium-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Matches page; math correct [judge: sonnet op2]"
  },
- "03-weather-nyc.opus-high": {
+ "09-recipe-scaling.opus-xhigh-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Confirmed; math correct [judge: sonnet op2]"
  },
- "03-weather-nyc.opus-xhigh": {
+ "10-arxiv-agents-paper.opus-high-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Entry 7 first mention; details correct [judge: sonnet op2]"
  },
- "03-weather-nyc.opus-max": {
+ "10-arxiv-agents-paper.opus-max-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Entries 1-6 verified clean [judge: sonnet op2]"
  },
- "03-weather-nyc.sonnet-low": {
+ "10-arxiv-agents-paper.opus-medium-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Correct paper grounded [judge: sonnet op2]"
  },
- "03-weather-nyc.sonnet-medium": {
+ "10-arxiv-agents-paper.opus-xhigh-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Distinguished abstract-hit from title-hit [judge: sonnet op2]"
  },
- "03-weather-nyc.sonnet-high": {
+ "14-imdb-yearly-top.opus-high-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Filmography matches; grounded [judge: sonnet op2b0]"
  },
- "03-weather-nyc.sonnet-xhigh": {
+ "14-imdb-yearly-top.opus-medium-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Titles in captured filmography [judge: sonnet op2b0]"
  },
- "03-weather-nyc.sonnet-max": {
+ "14-imdb-yearly-top.opus-xhigh-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Matches exactly; grounded [judge: sonnet op2b0]"
  },
- "03-weather-nyc.haiku-low": {
+ "15-stock-analyst-targets.opus-high-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Values match quote page [judge: sonnet op2b0]"
  },
- "03-weather-nyc.haiku-medium": {
+ "15-stock-analyst-targets.opus-max-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Values match evidence [judge: sonnet op2b0]"
  },
- "03-weather-nyc.haiku-high": {
+ "15-stock-analyst-targets.opus-medium-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Values match [judge: sonnet op2b0]"
  },
- "03-weather-nyc.haiku-xhigh": {
+ "15-stock-analyst-targets.opus-xhigh-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Values match [judge: sonnet op2b0]"
  },
- "03-weather-nyc.haiku-max": {
+ "17-currency-meal-budget.opus-high-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Floor division correct [judge: sonnet op2b0]"
  },
- "03-weather-nyc.gemini-3.7-flash-low": {
+ "17-currency-meal-budget.opus-max-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Correct; grounded [judge: sonnet op2b0]"
  },
- "03-weather-nyc.gemini-3.7-flash-medium": {
+ "17-currency-meal-budget.opus-medium-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Correct; grounded [judge: sonnet op2b0]"
  },
- "03-weather-nyc.gemini-3.7-flash-high": {
+ "17-currency-meal-budget.opus-xhigh-val": {
   "pass": true,
-  "note": "Sunny high~79 low~64-66, grounded in NWS page text"
+  "note": "Correct; grounded [judge: sonnet op2b0]"
  },
- "04-x-projects.opus-low": {
+ "18-npm-package-audit.opus-high-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Header recency; issues confirmed [judge: sonnet op2b0]"
  },
- "04-x-projects.opus-medium": {
+ "26-ebay-keyboard-hunt.opus-max-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Cart confirms; BIN verified [judge: sonnet op2b3]"
  },
- "04-x-projects.opus-high": {
+ "26-ebay-keyboard-hunt.opus-medium-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Cart matches; no checkout [judge: sonnet op2b3]"
  },
- "04-x-projects.opus-xhigh": {
+ "26-ebay-keyboard-hunt.opus-xhigh-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Cart confirms; BIN verified [judge: sonnet op2b3]"
  },
- "04-x-projects.opus-max": {
+ "27-amazon-review-mining.opus-high-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "3 dated complaints in window [judge: sonnet op2b3]"
  },
- "04-x-projects.sonnet-low": {
+ "27-amazon-review-mining.opus-max-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Complaints dated; grounded [judge: sonnet op2b3]"
  },
- "04-x-projects.sonnet-medium": {
+ "27-amazon-review-mining.opus-medium-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Complaints dated in window [judge: sonnet op2b3]"
  },
- "04-x-projects.sonnet-high": {
+ "27-amazon-review-mining.opus-xhigh-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Complaints 1-2 star with dates [judge: sonnet op2b3]"
  },
- "04-x-projects.sonnet-xhigh": {
+ "29-excalidraw-pipeline.opus-high-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "IN WORK OUT via text tool [judge: sonnet op2b3]"
  },
- "04-x-projects.sonnet-max": {
+ "29-excalidraw-pipeline.opus-xhigh-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "IN WORK OUT confirmed [judge: sonnet op2b3]"
  },
- "04-x-projects.haiku-low": {
+ "18-npm-package-audit.opus-max-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Values match captured pages [judge: sonnet op2b1]"
  },
- "04-x-projects.haiku-medium": {
+ "18-npm-package-audit.opus-medium-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Header recency; 105 issues visible [judge: sonnet op2b1]"
  },
- "04-x-projects.haiku-high": {
+ "18-npm-package-audit.opus-xhigh-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Issues page confirms; values match [judge: sonnet op2b1]"
  },
- "04-x-projects.haiku-xhigh": {
+ "19-wiktionary-wotd.opus-high-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Definition/quote grounded [judge: sonnet op2b1]"
  },
- "04-x-projects.haiku-max": {
+ "19-wiktionary-wotd.opus-max-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Quotations expanded; matches [judge: sonnet op2b1]"
  },
- "04-x-projects.gemini-3.7-flash-low": {
+ "19-wiktionary-wotd.opus-medium-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Quotation matches entry [judge: sonnet op2b1]"
  },
- "04-x-projects.gemini-3.7-flash-medium": {
+ "19-wiktionary-wotd.opus-xhigh-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "Dickens quote verified via stream [judge: sonnet op2b1]"
  },
- "04-x-projects.gemini-3.7-flash-high": {
+ "20-nasa-apod-vision.opus-high-val": {
   "pass": true,
-  "note": "projects+links + read SLM article, all 4 model families (LFM2.5/Qwen/Gemma/Coder)"
+  "note": "M74 matches description [judge: sonnet op2b1]"
  },
- "05-amazon-cart.opus-low": {
+ "20-nasa-apod-vision.opus-max-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Matches incl watermark detail [judge: sonnet op2b1]"
  },
- "06-amazon-search-add.opus-low": {
+ "20-nasa-apod-vision.opus-medium-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Core elements match [judge: sonnet op2b1]"
  },
- "05-amazon-cart.opus-medium": {
+ "20-nasa-apod-vision.opus-xhigh-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Details and colors match [judge: sonnet op2b1]"
  },
- "06-amazon-search-add.opus-medium": {
+ "21-amazon-office-bundle.opus-high-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Both items; ratings confirmed [judge: sonnet op2b1]"
  },
- "05-amazon-cart.opus-high": {
+ "21-amazon-office-bundle.opus-max-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Both items; ratings confirmed [judge: sonnet op2b2]"
  },
- "06-amazon-search-add.opus-high": {
+ "21-amazon-office-bundle.opus-medium-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Cart matches; under budget [judge: sonnet op2b2]"
  },
- "05-amazon-cart.opus-xhigh": {
+ "21-amazon-office-bundle.opus-xhigh-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Cart confirms; ratings good [judge: sonnet op2b2]"
  },
- "06-amazon-search-add.opus-xhigh": {
+ "22-amazon-earbud-compare.opus-high-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Higher-rated added; grounded [judge: sonnet op2b2]"
  },
- "05-amazon-cart.opus-max": {
+ "22-amazon-earbud-compare.opus-max-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Comparison grounded via evals [judge: sonnet op2b2]"
  },
- "06-amazon-search-add.opus-max": {
+ "22-amazon-earbud-compare.opus-medium-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Cart matches comparison [judge: sonnet op2b2]"
  },
- "05-amazon-cart.sonnet-low": {
+ "22-amazon-earbud-compare.opus-xhigh-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Correctly added higher-rated [judge: sonnet op2b2]"
  },
- "06-amazon-search-add.sonnet-low": {
+ "23-amazon-filter-hunt.opus-high-val": {
+  "pass": false,
+  "note": "Max turns; no final answer despite cart item [judge: sonnet op2b2]"
+ },
+ "23-amazon-filter-hunt.opus-max-val": {
+  "pass": false,
+  "note": "Max turns; empty result, incomplete [judge: sonnet op2b2]"
+ },
+ "23-amazon-filter-hunt.opus-medium-val": {
+  "pass": true,
+  "note": "Book in cart; skips explained [judge: sonnet op2b2]"
+ },
+ "23-amazon-filter-hunt.opus-xhigh-val": {
+  "pass": false,
+  "note": "Empty cart, max turns, no answer [judge: sonnet op2b2]"
+ },
+ "26-ebay-keyboard-hunt.opus-high-val": {
+  "pass": true,
+  "note": "Cart confirms keyboard [judge: sonnet op2b2]"
+ },
+ "41-owid-dataset-read.opus-xhigh-val": {
+  "pass": true,
+  "note": "Japan 84.7 matches [judge: sonnet op3b2]"
+ },
+ "42-youtube-watch-later.opus-high-val": {
+  "pass": true,
+  "note": "Saved; removed after screenshot [judge: sonnet op3b2]"
+ },
+ "42-youtube-watch-later.opus-max-val": {
+  "pass": true,
+  "note": "Saved; WL empty after [judge: sonnet op3b2]"
+ },
+ "42-youtube-watch-later.opus-medium-val": {
+  "pass": true,
+  "note": "Saved; WL empty after [judge: sonnet op3b2]"
+ },
+ "42-youtube-watch-later.opus-xhigh-val": {
+  "pass": true,
+  "note": "Saved; WL empty after [judge: sonnet op3b2]"
+ },
+ "43-gmail-self-draft.opus-high-val": {
+  "pass": true,
+  "note": "Draft correct; discarded [judge: sonnet op3b2]"
+ },
+ "43-gmail-self-draft.opus-medium-val": {
+  "pass": true,
+  "note": "Draft correct; discarded [judge: sonnet op3b2]"
+ },
+ "36-jspaint-poster.opus-medium-val": {
+  "pass": true,
+  "note": "Red canvas, 5 dots in X [judge: sonnet op3b1]"
+ },
+ "36-jspaint-poster.opus-xhigh-val": {
+  "pass": false,
+  "note": "Solid red, no dots, no answer [judge: sonnet op3b1]"
+ },
+ "39-youtube-frame-describe.opus-high-val": {
+  "pass": true,
+  "note": "Frame matches; metadata grounded [judge: sonnet op3b1]"
+ },
+ "39-youtube-frame-describe.opus-max-val": {
+  "pass": true,
+  "note": "Frame matches exactly [judge: sonnet op3b1]"
+ },
+ "39-youtube-frame-describe.opus-medium-val": {
+  "pass": true,
+  "note": "Frame matches exactly [judge: sonnet op3b1]"
+ },
+ "39-youtube-frame-describe.opus-xhigh-val": {
+  "pass": true,
+  "note": "Frame matches; grounded [judge: sonnet op3b1]"
+ },
+ "40-arxiv-pdf-figure.opus-high-val": {
+  "pass": true,
+  "note": "Title, 1 author, no figure [judge: sonnet op3b1]"
+ },
+ "40-arxiv-pdf-figure.opus-max-val": {
+  "pass": true,
+  "note": "Confirmed [judge: sonnet op3b1]"
+ },
+ "40-arxiv-pdf-figure.opus-medium-val": {
+  "pass": true,
+  "note": "Grounded navigation [judge: sonnet op3b1]"
+ },
+ "40-arxiv-pdf-figure.opus-xhigh-val": {
+  "pass": true,
+  "note": "PDF nav and screenshots in trace [judge: sonnet op3b1]"
+ },
+ "41-owid-dataset-read.opus-high-val": {
+  "pass": true,
+  "note": "Tooltip confirms 84.7 [judge: sonnet op3b1]"
+ },
+ "41-owid-dataset-read.opus-max-val": {
+  "pass": true,
+  "note": "Value grounded [judge: sonnet op3b1]"
+ },
+ "41-owid-dataset-read.opus-medium-val": {
+  "pass": true,
+  "note": "Value grounded [judge: sonnet op3b1]"
+ },
+ "14-imdb-yearly-top.opus-max-val": {
+  "pass": true,
+  "note": "Rerun clean; matches 8.8/106K, titles confirmed [judge: sonnet op3b0]"
+ },
+ "29-excalidraw-pipeline.opus-max-val": {
+  "pass": true,
+  "note": "Rerun clean; IN WORK OUT confirmed [judge: sonnet op3b0]"
+ },
+ "29-excalidraw-pipeline.opus-medium-val": {
+  "pass": true,
+  "note": "Rerun clean; IN WORK OUT confirmed [judge: sonnet op3b0]"
+ },
+ "32-desmos-intersections.opus-max-val": {
+  "pass": false,
+  "note": "No answer; no labeled point [judge: sonnet op3b0]"
+ },
+ "32-desmos-intersections.opus-medium-val": {
+  "pass": false,
+  "note": "No answer; no labeled point [judge: sonnet op3b0]"
+ },
+ "32-desmos-intersections.opus-xhigh-val": {
+  "pass": false,
+  "note": "No answer; no labeled point [judge: sonnet op3b0]"
+ },
+ "33-osm-street-read.opus-high-val": {
+  "pass": true,
+  "note": "Streets legible at z18 [judge: sonnet op3b0]"
+ },
+ "33-osm-street-read.opus-max-val": {
+  "pass": true,
+  "note": "Streets legible at z19 [judge: sonnet op3b0]"
+ },
+ "33-osm-street-read.opus-medium-val": {
+  "pass": true,
+  "note": "Streets legible [judge: sonnet op3b0]"
+ },
+ "33-osm-street-read.opus-xhigh-val": {
+  "pass": true,
+  "note": "Streets legible at z18 [judge: sonnet op3b0]"
+ },
+ "34-osm-route-measure.opus-high-val": {
+  "pass": true,
+  "note": "Route and instructions match panel [judge: sonnet op3b0]"
+ },
+ "34-osm-route-measure.opus-max-val": {
+  "pass": true,
+  "note": "Route and instructions match panel [judge: sonnet op3b0]"
+ },
+ "36-jspaint-poster.opus-max-val": {
+  "pass": true,
+  "note": "Red canvas, five dots in X [judge: sonnet op3b0]"
+ },
+ "57-hn-debate-analysis.opus-medium-val": {
+  "pass": true,
+  "note": "Story/usernames match captured text [judge: sonnet opf4]"
+ },
+ "57-hn-debate-analysis.opus-xhigh-val": {
+  "pass": true,
+  "note": "Grounded via get_page_text [judge: sonnet opf4]"
+ },
+ "54-stackoverflow-live.opus-xhigh-val": {
+  "pass": true,
+  "note": "All values match captured page [judge: sonnet opf3]"
+ },
+ "55-wayback-snapshot.opus-high-val": {
+  "pass": true,
+  "note": "Headline exact; nav confirmed [judge: sonnet opf3]"
+ },
+ "55-wayback-snapshot.opus-max-val": {
+  "pass": true,
+  "note": "Snapshot/headline verified [judge: sonnet opf3]"
+ },
+ "55-wayback-snapshot.opus-medium-val": {
+  "pass": true,
+  "note": "Snapshot/headline verified [judge: sonnet opf3]"
+ },
+ "55-wayback-snapshot.opus-xhigh-val": {
+  "pass": true,
+  "note": "Snapshot/headline verified [judge: sonnet opf3]"
+ },
+ "56-sunrise-reykjavik.opus-high-val": {
+  "pass": true,
+  "note": "Aug 31 row matches; grounded [judge: sonnet opf3]"
+ },
+ "56-sunrise-reykjavik.opus-max-val": {
+  "pass": true,
+  "note": "Row matches exactly [judge: sonnet opf3]"
+ },
+ "56-sunrise-reykjavik.opus-medium-val": {
+  "pass": true,
+  "note": "Row matches exactly [judge: sonnet opf3]"
+ },
+ "56-sunrise-reykjavik.opus-xhigh-val": {
+  "pass": true,
+  "note": "Row matches exactly [judge: sonnet opf3]"
+ },
+ "57-hn-debate-analysis.opus-high-val": {
+  "pass": true,
+  "note": "Points and commenters match thread [judge: sonnet opf3]"
+ },
+ "57-hn-debate-analysis.opus-max-val": {
+  "pass": true,
+  "note": "Live drift ok; matches thread [judge: sonnet opf3]"
+ },
+ "43-gmail-self-draft.opus-max-val": {
+  "pass": true,
+  "note": "Draft correct; cleanup incl sent search [judge: sonnet opf0]"
+ },
+ "43-gmail-self-draft.opus-xhigh-val": {
+  "pass": true,
+  "note": "Draft correct; cleanup confirmed [judge: sonnet opf0]"
+ },
+ "44-gcal-event.opus-high-val": {
+  "pass": true,
+  "note": "Event correct; cleanup via search [judge: sonnet opf0]"
+ },
+ "44-gcal-event.opus-max-val": {
+  "pass": true,
+  "note": "Event shown; deletion re-checked [judge: sonnet opf0]"
+ },
+ "44-gcal-event.opus-medium-val": {
+  "pass": true,
+  "note": "Cleanup confirmed; no other events touched [judge: sonnet opf0]"
+ },
+ "44-gcal-event.opus-xhigh-val": {
+  "pass": true,
+  "note": "Before/after screenshots incl deleted toast [judge: sonnet opf0]"
+ },
+ "47-reddit-save.opus-high-val": {
+  "pass": true,
+  "note": "Saved shown; unsave confirmed [judge: sonnet opf0]"
+ },
+ "47-reddit-save.opus-max-val": {
+  "pass": true,
+  "note": "Saved matches; empty list after [judge: sonnet opf0]"
+ },
+ "47-reddit-save.opus-medium-val": {
+  "pass": true,
+  "note": "Cleanup via reload confirmed [judge: sonnet opf0]"
+ },
+ "47-reddit-save.opus-xhigh-val": {
+  "pass": true,
+  "note": "Unsave re-checked in trace [judge: sonnet opf0]"
+ },
+ "48-spotify-playlist.opus-high-val": {
+  "pass": true,
+  "note": "Private toast in trace; deleted after [judge: sonnet opf0]"
+ },
+ "51-wikipedia-revision-audit.opus-high-val": {
+  "pass": true,
+  "note": "All fields and 174 refs match [judge: sonnet opf2]"
+ },
+ "51-wikipedia-revision-audit.opus-max-val": {
+  "pass": true,
+  "note": "pagehistory and refs match [judge: sonnet opf2]"
+ },
+ "51-wikipedia-revision-audit.opus-medium-val": {
+  "pass": true,
+  "note": "Details and ref count match [judge: sonnet opf2]"
+ },
+ "51-wikipedia-revision-audit.opus-xhigh-val": {
+  "pass": true,
+  "note": "All correct [judge: sonnet opf2]"
+ },
+ "53-caniuse-feature.opus-high-val": {
+  "pass": true,
+  "note": "94.07% and Firefox 121 confirmed [judge: sonnet opf2]"
+ },
+ "53-caniuse-feature.opus-max-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Verified against table [judge: sonnet opf2]"
  },
- "05-amazon-cart.sonnet-medium": {
+ "53-caniuse-feature.opus-medium-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Table matches [judge: sonnet opf2]"
  },
- "06-amazon-search-add.sonnet-medium": {
+ "53-caniuse-feature.opus-xhigh-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Table matches [judge: sonnet opf2]"
  },
- "05-amazon-cart.sonnet-high": {
+ "54-stackoverflow-live.opus-high-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Metadata matches captured page [judge: sonnet opf2]"
  },
- "06-amazon-search-add.sonnet-high": {
+ "54-stackoverflow-live.opus-max-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Matches own capture time [judge: sonnet opf2]"
  },
- "05-amazon-cart.sonnet-xhigh": {
+ "54-stackoverflow-live.opus-medium-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Summary matches page text [judge: sonnet opf2]"
  },
- "06-amazon-search-add.sonnet-xhigh": {
+ "48-spotify-playlist.opus-max-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Private + track; delete confirmed [judge: sonnet opf1]"
  },
- "05-amazon-cart.sonnet-max": {
+ "48-spotify-playlist.opus-medium-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Private label; delete confirmed [judge: sonnet opf1]"
  },
- "06-amazon-search-add.sonnet-max": {
+ "48-spotify-playlist.opus-xhigh-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Private + track; delete dialog confirmed [judge: sonnet opf1]"
  },
- "05-amazon-cart.haiku-low": {
+ "49-x-bookmark.opus-high-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Bookmarked; removal verified [judge: sonnet opf1]"
  },
- "06-amazon-search-add.haiku-low": {
+ "49-x-bookmark.opus-max-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Zero in bookmarks after cleanup [judge: sonnet opf1]"
  },
- "05-amazon-cart.haiku-medium": {
+ "49-x-bookmark.opus-medium-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Absence verified post-cleanup [judge: sonnet opf1]"
  },
- "06-amazon-search-add.haiku-medium": {
+ "49-x-bookmark.opus-xhigh-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "List clean after [judge: sonnet opf1]"
  },
- "05-amazon-cart.haiku-high": {
+ "50-google-flights-nonstop.opus-high-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Dates, filter, prices match [judge: sonnet opf1]"
  },
- "06-amazon-search-add.haiku-high": {
+ "50-google-flights-nonstop.opus-max-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Matches captured page [judge: sonnet opf1]"
  },
- "05-amazon-cart.haiku-xhigh": {
+ "50-google-flights-nonstop.opus-medium-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Fare matches end state [judge: sonnet opf1]"
  },
- "06-amazon-search-add.haiku-xhigh": {
+ "50-google-flights-nonstop.opus-xhigh-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Fare matches end state [judge: sonnet opf1]"
  },
- "05-amazon-cart.haiku-max": {
+ "32-desmos-intersections.opus-high-val": {
+  "pass": false,
+  "note": "Max turns; no labeled point [judge: sonnet last2]"
+ },
+ "36-jspaint-poster.opus-high-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "5 dots in X via UI clicks, not eval [judge: sonnet last2]"
  },
- "06-amazon-search-add.haiku-max": {
+ "26-ebay-keyboard-hunt.sonnet-high-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Cart confirms listing; user cleared wall [judge: sonnet unblock]"
  },
- "05-amazon-cart.gemini-3.7-flash-low": {
+ "29-excalidraw-pipeline.opus-low-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "IN WORK OUT confirmed; clean rerun [judge: sonnet unblock]"
  },
- "06-amazon-search-add.gemini-3.7-flash-low": {
+ "34-osm-route-measure.opus-medium-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Route 975m/0:13 with matching instructions [judge: sonnet unblock]"
  },
- "05-amazon-cart.gemini-3.7-flash-medium": {
+ "34-osm-route-measure.opus-xhigh-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Correct endpoints and instructions [judge: sonnet unblock]"
+ },
+ "36-jspaint-poster.opus-low-val": {
+  "pass": false,
+  "note": "Partial flood, no dots, no answer [judge: sonnet unblock]"
  },
- "06-amazon-search-add.gemini-3.7-flash-medium": {
+ "54-stackoverflow-live.sonnet-max-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "Title/asker/views confirmed [judge: sonnet unblock]"
  },
- "05-amazon-cart.gemini-3.7-flash-high": {
+ "54-stackoverflow-live.sonnet-xhigh-val": {
   "pass": true,
-  "note": "both books (Atomic Habits+Clean Code) in cart; before empty; verified via screenshot+text"
+  "note": "Full body/metadata captured in trace [judge: sonnet unblock]"
  },
- "06-amazon-search-add.gemini-3.7-flash-high": {
+ "26-ebay-keyboard-hunt.sonnet-low-val": {
   "pass": true,
-  "note": "searched->added a water bottle; cart non-empty; verified via screenshot"
+  "note": "GK61 in cart, seller/prices verified, no checkout; passed after wait-and-retry preamble tweak, attempt 6 [judge: sonnet final26]"
  }
 }

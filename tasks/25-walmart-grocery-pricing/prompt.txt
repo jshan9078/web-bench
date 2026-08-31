@@ -1,5 +1,0 @@
-On Walmart Canada (https://www.walmart.ca), price out this grocery list by finding a sensible
-cheapest option for each: 2L milk, a dozen eggs, a loaf of sandwich bread, and 1kg of bananas.
-Report each chosen product and price, and the four-item total. If Walmart shows a robot check (press-and-hold), show the window and ask the user to clear it, or retry in a fresh session. Then add ONLY the eggs to the cart
-and take a screenshot of the cart showing them. Do NOT proceed to checkout, sign up for anything, or place any order. End with the four items, prices,
-total, and confirmation the eggs are in the cart.

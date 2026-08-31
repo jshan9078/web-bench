@@ -1,6 +1,0 @@
-On Google Maps (https://www.google.com/maps), search for High Park, Toronto. Zoom the map until
-the label for Grenadier Pond (inside the park) is visible, take a SCREENSHOT, and pixel-click
-directly on that label on the map (if only a small preview chip opens, click the chip again to
-expand the full card). From the place card that opens, report the place name, its
-category, star rating, and the current number of reviews. Take a screenshot of the card. End with
-those four details.

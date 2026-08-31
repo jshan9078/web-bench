@@ -9,7 +9,10 @@ cd "$(dirname "$0")"
 TASK=$1; MODEL=$2; EFFORT=$3; RUN=$4
 CONFIG="$MODEL-$EFFORT"
 MAX_TURNS=${MAX_TURNS:-60}
-export BENCH_PROFILE=${BENCH_PROFILE:-default}
+# BENCH_PROFILE: only pass through if the caller set it. Empty means harness omits --profile and
+# the daemon's active profile (the signed-in one) applies. Do NOT default to a named profile here:
+# naming a nonexistent profile silently creates a fresh logged-out one.
+export BENCH_PROFILE=${BENCH_PROFILE:-}
 RES=results; LOG=$RES/suite.log; PY=python3
 mkdir -p raw; RAW_MP4=raw/$TASK.$RUN.mp4
 
