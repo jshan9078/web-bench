@@ -4,13 +4,12 @@ A benchmark for **how efficiently an LLM drives a browser** on real websites. Ev
 gets the same browser tool and the same task set on live sites; the benchmark measures the **cost
 of success**, time, tokens, tool calls, and dollars per task.
 
-The suite is **45 tasks**: the original scored seven (`01`-`07`) plus the extended set
-(`08`-`57`, with numbering gaps), all live-validated. Twelve extended tasks were removed after
-validation under three design rules: tasks whose outcome is one clean API call (16-transit,
-35-gmaps-traffic, 37-gmaps-poi, 45-gdocs, 46-gmaps-save), tasks whose pass/fail hinges on
-puzzle or pretraining knowledge rather than browsing skill (30-lichess, 31-wordle, 38-seterra,
-52-regex101), and tasks dominated by bot walls across configurations (25-walmart, blocked on all configs; 24-bestbuy and 28-price-cross-check, Akamai-walled on most).
-Directory numbers are stable identifiers, so gaps are intentional.
+The suite is **45 live-validated tasks** spanning reading, e-commerce, vision and canvas work,
+signed-in productivity, and interactive web tools. Candidate tasks were culled during validation
+under three design rules: no task whose outcome is one clean API call for a connected agent, no
+task whose pass/fail hinges on puzzle or pretraining knowledge rather than browsing skill, and no
+task dominated by bot walls across configurations. Task directory numbers are stable identifiers,
+so the numbering has gaps where culled candidates used to sit.
 
 ## Results (full matrix, 2026-08-29/30)
 
@@ -91,9 +90,6 @@ output including thinking, $0.075/M cache read; these rates double on 2027-01-01
   contradicted their own captured evidence, including an agent reporting a two-item cart while
   the harness's cart screenshot showed it empty.
 
-The original seven-task pilot (time/cost frontier across the same 18 configurations) is preserved
-in [`docs/`](docs/): ![cost vs time per configuration](docs/webbench-graph.png)
-
 Results are published under [`results/`](results/), one directory per task with one file per
 configuration (`results/<task>/<config>.json`, plus that run's CPU series alongside). Raw run
 artifacts (videos, full traces, screenshots) stay local and git-ignored.
@@ -102,44 +98,67 @@ artifacts (videos, full traces, screenshots) stay local and git-ignored.
 
 | task | kind | site | what it tests |
 |---|---|---|---|
-| `01-mlb-latest` | read | ESPN / MLB | latest scores, then drill into a box score |
-| `02-hn-summary` | read | Hacker News | read the front page and synthesize a themed digest |
-| `03-weather-nyc` | read | weather.gov | navigate to a current forecast |
-| `04-x-projects` | read | x.com + linked article | multi-hop: profile → project links → read an article |
-| `05-amazon-cart` | action | amazon.ca | open two products → add both to cart |
-| `06-amazon-search-add` | action | amazon.ca | search → open a result → add to cart |
-| `07-pixel-click` | action | local canvas | vision + raw-pixel clicking (`click --at X,Y`) |
+| `01-mlb-latest` | read | ESPN / MLB (agent's choice) | latest scores, then drill into the Cubs box score for run-scorers |
+| `02-hn-summary` | read | news.ycombinator.com | read the front page and synthesize a themed digest with an agents section |
+| `03-weather-nyc` | read | forecast.weather.gov | navigate to the current NYC (Central Park) forecast |
+| `04-x-projects` | read | x.com profile + a linked article | multi-hop: profile, then project links, then read the SLM article |
+| `05-amazon-cart` | action | amazon.ca | open two product pages and add both to the cart |
+| `06-amazon-search-add` | action | amazon.ca | search, open the first genuine result, add to cart |
+| `07-pixel-click` | action (state) | local canvas app (127.0.0.1:8791) | vision + raw-pixel clicking: screenshot, then click circles in ascending order |
+| `08-airport-departures` | read | flightaware.com | live departures board: find, filter, and read structured flight data |
+| `09-recipe-scaling` | read + arithmetic | allrecipes.com | search, filter by rating/review volume, then scale ingredient quantities |
+| `10-arxiv-agents-paper` | read | arxiv.org | navigate a daily listing, select by content, read an abstract |
+| `11-github-trending-audit` | read | github.com | trending discovery plus repo metadata drill-down across tabs |
+| `12-wikipedia-current-events` | read | en.wikipedia.org | portal navigation for date-specific current events |
+| `13-usgs-quake-report` | read | earthquake.usgs.gov | interactive data map/list filtering and event-page reading |
+| `14-imdb-yearly-top` | read | imdb.com | advanced search with multiple constraints, then a person-page pivot |
+| `15-stock-analyst-targets` | read | finance.yahoo.com | quote page reading plus a tab pivot for analyst data |
+| `17-currency-meal-budget` | read + arithmetic, cross-site | xe.com + numbeo.com | cross-site data gathering with a computation joining the two |
+| `18-npm-package-audit` | read, cross-site | npmjs.com + github.com | registry metadata reading plus a repository pivot |
+| `19-wiktionary-wotd` | read | en.wiktionary.org | locating a daily-rotating feature and reading a structured dictionary entry |
+| `20-nasa-apod-vision` | read + vision | apod.nasa.gov | reading a daily page plus genuinely describing an image from a screenshot |
+| `21-amazon-office-bundle` | action + cart | amazon.ca | multi-item constrained shopping, budget arithmetic, cart verification |
+| `22-amazon-earbud-compare` | action + cart | amazon.ca | comparing two live product pages on price, rating, and a spec before acting |
+| `23-amazon-filter-hunt` | action + cart | amazon.ca | compound filtering and sorting in a category, then acting on the result |
+| `26-ebay-keyboard-hunt` | action | ebay.ca | marketplace filtering on price/format/seller quality before acting |
+| `27-amazon-review-mining` | read | amazon.ca | review filtering and synthesis of recurring complaints from recent reviews |
+| `29-excalidraw-pipeline` | action + vision + pixel | excalidraw.com | canvas toolbar use, pixel-placed text elements, screenshot proof |
+| `32-desmos-intersections` | action + vision | desmos.com | plotting expressions, then reading tool-computed intersection coordinates |
+| `33-osm-street-read` | read + vision | openstreetmap.org | map search, zooming, and reading street names off rendered map tiles |
+| `34-osm-route-measure` | read + vision | openstreetmap.org | using a routing widget and reading live-computed distance/time plus the drawn route |
+| `36-jspaint-poster` | action + vision + pixel | jspaint.app | palette and tool selection by pixel clicks, flood fill, text typed onto a canvas |
+| `39-youtube-frame-describe` | read + vision | youtube.com | finding a channel's newest upload and visually describing a paused frame |
+| `40-arxiv-pdf-figure` | read + vision | arxiv.org | opening a fresh PDF in the browser and reading it visually via screenshots |
+| `41-owid-dataset-read` | read | ourworldindata.org | interactive chart manipulation and reading the latest datapoint from the tool |
+| `42-youtube-watch-later` | signed-in action | youtube.com | menu-driven playlist state change on the user's account, then verification |
+| `43-gmail-self-draft` | signed-in action, cross-site | mail.google.com + news.ycombinator.com | composing and saving (not sending) a draft whose content requires live cross-site research |
+| `44-gcal-event` | signed-in action | calendar.google.com | date navigation and event creation with fields, then visual verification |
+| `47-reddit-save` | signed-in action | reddit.com | feed sorting, a private save action, and verification in the saved list |
+| `48-spotify-playlist` | signed-in action | open.spotify.com | playlist creation, search, and adding a track in a web player |
+| `49-x-bookmark` | signed-in action | x.com | reading a live timeline and using a private bookmark action, then verifying |
+| `50-google-flights-nonstop` | read | google.com/travel/flights | date pickers, round-trip configuration, filtering, and reading live fares |
+| `51-wikipedia-revision-audit` | read | en.wikipedia.org | article history inspection: who edited what, when |
+| `53-caniuse-feature` | read | caniuse.com | reading live support tables and usage statistics |
+| `54-stackoverflow-live` | read | stackoverflow.com | live feed reading: the newest activity in a tag |
+| `55-wayback-snapshot` | read + vision | web.archive.org | archive navigation to a dated snapshot and precise visual reading of it |
+| `56-sunrise-reykjavik` | read | timeanddate.com | location lookup and reading precise, date-specific astronomical times |
+| `57-hn-debate-analysis` | read | news.ycombinator.com | reading a live discussion thread and synthesizing opposing arguments |
 
-Each task has its own directory under [`tasks/`](tasks/) with the verbatim `prompt.txt` (the runtime
-source), a `task.md` (kind, site, what it tests, verdict), and a `verifier.md` explaining exactly how the
-run is scored. Read tasks target **current** data (unanswerable from training, the agent must navigate
-and read); `pixel_click` is checked programmatically by the canvas server, and the rest are graded by an
-LLM judge (Claude) offline from the captured evidence.
+Each task has its own directory under [`tasks/`](tasks/) with the verbatim `prompt.txt` (the
+runtime source), a `task.md` (kind, site, what it tests, verdict), and a `verifier.md` explaining
+exactly how the run is scored. Every prompt carries a navigate-don't-recall instruction, every run
+captures full evidence before judging, and every verifier enforces grounding (a correct-sounding
+answer with no supporting navigation in the trace fails). Tasks are deliberately
+pretraining-proof: they target live data (prices, feeds, schedules, rankings), account-private
+state, or state the agent must create and screenshot. `07-pixel-click` is checked programmatically
+by its canvas server; all other tasks are graded by an LLM judge offline from the captured
+evidence.
 
-## Extended task set (08-57)
-
-The extended set expands the suite beyond the original seven (now numbered 01-07): fifty tasks were
-authored and live-validated, of which thirty-eight remain after the design-rule removals above. All
-run under the same rules: every
-prompt carries the navigate-don't-recall instruction, every run captures full evidence before
-judging, and every verifier enforces grounding (a correct-sounding answer with no supporting
-navigation in the trace fails). Tasks are deliberately pretraining-proof: they target live data
-(prices, feeds, schedules, rankings), account-private state, or state the agent must create and
-screenshot. Each task directory (`tasks/NN-name/`) holds its `prompt.txt`, `task.md`, and
-`verifier.md`.
-
-| range | theme | techniques |
-|---|---|---|
-| 08-20 | multi-hop research over live data (flights, quakes, markets, arXiv, transit) | DOM navigation, cross-site reads, arithmetic |
-| 21-28 | e-commerce: constrained shopping, comparisons, review mining | filters, sorting, carts (no checkout), cross-retailer checks |
-| 29-41 | vision, canvas, and pixel work (drawing, chess, maps, PDFs, charts, games) | screenshots, `click --at X,Y`, keyboard play, visual reading |
-| 42-49 | signed-in productivity on the user's profile (YouTube, Gmail, Calendar, Docs, Maps, Reddit, Spotify, X) | private, reversible account state: drafts, saves, bookmarks, playlists |
-| 50-57 | live web utilities and widgets (flights, revision history, regex tool, caniuse, Wayback, sun times, HN threads) | date pickers, interactive tools, tables, archives |
-
-Signed-in tasks assume the browser profile is already authenticated; agents are instructed never
-to handle credentials (the user signs in through a visible window). Action tasks may add items to
-carts but never check out, and account changes are private and reversible (drafts saved not sent,
-bookmarks, saves, playlists).
+Signed-in tasks (the 42-49 range) assume the browser profile is already authenticated; agents are
+instructed never to handle credentials (the user signs in through a visible window). Action tasks
+may add items to carts but never check out, and account changes are private and reversible
+(drafts saved not sent, bookmarks, saves, playlists), created, screenshotted, then undone by the
+run itself.
 
 ## Methodology
 
@@ -180,7 +199,7 @@ python3 harness.py report                # print the results table
 
 | path | what it is |
 |---|---|
-| `tasks/<NN-name>/` | one directory per task (numbered 01-57): `prompt.txt` (source of truth), `task.md`, `verifier.md` |
+| `tasks/<NN-name>/` | one directory per task (numbering has gaps by design): `prompt.txt` (source of truth), `task.md`, `verifier.md` |
 | `harness.py` | runner, offline scoring, and the report table (loads prompts from `tasks/`) |
 | `run_matrix.sh`, `run_one.sh`, `agy_one.sh` | run scripts (Claude via `claude -p`, Gemini via `agy -p`) |
 | `record_cdp.py` | headless CDP screencast recorder (per-run video) |
