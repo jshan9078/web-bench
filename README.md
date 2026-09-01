@@ -15,11 +15,13 @@ API request larger than common provider rate tiers permit (a 200k tokens-per-min
 its ~204-220k-token requests outright), making it undeliverable to some providers for account-tier
 reasons unrelated to browsing skill.
 
-## Results (full matrix, 2026-08-29/30)
+## Results (full matrix, 2026-08-29 to 2026-09-02)
 
-**18 configurations x 44 tasks = 792 runs, all judged, pass@1.** Four model families: **Claude
-Opus 5, Sonnet 5, and Haiku 4.5** via Claude Code, and **Gemini 3.7 Flash** (its three levels)
-via Antigravity. Opus and Sonnet swept five thinking levels each. Haiku 4.5 does not support the
+**28 configurations x 44 tasks = 1,232 runs, all judged, pass@1.** Six model families: **Claude
+Opus 5, Sonnet 5, and Haiku 4.5** via Claude Code, **Gemini 3.7 Flash** (its three levels)
+via Antigravity, **GPT-5.6 Luna** via the Codex CLI, and **Muse Spark 1.2** (contributor tier)
+via Muse Code. Opus, Sonnet, Luna, and Spark swept five thinking levels each (Spark's scale
+tops out at `ultra` rather than `max`). Haiku 4.5 does not support the
 effort parameter (Claude Code silently ignores `--effort` on it; run telemetry confirms zero
 dose-response in thinking volume, turns, or time), so its five sweeps are replicate runs of one
 configuration and are reported below as a single averaged row. Every run used the same browser tool
@@ -35,6 +37,16 @@ answers an hour apart.
 | Gemini 3.7 Flash | low | 42/44 | 95.5% | 26s | $0.117 |
 | Gemini 3.7 Flash | medium | 44/44 | 100.0% | 45s | $0.254 |
 | Gemini 3.7 Flash | high | 43/44 | 97.7% | 35s | $0.187 |
+| GPT-5.6 Luna | low | 36/43 | 83.7% | 30s | $0.014 |
+| GPT-5.6 Luna | medium | 38/43 | 88.4% | 40s | $0.016 |
+| GPT-5.6 Luna | high | 37/44 | 84.1% | 49s | $0.022 |
+| GPT-5.6 Luna | xhigh | 42/44 | 95.5% | 66s | $0.023 |
+| GPT-5.6 Luna | max | 40/43 | 93.0% | 101s | $0.030 |
+| Muse Spark 1.2 | low | 43/44 | 97.7% | 52s | $0.006 |
+| Muse Spark 1.2 | medium | 40/44 | 90.9% | 69s | $0.009 |
+| Muse Spark 1.2 | high | 43/44 | 97.7% | 80s | $0.009 |
+| Muse Spark 1.2 | xhigh | 43/44 | 97.7% | 65s | $0.010 |
+| Muse Spark 1.2 | ultra | 44/44 | 100.0% | 80s | $0.009 |
 | Sonnet 5 | low | 43/44 | 97.7% | 21s | $0.313 |
 | Sonnet 5 | medium | 41/44 | 93.2% | 27s | $0.393 |
 | Sonnet 5 | high | 41/44 | 93.2% | 39s | $0.454 |
@@ -48,24 +60,39 @@ answers an hour apart.
 
 Claude costs are the CLI's own reported `total_cost_usd` per run; Gemini costs are computed from
 each run's measured token split at the introductory pricing in effect ($0.75/M input, $3.75/M
-output including thinking, $0.075/M cache read; these rates double on 2027-01-01).
+output including thinking, $0.075/M cache read; these rates double on 2027-01-01). Luna costs
+use OpenAI's published rates including the promotional 80% cut ($0.20/M input, $0.02/M cached,
+$0.25/M cache write, $1.20/M output). Muse Spark ran on Meta's contributor tier ($0.10/M input,
+$0.002/M cached, $0.20/M output), which is discounted in exchange for permission to train on
+prompts and completions; the three Luna cells shown /43 are verified bot walls (hCaptcha, a
+sign-in wall), excluded per the wall policy rather than scored as failures.
 
 ### What excelled where
 
-- **Gemini 3.7 Flash is the efficiency frontier.** Its low tier is the fastest cheap config in
-  the matrix (26s, $0.118, 95.6%) and its medium tier posted the only perfect 45/45. It was the
+- **Muse Spark 1.2 is the cost frontier, and it barely misses the accuracy crown.** At roughly
+  a cent per task (about 1/20th of Gemini-low, 1/50th of any Claude config) it holds 97.7% at
+  almost every tier, and spark-ultra posted a perfect 44/44 — one of only three perfect
+  configurations in the matrix. Zero bot walls across its 220 runs, and its per-call cache hit
+  rates (85-99%) keep even six-thousand-token reasoning tiers under $0.011 median. The caveat
+  is the tier itself: contributor pricing trades data-training permission for the discount.
+- **GPT-5.6 Luna is the one family where thinking bought accuracy.** It climbs from 83.7% at
+  low to 95.5% at xhigh with reasoning telemetry rising in lockstep — the clearest effort
+  dose-response in the matrix — but from a lower floor: its low tiers make careless errors the
+  other families' low tiers don't.
+- **Gemini 3.7 Flash is the speed-efficiency frontier.** Its low tier is the fastest cheap
+  config in the matrix (26s, $0.117, 95.5%) and its medium tier posted a perfect 44/44. It was the
   only family to reliably clear the two hardest interaction tasks (the Desmos math-input editor
   and JS Paint under a no-GPU WebGL error dialog) at every level, suggesting its agent harness
   paces keystroke-heavy widget input better than the Claude-side agents.
-- **Opus 5 is the accuracy frontier, and its LOW tier is its best value.** Opus-low hit 44/45 at
+- **Opus 5 is the accuracy frontier, and its LOW tier is its best value.** Opus-low hit 43/44 at
   a third of opus-max's time and half its cost, beating every trap in the suite: the arXiv
   first-mention scan, live departure-board timing, date discipline on UTC sites. Opus never
   produced a careless factual error; its only failures were running out of turns on
   interaction-dense tasks while over-verifying.
-- **Sonnet 5 is the speed frontier.** Sonnet-low's 23s median is the fastest config in the
-  matrix at 95.6%, making it the best latency-sensitive pick.
-- **Haiku 4.5 is the cautionary tale.** Its five sweeps (62-71% each, binomial noise around the
-  67.6% pooled rate) double as a run-to-run variance estimate for the suite, and its failures
+- **Sonnet 5 is the speed frontier.** Sonnet-low's 21s median is the fastest config in the
+  matrix at 97.7%, making it the best latency-sensitive pick.
+- **Haiku 4.5 is the cautionary tale.** Its five sweeps (64-73% each, binomial noise around the
+  69.5% pooled rate) double as a run-to-run variance estimate for the suite, and its failures
   are browsing discipline, not reasoning budget. Recurring patterns, invariant across
   tiers: trusting URL parameters instead of the page's own state (an invalid IMDb sort parameter
   silently fell back to popularity order at every tier), accepting the first search autocomplete
@@ -81,7 +108,9 @@ output including thinking, $0.075/M cache read; these rates double on 2027-01-01
   levels (Opus 97.8-100%, Sonnet 93.3-97.8%), well inside per-cell noise. What thinking mostly
   buys is patience: given no turn cap, higher tiers grind out the hardest interaction tasks
   slowly rather than failing them, so the cost of thinking shows up in the time and dollar
-  columns, not the score column.
+  columns, not the score column. Luna is the exception (a real 83.7% to 95.5% climb), and
+  Spark's knob saturates: its reasoning volume plateaus between xhigh and ultra even as ultra
+  cleaned up the family's last failure.
 - **Widget input is hard but tractable given patience.** The tasks demanding sustained precise
   input into canvas/custom editors (Desmos, JS Paint) account for most non-Haiku failures.
   Uncapped, Opus and Sonnet solve the Desmos math-input task at every level (some runs grinding
