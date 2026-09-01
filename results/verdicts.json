@@ -837,11 +837,11 @@
  },
  "36-jspaint-poster.haiku-high-val": {
   "pass": false,
-  "note": "Maroon fill, no 5-dot X, hit max turns [judge: sonnet w4b4]"
+  "note": "Final screenshot shows red canvas with only a single small mark, not five black dots forming an X; agent's own text admits only one dot via eraser tool. [judge: sonnet uncap-b1]"
  },
  "36-jspaint-poster.haiku-max-val": {
-  "pass": false,
-  "note": "Red fill but zero dots, hit max turns [judge: sonnet w4b4]"
+  "pass": true,
+  "note": "Final screenshot clearly shows red canvas with five distinct black dots arranged in a recognizable X (center + four corners). [judge: sonnet uncap-b1]"
  },
  "36-jspaint-poster.haiku-medium-val": {
   "pass": false,
@@ -905,11 +905,11 @@
  },
  "32-desmos-intersections.haiku-high-val": {
   "pass": false,
-  "note": "Max turns; equation never entered [judge: sonnet w4b3]"
+  "note": "Both curves entered correctly but agent never produced a Desmos coordinate label on the leftmost intersection; all screenshots show unlabeled curves, so the reported (-2.35,-0.78) is unmounted mental math, not a rendered label. [judge: sonnet uncap-b0]"
  },
  "32-desmos-intersections.haiku-max-val": {
   "pass": false,
-  "note": "Max turns; expression never resolved [judge: sonnet w4b3]"
+  "note": "No screenshot content exists in the captured stream; agent's own text admits it used mathematical analysis (binary search) rather than a Desmos-rendered label, so there is no visual evidence to ground the answer. [judge: sonnet uncap-b0]"
  },
  "32-desmos-intersections.haiku-medium-val": {
   "pass": false,
@@ -1428,8 +1428,8 @@
   "note": "IN WORK OUT left to right on canvas [judge: sonnet sl2]"
  },
  "32-desmos-intersections.sonnet-low-val": {
-  "pass": false,
-  "note": "Max turns before second curve; empty answer [judge: sonnet sl2]"
+  "pass": true,
+  "note": "Zoomed screenshot shows both curves and Desmos label (-2.330359,-0.776786), matching reported 5 intersections / leftmost (-2.33,-0.78). [judge: sonnet uncap-b0]"
  },
  "33-osm-street-read.sonnet-low-val": {
   "pass": true,
@@ -1908,20 +1908,20 @@
   "note": "IN WORK OUT left to right via text tool [judge: sonnet s4b1]"
  },
  "32-desmos-intersections.sonnet-high-val": {
-  "pass": false,
-  "note": "Max turns; no answer or labeled screenshot [judge: sonnet s4b1]"
+  "pass": true,
+  "note": "Zoomed screenshot shows both curves and Desmos label (-2.330359,-0.776786), matching reported 5 intersections / leftmost (-2.33,-0.78). [judge: sonnet uncap-b0]"
  },
  "32-desmos-intersections.sonnet-max-val": {
-  "pass": false,
-  "note": "Max turns; equations never both entered [judge: sonnet s4b1]"
+  "pass": true,
+  "note": "Screenshot shows both curves entered and zoomed-in labeled leftmost intersection at (-2.330359,-0.776786), matching reported 5 intersections and (-2.33,-0.78); grounded in this run's trace. [judge: sonnet uncap-b1]"
  },
  "32-desmos-intersections.sonnet-medium-val": {
-  "pass": false,
-  "note": "Max turns; no labeled coordinate screenshot [judge: sonnet s4b1]"
+  "pass": true,
+  "note": "Screenshot shows both curves with Desmos-labeled leftmost intersection (-2.330359,-0.776786), matching reported answer; grounded in this run. [judge: sonnet uncap-b1]"
  },
  "32-desmos-intersections.sonnet-xhigh-val": {
-  "pass": false,
-  "note": "Max turns; stuck fighting Desmos input [judge: sonnet s4b1]"
+  "pass": true,
+  "note": "Screenshot shows both curves with Desmos-labeled leftmost intersection (-2.330359,-0.776786), matching reported (-2.33,-0.78); grounded in this run. [judge: sonnet uncap-b1]"
  },
  "33-osm-street-read.sonnet-high-val": {
   "pass": true,
@@ -2001,7 +2001,7 @@
  },
  "36-jspaint-poster.sonnet-max-val": {
   "pass": false,
-  "note": "Solid red, no dots, WebGL dialog, max turns [judge: sonnet s4]"
+  "note": "Final screenshot is effectively solid red with no visually distinguishable dots (pixel-scan confirms no black pixels present); single-pixel clicks are not a recognizable X despite claimed pixel-readback verification. [judge: sonnet uncap-b1]"
  },
  "36-jspaint-poster.sonnet-medium-val": {
   "pass": false,
@@ -2156,8 +2156,8 @@
   "note": "Track + Private; deletion confirmed [judge: sonnet s4b4]"
  },
  "48-spotify-playlist.sonnet-max-val": {
-  "pass": false,
-  "note": "Max turns; cleanup never executed [judge: sonnet s4b4]"
+  "pass": true,
+  "note": "Trace shows playlist created, made-private toast, Bohemian Rhapsody by Queen added, pre-cleanup screenshot with Private Playlist label plus track, followed by delete confirmation and post-delete search confirming removal. [judge: sonnet uncap-b1]"
  },
  "48-spotify-playlist.sonnet-medium-val": {
   "pass": true,
@@ -2792,20 +2792,20 @@
   "note": "Correctly added higher-rated [judge: sonnet op2b2]"
  },
  "23-amazon-filter-hunt.opus-high-val": {
-  "pass": false,
-  "note": "Max turns; no final answer despite cart item [judge: sonnet op2b2]"
+  "pass": true,
+  "note": "Trace shows Books>SciFi>Paperback+4-star filters>sort by pub date, skipping pre-orders/over-$25 to page 9-10; cart_after confirms For a Breath I Tarry by Roger Zelazny, Paperback, $15.01, matching claimed title/author/price/pub-date. [judge: sonnet uncap-b0]"
  },
  "23-amazon-filter-hunt.opus-max-val": {
-  "pass": false,
-  "note": "Max turns; empty result, incomplete [judge: sonnet op2b2]"
+  "pass": true,
+  "note": "Independent run reaches identical book via same filter/sort path (page title confirms 4-star+Paperback+SciFi state); cart_after shows same item at $15.01, matching answer. [judge: sonnet uncap-b0]"
  },
  "23-amazon-filter-hunt.opus-medium-val": {
   "pass": true,
   "note": "Book in cart; skips explained [judge: sonnet op2b2]"
  },
  "23-amazon-filter-hunt.opus-xhigh-val": {
-  "pass": false,
-  "note": "Empty cart, max turns, no answer [judge: sonnet op2b2]"
+  "pass": true,
+  "note": "Third independent run converges on same book after filtering/sorting and skipping pre-orders/over-budget items; cart_after confirms For a Breath I Tarry, $15.01 in cart. [judge: sonnet uncap-b0]"
  },
  "26-ebay-keyboard-hunt.opus-high-val": {
   "pass": true,
@@ -3128,8 +3128,8 @@
   "note": "Fare matches end state [judge: sonnet opf1]"
  },
  "32-desmos-intersections.opus-high-val": {
-  "pass": false,
-  "note": "Max turns; no labeled point [judge: sonnet last2]"
+  "pass": true,
+  "note": "Zoomed screenshot shows both curves and Desmos label (-2.330359,-0.776786) at the leftmost intersection, matching reported (-2.33,-0.78) and 5-intersection count. [judge: sonnet uncap-b0]"
  },
  "36-jspaint-poster.opus-high-val": {
   "pass": true,
@@ -3166,5 +3166,865 @@
  "26-ebay-keyboard-hunt.sonnet-low-val": {
   "pass": true,
   "note": "GK61 in cart, seller/prices verified, no checkout; passed after wait-and-retry preamble tweak, attempt 6 [judge: sonnet final26]"
+ },
+ "18-npm-package-audit.luna-low-val": {
+  "pass": true,
+  "note": "npm page text confirms 5.2.1 Published 9 months ago (header, not sidebar) and 122,396,420 weekly downloads; GitHub issues tab confirms 105 open issues; both sites navigated this run. [judge: sonnet luna-b1]"
+ },
+ "19-wiktionary-wotd.luna-low-val": {
+  "pass": true,
+  "note": "Trace visits main page then the Aug 31 WOTD entry; word Merdeka, PoS, definition, and example all match captured page text. [judge: sonnet luna-b1]"
+ },
+ "20-nasa-apod-vision.luna-low-val": {
+  "pass": true,
+  "note": "Screenshot (apod-today.jpg) shows rocket launch with orange-white exhaust plume against blue sky, matching the visual description; title/date and explanation gist match captured page. [judge: sonnet luna-b1]"
+ },
+ "21-amazon-office-bundle.luna-low-val": {
+  "pass": true,
+  "note": "Cart screenshot shows both items (mouse $15.99, lamp $33.99), subtotal $49.98 pre-tax under $100, trace shows dp-page visits and adds this run. [judge: sonnet luna-b1]"
+ },
+ "22-amazon-earbud-compare.luna-low-val": {
+  "pass": true,
+  "note": "Cart screenshot confirms P30i added; ratings were a genuine tie (4.3/4.3) per captured pages, agent disclosed the tie and used battery life as a reasonable tiebreak; comparison figures grounded in trace. [judge: sonnet luna-b1]"
+ },
+ "23-amazon-filter-hunt.luna-low-val": {
+  "pass": true,
+  "note": "Cart screenshot shows R.U.R. paperback $12.99 added; extensive trace shows format/rating filters applied, sort by pub date, and price/date checks before selecting this item. [judge: sonnet luna-b1]"
+ },
+ "26-ebay-keyboard-hunt.luna-low-val": {
+  "pass": null,
+  "blocked": true,
+  "note": "Trace confirms a real wall: title Security Measure | eBay, h1 Please verify yourself to continue, hCaptcha iframe, encountered twice after add-to-cart; blocked claim upheld per known eBay hazard exception. [judge: sonnet luna-b1]"
+ },
+ "27-amazon-review-mining.luna-low-val": {
+  "pass": true,
+  "note": "4.6 rating and 101,048 count match captured page; all three complaint dates (Jul 7, Mar 23, Jun 29 2026) and supporting review text found verbatim in the trace from the signed-in critical-reviews pages. [judge: sonnet luna-b1]"
+ },
+ "29-excalidraw-pipeline.luna-low-val": {
+  "pass": true,
+  "note": "Final screenshot shows IN, WORK, OUT text labels arranged left to right on canvas; trace shows text-tool pixel clicks and typing this run. [judge: sonnet luna-b1]"
+ },
+ "32-desmos-intersections.luna-low-val": {
+  "pass": false,
+  "note": "Final screenshot (desmos_final.jpg) shows both curves but no Desmos coordinate label anywhere on the leftmost or any intersection; verifier requires the rendered label as ground truth, and a report without it fails. [judge: sonnet luna-b1]"
+ },
+ "33-osm-street-read.luna-low-val": {
+  "pass": true,
+  "note": "Screenshot shows Distillery District map with Parliament Street and Cherry Street legible on the tiles; URL coordinates 43.650339/-79.359471 match the area. [judge: sonnet luna-b1]"
+ },
+ "34-osm-route-measure.luna-low-val": {
+  "pass": true,
+  "note": "Screenshot shows drawn route between Union Station and St. Lawrence Market with routing panel visible; distance 195m, time 0:03, and first two instructions match captured panel. [judge: sonnet luna-b1]"
+ },
+ "36-jspaint-poster.luna-low-val": {
+  "pass": false,
+  "note": "Final screenshot (jspaint_final.jpg) shows a solid red-flooded canvas with no visible black dots at all, let alone an X pattern; required created-state evidence is absent. [judge: sonnet luna-b1]"
+ },
+ "39-youtube-frame-describe.luna-low-val": {
+  "pass": false,
+  "note": "Captured pause-frame screenshot shows a rocket lifting off with a caption about 250,000 miles from Earth, but the agent frame description claims four astronauts on stage at a medal ceremony - does not match the actual captured frame. [judge: sonnet luna-b1]"
+ },
+ "40-arxiv-pdf-figure.luna-low-val": {
+  "pass": false,
+  "note": "No screenshot of the actual PDF page 1 exists in the trace (only the arXiv abstract page); the figure description was pulled from the HTML-render DOM via eval, not read visually from a page-1 screenshot as the task and verifier require. [judge: sonnet luna-b1]"
+ },
+ "41-owid-dataset-read.luna-low-val": {
+  "pass": true,
+  "note": "Text extraction captured this run shows Japan 84.7 years in 2023 column of the OWID life-expectancy table; matches answer exactly. [judge: sonnet luna-b2]"
+ },
+ "42-youtube-watch-later.luna-low-val": {
+  "pass": true,
+  "note": "Watch Later screenshot shows lofi hip hop radio by Lofi Girl added; trace then shows Remove-from-Watch-later click and resulting empty list, confirming cleanup this run. [judge: sonnet luna-b2]"
+ },
+ "43-gmail-self-draft.luna-low-val": {
+  "pass": true,
+  "note": "Drafts screenshot shows subject webbench draft check with today's date and the HN #1 title read this run; end state confirms draft discarded, Drafts empty. [judge: sonnet luna-b2]"
+ },
+ "44-gcal-event.luna-low-val": {
+  "pass": true,
+  "note": "Screenshot shows webbench sync on Monday Sept 7 (correct next-Monday from run date Aug 31, a Monday) 10:00-10:30; trace ends with Deleting toast and grid showing No events, Monday, September 7, confirming cleanup. [judge: sonnet luna-b2]"
+ },
+ "47-reddit-save.luna-low-val": {
+  "pass": true,
+  "note": "DOM eval shows score=1983, comment-count=51 matching reported values exactly; Saved-items screenshot shows the post saved this run; end state confirms unsaved cleanup. [judge: sonnet luna-b2]"
+ },
+ "48-spotify-playlist.luna-low-val": {
+  "pass": true,
+  "note": "Toast text Playlist has been made private captured this run confirms the private action; screenshot shows Bohemian Rhapsody/Queen in webbench mix; trace ends with delete click and navigation away, consistent with cleanup. [judge: sonnet luna-b2]"
+ },
+ "49-x-bookmark.luna-low-val": {
+  "pass": false,
+  "note": "Required Bookmarks-page screenshot does not contain the AnthropicAI post at all (shows unrelated posts); after 64 calls/15 navigations the trace never shows the target post on the Bookmarks page, so the bookmark action is unverified per the verifier's explicit icon-flash caveat. [judge: sonnet luna-b2]"
+ },
+ "50-google-flights-nonstop.luna-low-val": {
+  "pass": false,
+  "note": "Run date was Aug 31 2026 (Monday); first Monday of the month after next should be Oct 5, 2026, but the agent searched Nov 2-9, 2026 - dates do not satisfy the prompt's date rule. [judge: sonnet luna-b2]"
+ },
+ "51-wikipedia-revision-audit.luna-low-val": {
+  "pass": true,
+  "note": "History-page text extraction and reference-count eval captured this run exactly match the reported revision (OAbot, 03:47 31 Aug 2026, summary) and 174 references. [judge: sonnet luna-b2]"
+ },
+ "53-caniuse-feature.luna-low-val": {
+  "pass": true,
+  "note": "Screenshot and DOM eval captured this run show Global 94.07% and Firefox first supporting version 121 (latest of Chrome 105/Edge 105/Safari 15.4/Firefox 121), matching the answer. [judge: sonnet luna-b2]"
+ },
+ "54-stackoverflow-live.luna-low-val": {
+  "pass": true,
+  "note": "Newest-sorted rust tag top h3 matches the opened question; page text shows Viewed 75 times, no answers section, asked 2 days ago; summary accurately reflects the captured question body. [judge: sonnet luna-b2]"
+ },
+ "55-wayback-snapshot.luna-low-val": {
+  "pass": true,
+  "note": "Screenshot of the June 15, 2010 apple.com snapshot shows exact headline This changes everything. Again. and nav items Store/Mac/iPod as reported. [judge: sonnet luna-b2]"
+ },
+ "56-sunrise-reykjavik.luna-low-val": {
+  "pass": true,
+  "note": "September table row for Sep 1 captured this run reads 6:10 am / 8:43 pm / 14:33:22, exactly matching the reported tomorrow values (run date Aug 31). [judge: sonnet luna-b2]"
+ },
+ "57-hn-debate-analysis.luna-low-val": {
+  "pass": true,
+  "note": "Captured thread text confirms #1 story I just chose words carefully at 546 points, with sho_hn supporting anecdote and rectang counterargument both present verbatim in the captured comments. [judge: sonnet luna-b2]"
+ },
+ "01-mlb-latest.luna-low-val": {
+  "pass": true,
+  "note": "Full 14-game Yesterday list and Reds 7-Cubs 5 box score (PCA, Bregman, Happ scored) verified against captured Google MLB widget snapshot this run. [judge: sonnet luna-b0]"
+ },
+ "02-hn-summary.luna-low-val": {
+  "pass": true,
+  "note": "Front-page stories in summary match captured HN snapshot; dedicated agentic section correctly names Understanding ChatGPT Work as the only agent-related story. [judge: sonnet luna-b0]"
+ },
+ "03-weather-nyc.luna-low-val": {
+  "pass": true,
+  "note": "Matches captured NWS detailed forecast: Monday Partly sunny, 20 percent chance of showers, high near 80, overnight low 76. [judge: sonnet luna-b0]"
+ },
+ "04-x-projects.luna-low-val": {
+  "pass": true,
+  "note": "Full project list grounded in portfolio navigation; SLM benchmarked models list matches blog article the agent actually opened, exact match to reference. [judge: sonnet luna-b0]"
+ },
+ "05-amazon-cart.luna-low-val": {
+  "pass": true,
+  "note": "Cart screenshot confirms both Atomic Habits and Clean Code added this run (cart empty before, 2 items after); trace shows both add-to-cart actions. [judge: sonnet luna-b0]"
+ },
+ "06-amazon-search-add.luna-low-val": {
+  "pass": true,
+  "note": "Cart before/after screenshots show Mont-Clair water bottle added; trace shows search then organic (sr_1_6, non-sponsored) first result opened and added. [judge: sonnet luna-b0]"
+ },
+ "08-airport-departures.luna-low-val": {
+  "pass": true,
+  "note": "Captured SCHEDULED DEPARTURES board confirms MNB412(JFK)/DAL2662(ATL)/ACA700(LGA) are the next 3 US-bound in board order; each flight page status quoted verbatim matches captured pages. [judge: sonnet luna-b0]"
+ },
+ "09-recipe-scaling.luna-low-val": {
+  "pass": true,
+  "note": "Recipe, 4.6/19,458 ratings, 48-serving yield, and 3/4-scale arithmetic to 36 cookies all match captured AllRecipes page. [judge: sonnet luna-b0]"
+ },
+ "10-arxiv-agents-paper.luna-low-val": {
+  "pass": true,
+  "note": "Confirmed via captured listing that [5] 2608.27466 is the first agentic-titled paper (items 1-4 do not mention agents); id/title/2-author count/summary match abstract page. [judge: sonnet luna-b0]"
+ },
+ "11-github-trending-audit.luna-low-val": {
+  "pass": true,
+  "note": "Top trending Python repo, description, 1,114 stars-today, 39,628 total stars, v2.65.0 release, and 7 open issues all confirmed against captured pages. [judge: sonnet luna-b0]"
+ },
+ "12-wikipedia-current-events.luna-low-val": {
+  "pass": true,
+  "note": "Correct yesterday (Aug 30) portal section; all three items (Iran strikes, Filo Jet sinking, Roman telescope) and their linked articles verified in captured page text. [judge: sonnet luna-b0]"
+ },
+ "13-usgs-quake-report.luna-low-val": {
+  "pass": true,
+  "note": "Captured past-day worldwide feed confirms M5.8 Kermadec Islands is the largest event; magnitude/location/depth/time match event page exactly. [judge: sonnet luna-b0]"
+ },
+ "14-imdb-yearly-top.luna-low-val": {
+  "pass": true,
+  "note": "Captured advanced search (2026 releases, 25k+ votes, sorted by rating) confirms Punjab 95 8.8 (106K) as #1; director and two other filmography titles confirmed on director page. [judge: sonnet luna-b0]"
+ },
+ "15-stock-analyst-targets.luna-low-val": {
+  "pass": false,
+  "note": "Price/range/market cap/earnings date correct, but agent misread the Analyst Price Targets widget: captured text shows Low 180.00 / Average 323.42 / Current 217.55 / High 515.00 - agent reported the Current price (217.55) as the average target instead of the actual average (323.42). [judge: sonnet luna-b0]"
+ },
+ "17-currency-meal-budget.luna-low-val": {
+  "pass": true,
+  "note": "XE rate 115.04313098 and 2,500 CAD to 287,608 JPY confirmed captured; Numbeo Tokyo inexpensive meal 1,200 JPY confirmed; floor(287608/1200)=239 meals matches. [judge: sonnet luna-b0]"
+ },
+ "41-owid-dataset-read.luna-medium-val": {
+  "pass": true,
+  "note": "Grounded: navigated to OWID life-expectancy table filtered to Japan; end_text_excerpt confirms Japan 84.7 years for 1751-2023 table, matching answer 2023-84.7. [judge: sonnet lunamed-b2]"
+ },
+ "42-youtube-watch-later.luna-medium-val": {
+  "pass": true,
+  "note": "Trace shows Action menu Save to Watch later on top organic result, playlist snapshot confirms it saved before cleanup click Remove from Watch later; final state empty (No videos). [judge: sonnet lunamed-b2]"
+ },
+ "43-gmail-self-draft.luna-medium-val": {
+  "pass": true,
+  "note": "HN #1 title captured this run; draft composed with matching subject/body, closed to autosave (Drafts (1)), screenshot taken on #drafts page, then discarded and confirmed gone via wait-for-text-gone. [judge: sonnet lunamed-b2]"
+ },
+ "44-gcal-event.luna-medium-val": {
+  "pass": true,
+  "note": "Snapshot trace shows event created Mon Sep 7 2026 10:00-10:30 with location literally Online (not autocompleted, confirmed via Open Online in Maps), screenshot taken, then deleted and grid shows No events after cleanup. [judge: sonnet lunamed-b2]"
+ },
+ "47-reddit-save.luna-medium-val": {
+  "pass": false,
+  "note": "Task requires sorting r/programming by Top/Past-week before picking #1; trace shows only the default subreddit listing was used (no sort action), so the captured top organic post is unverified against the required sort state. [judge: sonnet lunamed-b2]"
+ },
+ "48-spotify-playlist.luna-medium-val": {
+  "pass": true,
+  "note": "Playlist webbench mix created, made private (toast captured), correct track added, screenshot taken, then deleted and confirmed absent via search Couldnt find webbench mix. [judge: sonnet lunamed-b2]"
+ },
+ "49-x-bookmark.luna-medium-val": {
+  "pass": true,
+  "note": "Top (non-pinned) post on profile timeline matches bookmarked post; Bookmarks tab snapshot shows it listed with Bookmarked state before cleanup; unbookmarked and confirmed removed from Bookmarks after. [judge: sonnet lunamed-b2]"
+ },
+ "50-google-flights-nonstop.luna-medium-val": {
+  "pass": true,
+  "note": "Dates Oct 5-12, 2026 match rule (first Monday of month-after-next from run date Aug 31, 2026); Nonstop filter applied (Filters: Nonstop, 2 results), both Air Canada options match captured page. [judge: sonnet lunamed-b2]"
+ },
+ "51-wikipedia-revision-audit.luna-medium-val": {
+  "pass": true,
+  "note": "History page text confirms 03:47, 31 August 2026 OAbot with matching summary; reference count 174 computed via DOM query of References section, matching reported answer. [judge: sonnet lunamed-b2]"
+ },
+ "53-caniuse-feature.luna-medium-val": {
+  "pass": true,
+  "note": "Extracted live shadow-DOM support table via eval showing 94.07% global usage and per-browser version data; screenshot of table captured. [judge: sonnet lunamed-b2]"
+ },
+ "54-stackoverflow-live.luna-medium-val": {
+  "pass": true,
+  "note": "Newest-tab rust listing captured showing title, asked 2 days ago, asker Cheater Apa aja, 0 answers, 76 views; question body confirms accurate one-sentence summary. [judge: sonnet lunamed-b2]"
+ },
+ "55-wayback-snapshot.luna-medium-val": {
+  "pass": true,
+  "note": "Opened June 15 2010 20:45:49 UTC snapshot; captured text/screenshot matches exact headline This changes everything. Again. and nav items Store/Mac/iPod. [judge: sonnet lunamed-b2]"
+ },
+ "56-sunrise-reykjavik.luna-medium-val": {
+  "pass": true,
+  "note": "September month table text extraction (row 1) shows Sunrise 6:10am, Sunset 8:43pm, Length 14:33:22 for Sep 1 2026 (tomorrow from run date Aug 31), exactly matching the reported answer. [judge: sonnet lunamed-b2]"
+ },
+ "57-hn-debate-analysis.luna-medium-val": {
+  "pass": true,
+  "note": "Captured thread confirms story 727 points; supporting comment by sho_hn and counterargument by rectang both verified as real comments matching the summarized arguments. [judge: sonnet lunamed-b2]"
+ },
+ "18-npm-package-audit.luna-medium-val": {
+  "pass": true,
+  "note": "Trace confirms npm header shows 5.2.1 Published 9 months ago (not sidebar), weekly downloads 133,100,711, and GitHub issues page shows 105 open - all match answer [judge: sonnet lunamed-b1]"
+ },
+ "19-wiktionary-wotd.luna-medium-val": {
+  "pass": true,
+  "note": "Captured WOTD page text matches: Merdeka, noun, freedom/independence definition, and example sentence quoted verbatim from entry [judge: sonnet lunamed-b1]"
+ },
+ "20-nasa-apod-vision.luna-medium-val": {
+  "pass": true,
+  "note": "Screenshot opened and verified: rocket launch matches title/date/visual description (rocket center, blue sky, bright flare, dark structures); gist matches explanation text [judge: sonnet lunamed-b1]"
+ },
+ "21-amazon-office-bundle.luna-medium-val": {
+  "pass": true,
+  "note": "Cart screenshot shows Lepro lamp $32.99 (4.7/5, confirmed on product page) and Logitech M170 $13.98 (4.4/5, confirmed), subtotal $46.97 under $100 [judge: sonnet lunamed-b1]"
+ },
+ "22-amazon-earbud-compare.luna-medium-val": {
+  "pass": true,
+  "note": "Both P20i/P30i figures match captured product pages; rating tie (4.3/5 both) reasonably broken by picking first result; cart screenshot confirms P20i added [judge: sonnet lunamed-b1]"
+ },
+ "26-ebay-keyboard-hunt.luna-medium-val": {
+  "pass": null,
+  "blocked": true,
+  "note": "Trace shows real hCaptcha wall (Please verify yourself to continue + hCaptcha iframe) on cart.ebay.ca after add-to-cart, confirming the blocked_claim per verifier known-hazard allowance [judge: sonnet lunamed-b1]"
+ },
+ "27-amazon-review-mining.luna-medium-val": {
+  "pass": true,
+  "note": "Rating 4.6/5 (101,056 ratings) and all three complaints verified against captured critical-review text with matching dates within past year (Dec 1 2025, Nov 6 2025, Nov 10 2025) [judge: sonnet lunamed-b1]"
+ },
+ "29-excalidraw-pipeline.luna-medium-val": {
+  "pass": true,
+  "note": "Final screenshot opened: IN, WORK, OUT text labels visible left-to-right on canvas, trace shows text-tool pixel clicks and typing [judge: sonnet lunamed-b1]"
+ },
+ "32-desmos-intersections.luna-medium-val": {
+  "pass": false,
+  "note": "Final screenshot opened: shows both curves but no Desmos coordinate label/point marker anywhere on the graph; verifier explicitly states a report without the labeled screenshot fails [judge: sonnet lunamed-b1]"
+ },
+ "33-osm-street-read.luna-medium-val": {
+  "pass": true,
+  "note": "Screenshot opened: Mill Street and Trinity Street both legible on rendered map tiles near Distillery District; URL coords match [judge: sonnet lunamed-b1]"
+ },
+ "34-osm-route-measure.luna-medium-val": {
+  "pass": true,
+  "note": "Screenshot opened: route line drawn between Union Station and St. Lawrence Market; directions panel shows 975m/0:13 and the two instructions exactly as reported [judge: sonnet lunamed-b1]"
+ },
+ "36-jspaint-poster.luna-medium-val": {
+  "pass": false,
+  "note": "Pixel analysis of final screenshot shows canvas is uniformly red with no black dots at any of the five claimed click locations (only UI selection handles are dark) - the described X pattern was never actually drawn [judge: sonnet lunamed-b1]"
+ },
+ "39-youtube-frame-describe.luna-medium-val": {
+  "pass": true,
+  "note": "Videos tab Latest sort confirmed Congressional Medal video is newest; recency 17 hours ago and 54,650 views match captured page; screenshot matches frame description [judge: sonnet lunamed-b1]"
+ },
+ "40-arxiv-pdf-figure.luna-medium-val": {
+  "pass": false,
+  "note": "Agent never rendered/screenshotted the actual PDF canvas page 1 as required; all three captured screenshots show the arXiv listing/abstract/HTML pages instead, so the visual PDF-reading requirement is unmet despite plausible answer content [judge: sonnet lunamed-b1]"
+ },
+ "01-mlb-latest.luna-medium-val": {
+  "pass": true,
+  "note": "All 14 game scores match the Final Yesterday Google MLB carousel captured in trace, and Cubs scorers (Crow-Armstrong 2, Bregman 1, Happ 2, sum=5) match the opened Reds-Cubs box score exactly. [judge: sonnet lunamed-b0]"
+ },
+ "02-hn-summary.luna-medium-val": {
+  "pass": true,
+  "note": "Front-page themes match captured HN snapshot; dedicated Agents section lists Understanding ChatGPT Work and OpenClaw 2.0, Accidentally, both confirmed present on the front-page trace and opened this run. [judge: sonnet lunamed-b0]"
+ },
+ "03-weather-nyc.luna-medium-val": {
+  "pass": true,
+  "note": "Answer (mostly cloudy, high/low 76F) matches captured NWS Central Park extended forecast exactly. [judge: sonnet lunamed-b0]"
+ },
+ "04-x-projects.luna-medium-val": {
+  "pass": true,
+  "note": "X profile bio link confirmed via eval extraction; 17-project list and SLM benchmarked models all found verbatim in the visited portfolio pages. [judge: sonnet lunamed-b0]"
+ },
+ "05-amazon-cart.luna-medium-val": {
+  "pass": true,
+  "note": "cart_before empty, cart_after screenshot shows both Clean Code and Atomic Habits at qty 1, matching the two add-to-cart actions in the trace. [judge: sonnet lunamed-b0]"
+ },
+ "06-amazon-search-add.luna-medium-val": {
+  "pass": true,
+  "note": "cart_before empty, cart_after shows Mont-Clair H2O water bottle qty 1; trace confirms this was the first non-sponsored result after searching stainless steel water bottle. [judge: sonnet lunamed-b0]"
+ },
+ "08-airport-departures.luna-medium-val": {
+  "pass": null,
+  "blocked": true,
+  "note": "Trace confirms navigating to the CYYZ/YYZ departures URL redirects to login.flightaware.com/signin with a genuine forced sign-in wall before any board data was shown. [judge: sonnet lunamed-b0]"
+ },
+ "09-recipe-scaling.luna-medium-val": {
+  "pass": true,
+  "note": "Captured page shows Best Chocolate Chip Cookies, 4.6/19,458 ratings, yield 48; page ingredients match the scaling arithmetic to 36 cookies exactly. [judge: sonnet lunamed-b0]"
+ },
+ "10-arxiv-agents-paper.luna-medium-val": {
+  "pass": true,
+  "note": "Full captured listing text shows papers [1] and [2] have no agent mention; arXiv:2608.27462 is the first to mention agentic in its abstract, matching title/author-count/summary from its opened abstract page. [judge: sonnet lunamed-b0]"
+ },
+ "11-github-trending-audit.luna-medium-val": {
+  "pass": true,
+  "note": "Trending page confirms K-Dense-AI/scientific-agent-skills is #1 with description, 1,114 stars today, 39,872 total; repo page confirms Issues 7; releases page confirms v2.65.0 latest, all captured this run. [judge: sonnet lunamed-b0]"
+ },
+ "12-wikipedia-current-events.luna-medium-val": {
+  "pass": true,
+  "note": "All three linked articles confirmed present under the Aug 30 (yesterday) portal section in the captured trace. [judge: sonnet lunamed-b0]"
+ },
+ "13-usgs-quake-report.luna-medium-val": {
+  "pass": true,
+  "note": "Captured 28-earthquake past-day list shows M5.8 Kermadec Islands as the largest; event page confirms depth 35.0km and UTC time 2026-08-30 09:02:09 exactly as reported. [judge: sonnet lunamed-b0]"
+ },
+ "14-imdb-yearly-top.luna-medium-val": {
+  "pass": true,
+  "note": "Navigated via rank-1 search result to Punjab 95, confirming 8.8/106.4K ratings and 2026 release under the filtered advanced search; director page lists both cited other titles. [judge: sonnet lunamed-b0]"
+ },
+ "15-stock-analyst-targets.luna-medium-val": {
+  "pass": true,
+  "note": "Captured Yahoo quote page text matches all five reported values (217.55 close, 216.81-229.26 range, 5.253T cap, Nov 17 2026 earnings, 323.42 1y target est) and correctly notes market closed. [judge: sonnet lunamed-b0]"
+ },
+ "17-currency-meal-budget.luna-medium-val": {
+  "pass": false,
+  "note": "XE rate/conversion is grounded, but the final Numbeo text extraction returned completely empty and no other captured content shows the 1,200 JPY meal price anywhere in the trace, so the meal price and resulting 239-meal count are ungrounded. [judge: sonnet lunamed-b0]"
+ },
+ "18-npm-package-audit.luna-high-val": {
+  "pass": true,
+  "note": "Header shows 5.2.1 Published 9 months ago (not sidebar); GitHub issues page shows 105; matches captured trace exactly [judge: sonnet lunahigh-b1]"
+ },
+ "19-wiktionary-wotd.luna-high-val": {
+  "pass": true,
+  "note": "Merdeka WOTD entry navigated and captured this run; POS, definition, and quote all sourced from the entry text [judge: sonnet lunahigh-b1]"
+ },
+ "20-nasa-apod-vision.luna-high-val": {
+  "pass": true,
+  "note": "Screenshot opened: title/date match, visual description (rocket, blue sky, launch tower, gauges, NASA watermark) accurately matches the captured image [judge: sonnet lunahigh-b1]"
+ },
+ "21-amazon-office-bundle.luna-high-val": {
+  "pass": true,
+  "note": "Cart screenshot shows Lepro lamp $32.99 and Logitech M170 $13.98, subtotal $46.97, both ratings above 4.0, both adds happened this run [judge: sonnet lunahigh-b1]"
+ },
+ "22-amazon-earbud-compare.luna-high-val": {
+  "pass": true,
+  "note": "First two genuine (non-sponsored) listings correctly identified as soundcore P20i/P30i, ratings tied at 4.3 per captured pages, tie-break to first item disclosed, cart screenshot confirms P20i added this run [judge: sonnet lunahigh-b1]"
+ },
+ "26-ebay-keyboard-hunt.luna-high-val": {
+  "pass": true,
+  "note": "Cart screenshot confirms Redragon K530 keyboard, C$51.00 + C$13.00 shipping, seller 99.2% feedback, under $75, checkout not reached [judge: sonnet lunahigh-b1]"
+ },
+ "27-amazon-review-mining.luna-high-val": {
+  "pass": true,
+  "note": "Signed-in critical-review access confirmed; rating/count and three dated complaints grounded in navigated review pages this run [judge: sonnet lunahigh-b1]"
+ },
+ "29-excalidraw-pipeline.luna-high-val": {
+  "pass": true,
+  "note": "Final screenshot opened: IN, WORK, OUT with arrows shown left to right, created via text-tool pixel clicks this run [judge: sonnet lunahigh-b1]"
+ },
+ "32-desmos-intersections.luna-high-val": {
+  "pass": false,
+  "note": "Final screenshot shows both curves at default viewport with no rendered coordinate label anywhere; reported (-2.33,-0.78) has no labeled-point evidence, violating the tool-label-is-ground-truth requirement [judge: sonnet lunahigh-b1]"
+ },
+ "33-osm-street-read.luna-high-val": {
+  "pass": true,
+  "note": "Screenshot opened: Mill Street and Trinity Street both legible bordering the Distillery District; URL coords match [judge: sonnet lunahigh-b1]"
+ },
+ "34-osm-route-measure.luna-high-val": {
+  "pass": true,
+  "note": "Screenshot opened: routing panel shows Distance 975m, Time 0:13, first two instructions match, route line drawn between Union Station and St. Lawrence Market [judge: sonnet lunahigh-b1]"
+ },
+ "36-jspaint-poster.luna-high-val": {
+  "pass": true,
+  "note": "Canvas pixel eval confirms true black (0,0,0,255) at all 5 clicked X-pattern coordinates over a red-flooded canvas this run; dots faint in compressed screenshot but corroborated by captured pixel data [judge: sonnet lunahigh-b1]"
+ },
+ "39-youtube-frame-describe.luna-high-val": {
+  "pass": false,
+  "note": "Title/recency/views match, but the paused-frame screenshot actually shows astronauts walking outdoors near a van (0:27 mark), not the claimed onstage ceremony with Trump and US flags, failing the vision-match requirement [judge: sonnet lunahigh-b1]"
+ },
+ "40-arxiv-pdf-figure.luna-high-val": {
+  "pass": false,
+  "note": "Every PDF-canvas navigation attempt failed per trace; final screenshot and end_url are the arXiv abstract page, not a page-1 PDF render, so title/author-count/figure claims are ungrounded in an actual page-1 screenshot [judge: sonnet lunahigh-b1]"
+ },
+ "41-owid-dataset-read.luna-high-val": {
+  "pass": true,
+  "note": "Screenshot opened: OWID table filtered to Japan shows 2023, 84.7 years, matching the reported answer exactly [judge: sonnet lunahigh-b1]"
+ },
+ "42-youtube-watch-later.luna-high-val": {
+  "pass": true,
+  "note": "Screenshot shows the lofi hip hop radio video in Watch Later; trace shows save this run and cleanup (removal) confirmed in end_text_excerpt. [judge: sonnet lunahigh-b2]"
+ },
+ "43-gmail-self-draft.luna-high-val": {
+  "pass": true,
+  "note": "Screenshot shows draft with correct subject and HN #1 title read this run; end_text shows Draft discarded and empty Drafts confirming cleanup. [judge: sonnet lunahigh-b2]"
+ },
+ "44-gcal-event.luna-high-val": {
+  "pass": true,
+  "note": "Screenshot shows webbench sync event on correct Monday 10-10:30 slot with Event saved toast; trace shows Event deleted confirming cleanup. [judge: sonnet lunahigh-b2]"
+ },
+ "47-reddit-save.luna-high-val": {
+  "pass": true,
+  "note": "DOM eval this run extracted score=1998/comment-count=51 for the correct top-organic post under sort=top&t=week; Saved-items screenshot confirms save, then unsave verified. [judge: sonnet lunahigh-b2]"
+ },
+ "48-spotify-playlist.luna-high-val": {
+  "pass": false,
+  "note": "Ground truth in trace shows page still labeled Public Playlist immediately before deletion (multiple failed Make-private click attempts, no Private Playlist label/toast ever appeared) - the claimed make-private action never actually succeeded. [judge: sonnet lunahigh-b2]"
+ },
+ "49-x-bookmark.luna-high-val": {
+  "pass": true,
+  "note": "Trace shows full profile timeline reviewed this run (Aug 28 post above Aug 26 posts, no pinned marker), correctly identifying the newest post; Bookmarks screenshot confirms bookmark then removal. [judge: sonnet lunahigh-b2]"
+ },
+ "50-google-flights-nonstop.luna-high-val": {
+  "pass": true,
+  "note": "Captured results page (nonstop filter, 2 results) matches reported dates, airline, prices, and departure times exactly. [judge: sonnet lunahigh-b2]"
+ },
+ "51-wikipedia-revision-audit.luna-high-val": {
+  "pass": true,
+  "note": "Captured history page matches reported revision date/editor/summary and reference count exactly. [judge: sonnet lunahigh-b2]"
+ },
+ "53-caniuse-feature.luna-high-val": {
+  "pass": true,
+  "note": "94.07% grounded via DOM eval of the live page this run; screenshot shows the support table confirming Firefox 121 as last-to-ship. [judge: sonnet lunahigh-b2]"
+ },
+ "54-stackoverflow-live.luna-high-val": {
+  "pass": true,
+  "note": "Captured newest-sorted rust question page matches reported title, age, asker, and counts; summary reflects captured body. [judge: sonnet lunahigh-b2]"
+ },
+ "55-wayback-snapshot.luna-high-val": {
+  "pass": false,
+  "note": "Verifier requires the screenshot to visually show the headline, but neither captured screenshot renders it (first shows only nav, second blank/unrendered) - despite DOM snapshot confirming the headline text, visual evidence required by this task rubric is missing. [judge: sonnet lunahigh-b2]"
+ },
+ "56-sunrise-reykjavik.luna-high-val": {
+  "pass": true,
+  "note": "Captured table for tomorrow's date matches reported sunrise/sunset/day-length exactly. [judge: sonnet lunahigh-b2]"
+ },
+ "57-hn-debate-analysis.luna-high-val": {
+  "pass": true,
+  "note": "Captured thread confirms real comments by zikani_03 (supporting) and renegat0x0 (criticism) matching the summarized arguments. [judge: sonnet lunahigh-b2]"
+ },
+ "01-mlb-latest.luna-high-val": {
+  "pass": true,
+  "note": "All 14 yesterday scores match Google sports carousel text captured this run; Cubs box score (Crow-Armstrong 2R, Bregman 1R, Happ 2R) matches Reds-Cubs page opened. [judge: sonnet lunahigh-b0]"
+ },
+ "02-hn-summary.luna-high-val": {
+  "pass": false,
+  "note": "Dedicated Agents section omits two front-page agent stories the agent itself visited this run (OpenClaw 2.0 Accidentally, and Meta Security Researcher AI Agent Deleted Her Emails), listing only one unrelated ChatGPT story instead. [judge: sonnet lunahigh-b0]"
+ },
+ "03-weather-nyc.luna-high-val": {
+  "pass": true,
+  "note": "Today's conditions (mostly cloudy, high 76/low 73) match captured NWS Central Park forecast page exactly. [judge: sonnet lunahigh-b0]"
+ },
+ "04-x-projects.luna-high-val": {
+  "pass": true,
+  "note": "Project list matches portfolio reachable from X profile; SLM benchmarked models match the linked article exactly. [judge: sonnet lunahigh-b0]"
+ },
+ "05-amazon-cart.luna-high-val": {
+  "pass": true,
+  "note": "Trace shows both add-to-cart actions this run and cart end-state text shows 2 items in cart. [judge: sonnet lunahigh-b0]"
+ },
+ "06-amazon-search-add.luna-high-val": {
+  "pass": false,
+  "note": "Agent added the Mont-Clair water bottle, which the page explicitly labels Sponsored Ad (position sr_1_1_sspa, first of three consecutive sponsored slots) - not the first genuine/organic result as the prompt and verifier require. [judge: sonnet lunahigh-b0]"
+ },
+ "08-airport-departures.luna-high-val": {
+  "pass": true,
+  "note": "Board order (ACA700, EDV5183, DAL2662) correctly skips non-US WJA627/ACA101; each flight page confirms EXPECTED TO DEPART status captured this run. [judge: sonnet lunahigh-b0]"
+ },
+ "09-recipe-scaling.luna-high-val": {
+  "pass": true,
+  "note": "Recipe (Best Chocolate Chip Cookies, 4.6/19,458, 4 dozen yield) and 3/4-scale math to 36 cookies match captured page. [judge: sonnet lunahigh-b0]"
+ },
+ "10-arxiv-agents-paper.luna-high-val": {
+  "pass": true,
+  "note": "Confirmed first two listing entries lack agent mention; third entry (2608.27462) is first with agentic in abstract; id/title/author-count/summary match its abstract page captured this run. [judge: sonnet lunahigh-b0]"
+ },
+ "11-github-trending-audit.luna-high-val": {
+  "pass": true,
+  "note": "Repo, stars-today (1,114), total stars, release v2.65.0/Aug 29 2026, and 7 open issues all confirmed in captured trace. [judge: sonnet lunahigh-b0]"
+ },
+ "12-wikipedia-current-events.luna-high-val": {
+  "pass": true,
+  "note": "All three items verified present under Aug 30 portal section with matching linked articles captured this run. [judge: sonnet lunahigh-b0]"
+ },
+ "13-usgs-quake-report.luna-high-val": {
+  "pass": true,
+  "note": "M5.5 Indonesia confirmed as largest in full 26-event past-day 2.5+ feed; magnitude/location/depth/UTC time match event page captured this run. [judge: sonnet lunahigh-b0]"
+ },
+ "14-imdb-yearly-top.luna-high-val": {
+  "pass": true,
+  "note": "Punjab 95 (8.8, 106K) confirmed top of constrained 2026-release/25k+-vote sort; director filmography confirms both other titles. [judge: sonnet lunahigh-b0]"
+ },
+ "15-stock-analyst-targets.luna-high-val": {
+  "pass": true,
+  "note": "Price 217.55, day range, market cap 5.253T, earnings Nov 17 2026, avg target 323.42 all match captured Yahoo Finance pages; market-closed noted correctly. [judge: sonnet lunahigh-b0]"
+ },
+ "17-currency-meal-budget.luna-high-val": {
+  "pass": true,
+  "note": "XE rate 114.94234827 and Numbeo meal price 1,200 JPY confirmed captured; arithmetic to 239 meals correct. [judge: sonnet lunahigh-b0]"
+ },
+ "18-npm-package-audit.luna-xhigh-val": {
+  "pass": true,
+  "note": "Header shows 5.2.1 Published 9 months ago (not sidebar's differing Last publish 4 months ago), weekly downloads 133,100,711, GitHub 105 open issues - all captured this run [judge: sonnet lunaxh-b1]"
+ },
+ "19-wiktionary-wotd.luna-xhigh-val": {
+  "pass": true,
+  "note": "Word, POS, definition, and quotation all match captured WOTD page for Aug 31 [judge: sonnet lunaxh-b1]"
+ },
+ "20-nasa-apod-vision.luna-xhigh-val": {
+  "pass": true,
+  "note": "Screenshot confirms title/date and video-frame visual detail (telemetry overlay, gauges, timer) matching description; gist matches explanation [judge: sonnet lunaxh-b1]"
+ },
+ "21-amazon-office-bundle.luna-xhigh-val": {
+  "pass": true,
+  "note": "Cart screenshot shows both items and $45.98 subtotal; product-page ratings 4.5 (mouse) and 4.7 (lamp) confirmed in trace this run [judge: sonnet lunaxh-b1]"
+ },
+ "26-ebay-keyboard-hunt.luna-xhigh-val": {
+  "pass": true,
+  "note": "Cart screenshot confirms GK61 keyboard $14.44 (<$75), $14 shipping, seller 99.5% feedback; BIN status confirmed in trace [judge: sonnet lunaxh-b1]"
+ },
+ "27-amazon-review-mining.luna-xhigh-val": {
+  "pass": true,
+  "note": "4.6 stars/101,056 ratings and all three complaints verified against captured 1-star reviews with matching dates (Oct 21, Oct 3, Nov 10 2025) [judge: sonnet lunaxh-b1]"
+ },
+ "29-excalidraw-pipeline.luna-xhigh-val": {
+  "pass": true,
+  "note": "Final screenshot shows IN, WORK, OUT left-to-right via text-tool clicks/typing in trace [judge: sonnet lunaxh-b1]"
+ },
+ "32-desmos-intersections.luna-xhigh-val": {
+  "pass": false,
+  "note": "Screenshot shows default unzoomed viewport with no Desmos coordinate label anywhere; clicks in trace only selected the curve expression, never produced a point label, so reported coordinates are unverified per verifier's explicit requirement [judge: sonnet lunaxh-b1]"
+ },
+ "33-osm-street-read.luna-xhigh-val": {
+  "pass": true,
+  "note": "Screenshot shows Parliament Street and Mill Street legible bordering the Distillery District; URL coords match area [judge: sonnet lunaxh-b1]"
+ },
+ "34-osm-route-measure.luna-xhigh-val": {
+  "pass": true,
+  "note": "Screenshot shows route line drawn Union Station to St. Lawrence Market; distance 1.1km/time 0:14 and first two instructions match captured directions panel [judge: sonnet lunaxh-b1]"
+ },
+ "36-jspaint-poster.luna-xhigh-val": {
+  "pass": false,
+  "note": "Final screenshot is solid red with no dark pixels anywhere in the canvas (pixel-checked all 5 target coords and scanned the region); no dots were actually placed despite the claim [judge: sonnet lunaxh-b1]"
+ },
+ "39-youtube-frame-describe.luna-xhigh-val": {
+  "pass": true,
+  "note": "Screenshot and captured page text match reported title, 1 day ago, 63k views, and paused-frame description [judge: sonnet lunaxh-b1]"
+ },
+ "40-arxiv-pdf-figure.luna-xhigh-val": {
+  "pass": true,
+  "note": "Page-1 screenshot/text confirms title, 6 listed authors, and no figure on page 1 [judge: sonnet lunaxh-b1]"
+ },
+ "41-owid-dataset-read.luna-xhigh-val": {
+  "pass": true,
+  "note": "Table screenshot confirms Japan, 2023, 84.7 years as most recent datapoint [judge: sonnet lunaxh-b1]"
+ },
+ "42-youtube-watch-later.luna-xhigh-val": {
+  "pass": true,
+  "note": "Watch Later screenshot shows the exact saved video; trace shows save action, then removal confirmed by No videos end state. [judge: sonnet lunaxh-b2]"
+ },
+ "43-gmail-self-draft.luna-xhigh-val": {
+  "pass": true,
+  "note": "Drafts screenshot shows subject + HN title Playa Phone (matches HN #1 read this run); no send action; cleanup confirmed by Draft discarded/empty Drafts. [judge: sonnet lunaxh-b2]"
+ },
+ "44-gcal-event.luna-xhigh-val": {
+  "pass": true,
+  "note": "Screenshot shows webbench sync on Mon Sept 7 10:00-10:30 grid; trace shows creation and deletion, end state shows only Labour Day remaining. [judge: sonnet lunaxh-b2]"
+ },
+ "47-reddit-save.luna-xhigh-val": {
+  "pass": true,
+  "note": "Score 2010/51 comments grounded in raw DOM data for the top organic r/programming post; Saved screenshot shows it; cleanup confirmed. [judge: sonnet lunaxh-b2]"
+ },
+ "48-spotify-playlist.luna-xhigh-val": {
+  "pass": true,
+  "note": "Playlist screenshot shows Private Playlist label and Bohemian Rhapsody Remastered 2011 track; private state confirmed via reload eval (private:true); deletion confirmed via library search failure. [judge: sonnet lunaxh-b2]"
+ },
+ "49-x-bookmark.luna-xhigh-val": {
+  "pass": true,
+  "note": "Bookmarks screenshot shows the newest non-pinned AnthropicAI post grounded in profile DOM (Aug 28); unbookmark confirmed. [judge: sonnet lunaxh-b2]"
+ },
+ "50-google-flights-nonstop.luna-xhigh-val": {
+  "pass": true,
+  "note": "Dates correctly resolve to first Monday of month-after-next (Oct 5); both nonstop options ($1,668/$1,741, YYZ-NRT/HND) grounded verbatim in captured results page. [judge: sonnet lunaxh-b2]"
+ },
+ "51-wikipedia-revision-audit.luna-xhigh-val": {
+  "pass": true,
+  "note": "Revision (03:47, 31 Aug 2026, OAbot) and 174-reference count both grounded in captured history/article DOM via eval. [judge: sonnet lunaxh-b2]"
+ },
+ "53-caniuse-feature.luna-xhigh-val": {
+  "pass": true,
+  "note": "Global 94.07% and full support table captured this run confirm Firefox 121 as last-to-ship. [judge: sonnet lunaxh-b2]"
+ },
+ "54-stackoverflow-live.luna-xhigh-val": {
+  "pass": true,
+  "note": "Newest rust-tag question, asker, and 83-views/0-answers/2-days-ago all grounded in captured DOM snapshot. [judge: sonnet lunaxh-b2]"
+ },
+ "55-wayback-snapshot.luna-xhigh-val": {
+  "pass": true,
+  "note": "Screenshot of June 15, 2010 capture shows exact headline This changes everything. Again. and nav items Store/Mac/iPod. [judge: sonnet lunaxh-b2]"
+ },
+ "56-sunrise-reykjavik.luna-xhigh-val": {
+  "pass": true,
+  "note": "Sunrise 6:10am/sunset 8:43pm/day length 14:33:22 for Sep 1 grounded verbatim in captured table row. [judge: sonnet lunaxh-b2]"
+ },
+ "57-hn-debate-analysis.luna-xhigh-val": {
+  "pass": true,
+  "note": "Story Playa Phone 167 points, and both solfox/reaperducer comments verified verbatim in captured thread DOM. [judge: sonnet lunaxh-b2]"
+ },
+ "01-mlb-latest.luna-xhigh-val": {
+  "pass": true,
+  "note": "All 14 Yesterday scores match captured Google sports carousel snapshot exactly; Cubs box score opened and scorers (PCA 2, Bregman 1, Happ 2) match page. [judge: sonnet lunaxh-b0]"
+ },
+ "02-hn-summary.luna-xhigh-val": {
+  "pass": true,
+  "note": "Front page grounded via 29 story navigations; full result text includes dedicated Agents/agentic harnesses section listing 6 correctly-identified stories. [judge: sonnet lunaxh-b0]"
+ },
+ "03-weather-nyc.luna-xhigh-val": {
+  "pass": true,
+  "note": "Answer (Mostly cloudy 79F / Showers likely 73F) matches captured NWS Central Park page exactly. [judge: sonnet lunaxh-b0]"
+ },
+ "04-x-projects.luna-xhigh-val": {
+  "pass": true,
+  "note": "Project list matches portfolio site (18 projects) plus Clarity from X post; SLM benchmarked models confirmed grounded in the visited article's model table. [judge: sonnet lunaxh-b0]"
+ },
+ "06-amazon-search-add.luna-xhigh-val": {
+  "pass": true,
+  "note": "Cart screenshot shows Mont-Clair stainless steel water bottle, $12.97, 1 item, no checkout; trace shows search then first result then add to cart then cart opened. [judge: sonnet lunaxh-b0]"
+ },
+ "08-airport-departures.luna-xhigh-val": {
+  "pass": true,
+  "note": "Board order (ACA739 SFO, ROU1735 IAH, ROU1656 TPA) confirmed as first 3 US-bound in captured board; each flight page status confirmed. [judge: sonnet lunaxh-b0]"
+ },
+ "09-recipe-scaling.luna-xhigh-val": {
+  "pass": true,
+  "note": "Best Chocolate Chip Cookies, 4.6 stars/19,458 ratings, yield 48 all match captured page; scaling math to 36 cookies correct. [judge: sonnet lunaxh-b0]"
+ },
+ "10-arxiv-agents-paper.luna-xhigh-val": {
+  "pass": true,
+  "note": "Confirmed entries [1] and [2] lack agent mention; [3] arXiv:2608.27462 genuinely first; id/title/4-authors/summary/PDF all match captured abstract page. [judge: sonnet lunaxh-b0]"
+ },
+ "11-github-trending-audit.luna-xhigh-val": {
+  "pass": true,
+  "note": "Top trending repo, description, 1,968 stars today, 40,391 total, v2.65.0 latest release, 7 open issues all grounded in visited pages. [judge: sonnet lunaxh-b0]"
+ },
+ "12-wikipedia-current-events.luna-xhigh-val": {
+  "pass": true,
+  "note": "Three items and their linked articles grounded in the captured Current Events portal end-state. [judge: sonnet lunaxh-b0]"
+ },
+ "13-usgs-quake-report.luna-xhigh-val": {
+  "pass": true,
+  "note": "Full captured list of 31 worldwide past-24h quakes confirms M5.5 Ruteng Indonesia is the largest; details match the visited event page exactly. [judge: sonnet lunaxh-b0]"
+ },
+ "14-imdb-yearly-top.luna-xhigh-val": {
+  "pass": true,
+  "note": "Punjab 95 tops the constrained search at 8.8/106.4K; director page lists both cited titles as separate credits. [judge: sonnet lunaxh-b0]"
+ },
+ "15-stock-analyst-targets.luna-xhigh-val": {
+  "pass": true,
+  "note": "All five values match captured NVDA quote page; correctly noted market not open. [judge: sonnet lunaxh-b0]"
+ },
+ "17-currency-meal-budget.luna-xhigh-val": {
+  "pass": true,
+  "note": "XE rate 115.16819543 and converted 287,920 JPY confirmed; Numbeo meal price 1,200 confirmed; floor=239 correct. [judge: sonnet lunaxh-b0]"
+ },
+ "01-mlb-latest.luna-max-val": {
+  "pass": true,
+  "note": "Box score grounded via navigation/click; Cubs scorers (PCA 2, Bregman 1, Happ 2) match captured box score runs column summing to 5, matching Reds 7-Cubs 5 final. [judge: sonnet lunamax-b0]"
+ },
+ "02-hn-summary.luna-max-val": {
+  "pass": true,
+  "note": "Extensive navigation (16 navs) to HN front page and stories; dedicated Agents section present with front-page items. [judge: sonnet lunamax-b0]"
+ },
+ "03-weather-nyc.luna-max-val": {
+  "pass": true,
+  "note": "Reported conditions/high-low (Partly Sunny 79/Showers Likely 73) match captured NWS Central Park page exactly. [judge: sonnet lunamax-b0]"
+ },
+ "04-x-projects.luna-max-val": {
+  "pass": true,
+  "note": "Full stream shows agent navigated X profile, portfolio site, and SLM article, correctly extracting benchmarked models from the article's model table; project list grounded in visited pages. [judge: sonnet lunamax-b0]"
+ },
+ "05-amazon-cart.luna-max-val": {
+  "pass": true,
+  "note": "Cart_after screenshot shows both Clean Code and Atomic Habits at qty 1; trace shows two add-to-cart actions this run. [judge: sonnet lunamax-b0]"
+ },
+ "06-amazon-search-add.luna-max-val": {
+  "pass": true,
+  "note": "Cart_before empty, cart_after shows Mont-Clair stainless steel water bottle qty 1 added this run after search. [judge: sonnet lunamax-b0]"
+ },
+ "08-airport-departures.luna-max-val": {
+  "pass": null,
+  "blocked": true,
+  "note": "Confirmed FlightAware sign-in wall across multiple YYZ departures URL variants in the trace before giving up. [judge: sonnet lunamax-b0]"
+ },
+ "09-recipe-scaling.luna-max-val": {
+  "pass": true,
+  "note": "Recipe (4.6 stars, 19,458 ratings, 48-serving yield) and scaled quantities match captured page and correct arithmetic to 36 cookies. [judge: sonnet lunamax-b0]"
+ },
+ "10-arxiv-agents-paper.luna-max-val": {
+  "pass": true,
+  "note": "Abstract page confirms agentic mention and matches reported id/title/author count/summary; grounded via listing then click to abstract. [judge: sonnet lunamax-b0]"
+ },
+ "11-github-trending-audit.luna-max-val": {
+  "pass": true,
+  "note": "All five facts (description, 1,968 stars today, 40,522 total, v2.65.0 8/29/2026, 7 open issues) match pages visited this run. [judge: sonnet lunamax-b0]"
+ },
+ "12-wikipedia-current-events.luna-max-val": {
+  "pass": true,
+  "note": "Portal current date shown as Aug 31 2026, correctly used yesterday's (Aug 30) section; three distinct-category items with linked articles extracted via targeted eval calls. [judge: sonnet lunamax-b0]"
+ },
+ "13-usgs-quake-report.luna-max-val": {
+  "pass": true,
+  "note": "Magnitude/location/depth/UTC time exactly match captured USGS event page reached via feed navigation. [judge: sonnet lunamax-b0]"
+ },
+ "14-imdb-yearly-top.luna-max-val": {
+  "pass": true,
+  "note": "Film, rating, ratings count, director, and two other filmography titles match captured advanced-search and director pages. [judge: sonnet lunamax-b0]"
+ },
+ "15-stock-analyst-targets.luna-max-val": {
+  "pass": true,
+  "note": "All five values match captured Yahoo Finance quote/analysis pages. [judge: sonnet lunamax-b0]"
+ },
+ "17-currency-meal-budget.luna-max-val": {
+  "pass": true,
+  "note": "FX rate/converted JPY match captured XE page, meal price matches captured Numbeo Tokyo page, and floor computation to 240 meals is correct. [judge: sonnet lunamax-b0]"
+ },
+ "42-youtube-watch-later.luna-max-val": {
+  "pass": true,
+  "note": "Screenshot confirms lofi hip hop radio in Watch Later; trace shows save then cleanup (end state shows empty list). [judge: sonnet lunamax-b2]"
+ },
+ "43-gmail-self-draft.luna-max-val": {
+  "pass": true,
+  "note": "Drafts screenshot shows subject webbench draft check with matching HN title in body; trace shows no send, cleanup confirmed. [judge: sonnet lunamax-b2]"
+ },
+ "44-gcal-event.luna-max-val": {
+  "pass": true,
+  "note": "Screenshot shows webbench sync on correct next-Monday (Sep 7) at 10:00; trace confirms Location stayed plain Online and event deleted after capture. [judge: sonnet lunamax-b2]"
+ },
+ "47-reddit-save.luna-max-val": {
+  "pass": true,
+  "note": "Post/points(2016)/comments(51) grounded in captured page; saved-items screenshot shows it saved, then unsaved. [judge: sonnet lunamax-b2]"
+ },
+ "48-spotify-playlist.luna-max-val": {
+  "pass": true,
+  "note": "Screenshot shows webbench mix with Bohemian Rhapsody by Queen; trace shows Make private clicked and Private Playlist label persisted after reload, then playlist deleted. [judge: sonnet lunamax-b2]"
+ },
+ "49-x-bookmark.luna-max-val": {
+  "pass": true,
+  "note": "Bookmarks screenshot shows the reported (non-pinned, newest) AnthropicAI post at top; trace shows bookmark then removal. [judge: sonnet lunamax-b2]"
+ },
+ "50-google-flights-nonstop.luna-max-val": {
+  "pass": true,
+  "note": "Dates (Oct 5-12, 2026) correctly computed for first Monday of month-after-next; both nonstop options match captured results page exactly. [judge: sonnet lunamax-b2]"
+ },
+ "51-wikipedia-revision-audit.luna-max-val": {
+  "pass": true,
+  "note": "Revision date/editor/summary and reference count match captured history/article page. [judge: sonnet lunamax-b2]"
+ },
+ "53-caniuse-feature.luna-max-val": {
+  "pass": true,
+  "note": "94.07% global figure and Firefox-121-first-supported both grounded in captured page data; screenshot consistent. [judge: sonnet lunamax-b2]"
+ },
+ "54-stackoverflow-live.luna-max-val": {
+  "pass": true,
+  "note": "Newest rust-tagged question, metadata, and summary all match the captured question page. [judge: sonnet lunamax-b2]"
+ },
+ "55-wayback-snapshot.luna-max-val": {
+  "pass": true,
+  "note": "Screenshot of the June 15 2010 snapshot shows exact headline and nav items Store/Mac/iPod as reported. [judge: sonnet lunamax-b2]"
+ },
+ "56-sunrise-reykjavik.luna-max-val": {
+  "pass": true,
+  "note": "Tomorrow's date (Sep 1, 2026) correctly computed from run date; values match captured page context. [judge: sonnet lunamax-b2]"
+ },
+ "57-hn-debate-analysis.luna-max-val": {
+  "pass": true,
+  "note": "Story/points and both named commenters' arguments match the captured comment thread text. [judge: sonnet lunamax-b2]"
+ },
+ "18-npm-package-audit.luna-max-val": {
+  "pass": true,
+  "note": "npm and GitHub both navigated this run; all four values match captured pages exactly [judge: sonnet lunamax-b1]"
+ },
+ "19-wiktionary-wotd.luna-max-val": {
+  "pass": true,
+  "note": "Navigated main page then the Aug 31 2026 WOTD entry; word Merdeka, POS, definition and quote all match captured end_text [judge: sonnet lunamax-b1]"
+ },
+ "20-nasa-apod-vision.luna-max-val": {
+  "pass": true,
+  "note": "Opened screenshot: title/date match, visual description accurately matches the captured frame, gist matches explanation text [judge: sonnet lunamax-b1]"
+ },
+ "21-amazon-office-bundle.luna-max-val": {
+  "pass": true,
+  "note": "cart_before empty, cart_after shows both items added this run, subtotal $43.98 under $100, both rated 4+ per trace [judge: sonnet lunamax-b1]"
+ },
+ "22-amazon-earbud-compare.luna-max-val": {
+  "pass": false,
+  "note": "Cart ground truth shows a third, unrelated item added (Wireless Earbuds Sports Bluetooth 80Hrs $198.99), not either compared product; claimed higher-rated add is contradicted by cart evidence [judge: sonnet lunamax-b1]"
+ },
+ "26-ebay-keyboard-hunt.luna-max-val": {
+  "pass": true,
+  "note": "Cart screenshot confirms Royal Kludge F68, C$59.95, free shipping, 99.9% seller feedback, all matching agent report [judge: sonnet lunamax-b1]"
+ },
+ "27-amazon-review-mining.luna-max-val": {
+  "pass": true,
+  "note": "Rating 4.6/101,056 and all three complaint reviewer names/dates verified present in captured trace; signed-in profile confirmed [judge: sonnet lunamax-b1]"
+ },
+ "29-excalidraw-pipeline.luna-max-val": {
+  "pass": true,
+  "note": "Final screenshot opened: IN, WORK, OUT text elements clearly arranged left to right on canvas [judge: sonnet lunamax-b1]"
+ },
+ "32-desmos-intersections.luna-max-val": {
+  "pass": false,
+  "note": "Final captured screenshot shows only a single unlabeled line, no second curve, no intersection label; agent's own last message admits rendering never succeeded and it was restarting when terminated (operator-terminated at ~112 min) [judge: sonnet lunamax-b1]"
+ },
+ "33-osm-street-read.luna-max-val": {
+  "pass": true,
+  "note": "Screenshot opened: Parliament/Mill/Trinity Streets legible on rendered map tiles near Distillery District pin; URL coords match [judge: sonnet lunamax-b1]"
+ },
+ "34-osm-route-measure.luna-max-val": {
+  "pass": true,
+  "note": "Screenshot shows route line drawn; panel text 975m, Time 0:13 and first two instructions match reported values exactly [judge: sonnet lunamax-b1]"
+ },
+ "36-jspaint-poster.luna-max-val": {
+  "pass": false,
+  "note": "Final screenshot is a solid red canvas with no black dots; pixel-sampled all five claimed click coordinates and found only red, contradicting the claimed X pattern [judge: sonnet lunamax-b1]"
+ },
+ "39-youtube-frame-describe.luna-max-val": {
+  "pass": true,
+  "note": "Screenshot matches: NASA Artemis II medal ceremony video, 69k views/1 day ago, frame description matches captured screenshot [judge: sonnet lunamax-b1]"
+ },
+ "40-arxiv-pdf-figure.luna-max-val": {
+  "pass": true,
+  "note": "Page-1 screenshot opened: title matches exactly, 6 authors match, page is a Highlights bullet list with no figure, matching agent report [judge: sonnet lunamax-b1]"
+ },
+ "41-owid-dataset-read.luna-max-val": {
+  "pass": true,
+  "note": "Screenshot shows OWID Table filtered to Japan with 2023 value 84.7 years, matching reported answer [judge: sonnet lunamax-b1]"
  }
 }
