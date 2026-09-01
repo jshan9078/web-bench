@@ -250,7 +250,7 @@ def setup(task, run=None):
                                 "visible": bool(os.environ.get("BENCH_VISIBLE"))}))
     mode = "a VISIBLE window" if os.environ.get("BENCH_VISIBLE") else "headless (you cannot see the screen)"
     body = PREAMBLE.format(sid=sid, mode=mode) + "\n\nTASK: " + t["prompt"]
-    if os.environ.get("BENCH_HARNESS") in ("agy", "codex"):
+    if os.environ.get("BENCH_HARNESS") in ("agy", "codex", "muse"):
         # agy/codex can't load a Claude skill; point them at the shipped SKILL.md for equivalent guidance
         print(f"First, read the browser CLI reference at {SKILL} to learn the available commands and targeting "
               f"syntax. Then complete this task using only that `browser` CLI.\n\n" + body)
@@ -283,6 +283,25 @@ def _parse_stream(path, harness):
                 text = o["item"].get("text", "")
             if o.get("type") == "turn.completed":
                 for k, v in (o.get("usage") or {}).items():
+                    if isinstance(v, (int, float)):
+                        acc[k] = acc.get(k, 0) + v
+        return text, acc
+    if harness == "muse":
+        # muse exec --json stdout + session.jsonl concatenated by muse_one.sh. Final text is the
+        # run.terminal.completed event's text (stdout, bare envelope); usage comes only from the
+        # session log's model_completed events (wrapped in "envelope"), accumulated across calls.
+        # cached_tokens is a subset of input_tokens; reasoning_tokens a subset of output_tokens.
+        acc = {}
+        for o in objs:
+            env = o.get("envelope", o)
+            if not isinstance(env, dict):
+                continue
+            p = env.get("payload") or {}
+            if env.get("payload_type") == "run.terminal.completed":
+                text = p.get("text") or text
+            ev = p.get("event") or {}
+            if isinstance(ev, dict) and ev.get("kind") == "model_completed":
+                for k, v in (ev.get("usage") or {}).items():
                     if isinstance(v, (int, float)):
                         acc[k] = acc.get(k, 0) + v
         return text, acc
@@ -410,6 +429,9 @@ def _agent_tokens(harness, usage):
     if harness == "codex":
         tot = (usage.get("input_tokens", 0) + usage.get("output_tokens", 0)) or None
         return tot, usage.get("reasoning_output_tokens")
+    if harness == "muse":
+        tot = (usage.get("input_tokens", 0) + usage.get("output_tokens", 0)) or None
+        return tot, usage.get("reasoning_tokens")
     tot = sum(usage.get(k, 0) for k in ("input_tokens", "output_tokens",
               "cache_read_input_tokens", "cache_creation_input_tokens")) or None
     return tot, usage.get("thinking_tokens")
