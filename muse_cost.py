@@ -1,18 +1,17 @@
 """Per-run cost for muse-harness runs from captured token usage.
 
-Contributor-tier pricing (Meta rate card provided 2026-09-01, per 1M tokens):
-input $0.10, cached input $0.002, output $0.20. No separate cache-write rate;
-cached_tokens (== cache_read_tokens) are billed at the cached-input rate and
-the remaining input tokens at the full input rate. reasoning_tokens are a
+Muse Spark 1.2 pricing (Meta list rates, per 1M tokens): input $1.25, cached input $0.15,
+output $4.25. No separate cache-write rate; cached_tokens (== cache_read_tokens) are billed
+at the cached-input rate and the remaining input at the full rate. reasoning_tokens are a
 subset of output_tokens per the usage records, so output is billed as-is.
 
-Usage records come from the muse session log (session.jsonl payload_type
-runtime.session events with a "usage" object), summed per run by the harness.
+Usage records come from the muse session log (session.jsonl payload_type runtime.session
+events with a "usage" object), summed per run by the harness.
 """
 import json, glob, sys
 
 PRICING = {  # model -> (input, cached_input, output) $/M
-    "muse-spark-1.2-contributor": (0.10, 0.002, 0.20),
+    "muse-spark-1.2-contributor": (1.25, 0.15, 4.25),
 }
 
 def run_cost(model, u):

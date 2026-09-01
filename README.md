@@ -19,8 +19,7 @@ reasons unrelated to browsing skill.
 
 **28 configurations x 44 tasks = 1,232 runs, all judged, pass@1.** Six model families: **Claude
 Opus 5, Sonnet 5, and Haiku 4.5** via Claude Code, **Gemini 3.7 Flash** (its three levels)
-via Antigravity, **GPT-5.6 Luna** via the Codex CLI, and **Muse Spark 1.2** (contributor tier)
-via Muse Code. Opus, Sonnet, Luna, and Spark swept five thinking levels each (Spark's scale
+via Antigravity, **GPT-5.6 Luna** via the Codex CLI, and **Muse Spark 1.2** via Muse Code. Opus, Sonnet, Luna, and Spark swept five thinking levels each (Spark's scale
 tops out at `ultra` rather than `max`). Haiku 4.5 does not support the
 effort parameter (Claude Code silently ignores `--effort` on it; run telemetry confirms zero
 dose-response in thinking volume, turns, or time), so its five sweeps are replicate runs of one
@@ -42,11 +41,11 @@ answers an hour apart.
 | GPT-5.6 Luna | high | 37/44 | 84.1% | 49s | $0.022 |
 | GPT-5.6 Luna | xhigh | 42/44 | 95.5% | 66s | $0.023 |
 | GPT-5.6 Luna | max | 40/43 | 93.0% | 101s | $0.030 |
-| Muse Spark 1.2 | low | 43/44 | 97.7% | 52s | $0.006 |
-| Muse Spark 1.2 | medium | 40/44 | 90.9% | 69s | $0.009 |
-| Muse Spark 1.2 | high | 43/44 | 97.7% | 80s | $0.009 |
-| Muse Spark 1.2 | xhigh | 43/44 | 97.7% | 65s | $0.010 |
-| Muse Spark 1.2 | ultra | 44/44 | 100.0% | 80s | $0.009 |
+| Muse Spark 1.2 | low | 43/44 | 97.7% | 52s | $0.156 |
+| Muse Spark 1.2 | medium | 40/44 | 90.9% | 69s | $0.215 |
+| Muse Spark 1.2 | high | 43/44 | 97.7% | 80s | $0.222 |
+| Muse Spark 1.2 | xhigh | 43/44 | 97.7% | 65s | $0.254 |
+| Muse Spark 1.2 | ultra | 44/44 | 100.0% | 80s | $0.280 |
 | Sonnet 5 | low | 43/44 | 97.7% | 21s | $0.313 |
 | Sonnet 5 | medium | 41/44 | 93.2% | 27s | $0.393 |
 | Sonnet 5 | high | 41/44 | 93.2% | 39s | $0.454 |
@@ -62,23 +61,22 @@ Claude costs are the CLI's own reported `total_cost_usd` per run; Gemini costs a
 each run's measured token split at the introductory pricing in effect ($0.75/M input, $3.75/M
 output including thinking, $0.075/M cache read; these rates double on 2027-01-01). Luna costs
 use OpenAI's published rates including the promotional 80% cut ($0.20/M input, $0.02/M cached,
-$0.25/M cache write, $1.20/M output). Muse Spark ran on Meta's contributor tier ($0.10/M input,
-$0.002/M cached, $0.20/M output), which is discounted in exchange for permission to train on
-prompts and completions; the three Luna cells shown /43 are verified bot walls (hCaptcha, a
-sign-in wall), excluded per the wall policy rather than scored as failures.
+$0.25/M cache write, $1.20/M output). Muse Spark costs use Meta's list rates ($1.25/M input,
+$0.15/M cached, $4.25/M output); the three Luna cells shown /43 are verified bot walls
+(hCaptcha, a sign-in wall), excluded per the wall policy rather than scored as failures.
 
 ### What excelled where
 
-- **Muse Spark 1.2 is the cost frontier, and it barely misses the accuracy crown.** At roughly
-  a cent per task (about 1/20th of Gemini-low, 1/50th of any Claude config) it holds 97.7% at
-  almost every tier, and spark-ultra posted a perfect 44/44 — one of only three perfect
-  configurations in the matrix. Zero bot walls across its 220 runs, and its per-call cache hit
-  rates (85-99%) keep even six-thousand-token reasoning tiers under $0.011 median. The caveat
-  is the tier itself: contributor pricing trades data-training permission for the discount.
-- **GPT-5.6 Luna is the one family where thinking bought accuracy.** It climbs from 83.7% at
-  low to 95.5% at xhigh with reasoning telemetry rising in lockstep — the clearest effort
-  dose-response in the matrix — but from a lower floor: its low tiers make careless errors the
-  other families' low tiers don't.
+- **Muse Spark 1.2 is the most consistent family in the matrix.** It holds 97.7% at nearly
+  every tier, and spark-ultra posted a perfect 44/44 — one of only three perfect configurations
+  — at $0.28 median, roughly half of what any Claude tier costs and in the same band as
+  Gemini. Zero bot walls across its 220 runs, and per-call cache hit rates of 85-99% keep even
+  its six-thousand-token reasoning tiers economical.
+- **GPT-5.6 Luna is the cost frontier, and the one family where thinking bought accuracy.**
+  At $0.014-0.030 per task it undercuts everything else by an order of magnitude, and it
+  climbs from 83.7% at low to 95.5% at xhigh with reasoning telemetry rising in lockstep — the
+  clearest effort dose-response in the matrix — though from a lower floor: its low tiers make
+  careless errors the other families' low tiers don't.
 - **Gemini 3.7 Flash is the speed-efficiency frontier.** Its low tier is the fastest cheap
   config in the matrix (26s, $0.117, 95.5%) and its medium tier posted a perfect 44/44. It was the
   only family to reliably clear the two hardest interaction tasks (the Desmos math-input editor
