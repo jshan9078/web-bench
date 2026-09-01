@@ -19,8 +19,7 @@ via Antigravity. Opus and Sonnet swept five thinking levels each. Haiku 4.5 does
 effort parameter (Claude Code silently ignores `--effort` on it; run telemetry confirms zero
 dose-response in thinking volume, turns, or time), so its five sweeps are replicate runs of one
 configuration and are reported below as a single averaged row. Every run used the same browser tool
-([browser-automation-cli](https://github.com/jshan9078/browser-automation-cli)), the same 60-turn
-budget, and ran serially on one dedicated machine (M4, 10 cores). Every LLM-judged verdict was
+([browser-automation-cli](https://github.com/jshan9078/browser-automation-cli)), no turn or time cap, and ran serially on one dedicated machine (M4, 10 cores). Every LLM-judged verdict was
 issued by a Claude Sonnet judge from captured evidence (screenshots, full traces, cart/end-state
 ground truth), with a hostile second-opinion audit over every contested failure. Truth is
 evaluated at capture time: these are live sites, and the same question can have different correct
@@ -28,20 +27,20 @@ answers an hour apart.
 
 | model | thinking | pass | rate | median time | median cost |
 |---|---|---|---|---|---|
-| Haiku 4.5 | n/a (5 replicate sweeps) | 152/225 | 67.6% | 53s | $0.203 |
+| Haiku 4.5 | n/a (5 replicate sweeps) | 153/225 | 68.0% | 53s | $0.203 |
 | Gemini 3.7 Flash | low | 43/45 | 95.6% | 26s | $0.118 |
-| Gemini 3.7 Flash | medium | 45/45 | 100.0% | 46s | $0.237 |
-| Gemini 3.7 Flash | high | 44/45 | 97.8% | 35s | $0.176 |
-| Sonnet 5 | low | 43/45 | 95.6% | 23s | $0.317 |
-| Sonnet 5 | medium | 41/45 | 91.1% | 27s | $0.395 |
-| Sonnet 5 | high | 41/45 | 91.1% | 40s | $0.459 |
-| Sonnet 5 | xhigh | 43/45 | 95.6% | 44s | $0.553 |
-| Sonnet 5 | max | 41/45 | 91.1% | 62s | $0.633 |
+| Gemini 3.7 Flash | medium | 45/45 | 100.0% | 46s | $0.255 |
+| Gemini 3.7 Flash | high | 44/45 | 97.8% | 35s | $0.188 |
+| Sonnet 5 | low | 44/45 | 97.8% | 23s | $0.317 |
+| Sonnet 5 | medium | 42/45 | 93.3% | 27s | $0.395 |
+| Sonnet 5 | high | 42/45 | 93.3% | 40s | $0.459 |
+| Sonnet 5 | xhigh | 44/45 | 97.8% | 44s | $0.553 |
+| Sonnet 5 | max | 43/45 | 95.6% | 62s | $0.633 |
 | Opus 5 | low | 44/45 | 97.8% | 31s | $0.405 |
 | Opus 5 | medium | 44/45 | 97.8% | 42s | $0.528 |
-| Opus 5 | high | 43/45 | 95.6% | 59s | $0.598 |
-| Opus 5 | xhigh | 42/45 | 93.3% | 76s | $0.688 |
-| Opus 5 | max | 43/45 | 95.6% | 96s | $0.843 |
+| Opus 5 | high | 45/45 | 100.0% | 59s | $0.598 |
+| Opus 5 | xhigh | 43/45 | 95.6% | 76s | $0.688 |
+| Opus 5 | max | 44/45 | 97.8% | 96s | $0.843 |
 
 Claude costs are the CLI's own reported `total_cost_usd` per run; Gemini costs are computed from
 each run's measured token split at the introductory pricing in effect ($0.75/M input, $3.75/M
@@ -72,17 +71,18 @@ output including thinking, $0.075/M cache read; these rates double on 2027-01-01
 
 ### Shortcomings and lessons
 
-- **More thinking does not buy better browsing.** The effort knob demonstrably worked where the
-  model supports it (Opus and Sonnet scale monotonically from low to max: 2.4x output tokens, up
-  to 2x tool calls, 3x wall time), yet no family shows a positive accuracy slope; Opus and
-  Sonnet peak at low. Two caveats: Opus is near ceiling at 97.8%, and with 45 tasks per cell
-  only effects of roughly eight points or more are statistically detectable. Fifteen of the 23 upper-tier Claude failures were
-  60-turn budget exhaustion on keystroke-heavy widget tasks: higher tiers spend turns
-  re-verifying where low tiers act, an over-verification tax. Opus-low passed the Desmos task
-  that all four higher Opus tiers timed out on.
-- **Widget input is the open frontier.** The three tasks demanding sustained precise input into
-  canvas/custom editors (Desmos, JS Paint, and eBay's flow for some tiers) account for most
-  non-Haiku failures matrix-wide.
+- **More thinking buys little browsing accuracy.** The effort knob demonstrably worked where
+  the model supports it (Opus and Sonnet scale monotonically from low to max: 2.4x output
+  tokens, up to 2x tool calls, 3x wall time), yet accuracy moves only a point or two across
+  levels (Opus 97.8-100%, Sonnet 93.3-97.8%), well inside per-cell noise. What thinking mostly
+  buys is patience: given no turn cap, higher tiers grind out the hardest interaction tasks
+  slowly rather than failing them, so the cost of thinking shows up in the time and dollar
+  columns, not the score column.
+- **Widget input is hard but tractable given patience.** The tasks demanding sustained precise
+  input into canvas/custom editors (Desmos, JS Paint) account for most non-Haiku failures.
+  Uncapped, Opus and Sonnet solve the Desmos math-input task at every level (some runs grinding
+  5-22 minutes to produce the rendered coordinate label); JS Paint under its no-GPU WebGL error
+  dialog remains the suite's least-solved interaction task.
 - **Anti-bot walls are an environment fact.** Walls are never scored as failures here: agents
   declare `BLOCKED`, judges verify the wall from the trace, and such runs are excluded and
   retried (interactively if needed). During validation this rule removed one task entirely
