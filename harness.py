@@ -506,6 +506,8 @@ def judge_manifest():
     out = []
     for f in sorted(RAW.glob("*.json")):
         b = json.loads(f.read_text()); task = canon(b["task"]); key = f"{task}.{b['run']}"
+        if task not in TASKS:  # culled task (e.g. 23): raw evidence retained, never judged
+            continue
         if _judge(task, b) is not None or key in _verdicts():
             continue
         es = b.get("end_state") or {}

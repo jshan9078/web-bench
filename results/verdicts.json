@@ -3957,5 +3957,177 @@
  "22-amazon-earbud-compare.luna-xhigh-val": {
   "pass": true,
   "note": "P20i/P30i price, tied 4.3 rating, review counts, and battery figures confirmed in captured product pages; P30i added as tie-breaker and shown in cart screenshot this run. [judge: sonnet lunamk]"
+ },
+ "01-mlb-latest.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b1]"
+ },
+ "02-hn-summary.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b1]"
+ },
+ "03-weather-nyc.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b1]"
+ },
+ "04-x-projects.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b1]"
+ },
+ "05-amazon-cart.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b1]"
+ },
+ "06-amazon-search-add.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b1]"
+ },
+ "08-airport-departures.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b1]"
+ },
+ "09-recipe-scaling.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b1]"
+ },
+ "10-arxiv-agents-paper.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b1]"
+ },
+ "11-github-trending-audit.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b1]"
+ },
+ "12-wikipedia-current-events.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b1]"
+ },
+ "13-usgs-quake-report.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b2]"
+ },
+ "14-imdb-yearly-top.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b2]"
+ },
+ "15-stock-analyst-targets.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b2]"
+ },
+ "17-currency-meal-budget.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b2]"
+ },
+ "18-npm-package-audit.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b2]"
+ },
+ "19-wiktionary-wotd.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b2]"
+ },
+ "20-nasa-apod-vision.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b2]"
+ },
+ "21-amazon-office-bundle.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b2]"
+ },
+ "22-amazon-earbud-compare.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b2]"
+ },
+ "26-ebay-keyboard-hunt.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b2]"
+ },
+ "27-amazon-review-mining.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b2]"
+ },
+ "47-reddit-save.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b4]"
+ },
+ "48-spotify-playlist.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b4]"
+ },
+ "49-x-bookmark.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b4]"
+ },
+ "50-google-flights-nonstop.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b4]"
+ },
+ "51-wikipedia-revision-audit.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b4]"
+ },
+ "53-caniuse-feature.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b4]"
+ },
+ "54-stackoverflow-live.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b4]"
+ },
+ "55-wayback-snapshot.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b4]"
+ },
+ "56-sunrise-reykjavik.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b4]"
+ },
+ "57-hn-debate-analysis.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b4]"
+ },
+ "29-excalidraw-pipeline.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b3]"
+ },
+ "32-desmos-intersections.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b3]"
+ },
+ "33-osm-street-read.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b3]"
+ },
+ "34-osm-route-measure.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b3]"
+ },
+ "39-youtube-frame-describe.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b3]"
+ },
+ "40-arxiv-pdf-figure.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b3]"
+ },
+ "41-owid-dataset-read.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b3]"
+ },
+ "42-youtube-watch-later.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b3]"
+ },
+ "43-gmail-self-draft.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b3]"
+ },
+ "44-gcal-event.spark-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-low-b3]"
+ },
+ "36-jspaint-poster.spark-low-val": {
+  "pass": false,
+  "note": "canvas solid red, no visible dots; visual criterion unmet [judge: sonnet spark-low-b3]"
  }
 }
