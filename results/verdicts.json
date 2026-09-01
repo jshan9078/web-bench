@@ -327,14 +327,6 @@
   "pass": true,
   "note": "Same higher-rated pick added, cart confirms [judge: sonnet makeup1]"
  },
- "23-amazon-filter-hunt.gemini-3.7-flash-low-val": {
-  "pass": true,
-  "note": "Correct category/filter/sort path, dates monotonic, cart confirms [judge: sonnet makeup1]"
- },
- "23-amazon-filter-hunt.haiku-low-val": {
-  "pass": false,
-  "note": "Generic keyword search instead of category+filter+sort; implausible result [judge: sonnet makeup1]"
- },
  "03-weather-nyc.haiku-max-val": {
   "pass": true,
   "note": "NWS Central Park; 79/67 matches page [judge: sonnet exp01]"
@@ -687,14 +679,6 @@
   "pass": true,
   "note": "Correct item; battery grounded [judge: sonnet exp-w3b4]"
  },
- "23-amazon-filter-hunt.gemini-3.7-flash-high-val": {
-  "pass": true,
-  "note": "Firestarter 4.5 paperback; cart confirms [judge: sonnet exp-w3b4]"
- },
- "23-amazon-filter-hunt.gemini-3.7-flash-medium-val": {
-  "pass": true,
-  "note": "Same grounded result; cart confirmed [judge: sonnet exp-w3b4]"
- },
  "01-mlb-latest.gemini-3.7-flash-high-val": {
   "pass": true,
   "note": "Games and scorers match box score [judge: sonnet exp-w3b0]"
@@ -794,22 +778,6 @@
  "27-amazon-review-mining.haiku-medium-val": {
   "pass": false,
   "note": "Only 1 of 3 complaints has captured review date [judge: sonnet exp-w3b7]"
- },
- "23-amazon-filter-hunt.haiku-high-val": {
-  "pass": false,
-  "note": "Cart empty; pub date admitted from common knowledge [judge: sonnet exp-w3b5]"
- },
- "23-amazon-filter-hunt.haiku-max-val": {
-  "pass": false,
-  "note": "URL param ignored; every capture shows Sort by Featured [judge: sonnet exp-w3b5]"
- },
- "23-amazon-filter-hunt.haiku-medium-val": {
-  "pass": false,
-  "note": "Sort dropdown never applied; stayed Featured [judge: sonnet exp-w3b5]"
- },
- "23-amazon-filter-hunt.haiku-xhigh-val": {
-  "pass": false,
-  "note": "Wrong filters and sort (customer review not pub date) [judge: sonnet exp-w3b5]"
  },
  "34-osm-route-measure.gemini-3.7-flash-high-val": {
   "pass": true,
@@ -1415,10 +1383,6 @@
   "pass": true,
   "note": "Higher-rated added; cart shows price [judge: sonnet sl2]"
  },
- "23-amazon-filter-hunt.sonnet-low-val": {
-  "pass": true,
-  "note": "Proper filter path; pub date; cart confirms [judge: sonnet sl2]"
- },
  "27-amazon-review-mining.sonnet-low-val": {
   "pass": true,
   "note": "Ratings confirmed; 3 dated complaints in window [judge: sonnet sl2]"
@@ -1959,22 +1923,6 @@
   "pass": true,
   "note": "Cart confirms same item [judge: sonnet s4]"
  },
- "23-amazon-filter-hunt.sonnet-high-val": {
-  "pass": true,
-  "note": "Cart confirms book; pre-order skipped [judge: sonnet s4]"
- },
- "23-amazon-filter-hunt.sonnet-max-val": {
-  "pass": true,
-  "note": "Filters honored per trace [judge: sonnet s4]"
- },
- "23-amazon-filter-hunt.sonnet-medium-val": {
-  "pass": true,
-  "note": "Filters applied per trace [judge: sonnet s4]"
- },
- "23-amazon-filter-hunt.sonnet-xhigh-val": {
-  "pass": true,
-  "note": "Consistent with independent runs [judge: sonnet s4]"
- },
  "27-amazon-review-mining.sonnet-high-val": {
   "pass": true,
   "note": "Critical pages navigated; dates in window [judge: sonnet s4]"
@@ -2374,10 +2322,6 @@
  "22-amazon-earbud-compare.opus-low-val": {
   "pass": true,
   "note": "Sponsored filtered; higher-rated in cart [judge: sonnet ol2]"
- },
- "23-amazon-filter-hunt.opus-low-val": {
-  "pass": true,
-  "note": "Firestarter paperback matches [judge: sonnet ol2]"
  },
  "26-ebay-keyboard-hunt.opus-low-val": {
   "pass": true,
@@ -2791,22 +2735,6 @@
   "pass": true,
   "note": "Correctly added higher-rated [judge: sonnet op2b2]"
  },
- "23-amazon-filter-hunt.opus-high-val": {
-  "pass": true,
-  "note": "Trace shows Books>SciFi>Paperback+4-star filters>sort by pub date, skipping pre-orders/over-$25 to page 9-10; cart_after confirms For a Breath I Tarry by Roger Zelazny, Paperback, $15.01, matching claimed title/author/price/pub-date. [judge: sonnet uncap-b0]"
- },
- "23-amazon-filter-hunt.opus-max-val": {
-  "pass": true,
-  "note": "Independent run reaches identical book via same filter/sort path (page title confirms 4-star+Paperback+SciFi state); cart_after shows same item at $15.01, matching answer. [judge: sonnet uncap-b0]"
- },
- "23-amazon-filter-hunt.opus-medium-val": {
-  "pass": true,
-  "note": "Book in cart; skips explained [judge: sonnet op2b2]"
- },
- "23-amazon-filter-hunt.opus-xhigh-val": {
-  "pass": true,
-  "note": "Third independent run converges on same book after filtering/sorting and skipping pre-orders/over-budget items; cart_after confirms For a Breath I Tarry, $15.01 in cart. [judge: sonnet uncap-b0]"
- },
  "26-ebay-keyboard-hunt.opus-high-val": {
   "pass": true,
   "note": "Cart confirms keyboard [judge: sonnet op2b2]"
@@ -3187,10 +3115,6 @@
   "pass": true,
   "note": "Cart screenshot confirms P30i added; ratings were a genuine tie (4.3/4.3) per captured pages, agent disclosed the tie and used battery life as a reasonable tiebreak; comparison figures grounded in trace. [judge: sonnet luna-b1]"
  },
- "23-amazon-filter-hunt.luna-low-val": {
-  "pass": true,
-  "note": "Cart screenshot shows R.U.R. paperback $12.99 added; extensive trace shows format/rating filters applied, sort by pub date, and price/date checks before selecting this item. [judge: sonnet luna-b1]"
- },
  "26-ebay-keyboard-hunt.luna-low-val": {
   "pass": null,
   "blocked": true,
@@ -3421,9 +3345,8 @@
   "note": "Both P20i/P30i figures match captured product pages; rating tie (4.3/5 both) reasonably broken by picking first result; cart screenshot confirms P20i added [judge: sonnet lunamed-b1]"
  },
  "26-ebay-keyboard-hunt.luna-medium-val": {
-  "pass": null,
-  "blocked": true,
-  "note": "Trace shows real hCaptcha wall (Please verify yourself to continue + hCaptcha iframe) on cart.ebay.ca after add-to-cart, confirming the blocked_claim per verifier known-hazard allowance [judge: sonnet lunamed-b1]"
+  "pass": true,
+  "note": "Cart screenshot confirms AUKEY keyboard, C$26.95, free shipping, 100% seller feedback; trace shows upsell dialog dismissed via Proceed to cart (not checkout). [judge: sonnet lunamk]"
  },
  "27-amazon-review-mining.luna-medium-val": {
   "pass": true,
@@ -4026,5 +3949,13 @@
  "41-owid-dataset-read.luna-max-val": {
   "pass": true,
   "note": "Screenshot shows OWID Table filtered to Japan with 2023 value 84.7 years, matching reported answer [judge: sonnet lunamax-b1]"
+ },
+ "05-amazon-cart.luna-xhigh-val": {
+  "pass": true,
+  "note": "Cart screenshot shows both Clean Code and Atomic Habits, subtotal 2 items $61.49, qty 1 each; trace shows both add-to-cart clicks this run. [judge: sonnet lunamk]"
+ },
+ "22-amazon-earbud-compare.luna-xhigh-val": {
+  "pass": true,
+  "note": "P20i/P30i price, tied 4.3 rating, review counts, and battery figures confirmed in captured product pages; P30i added as tie-breaker and shown in cart screenshot this run. [judge: sonnet lunamk]"
  }
 }

@@ -95,7 +95,6 @@ TASKS = {
     "20-nasa-apod-vision": {"kind": "judge"},
     "21-amazon-office-bundle": {"profile": True, "kind": "judge", "cart": True},
     "22-amazon-earbud-compare": {"profile": True, "kind": "judge", "cart": True},
-    "23-amazon-filter-hunt": {"profile": True, "kind": "judge", "cart": True},
     "26-ebay-keyboard-hunt": {"kind": "judge"},
     "27-amazon-review-mining": {"profile": True, "kind": "judge"},
     "29-excalidraw-pipeline": {"kind": "judge"},
@@ -251,8 +250,8 @@ def setup(task, run=None):
                                 "visible": bool(os.environ.get("BENCH_VISIBLE"))}))
     mode = "a VISIBLE window" if os.environ.get("BENCH_VISIBLE") else "headless (you cannot see the screen)"
     body = PREAMBLE.format(sid=sid, mode=mode) + "\n\nTASK: " + t["prompt"]
-    if os.environ.get("BENCH_HARNESS") == "agy":
-        # agy can't load a Claude skill; point it at the shipped SKILL.md for equivalent guidance
+    if os.environ.get("BENCH_HARNESS") in ("agy", "codex"):
+        # agy/codex can't load a Claude skill; point them at the shipped SKILL.md for equivalent guidance
         print(f"First, read the browser CLI reference at {SKILL} to learn the available commands and targeting "
               f"syntax. Then complete this task using only that `browser` CLI.\n\n" + body)
     else:
@@ -275,6 +274,18 @@ def _parse_stream(path, harness):
         text = o.get("result") or o.get("response") or ""
         usage = o.get("usage") or {}
         return text, usage
+    if harness == "codex":
+        # codex exec --json: agent_message items carry text; turn.completed events carry usage
+        # (accumulated across turns; input_tokens already includes cached_input_tokens).
+        acc = {}
+        for o in objs:
+            if o.get("type") == "item.completed" and o.get("item", {}).get("type") == "agent_message":
+                text = o["item"].get("text", "")
+            if o.get("type") == "turn.completed":
+                for k, v in (o.get("usage") or {}).items():
+                    if isinstance(v, (int, float)):
+                        acc[k] = acc.get(k, 0) + v
+        return text, acc
     for o in objs:  # stream-json: find the terminal result event
         if harness == "agy":
             if o.get("event") == "result":
@@ -396,6 +407,9 @@ def _agent_tokens(harness, usage):
         return None, None
     if harness == "agy":
         return usage.get("total_tokens"), usage.get("thinking_tokens")
+    if harness == "codex":
+        tot = (usage.get("input_tokens", 0) + usage.get("output_tokens", 0)) or None
+        return tot, usage.get("reasoning_output_tokens")
     tot = sum(usage.get(k, 0) for k in ("input_tokens", "output_tokens",
               "cache_read_input_tokens", "cache_creation_input_tokens")) or None
     return tot, usage.get("thinking_tokens")

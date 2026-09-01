@@ -4,16 +4,20 @@ A benchmark for **how efficiently an LLM drives a browser** on real websites. Ev
 gets the same browser tool and the same task set on live sites; the benchmark measures the **cost
 of success**, time, tokens, tool calls, and dollars per task.
 
-The suite is **45 live-validated tasks** spanning reading, e-commerce, vision and canvas work,
+The suite is **44 live-validated tasks** spanning reading, e-commerce, vision and canvas work,
 signed-in productivity, and interactive web tools. Candidate tasks were culled during validation
 under three design rules: no task whose outcome is one clean API call for a connected agent, no
 task whose pass/fail hinges on puzzle or pretraining knowledge rather than browsing skill, and no
 task dominated by bot walls across configurations. Task directory numbers are stable identifiers,
-so the numbering has gaps where culled candidates used to sit.
+so the numbering has gaps where culled candidates used to sit. One task was culled after the
+full matrix ran: an Amazon compound-filter hunt whose accumulated page context requires a single
+API request larger than common provider rate tiers permit (a 200k tokens-per-minute tier rejects
+its ~204-220k-token requests outright), making it undeliverable to some providers for account-tier
+reasons unrelated to browsing skill.
 
 ## Results (full matrix, 2026-08-29/30)
 
-**18 configurations x 45 tasks = 810 runs, all judged, pass@1.** Four model families: **Claude
+**18 configurations x 44 tasks = 792 runs, all judged, pass@1.** Four model families: **Claude
 Opus 5, Sonnet 5, and Haiku 4.5** via Claude Code, and **Gemini 3.7 Flash** (its three levels)
 via Antigravity. Opus and Sonnet swept five thinking levels each. Haiku 4.5 does not support the
 effort parameter (Claude Code silently ignores `--effort` on it; run telemetry confirms zero
@@ -27,20 +31,20 @@ answers an hour apart.
 
 | model | thinking | pass | rate | median time | median cost |
 |---|---|---|---|---|---|
-| Haiku 4.5 | n/a (5 replicate sweeps) | 153/225 | 68.0% | 53s | $0.203 |
-| Gemini 3.7 Flash | low | 43/45 | 95.6% | 26s | $0.118 |
-| Gemini 3.7 Flash | medium | 45/45 | 100.0% | 46s | $0.255 |
-| Gemini 3.7 Flash | high | 44/45 | 97.8% | 35s | $0.188 |
-| Sonnet 5 | low | 44/45 | 97.8% | 23s | $0.317 |
-| Sonnet 5 | medium | 42/45 | 93.3% | 27s | $0.395 |
-| Sonnet 5 | high | 42/45 | 93.3% | 40s | $0.459 |
-| Sonnet 5 | xhigh | 44/45 | 97.8% | 44s | $0.553 |
-| Sonnet 5 | max | 43/45 | 95.6% | 62s | $0.633 |
-| Opus 5 | low | 44/45 | 97.8% | 31s | $0.405 |
-| Opus 5 | medium | 44/45 | 97.8% | 42s | $0.528 |
-| Opus 5 | high | 45/45 | 100.0% | 59s | $0.598 |
-| Opus 5 | xhigh | 43/45 | 95.6% | 76s | $0.688 |
-| Opus 5 | max | 44/45 | 97.8% | 96s | $0.843 |
+| Haiku 4.5 | n/a (5 replicate sweeps) | 153/220 | 69.5% | 51s | $0.198 |
+| Gemini 3.7 Flash | low | 42/44 | 95.5% | 26s | $0.117 |
+| Gemini 3.7 Flash | medium | 44/44 | 100.0% | 45s | $0.254 |
+| Gemini 3.7 Flash | high | 43/44 | 97.7% | 35s | $0.187 |
+| Sonnet 5 | low | 43/44 | 97.7% | 21s | $0.313 |
+| Sonnet 5 | medium | 41/44 | 93.2% | 27s | $0.393 |
+| Sonnet 5 | high | 41/44 | 93.2% | 39s | $0.454 |
+| Sonnet 5 | xhigh | 43/44 | 97.7% | 44s | $0.511 |
+| Sonnet 5 | max | 42/44 | 95.5% | 60s | $0.594 |
+| Opus 5 | low | 43/44 | 97.7% | 31s | $0.403 |
+| Opus 5 | medium | 43/44 | 97.7% | 39s | $0.508 |
+| Opus 5 | high | 44/44 | 100.0% | 55s | $0.583 |
+| Opus 5 | xhigh | 42/44 | 95.5% | 67s | $0.685 |
+| Opus 5 | max | 43/44 | 97.7% | 95s | $0.842 |
 
 Claude costs are the CLI's own reported `total_cost_usd` per run; Gemini costs are computed from
 each run's measured token split at the introductory pricing in effect ($0.75/M input, $3.75/M
@@ -122,7 +126,6 @@ artifacts (videos, full traces, screenshots) stay local and git-ignored.
 | `20-nasa-apod-vision` | read + vision | apod.nasa.gov | reading a daily page plus genuinely describing an image from a screenshot |
 | `21-amazon-office-bundle` | action + cart | amazon.ca | multi-item constrained shopping, budget arithmetic, cart verification |
 | `22-amazon-earbud-compare` | action + cart | amazon.ca | comparing two live product pages on price, rating, and a spec before acting |
-| `23-amazon-filter-hunt` | action + cart | amazon.ca | compound filtering and sorting in a category, then acting on the result |
 | `26-ebay-keyboard-hunt` | action | ebay.ca | marketplace filtering on price/format/seller quality before acting |
 | `27-amazon-review-mining` | read | amazon.ca | review filtering and synthesis of recurring complaints from recent reviews |
 | `29-excalidraw-pipeline` | action + vision + pixel | excalidraw.com | canvas toolbar use, pixel-placed text elements, screenshot proof |
