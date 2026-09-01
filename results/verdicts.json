@@ -4129,5 +4129,177 @@
  "36-jspaint-poster.spark-low-val": {
   "pass": false,
   "note": "canvas solid red, no visible dots; visual criterion unmet [judge: sonnet spark-low-b3]"
+ },
+ "13-usgs-quake-report.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b2]"
+ },
+ "14-imdb-yearly-top.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b2]"
+ },
+ "15-stock-analyst-targets.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b2]"
+ },
+ "17-currency-meal-budget.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b2]"
+ },
+ "18-npm-package-audit.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b2]"
+ },
+ "19-wiktionary-wotd.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b2]"
+ },
+ "20-nasa-apod-vision.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b2]"
+ },
+ "21-amazon-office-bundle.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b2]"
+ },
+ "26-ebay-keyboard-hunt.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b2]"
+ },
+ "27-amazon-review-mining.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b2]"
+ },
+ "22-amazon-earbud-compare.spark-medium-val": {
+  "pass": false,
+  "note": "cart-after screenshot empty despite claimed add; cart evidence overrides claim [judge: sonnet spark-medium-b2]"
+ },
+ "01-mlb-latest.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b1]"
+ },
+ "02-hn-summary.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b1]"
+ },
+ "03-weather-nyc.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b1]"
+ },
+ "04-x-projects.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b1]"
+ },
+ "05-amazon-cart.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b1]"
+ },
+ "06-amazon-search-add.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b1]"
+ },
+ "08-airport-departures.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b1]"
+ },
+ "09-recipe-scaling.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b1]"
+ },
+ "10-arxiv-agents-paper.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b1]"
+ },
+ "11-github-trending-audit.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b1]"
+ },
+ "12-wikipedia-current-events.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b1]"
+ },
+ "29-excalidraw-pipeline.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b3]"
+ },
+ "33-osm-street-read.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b3]"
+ },
+ "34-osm-route-measure.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b3]"
+ },
+ "36-jspaint-poster.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b3]"
+ },
+ "40-arxiv-pdf-figure.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b3]"
+ },
+ "41-owid-dataset-read.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b3]"
+ },
+ "42-youtube-watch-later.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b3]"
+ },
+ "43-gmail-self-draft.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b3]"
+ },
+ "44-gcal-event.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b3]"
+ },
+ "32-desmos-intersections.spark-medium-val": {
+  "pass": false,
+  "note": "no native click label rendered; coords typed as overlay expression [judge: sonnet spark-medium-b3]"
+ },
+ "39-youtube-frame-describe.spark-medium-val": {
+  "pass": false,
+  "note": "described frame does not match captured frame (k re-toggled play) [judge: sonnet spark-medium-b3]"
+ },
+ "47-reddit-save.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b4]"
+ },
+ "48-spotify-playlist.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b4]"
+ },
+ "49-x-bookmark.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b4]"
+ },
+ "50-google-flights-nonstop.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b4]"
+ },
+ "51-wikipedia-revision-audit.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b4]"
+ },
+ "53-caniuse-feature.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b4]"
+ },
+ "54-stackoverflow-live.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b4]"
+ },
+ "55-wayback-snapshot.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b4]"
+ },
+ "56-sunrise-reykjavik.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b4]"
+ },
+ "57-hn-debate-analysis.spark-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet spark-medium-b4]"
  }
 }
