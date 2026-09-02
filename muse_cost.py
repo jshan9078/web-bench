@@ -12,6 +12,10 @@ import json, glob, sys
 
 PRICING = {  # model -> (input, cached_input, output) $/M
     "muse-spark-1.2-contributor": (1.25, 0.15, 4.25),
+    # 1.3 runs use the contributor model but are priced at the standard (non-contributor) list
+    # rates, which are identical to 1.2's: $1.25 in / $0.15 cached / $4.25 out.
+    "muse-spark-1.3-contributor": (1.25, 0.15, 4.25),
+    "muse-spark-1.3": (1.25, 0.15, 4.25),
 }
 
 def run_cost(model, u):

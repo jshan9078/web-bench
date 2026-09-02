@@ -37,6 +37,16 @@ agy -p "$prompt" --model "$SLUG" "${PERM[@]}" --add-dir "$REPO" \
 kill $SAMPLER 2>/dev/null
 kill -TERM $REC 2>/dev/null; wait $REC 2>/dev/null
 
+# Quota/rate-limit guard: if agy failed to produce a real result (empty stream, no SUCCESS result,
+# or an explicit quota/rate-limit error), DO NOT record a husk bundle -- leave the task un-recorded
+# so the sweep's skip logic retries it on a later resume (e.g. after the 5-hour limit refreshes).
+if grep -qiE "resource_exhausted|rate limit|quota|too many requests|\"status\": ?\"(FAILED|ERROR)\"|error.*limit" "$STREAM" 2>/dev/null \
+   || ! grep -q '"event":"result"' "$STREAM" 2>/dev/null; then
+  echo "$(date +%H:%M:%S) $RUN $TASK $CONFIG QUOTA/FAIL - not recorded (retryable)" >> "$LOG"
+  rm -f "$STREAM" "$RAW_MP4"
+  exit 3
+fi
+
 $PY harness.py record "$TASK" "run=$RUN" "config=$CONFIG" "harness=agy" "model=$SLUG" "effort=" "stream=$STREAM" "cpu=$CPU"
 $PY harness.py score "$TASK.$RUN"
 rm -f "$STREAM"

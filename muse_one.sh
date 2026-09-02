@@ -9,7 +9,7 @@
 set -u
 cd "$(dirname "$0")"
 TASK=$1; MODEL=$2; EFFORT=$3; RUN=$4
-CONFIG="spark-$EFFORT"
+CONFIG="${SPARK_PREFIX:-spark}-$EFFORT"   # SPARK_PREFIX=spark13 for the 1.3 family
 export BENCH_PROFILE=${BENCH_PROFILE:-}
 export BENCH_HARNESS=muse
 RES=results; LOG=$RES/suite.log; PY=python3

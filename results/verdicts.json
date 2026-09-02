@@ -5161,5 +5161,177 @@
  "57-hn-debate-analysis.gemini-3.8-flash-medium": {
   "pass": true,
   "note": "[judge: sonnet g38med-b4]"
+ },
+ "13-usgs-quake-report.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b2]"
+ },
+ "14-imdb-yearly-top.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b2]"
+ },
+ "15-stock-analyst-targets.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b2]"
+ },
+ "17-currency-meal-budget.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b2]"
+ },
+ "18-npm-package-audit.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b2]"
+ },
+ "19-wiktionary-wotd.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b2]"
+ },
+ "20-nasa-apod-vision.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b2]"
+ },
+ "21-amazon-office-bundle.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b2]"
+ },
+ "22-amazon-earbud-compare.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b2]"
+ },
+ "27-amazon-review-mining.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b2]"
+ },
+ "29-excalidraw-pipeline.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b2]"
+ },
+ "01-mlb-latest.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b1]"
+ },
+ "02-hn-summary.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b1]"
+ },
+ "03-weather-nyc.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b1]"
+ },
+ "04-x-projects.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b1]"
+ },
+ "05-amazon-cart.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b1]"
+ },
+ "06-amazon-search-add.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b1]"
+ },
+ "08-airport-departures.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b1]"
+ },
+ "09-recipe-scaling.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b1]"
+ },
+ "10-arxiv-agents-paper.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b1]"
+ },
+ "11-github-trending-audit.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b1]"
+ },
+ "12-wikipedia-current-events.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b1]"
+ },
+ "26-ebay-keyboard-hunt.spark13-low-val": {
+  "pass": true,
+  "note": "wall cleared on single retry; cart frames confirm Redragon K552 C$45.82, free shipping, seller 99.2% [judge: sonnet s13low-ebay]"
+ },
+ "48-spotify-playlist.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b4]"
+ },
+ "49-x-bookmark.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b4]"
+ },
+ "50-google-flights-nonstop.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b4]"
+ },
+ "51-wikipedia-revision-audit.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b4]"
+ },
+ "53-caniuse-feature.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b4]"
+ },
+ "54-stackoverflow-live.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b4]"
+ },
+ "55-wayback-snapshot.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b4]"
+ },
+ "56-sunrise-reykjavik.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b4]"
+ },
+ "57-hn-debate-analysis.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b4]"
+ },
+ "32-desmos-intersections.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b3]"
+ },
+ "34-osm-route-measure.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b3]"
+ },
+ "36-jspaint-poster.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b3]"
+ },
+ "39-youtube-frame-describe.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b3]"
+ },
+ "40-arxiv-pdf-figure.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b3]"
+ },
+ "41-owid-dataset-read.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b3]"
+ },
+ "42-youtube-watch-later.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b3]"
+ },
+ "43-gmail-self-draft.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b3]"
+ },
+ "44-gcal-event.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b3]"
+ },
+ "47-reddit-save.spark13-low-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13low-b3]"
+ },
+ "33-osm-street-read.spark13-low-val": {
+  "pass": false,
+  "note": "street names obtained via 3 Nominatim reverse-geocode API fetches (calls 11,13,14) not the rendered map; agent stated it could not view its own screenshot; prompt forbids non-map sources [judge: sonnet s13low-b3, verified by operator]"
  }
 }
