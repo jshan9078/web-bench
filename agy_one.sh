@@ -17,7 +17,10 @@ export BENCH_PROFILE=${BENCH_PROFILE:-}
 export BENCH_HARNESS=agy    # setup emits a prompt that tells agy to read SKILL.md (no /browser-cli skill)
 RES=results; LOG=$RES/suite.log; PY=python3
 mkdir -p raw; RAW_MP4=raw/$TASK.$RUN.mp4
-PRINT_TIMEOUT=${PRINT_TIMEOUT:-10m}
+# 180m is a runaway safety valve only (parity with the uncapped Claude/codex harnesses, MAX_TURNS=500).
+# The previous 10m default was a real cap: it killed one actively-progressing run
+# (48-spotify gemini-3.8-flash-low at 606s), found in the 2026-09-02 failure re-audit and rerun.
+PRINT_TIMEOUT=${PRINT_TIMEOUT:-180m}
 
 command -v agy >/dev/null || { echo "agy not on PATH"; exit 1; }
 PERM=(); [ "${AGY_SKIP_PERMS:-1}" = "1" ] && PERM=(--dangerously-skip-permissions)

@@ -1,0 +1,7 @@
+32-desmos-intersections.opus-max-val
+32-desmos-intersections.opus-medium-val
+32-desmos-intersections.opus-xhigh-val
+36-jspaint-poster.opus-low-val
+36-jspaint-poster.opus-xhigh-val
+36-jspaint-poster.sonnet-medium-val
+36-jspaint-poster.sonnet-xhigh-val

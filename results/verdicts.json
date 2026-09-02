@@ -224,8 +224,8 @@
   "note": "Draft matched; no saved drafts confirms cleanup [judge: sonnet batch07]"
  },
  "44-gcal-event.gemini-3.7-flash-low-val": {
-  "pass": false,
-  "note": "Deleted own verification screenshot with rm -f [judge: sonnet batch07]"
+  "pass": true,
+  "note": "RE-AUDIT FLIP: video frames show 'webbench sync' created on the correct next Monday (Aug 31, 10:00-10:30, Location Online) with 'Event saved' toast, then the open-event -> delete click sequence; original fail cited only rm -f of a /tmp screenshot that was never archived evidence (the video is), a misapplication of rule 8 [re-audit 2026-09-02, operator-verified]"
  },
  "44-gcal-event.haiku-low-val": {
   "pass": false,
@@ -1729,7 +1729,7 @@
  },
  "08-airport-departures.sonnet-medium-val": {
   "pass": false,
-  "note": "Stated 06:00 vs board's 06:10 [judge: sonnet s2b2]"
+  "note": "UPHELD on re-audit: the SCHEDULED DEPARTURES board was captured in-trace; agent reported flight-page gate times (06:00/06:10/06:20) instead of the board's times as the prompt requires; 22/24 configs read the board correctly, so not a prompt ambiguity [re-audit 2026-09-02]"
  },
  "08-airport-departures.sonnet-xhigh-val": {
   "pass": true,
@@ -2161,7 +2161,7 @@
  },
  "34-osm-route-measure.sonnet-max-val": {
   "pass": false,
-  "note": "Never finished; no route details, null answer [judge: sonnet sfb0]"
+  "note": "UPHELD on re-audit: claimed hung CLI type command is contradicted by the daemon log (all type calls completed in 0.1s ok=True); run then idled 244s with zero daemon activity, agent stalled itself waiting for a self-created monitor [re-audit 2026-09-02, operator-verified]"
  },
  "34-osm-route-measure.sonnet-medium-val": {
   "pass": true,
@@ -3150,7 +3150,7 @@
  },
  "40-arxiv-pdf-figure.luna-low-val": {
   "pass": false,
-  "note": "No screenshot of the actual PDF page 1 exists in the trace (only the arXiv abstract page); the figure description was pulled from the HTML-render DOM via eval, not read visually from a page-1 screenshot as the task and verifier require. [judge: sonnet luna-b1]"
+  "note": "UPHELD on re-audit: one transient CDP Page.navigate timeout, agent gave up after 12 calls/226s and extracted the description via DOM eval instead of the required page-1 screenshot; 22/26 configs rendered the PDF [re-audit 2026-09-02]"
  },
  "41-owid-dataset-read.luna-low-val": {
   "pass": true,
@@ -3438,8 +3438,8 @@
   "note": "Captured Yahoo quote page text matches all five reported values (217.55 close, 216.81-229.26 range, 5.253T cap, Nov 17 2026 earnings, 323.42 1y target est) and correctly notes market closed. [judge: sonnet lunamed-b0]"
  },
  "17-currency-meal-budget.luna-medium-val": {
-  "pass": false,
-  "note": "XE rate/conversion is grounded, but the final Numbeo text extraction returned completely empty and no other captured content shows the 1,200 JPY meal price anywhere in the trace, so the meal price and resulting 239-meal count are ungrounded. [judge: sonnet lunamed-b0]"
+  "pass": true,
+  "note": "RE-AUDIT FLIP: end_state text contains 'Inexpensive Restaurant \u00a51,200.00'; 2500*114.908=287,270, floor/1200=239 matches answer; original judge wrongly claimed the Numbeo extraction was empty [re-audit 2026-09-02, operator-verified]"
  },
  "18-npm-package-audit.luna-high-val": {
   "pass": true,
@@ -4558,10 +4558,6 @@
   "pass": true,
   "note": "[judge: sonnet spark-xhigh-b2]"
  },
- "15-stock-analyst-targets.spark-xhigh-val": {
-  "pass": false,
-  "note": "final output never states the five required values; no prior turn delivered them [judge: sonnet spark-xhigh-b2]"
- },
  "47-reddit-save.spark-ultra-val": {
   "pass": true,
   "note": "[judge: sonnet spark-ultra-b4]"
@@ -4729,10 +4725,6 @@
  "44-gcal-event.spark-high-val": {
   "pass": true,
   "note": "[judge: sonnet spark-high-b3]"
- },
- "40-arxiv-pdf-figure.spark-high-val": {
-  "pass": false,
-  "note": "PDF viewer never rendered page 1; run ended 'Server stopped' with no title/author/figure reported [judge: sonnet spark-high-b3]"
  },
  "47-reddit-save.spark-xhigh-val": {
   "pass": true,

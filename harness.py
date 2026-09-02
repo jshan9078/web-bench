@@ -292,11 +292,14 @@ def _parse_stream(path, harness):
         # session log's model_completed events (wrapped in "envelope"), accumulated across calls.
         # cached_tokens is a subset of input_tokens; reasoning_tokens a subset of output_tokens.
         acc = {}
+        deltas = []
         for o in objs:
             env = o.get("envelope", o)
             if not isinstance(env, dict):
                 continue
             p = env.get("payload") or {}
+            if env.get("payload_type") == "run.output.delta":
+                deltas.append(p.get("text") or "")
             if env.get("payload_type") == "run.terminal.completed":
                 text = p.get("text") or text
             ev = p.get("event") or {}
@@ -304,6 +307,12 @@ def _parse_stream(path, harness):
                 for k, v in (ev.get("usage") or {}).items():
                     if isinstance(v, (int, float)):
                         acc[k] = acc.get(k, 0) + v
+        # The terminal event's text can be a late status line ("Server stopped") rather than the
+        # agent's real output; the concatenated output deltas are the authoritative transcript.
+        # Found in the 2026-09-02 failure re-audit (2 runs affected).
+        full = "".join(deltas)
+        if len(full) > len(text or ""):
+            text = full
         return text, acc
     for o in objs:  # stream-json: find the terminal result event
         if harness == "agy":

@@ -8,8 +8,8 @@ SLUG=$1
 RUN="$SLUG"
 # Mutual exclusion: one benchmark process on this machine at a time. If a muse sweep is driving
 # the browser, defer this pass (exit 3 = "pause", so agy_autoresume waits 15m and retries).
-if pgrep -f "muse_sweep.sh|muse_one.sh" >/dev/null 2>&1; then
-  echo "BUSY: muse sweep running, deferring agy pass"; exit 3
+if pgrep -f "muse_sweep.sh|muse_one.sh|run_one.sh|rerun_uncapped.sh|codex_one.sh|env_rerun_launcher.sh" >/dev/null 2>&1; then
+  echo "BUSY: another benchmark sweep is driving the browser, deferring agy pass"; exit 3
 fi
 for T in $(python3 -c "import harness; print('\n'.join(harness.TASKS))"); do
   if [ -f "results/$T/$RUN.json" ]; then echo "skip $T (done)"; continue; fi
