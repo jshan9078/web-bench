@@ -10,9 +10,8 @@
 set -u
 cd "$(dirname "$0")"
 LOG=results/env-reruns.log
-echo "$(date +%H:%M:%S) launcher: waiting for 1.3 chain to finish" >> "$LOG"
-until grep -q "ALL 1.3 TIERS DONE" results/spark13-tiers-sweep.log 2>/dev/null \
-      && ! pgrep -f "muse_sweep.sh|muse_one.sh" >/dev/null; do sleep 30; done
+echo "$(date +%H:%M:%S) launcher: waiting for the browser to be free (in-flight muse task to finish)" >> "$LOG"
+until ! pgrep -f "muse_sweep.sh|muse_one.sh|muse exec" >/dev/null; do sleep 15; done
 mkdir -p raw/attempt1
 while read -r TASK HARNESS MODEL EFFORT RUN; do
   [ -z "${TASK:-}" ] && continue

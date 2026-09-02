@@ -5333,5 +5333,177 @@
  "40-arxiv-pdf-figure.spark-high-val": {
   "pass": true,
   "note": "RE-JUDGED on reconstructed transcript (parser had recorded 'Server stopped'): video frame confirms real page-1 canvas render of arXiv:2608.28771, title/9 authors/no figure match [judge: sonnet muse-rejudge, re-audit 2026-09-02]"
+ },
+ "13-usgs-quake-report.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b2]"
+ },
+ "14-imdb-yearly-top.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b2]"
+ },
+ "15-stock-analyst-targets.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b2]"
+ },
+ "17-currency-meal-budget.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b2]"
+ },
+ "18-npm-package-audit.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b2]"
+ },
+ "19-wiktionary-wotd.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b2]"
+ },
+ "20-nasa-apod-vision.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b2]"
+ },
+ "21-amazon-office-bundle.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b2]"
+ },
+ "22-amazon-earbud-compare.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b2]"
+ },
+ "26-ebay-keyboard-hunt.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b2]"
+ },
+ "27-amazon-review-mining.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b2]"
+ },
+ "01-mlb-latest.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b1]"
+ },
+ "02-hn-summary.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b1]"
+ },
+ "03-weather-nyc.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b1]"
+ },
+ "04-x-projects.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b1]"
+ },
+ "05-amazon-cart.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b1]"
+ },
+ "06-amazon-search-add.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b1]"
+ },
+ "08-airport-departures.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b1]"
+ },
+ "09-recipe-scaling.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b1]"
+ },
+ "10-arxiv-agents-paper.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b1]"
+ },
+ "11-github-trending-audit.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b1]"
+ },
+ "12-wikipedia-current-events.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b1]"
+ },
+ "47-reddit-save.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b4]"
+ },
+ "48-spotify-playlist.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b4]"
+ },
+ "49-x-bookmark.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b4]"
+ },
+ "50-google-flights-nonstop.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b4]"
+ },
+ "51-wikipedia-revision-audit.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b4]"
+ },
+ "53-caniuse-feature.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b4]"
+ },
+ "54-stackoverflow-live.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b4]"
+ },
+ "55-wayback-snapshot.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b4]"
+ },
+ "56-sunrise-reykjavik.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b4]"
+ },
+ "57-hn-debate-analysis.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b4]"
+ },
+ "29-excalidraw-pipeline.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b3]"
+ },
+ "32-desmos-intersections.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b3]"
+ },
+ "33-osm-street-read.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b3]"
+ },
+ "34-osm-route-measure.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b3]"
+ },
+ "36-jspaint-poster.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b3]"
+ },
+ "39-youtube-frame-describe.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b3]"
+ },
+ "40-arxiv-pdf-figure.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b3]"
+ },
+ "41-owid-dataset-read.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b3]"
+ },
+ "42-youtube-watch-later.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b3]"
+ },
+ "43-gmail-self-draft.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b3]"
+ },
+ "44-gcal-event.spark13-medium-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13med-b3]"
  }
 }
