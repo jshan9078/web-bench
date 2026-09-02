@@ -5325,5 +5325,13 @@
  "33-osm-street-read.spark13-low-val": {
   "pass": false,
   "note": "street names obtained via 3 Nominatim reverse-geocode API fetches (calls 11,13,14) not the rendered map; agent stated it could not view its own screenshot; prompt forbids non-map sources [judge: sonnet s13low-b3, verified by operator]"
+ },
+ "15-stock-analyst-targets.spark-xhigh-val": {
+  "pass": true,
+  "note": "RE-JUDGED on reconstructed transcript (parser had recorded only a trailing status line): all five values grounded via NVDA summary/analysis pages this run, market-closed noted [judge: sonnet muse-rejudge, re-audit 2026-09-02]"
+ },
+ "40-arxiv-pdf-figure.spark-high-val": {
+  "pass": true,
+  "note": "RE-JUDGED on reconstructed transcript (parser had recorded 'Server stopped'): video frame confirms real page-1 canvas render of arXiv:2608.28771, title/9 authors/no figure match [judge: sonnet muse-rejudge, re-audit 2026-09-02]"
  }
 }
