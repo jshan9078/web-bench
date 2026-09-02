@@ -4989,5 +4989,177 @@
  "44-gcal-event.gemini-3.8-flash-low": {
   "pass": true,
   "note": "[judge: sonnet g38low-b3]"
+ },
+ "13-usgs-quake-report.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b2]"
+ },
+ "14-imdb-yearly-top.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b2]"
+ },
+ "15-stock-analyst-targets.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b2]"
+ },
+ "17-currency-meal-budget.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b2]"
+ },
+ "18-npm-package-audit.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b2]"
+ },
+ "19-wiktionary-wotd.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b2]"
+ },
+ "20-nasa-apod-vision.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b2]"
+ },
+ "21-amazon-office-bundle.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b2]"
+ },
+ "22-amazon-earbud-compare.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b2]"
+ },
+ "26-ebay-keyboard-hunt.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b2]"
+ },
+ "27-amazon-review-mining.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b2]"
+ },
+ "29-excalidraw-pipeline.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b3]"
+ },
+ "32-desmos-intersections.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b3]"
+ },
+ "33-osm-street-read.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b3]"
+ },
+ "34-osm-route-measure.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b3]"
+ },
+ "36-jspaint-poster.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b3]"
+ },
+ "39-youtube-frame-describe.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b3]"
+ },
+ "40-arxiv-pdf-figure.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b3]"
+ },
+ "41-owid-dataset-read.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b3]"
+ },
+ "42-youtube-watch-later.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b3]"
+ },
+ "43-gmail-self-draft.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b3]"
+ },
+ "44-gcal-event.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b3]"
+ },
+ "01-mlb-latest.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b1]"
+ },
+ "02-hn-summary.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b1]"
+ },
+ "03-weather-nyc.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b1]"
+ },
+ "04-x-projects.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b1]"
+ },
+ "05-amazon-cart.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b1]"
+ },
+ "06-amazon-search-add.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b1]"
+ },
+ "08-airport-departures.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b1]"
+ },
+ "09-recipe-scaling.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b1]"
+ },
+ "10-arxiv-agents-paper.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b1]"
+ },
+ "11-github-trending-audit.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b1]"
+ },
+ "12-wikipedia-current-events.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b1]"
+ },
+ "47-reddit-save.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b4]"
+ },
+ "48-spotify-playlist.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b4]"
+ },
+ "49-x-bookmark.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b4]"
+ },
+ "50-google-flights-nonstop.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b4]"
+ },
+ "51-wikipedia-revision-audit.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b4]"
+ },
+ "53-caniuse-feature.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b4]"
+ },
+ "54-stackoverflow-live.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b4]"
+ },
+ "55-wayback-snapshot.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b4]"
+ },
+ "56-sunrise-reykjavik.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b4]"
+ },
+ "57-hn-debate-analysis.gemini-3.8-flash-medium": {
+  "pass": true,
+  "note": "[judge: sonnet g38med-b4]"
  }
 }
