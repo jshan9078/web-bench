@@ -55,6 +55,11 @@ in the manifest below:
   those two runs are re-judged on their real output, not re-run (the captures are intact).
   Headless rendering of archived Wayback pages is flaky (blank below the toolbar with DOM
   text present, seen in two runs); the one failed run is re-captured.
+- 2026-09-02 (operator grind policy): an uncapped run that is still grinding on a widget
+  after roughly 30 minutes of active work is terminated by the operator and scored on the
+  evidence captured up to that point (no rerun). This tightens the earlier ~2h precedent;
+  every previously successful uncapped Desmos/JS Paint solve finished inside 22 minutes, so
+  the threshold clips no known winning pattern.
 
 ## Re-audits
 
