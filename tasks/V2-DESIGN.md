@@ -610,3 +610,18 @@ Gantt coverage, pie shares (within 2 points), exact counts above a threshold lin
 were all read correctly by all three. Chart perception is saturated at these tolerances; what has separated
 configs is fine geometry (needle angles, hand positions, pixel placement), rule-following on interactive
 canvases, and calendar judgement. Batch 7 adds a remote-desktop (image-only UI) task and a dashcam clip.
+
+### Round 18 (2026-09-03): Calendar longest gap, Maps transit, odometer, handwritten note
+
+```
+task                             spark-low-val           sonnet-low-val             opus-low-val
+116-gcal-longest-gap                (judged separately: all three chose Tue Sep 8, 12:30-13:30, no reminder)
+117-gmaps-transit                   (judged separately: all three read depart 7:44, 1 h 1 min, 1 transfer, Line 1)
+118-odometer-read                FAIL (bypass)                     PASS                     PASS
+119-handwritten-note                      PASS                     PASS                     PASS
+```
+
+The two real-site judgement tasks produced identical answers from all three configs (the calendar is nearly
+empty, so the longest stretch is the whole of Tuesday). Spark's odometer run probed the private endpoints and
+also misread the last digit; the Claude configs read all six seven-segment digits under glare. Discriminating
+count after this round: 14.
