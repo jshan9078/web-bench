@@ -6449,5 +6449,41 @@
  "167-github-issue-pr.opus-low-val2": {
   "pass": false,
   "note": "Ground truth (re-verified via GitHub API this session) is issue #4297 closed by merged PR #4487 (davidism, merged 2022-03-15T15:36:16Z); the run instead reported issue #4295/PR #4298/delicb/Nov 15 2021 after visiting #4297's page and incorrectly concluding it was closed manually with no merged PR, missing the linked PR #4487 in its timeline. [judge: sonnet 163-167-batch]"
+ },
+ "188-wikipedia-category-latest.opus-low-val": {
+  "pass": true,
+  "note": "MediaWiki API confirms Toronto Public Library's latest revision is 2026-07-29T22:25:00Z by ~2026-42177-02, matching the run's reported title/time/user; run navigated all 5 category-article history pages during the session. [judge: sonnet batch-188-190]"
+ },
+ "188-wikipedia-category-latest.sonnet-low-val": {
+  "pass": true,
+  "note": "MediaWiki API confirms Toronto Public Library's latest revision is 2026-07-29T22:25:00Z by ~2026-42177-02, matching the run's answer exactly; run navigated each category article's history page live. [judge: sonnet batch-188-190]"
+ },
+ "188-wikipedia-category-latest.spark-low-val": {
+  "pass": true,
+  "note": "MediaWiki API confirms Toronto Public Library's latest revision is 2026-07-29T22:25:00Z by ~2026-42177-02, matching the run's answer; run fetched live categorymembers/revisions data via the API this session and then navigated to and captured the actual Toronto Public Library history page confirming the same edit. [judge: sonnet batch-188-190]"
+ },
+ "189-github-release-fix.opus-low-val": {
+  "pass": true,
+  "note": "CHANGES.rst and the releases API confirm Flask 2.1.0 (released 2022-03-28) is the first release listing the #4297 fix via the errorhandler-typing line citing issue 4095,4295,4297; run's answer matches exactly and it navigated the issue, CHANGES.rst blob, and releases/tag/2.1.0 pages. [judge: sonnet batch-188-190]"
+ },
+ "189-github-release-fix.sonnet-low-val": {
+  "pass": true,
+  "note": "CHANGES.rst confirms Version 2.1.0, Released 2022-03-28, with the errorhandler-typing line citing issue 4095,4295,4297; run's answer matches exactly, grounded in the live raw CHANGES.rst page it read (which itself carries the release date). [judge: sonnet batch-188-190]"
+ },
+ "189-github-release-fix.spark-low-val": {
+  "pass": true,
+  "note": "CHANGES.rst and GitHub releases page confirm Flask 2.1.0 (2022-03-28) is the first release with the #4297 fix line; run's answer matches exactly and is thoroughly grounded (issue page, PR, tagged CHANGES.rst, releases/tag/2.1.0 page all navigated live). [judge: sonnet batch-188-190]"
+ },
+ "190-gmaps-nearby-filter.opus-low-val": {
+  "pass": false,
+  "note": "Run's own final answer reports Markie's Procare Pharmacy at rating 3.9, under the required 4.0+ threshold; per verifier rule this is an automatic fail regardless of the run's (evidence-supported) claim that no Rating filter chip/panel existed. [judge: sonnet batch-188-190]"
+ },
+ "190-gmaps-nearby-filter.sonnet-low-val": {
+  "pass": false,
+  "note": "Run never actually opened a Rating filter/panel (its All-filters click produced no dialog) and only manually eyeballed ratings on a short, incompletely-scrolled Open-now results list; it missed Guardian Davenport Pharmacy (rating 5.0, 12 min walk) which was visible in the same interface (found by another run's deeper scroll) and is a shorter walk than the reported Pharmasave SanoMed (13 min), so the reported pharmacy is not the shortest-walk 4.0+-rated candidate available. [judge: sonnet batch-188-190]"
+ },
+ "190-gmaps-nearby-filter.spark-low-val": {
+  "pass": true,
+  "note": "Run thoroughly verified via DOM inspection that no Rating UI filter exists for this search (confirmed by screenshots, not contradicted), then correctly identified Guardian Davenport Pharmacy (219 Davenport Rd #115, rating 5.0/6 reviews, Open, 12 min/850m via Davenport Rd) as the shortest walk among Open+4.0-rated results, with name/address/rating/walk time repeatedly confirmed across multiple captured Directions panels. [judge: sonnet batch-188-190]"
  }
 }
