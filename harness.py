@@ -185,6 +185,11 @@ TASKS = {
     "117-gmaps-transit": {"kind": "judge", "v2": True},
     "118-odometer-read": {"kind": "appstate", "app": "widgetapp/odometer.py", "port": 8836, "v2": True},
     "119-handwritten-note": {"kind": "appstate", "app": "widgetapp/stickynote.py", "port": 8837, "v2": True},
+    # ---- v2.7 (2026-09-03): fine precision (the one mode that beats the Claude configs)
+    "120-gauge-needle": {"kind": "appstate", "app": "widgetapp/gauge.py", "port": 8838, "v2": True},
+    "122-drop-pin": {"kind": "appstate", "app": "widgetapp/droppin.py", "port": 8840, "v2": True},
+    "125-custom-slider": {"kind": "appstate", "app": "widgetapp/rangeslider.py", "port": 8841, "v2": True},
+    "127-clock-ticks": {"kind": "appstate", "app": "widgetapp/clockticks.py", "port": 8839, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -558,7 +563,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply")
 
 
 def widget_bypass(bundle):

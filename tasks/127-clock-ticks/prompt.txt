@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8839/ . It is a photo of a station platform clock with tick marks only (read 
+it from screenshots). What time does it show? Enter it as HH:MM (12-hour, within 2 minutes) in the 
+form below the photo and submit. Do NOT read the page source or call the site's HTTP endpoints 
+directly. End with the time.

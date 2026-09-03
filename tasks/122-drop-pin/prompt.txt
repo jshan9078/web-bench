@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8840/ . It is a street map rendered as an IMAGE at the page's top-left (read 
+it from screenshots; click with raw coordinates via click --at X,Y; screenshot pixels map 1:1 to 
+click coordinates). The text under the map names an intersection: place the pin so its tip is 
+exactly on that intersection (within a few pixels; you may re-click to move it and take a fresh 
+screenshot to check), then click Confirm pin. Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with the intersection name.

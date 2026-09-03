@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8838/ . It is a photo of a boiler-room panel with two analog pressure gauges 
+(read it from screenshots). Report the pressure shown on GAUGE 2 in bar, to within 0.15 bar (the 
+minor ticks are 0.2 bar apart), enter it in the form below the photo and submit. Do NOT read the 
+page source or call the site's HTTP endpoints directly. End with the reading.
