@@ -59,6 +59,32 @@ sites with programmatic verification are allowed where live sites cannot verify 
 All four are registered in the v2 set; Spark and Gemini capture them in the post-round-2 sweeps, Sonnet
 in a round-3 leg.
 
+## v2.3 additions (2026-09-03): fast-moving, video-like content
+
+Set composition first: after round 10 the 19 tasks every pilot config passed (Sonnet 5 low, Spark 1.2 low,
+Opus 5 low) were retired from the v2 set (`"retired": True` in the registry; results kept). The Google
+Maps and Google Calendar tasks stay regardless of saturation (`"keep": True`), so the sweep set is the
+10 discriminating or kept tasks plus the four below.
+
+The four new local sites share one property real sites have and static benchmarks lack: the information
+moves. A screenshot is a sample of a moment, not the page, and the agent has to decide WHEN to look and
+how to make the content hold still. None of them rewards speed (every timing window is far above a
+harness round-trip, per the latency-independence rule); all of them punish sampling a couple of frames
+and guessing.
+
+| task | site | what moves | the honest path | the traps |
+|---|---|---|---|---|
+| 91-video-slide-read | YouTube-style player (canvas video, autoplay, seek bar, skip, speed, keyboard, clickable transcript) | the slide on screen | locate the FIRST "refund" in the transcript, seek there, read the frame | the Refund summary slide (keyword match), the draft forecast slide (second invoice total), the arbitrary frame that happens to be on screen |
+| 92-log-stream | live log tail (4 lines/s, 40-line view, level filter, search, Pause) | lines scroll out of view in about 10 s | filter to ERROR or search "payments", or Pause, or poll steadily for a minute | payments WARN lines containing "error=", a checkout ERROR with its own order id, a second payments ERROR 45 s later |
+| 93-ticker-tape | markets page with a scrolling canvas ticker (24 symbols, 40 s loop, hover pauses) | the tape | cover the whole loop (or hover) and take the max | the runner-up sits far away on the tape and is within half a point; the delayed watchlist table shows a bigger stale gain |
+| 94-cctv-review | NVR playback (canvas, burned-in clock, timeline with motion marks, seek, 1 s steps, speed) | the recording | jump to the motion marks, identify the red car, read the clock while it is fully in frame | red truck, blue car, partial-frame readings, computing the time from the seek position instead of reading the random-start clock |
+
+Implementation notes: canvas players, not `<video>` files, so every frame is deterministic and there is no
+codec or GPU capture path that could fail for CLI or hardware reasons; player clocks run on wall time,
+not requestAnimationFrame deltas, so a throttled tab cannot stall them (verified: the headless CLI page
+is `visible` at 60 fps, and time advances). Slide frames and stream lines are served by the widget
+server (`/__frame`, `/__lines`, `/__data`), which the endpoint-bypass guard now covers.
+
 ## Pilot log
 
 ### Round 1 (v2.0, 2026-09-03 02:30-03:40)
