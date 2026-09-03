@@ -413,3 +413,57 @@ median s / max s                        38 / 233                 44 / 403       
 
 criteria: no config at 100%: True | all scores distinct: False
 ```
+
+### Round 10 (2026-09-03 06:30-06:34): the dial
+
+A rendered gain dial (needle over a 0-100 tick scale, half-unit keyboard steps, one confirmation, one-tick
+tolerance). All three configs missed it on the merits: Spark 38.5 for 40, Sonnet 77 for 81 after 17 s,
+Opus 70 for 67. Each read the needle's angle instead of counting ticks from the nearest label, with
+unlimited screenshots available. It is the first task every config fails; it stays in the set as a
+ceiling task (it is realistic and model-attributable), but it does not separate configs.
+
+Final pilot standing (29 tasks; 21 saturated and cut; 10-task sweep set including the pinned Google Maps
+directions task and the second Calendar task):
+
+```
+task                                opus-low-val           sonnet-low-val            spark-low-val
+58-pixel-scan                               PASS                     PASS            FAIL (bypass)
+59-spot-difference                          PASS                     PASS            FAIL (bypass)
+60-form-wizard                              PASS                     PASS                     PASS
+61-grid-toggle                              PASS                     PASS                     PASS
+63-wikipedia-edit-audit                     PASS                     PASS                     PASS
+64-hn-comment-census                        PASS                     PASS                     PASS
+65-arxiv-pdf-tables                         PASS                     PASS                     PASS
+66-wiki-table-reconcile                     PASS                     PASS                     PASS
+68-youtube-transcript                       PASS                     PASS                     PASS
+69-timezone-meeting                         PASS                     PASS                     PASS
+72-amazon-quantity-edit                     PASS                     PASS                     PASS
+73-pdf-table-extract                        PASS                     PASS                     PASS
+74-dashboard-triage                         PASS                     PASS                     PASS
+75-map-explorer                             PASS                     PASS            FAIL (bypass)
+78-gmaps-directions                         PASS                     PASS                     PASS
+79-gmaps-place-hours                        PASS                     PASS                     FAIL
+76-settings-maze                            PASS                     PASS            FAIL (bypass)
+77-crosshair-align                          PASS                     FAIL                     PASS
+80-live-list                                PASS                     PASS                     PASS
+81-memory-flow                              PASS                     PASS                     PASS
+82-blur-validation                          PASS                     PASS                     PASS
+83-reconcile-rule                           PASS                     PASS                     PASS
+84-ledger-audit                             PASS                     PASS                     PASS
+85-table-diff                               PASS                     PASS                     PASS
+86-chart-read                               PASS                     PASS                     PASS
+87-gcal-scheduling                          FAIL                     PASS                     FAIL
+88-cancel-flow                              PASS                     PASS                     PASS
+89-gcal-last-free                           PASS                     PASS                     PASS
+90-dial-set                                 FAIL                     FAIL                     FAIL
+score (pass/judged)                        27/29                    27/29                    22/29
+pending/missing                                0                        0                        0
+median s / max s                        39 / 233                 41 / 403                 63 / 295
+
+criteria: no config at 100%: True | all scores distinct: False
+```
+
+No config at 100%. Opus and Sonnet tie at 27/29 with different single misses (Calendar judgement versus
+crosshair estimation) plus the shared dial miss; Spark's gap is rule-following. With one run per task, a
+one-task tie between the two Claude configs is inside run-to-run noise; separating them reliably needs
+repeated attempts on the discriminating set rather than another one-off task.
