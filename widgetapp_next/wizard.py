@@ -61,8 +61,8 @@ button{padding:8px 16px}button:disabled{opacity:.5}.hidden{display:none}
 .spin{display:inline-block;width:14px;height:14px;border:2px solid #999;border-top-color:transparent;border-radius:50%%;animation:r 1s linear infinite;vertical-align:middle}@keyframes r{to{transform:rotate(360deg)}}</style>
 <h2>Checkout</h2>
 <fieldset id=s1><legend>Step 1 of 4: Contact</legend>
-<label>Full name <input id=name autocomplete=off></label><br><br>
-<label>Email <input id=email autocomplete=off></label><br><br>
+<label>Full name <input id=fullname autocomplete=off></label><br><br>
+<label>Email <input id=mail autocomplete=off></label><br><br>
 <button id=next1>Next</button> <span id=err1 style="color:#b00"></span></fieldset>
 <fieldset id=s2 class=hidden><legend>Step 2 of 4: Shipping</legend>
 <img src="/__scene.png" width=620 height=230 alt="shipping options table"><br>
@@ -82,7 +82,7 @@ button{padding:8px 16px}button:disabled{opacity:.5}.hidden{display:none}
 <script>
 var P={};var LEVEL=%d;if(LEVEL<2){document.getElementById('addon').style.display='none';document.getElementById('promolab').style.display='none';}
 function show(id){['s1','s2','s3','s4'].forEach(function(s){document.getElementById(s).classList.toggle('hidden',s!==id)})}
-next1.onclick=function(){P.name=name.value.trim();P.email=email.value.trim();
+next1.onclick=function(){P.name=document.getElementById('fullname').value.trim();P.email=document.getElementById('mail').value.trim();
  if(!P.name||!P.email){err1.textContent='Both fields are required.';return} err1.textContent='';show('s2')};
 next2.onclick=function(){var o=document.querySelector('input[name=opt]:checked');if(!o){err2.textContent='Choose a shipping option.';return}
  P.option=o.value;P.protect=document.getElementById('protect').checked;err2.textContent='';review.textContent='Name: '+P.name+' | Email: '+P.email+' | Shipping: option '+P.option;show('s3');
