@@ -16,7 +16,9 @@ On YouTube, open https://www.youtube.com/@NASA/videos and open the channel's MOS
 (from the Videos tab; not a Short and not a live stream). Expand the description and open "Show
 transcript". Report: (1) the video title, (2) the upload date as displayed, (3) the number of chapters
 listed for the video (if the description or player shows chapters; otherwise say "no chapters"), and
-(4) the transcript line whose timestamp is closest to 1:00, with its timestamp. Scroll inside the
+(4) the transcript line whose timestamp is closest to 1:00, with its timestamp, and (5) whether the
+transcript panel labels the captions as auto-generated (read the language selector at the bottom of the
+panel). Scroll inside the
 transcript panel as needed. If YouTube shows a consent or sign-in interstitial, dismiss it without
-signing in. End with those four items.
+signing in. End with those five items.
 ```

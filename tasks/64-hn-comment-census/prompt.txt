@@ -2,6 +2,6 @@ Open Hacker News (https://news.ycombinator.com) and open the comments page of th
 front page. On the thread as shown (the first comments page, following any "more comments" link at the
 bottom only if it is the same thread), count the TOP-LEVEL comments (direct replies to the story, not
 nested under another comment). Then find the top-level comment with the MOST DIRECT replies (replies
-exactly one level below it; do not count deeper descendants). Report the story title, the top-level
+exactly one level below it; do not count deeper descendants). Report the story title, the EXACT top-level
 comment count, and for that comment: its author, its direct-reply count, and the first 60 characters of
-its text. Base everything on the thread as captured this run. End with those items.
+its text. If several top-level comments tie for the most direct replies, name EVERY tied author. Base everything on the thread as captured this run. End with those items.

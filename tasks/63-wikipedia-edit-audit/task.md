@@ -18,6 +18,7 @@ ONLY the history list as displayed, identify the FIVE most recent edits that are
 For each of the five, report: the username or IP, the timestamp as shown, the byte change (for example
 +212 or -48), and the first 80 characters of the edit summary. Then state, for each, whether the history
 shows it was later reverted or undone (look for Reverted/Undo/Manual revert tags or a later summary that
-undoes it). Base everything on the captured history page, not on the article text. End with the five rows
-and the revert status of each.
+undoes it). Also report, for the 12 most recent entries in the list (bots and minor edits included), how many are
+minor edits and how many are by bot accounts. Base everything on the captured history page, not on the
+article text. End with the five rows, the revert status of each, and the two counts.
 ```

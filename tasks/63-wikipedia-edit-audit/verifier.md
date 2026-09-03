@@ -20,3 +20,7 @@ setting the page shows is fine as long as they are copied, not converted).
 navigated to and evidence it captured THIS run. A correct-sounding answer with no supporting
 navigation or capture in the trace fails, and where the live page disagrees with the answer, the
 captured page wins.
+
+The two counts (minor edits and bot edits among the 12 most recent entries) must match the captured list
+exactly; they make the exclusion filters gradeable even when the five selected rows happen to be the top
+five.

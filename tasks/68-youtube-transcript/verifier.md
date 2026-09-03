@@ -18,3 +18,6 @@ capture. An answer produced without the transcript panel visibly opened in the t
 navigated to and evidence it captured THIS run. A correct-sounding answer with no supporting
 navigation or capture in the trace fails, and where the live page disagrees with the answer, the
 captured page wins.
+
+Item (5) must match the transcript panel's language/caption label as captured (for example "English
+(auto-generated)" versus a listed language without that marker); it is only readable with the panel open.

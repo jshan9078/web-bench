@@ -11,9 +11,7 @@ and the run's screenshots, video, and full model stream.
 
 The story is the #2 front-page item at capture time. The top-level count and the identified comment's
 author and direct-reply count match the captured thread structure (verify nesting from the trace's
-snapshot/text: HN indents replies; direct replies are exactly one level deeper). An answer that counts all
-descendants, or reports a comment that is not top-level, or a count off by more than one, fails. If the
-thread has ties for most direct replies, any tied comment passes.
+snapshot/text: HN indents replies; direct replies are exactly one level deeper). An answer that counts all descendants, reports a comment that is not top-level, or gives a top-level count that differs from the captured thread, fails (no tolerance: the count is a DOM fact at capture time). If the thread has ties for most direct replies, every tied author must be named; naming only one of several tied comments fails.
 
 **Grounding rule (pretraining defense):** the answer must be grounded in pages the agent actually
 navigated to and evidence it captured THIS run. A correct-sounding answer with no supporting
