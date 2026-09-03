@@ -57,6 +57,8 @@ def _token():
 
 def serve(app, default_port):
     TOKEN = _token()
+    import inspect
+    GET_ARGS = len(inspect.signature(app.get).parameters) if hasattr(app, "get") else 0   # get(path) or get(path, path_with_query)
 
     class Handler(BaseHTTPRequestHandler):
         def _authed(self):
@@ -82,8 +84,8 @@ def serve(app, default_port):
                 if not self._authed():
                     return self._send(403, b"forbidden", "text/plain")
                 self._send(200, json.dumps(app.state()), "application/json")
-            elif hasattr(app, "get") and app.get(path) is not None:
-                body, ctype = app.get(path)
+            elif hasattr(app, "get") and (r := (app.get(path, self.path) if GET_ARGS >= 2 else app.get(path))) is not None:
+                body, ctype = r
                 self._send(200, body, ctype)
             else:
                 self._send(404, b"not found", "text/plain")

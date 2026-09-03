@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8814/ . It is playback of a 4-minute security-camera recording rendered on a 
+canvas (read frames from screenshots), with a timeline that marks motion events, a seek bar, step 
+buttons and a speed control. A red CAR passes at some point (a red truck and a blue car also pass). 
+Find a frame in which the red car is fully in view and report the camera clock burned into that 
+frame as HH:MM:SS. Enter it in the form under the player and submit. Do NOT read the page source or 
+call the site's HTTP endpoints directly. End with the time.

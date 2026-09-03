@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8813/ . The band at the top is a live scrolling market ticker drawn on a 
+canvas (read it from screenshots; it is not in the DOM). Identify the symbol with the LARGEST 
+percentage gain shown on the ticker itself and its percentage change (the delayed watchlist table 
+on the page is NOT the ticker). Enter the symbol and percentage in the form at the bottom and 
+submit. Do NOT read the page source or call the site's HTTP endpoints directly. End with the symbol 
+and percentage.

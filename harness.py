@@ -152,6 +152,11 @@ TASKS = {
     "88-cancel-flow": {"kind": "appstate", "app": "widgetapp/darkpatterns.py", "port": 8808, "retired": True},
     "89-gcal-last-free": {"profile": True, "kind": "judge", "v2": True, "keep": True},
     "90-dial-set": {"kind": "appstate", "app": "widgetapp/dial.py", "port": 8810, "v2": True, "fill_from_state": True},
+    # ---- v2.3 (2026-09-03): fast-moving, video-like content (see tasks/V2-DESIGN.md)
+    "91-video-slide-read": {"kind": "appstate", "app": "widgetapp/videoplayer.py", "port": 8811, "v2": True},
+    "92-log-stream": {"kind": "appstate", "app": "widgetapp/logtail.py", "port": 8812, "v2": True},
+    "93-ticker-tape": {"kind": "appstate", "app": "widgetapp/ticker.py", "port": 8813, "v2": True},
+    "94-cctv-review": {"kind": "appstate", "app": "widgetapp/cctv.py", "port": 8814, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -525,7 +530,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines")
 
 
 def widget_bypass(bundle):

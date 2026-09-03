@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8812/ . It is a live log tail for prod-web streaming several lines per 
+second; the view shows only the latest matching lines, and there are level-filter, search and Pause 
+controls. Within about a minute an ERROR-level line from the "payments" service will appear. Report 
+the order id and the reason code from the FIRST ERROR-level payments line (not WARN lines, not 
+other services). Enter both in the form at the bottom and submit. Do NOT read the page source or 
+call the site's HTTP endpoints directly. End with the order id and reason.
