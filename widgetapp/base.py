@@ -8,8 +8,17 @@ GET /__state after the run. POST /__reset re-randomizes for a fresh run.
 An app module provides: reset(), render() -> PNG bytes (or None), page() -> HTML, click(x, y) -> dict,
 state() -> dict (must include "complete": bool), and optionally post(path, data) -> dict.
 Run: python3 <app>.py [port]
+
+Private-endpoint gate (2026-09-03): every /__* endpoint except the rendered scene (/__scene.png, /__frame),
+the handshake (/__hello) and the harness-token endpoints (/__state, /__reset) requires an X-K header holding
+a per-page-load key. serve() rewrites each HTML response: all inline <script> blocks are merged into one
+closure that carries a single-use token, exchanges it for the key at load (POST /__hello), and routes the
+page's own fetch('/__...') calls through api(), which adds the header. Nothing eval-able holds the key
+(closure only), the token in the page source is already consumed by the time anything can read it, and a
+direct fetch/navigate/curl to a private endpoint gets 403. The harness's endpoint-bypass guard remains as
+the audit backstop for deliberate multi-step circumvention.
 """
-import io, json, sys
+import io, json, re, secrets, sys, time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from PIL import ImageFont
 
@@ -55,14 +64,43 @@ def _token():
         return None
 
 
+HELPER_JS = """var __T='%T%',__K=null,__KP=null;
+function __key(){if(__K)return Promise.resolve(__K);if(!__KP)__KP=fetch('/__hello',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({t:__T})}).then(function(r){return r.json()}).then(function(j){__K=j.k;return __K});return __KP}
+function api(u,o){o=o||{};return __key().then(function(k){var h=Object.assign({},o.headers||{});h['X-K']=k;o.headers=h;return fetch(u,o)})}
+__key();
+"""
+_SCRIPT_RE = re.compile(r"<script(?:\s[^>]*)?>(.*?)</script>", re.S)
+OPEN_PATHS = ("/__scene.png", "/__frame", "/__hello", "/__state", "/__reset")
+
+
+def inject(html, token):
+    """Merge the page's inline scripts into one closure that owns the key and calls private endpoints via api()."""
+    blocks = [m.group(1) for m in _SCRIPT_RE.finditer(html)]
+    body = _SCRIPT_RE.sub("", html)
+    js = "\n".join(blocks).replace("fetch('/__", "api('/__").replace('fetch("/__', 'api("/__').replace("fetch(p,", "api(p,")
+    return body + "<script>(function(){" + HELPER_JS.replace("%T%", token) + js + "\n})();</script>"
+
+
 def serve(app, default_port):
     TOKEN = _token()
     import inspect
     GET_ARGS = len(inspect.signature(app.get).parameters) if hasattr(app, "get") else 0   # get(path) or get(path, path_with_query)
+    PEND = {}       # single-use page tokens -> expiry
+    KEYS = set()    # keys issued to loaded pages (cleared on reset)
+
+    def fresh_html(html):
+        t = secrets.token_hex(16); PEND[t] = time.time() + 120
+        return inject(html, t)
 
     class Handler(BaseHTTPRequestHandler):
         def _authed(self):
             return TOKEN is not None and self.headers.get("X-Bench-Token", "") == TOKEN
+
+        def _keyed(self, path):
+            """Private endpoints need the page key; the rendered scene, the handshake and harness endpoints do not."""
+            if not path.startswith("/__") or path in OPEN_PATHS:
+                return True
+            return self.headers.get("X-K", "") in KEYS
 
         def log_message(self, *a):
             pass
@@ -77,15 +115,19 @@ def serve(app, default_port):
         def do_GET(self):
             path = self.path.split("?")[0]
             if path == "/":
-                self._send(200, app.page(), "text/html; charset=utf-8")
+                self._send(200, fresh_html(app.page()), "text/html; charset=utf-8")
             elif path == "/__scene.png":
                 self._send(200, app.render(), "image/png")
             elif path == "/__state":
                 if not self._authed():
                     return self._send(403, b"forbidden", "text/plain")
                 self._send(200, json.dumps(app.state()), "application/json")
+            elif not self._keyed(path):
+                self._send(403, b"forbidden: private endpoint", "text/plain")
             elif hasattr(app, "get") and (r := (app.get(path, self.path) if GET_ARGS >= 2 else app.get(path))) is not None:
                 body, ctype = r
+                if ctype.startswith("text/html") and isinstance(body, str):
+                    body = fresh_html(body)      # e.g. an iframe document: it gets its own token and key
                 self._send(200, body, ctype)
             else:
                 self._send(404, b"not found", "text/plain")
@@ -100,7 +142,17 @@ def serve(app, default_port):
             if path == "/__reset":
                 if not self._authed():
                     return self._send(403, b"forbidden", "text/plain")
+                KEYS.clear(); PEND.clear()
                 app.reset(); self._send(200, json.dumps({"ok": True}), "application/json")
+            elif path == "/__hello":
+                t = str(data.get("t", "")); now = time.time()
+                for k in [k for k, exp in PEND.items() if exp < now]: del PEND[k]
+                if t not in PEND:
+                    return self._send(403, b"forbidden: token unknown or already used", "text/plain")
+                del PEND[t]; k = secrets.token_hex(16); KEYS.add(k)
+                self._send(200, json.dumps({"k": k}), "application/json")
+            elif not self._keyed(path):
+                self._send(403, b"forbidden: private endpoint", "text/plain")
             elif path == "/__click":
                 try:
                     x, y = float(data["x"]), float(data["y"])

@@ -10,20 +10,27 @@ import json, random, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import base
 
+LEVEL = int(os.environ.get("WIDGET_LEVEL", "1"))
 DUR = 240; W = 800
 KINDS = [("car", "#2563eb", "blue car"), ("truck", "#dc2626", "red truck"), ("car", "#dc2626", "red car"), ("person", "#6b7280", "pedestrian")]
+# Level 2: a SECOND red car in the opposite direction; the target is the one travelling right-to-left.
+# Direction is not visible in a single frame, so the agent must compare two frames (or watch it move).
 LEN = {"car": 120, "truck": 210, "person": 24}; PASS = {"car": 9.0, "truck": 11.0, "person": 14.0}
 S = {"clock0": 0, "events": [], "target": None, "submissions": []}
 
 
 def reset():
     S["submissions"] = []; S["clock0"] = random.randint(0, 86400 - 600)
+    kinds = KINDS[:] + ([("car", "#dc2626", "red car")] if LEVEL >= 2 else [])
     while True:
-        ts = sorted(random.uniform(15, 215) for _ in range(4))
+        ts = sorted(random.uniform(15, 215) for _ in range(len(kinds)))
         if all(b - a >= 25 for a, b in zip(ts, ts[1:])): break
-    kinds = KINDS[:]; random.shuffle(kinds)
+    random.shuffle(kinds)
     S["events"] = [{"t": round(t, 1), "kind": k[0], "color": k[1], "label": k[2], "dir": random.choice([1, -1])} for t, k in zip(ts, kinds)]
-    tgt = next(e for e in S["events"] if e["label"] == "red car")
+    reds = [e for e in S["events"] if e["label"] == "red car"]
+    if LEVEL >= 2:
+        reds[0]["dir"], reds[1]["dir"] = random.choice([(1, -1), (-1, 1)])
+    tgt = next(e for e in reds if LEVEL < 2 or e["dir"] == -1)
     L, P = LEN["car"], PASS["car"]; travel = W + 2 * L      # x runs from -L to W+L over P seconds
     fin = tgt["t"] + P * (L / travel); fout = tgt["t"] + P * ((W) / travel)   # fully visible while 0 <= x and x+L <= W
     S["target"] = {"event": tgt, "full_in": round(fin, 2), "full_out": round(fout, 2)}
@@ -55,7 +62,7 @@ def state():
             h, m, sec = [int(x) for x in s.split(":")[:3]]; v = h * 3600 + m * 60 + sec
         except Exception: continue
         if lo <= v <= hi or lo <= v + 86400 <= hi: ok = True
-    return {"target": tg, "clock_window": [clock(tg["full_in"]), clock(tg["full_out"])], "events": [{**e, "clock": clock(e["t"])} for e in S["events"]],
+    return {"level": LEVEL, "target": tg, "clock_window": [clock(tg["full_in"]), clock(tg["full_out"])], "events": [{**e, "clock": clock(e["t"])} for e in S["events"]],
             "submissions": S["submissions"], "complete": ok}
 
 
@@ -69,7 +76,7 @@ button,select{font:inherit;background:#374151;color:#e5e7eb;border:0;border-radi
 <canvas id=tl width=800 height=28 aria-label="timeline with motion markers"></canvas><div class=note>Orange marks on the timeline are motion events. Click the timeline to jump.</div>
 <div id=bar><button id=pp>Play</button><button id=bm10>-10 s</button><button id=bm1>-1 s</button><button id=bp1>+1 s</button><button id=bp10>+10 s</button><span id=tm>0:00 / 4:00</span>
 <input id=seek type=range min=0 max=240 step=0.5 value=0 aria-label="Seek"><select id=spd><option value=1>1x</option><option value=2>2x</option><option value=4>4x</option><option value=8>8x</option></select></div>
-<div id=ans><label>Camera clock while the red car is fully in frame (HH:MM:SS): <input id=t type=text size=10 placeholder="00:00:00"></label> <button id=go>Submit</button> <span id=msg></span></div></div>
+<div id=ans><label>Camera clock while the red car__L2__ is fully in frame (HH:MM:SS): <input id=t type=text size=10 placeholder="00:00:00"></label> <button id=go>Submit</button> <span id=msg></span></div></div>
 <script>
 (function(){var D=null,pos=0,base=0,t0=Date.now(),playing=false,rate=1,cv=document.getElementById('v'),cx=cv.getContext('2d'),tl=document.getElementById('tl'),tx=tl.getContext('2d');
 function fmt(s){s=Math.max(0,Math.floor(s));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}
@@ -104,7 +111,7 @@ document.getElementById('go').onclick=function(){fetch('/__answer',{method:'POST
 </script>"""
 
 
-def page(): return PAGE
+def page(): return PAGE.replace("__L2__", " travelling right-to-left" if LEVEL >= 2 else "")
 
 
 if __name__ == "__main__":

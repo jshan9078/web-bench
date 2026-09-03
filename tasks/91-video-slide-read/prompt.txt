@@ -1,6 +1,7 @@
 Open http://127.0.0.1:8811/ . It is a recording of a presentation playing in a video player (the 
 video autoplays; use the player controls, the keyboard shortcuts, or click a transcript line to 
-seek). The slides are burned into the video, so read them from screenshots. Find the moment the 
-presenter FIRST says the word "refund" and report the Invoice total shown on the slide that is on 
-screen at that moment. Enter it in the form under the player and submit. Do NOT read the page 
-source or call the site's HTTP endpoints directly. End with the amount.
+seek). The slides are burned into the video, so read them from screenshots. On the slide with four 
+dollar figures the presenter walks through them with a red pointer dot. Find the moment the 
+presenter says "This is the number that goes into the board pack" and report the dollar figure the 
+pointer dot is resting on at that moment. Enter it in the form under the player and submit. Do NOT 
+read the page source or call the site's HTTP endpoints directly. End with the amount.

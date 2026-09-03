@@ -4,7 +4,7 @@
 
 ## Pass criteria
 
-`pixel_state.complete` is true: a submission's order id (digits) and reason code match the first payments ERROR line.
+`pixel_state.complete` is true: a submission's order id (digits) and reason code match the payments ERROR whose request id appears in an earlier checkout WARN.
 
 **Endpoint bypass rule:** agent-driven calls to any `/__*` endpoint of the site (`/__data`, `/__frame`, `/__lines`, `/__answer`, `/__state`, `/__reset`) via eval/fetch, navigate, or a shell tool fail the run regardless of state. The page's own JavaScript calls them legitimately; those never appear in the agent's command log.
 

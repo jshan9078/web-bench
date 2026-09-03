@@ -10,20 +10,28 @@ import json, random, sys, os, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import base
 
+LEVEL = int(os.environ.get("WIDGET_LEVEL", "1"))
 RATE = 4
 SVCS = ["api", "checkout", "payments", "auth", "search", "cdn", "inventory"]
 MSGS = ["GET /v1/orders 200", "POST /v1/cart 201", "GET /v1/search 200", "token refreshed", "cache hit", "GET /v1/products 200", "session validated",
         "PUT /v1/address 200", "stock check ok", "GET /v1/me 200", "edge purge scheduled", "POST /v1/login 200"]
 REASONS = ["card_declined", "insufficient_funds", "gateway_timeout", "fraud_hold", "expired_card", "3ds_failed"]
-S = {"seed": 0, "t0": None, "k_target": 0, "k_second": 0, "k_checkout": 0, "target": None, "submissions": [], "start_wall": 0.0}
+S = {"seed": 0, "t0": None, "k_target": 0, "k_second": 0, "k_checkout": 0, "k_first": -1, "k_third": -1, "k_corr": -1, "target": None, "submissions": [], "start_wall": 0.0}
 
 
 def reset():
     S["seed"] = random.randint(1, 10 ** 9); S["t0"] = None; S["submissions"] = []
-    S["k_target"] = int(RATE * random.uniform(25, 55)); S["k_second"] = S["k_target"] + 45 * RATE
-    S["k_checkout"] = S["k_target"] - random.randint(20, 60)
     rng = random.Random(S["seed"] * 31 + 7)
-    S["target"] = {"order": f"ORD-{rng.randint(10000, 99999)}", "reason": rng.choice(REASONS)}
+    S["target"] = {"order": f"ORD-{rng.randint(10000, 99999)}", "reason": rng.choice(REASONS), "req": f"req_{rng.randrange(16 ** 6):06x}"}
+    if LEVEL >= 2:
+        # three payments ERRORs; only the middle one's req id also appears in an EARLIER checkout WARN
+        S["k_first"] = int(RATE * random.uniform(25, 40)); S["k_target"] = int(RATE * random.uniform(55, 75))
+        S["k_third"] = S["k_target"] + int(RATE * random.uniform(30, 45)); S["k_second"] = -1
+        S["k_corr"] = S["k_target"] - int(RATE * random.uniform(10, 20))
+        S["k_checkout"] = S["k_first"] - random.randint(20, 60)
+    else:
+        S["k_target"] = int(RATE * random.uniform(25, 55)); S["k_second"] = S["k_target"] + 45 * RATE
+        S["k_checkout"] = S["k_target"] - random.randint(20, 60); S["k_first"] = S["k_third"] = S["k_corr"] = -1
 
 
 def line(k):
@@ -31,7 +39,13 @@ def line(k):
     ts = time.strftime("%H:%M:%S", time.localtime(S["start_wall"] + k / RATE)) + f".{int((k % RATE) * 1000 / RATE):03d}"
     rid = f"req_{rng.randrange(16 ** 6):06x}"
     if k == S["k_target"]:
-        return {"k": k, "ts": ts, "lvl": "ERROR", "svc": "payments", "msg": f"charge failed order={S['target']['order']} reason={S['target']['reason']} req={rid}"}
+        return {"k": k, "ts": ts, "lvl": "ERROR", "svc": "payments", "msg": f"charge failed order={S['target']['order']} reason={S['target']['reason']} req={S['target']['req']}"}
+    if k == S["k_corr"]:
+        return {"k": k, "ts": ts, "lvl": "WARN", "svc": "checkout", "msg": f"payment pending, will retry order={S['target']['order']} req={S['target']['req']}"}
+    if k in (S["k_first"], S["k_third"]) and k >= 0:
+        return {"k": k, "ts": ts, "lvl": "ERROR", "svc": "payments", "msg": f"charge failed order=ORD-{rng.randint(10000, 99999)} reason={rng.choice(REASONS)} req={rid}"}
+    if LEVEL >= 2 and k % 29 == 3:
+        return {"k": k, "ts": ts, "lvl": "WARN", "svc": "checkout", "msg": f"payment pending, will retry order=ORD-{rng.randint(10000, 99999)} req={rid}"}
     if k == S["k_second"]:
         return {"k": k, "ts": ts, "lvl": "ERROR", "svc": "payments", "msg": f"charge failed order=ORD-{rng.randint(10000, 99999)} reason={rng.choice(REASONS)} req={rid}"}
     if k == S["k_checkout"]:
@@ -68,7 +82,8 @@ def post(path, data, ctype):
 def state():
     t = S["target"]; digits = lambda s: "".join(ch for ch in s if ch.isdigit())
     ok = any(digits(s["order"]) == digits(t["order"]) and s["reason"].lower().replace("-", "_") == t["reason"] for s in S["submissions"])
-    return {"target": t, "target_at_s": S["k_target"] / RATE, "second_error_at_s": S["k_second"] / RATE, "checkout_decoy_at_s": S["k_checkout"] / RATE,
+    return {"level": LEVEL, "target": t, "target_at_s": S["k_target"] / RATE, "second_error_at_s": S["k_second"] / RATE, "checkout_decoy_at_s": S["k_checkout"] / RATE,
+            "l2_decoy_errors_at_s": [S["k_first"] / RATE, S["k_third"] / RATE], "l2_correlated_warn_at_s": S["k_corr"] / RATE,
             "opened": S["t0"] is not None, "submissions": S["submissions"], "complete": ok}
 
 
