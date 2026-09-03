@@ -24,7 +24,8 @@ LAST = ["Abbott", "Berg", "Castillo", "Dahl", "Eriksen", "Fischer", "Gomez", "Ha
 SUBJECTS = ["Invoice mismatch", "Login loop after password reset", "Export CSV missing rows", "Webhook retries exhausted",
             "Dashboard chart blank", "SSO group mapping wrong", "API rate limit too low", "Report totals off by one",
             "Mobile app crash on launch", "Duplicate notification emails", "Timezone shown in UTC", "Attachment upload fails"]
-S = {"tickets": [], "resolved": {}, "target": None, "other_open": None, "log": []}
+LEVEL = int(os.environ.get("WIDGET_LEVEL", "2"))
+S = {"tickets": [], "resolved": {}, "target": None, "other_open": None, "log": [], "closed_linked": []}
 
 
 def reset():
@@ -49,7 +50,7 @@ def reset():
     t_pending.update(status="Pending", priority="High", opened=f"2026-08-{d[4]+1:02d}T16:{random.randint(10,59)}:00")   # more recent, but not Open
     t_resolved.update(status="Resolved", priority="High", opened=f"2026-08-{d[5]+1:02d}T11:{random.randint(10,59)}:00")
     random.shuffle(tickets)
-    S["tickets"] = tickets; S["resolved"] = {}; S["target"] = t_target["id"]; S["other_open"] = t_other["id"]; S["log"] = []
+    S["tickets"] = tickets; S["resolved"] = {}; S["target"] = t_target["id"]; S["other_open"] = t_other["id"]; S["log"] = []; S["closed_linked"] = []
 
 
 def render():
@@ -67,6 +68,13 @@ def get(path):
 
 
 def post(path, data, ctype):
+    if path == "/__closelinked":
+        try: tid = int(data.get("id"))
+        except Exception: return (json.dumps({"ok": False}), "application/json")
+        S["closed_linked"].append(tid)
+        for t in S["tickets"]:
+            if t["id"] == tid: t["status"] = "Resolved"
+        return (json.dumps({"ok": True}), "application/json")
     if path == "/__resolve":
         try: tid = int(data.get("id")); note = str(data.get("note") or "").strip()
         except Exception: return (json.dumps({"ok": False}), "application/json")
@@ -81,12 +89,16 @@ def post(path, data, ctype):
 
 def state():
     ok = set(S["resolved"]) == {S["target"]} and str(S["other_open"]) in (S["resolved"].get(S["target"]) or "")
-    return {"target": S["target"], "other_open": S["other_open"], "resolved": {str(k): v for k, v in S["resolved"].items()},
-            "complete": bool(ok)}
+    if LEVEL >= 2: ok = ok and not S["closed_linked"]          # the linked ticket must stay Open
+    return {"level": LEVEL, "target": S["target"], "other_open": S["other_open"], "resolved": {str(k): v for k, v in S["resolved"].items()},
+            "closed_linked": S["closed_linked"], "complete": bool(ok)}
 
 
 def page():
-    return r"""<!doctype html><meta charset=utf-8><title>Helpdesk Console</title>
+    return PAGE.replace("__LEVEL__", str(LEVEL))
+
+
+PAGE = r"""<!doctype html><meta charset=utf-8><title>Helpdesk Console</title>
 <style>
 body{font:14px system-ui;margin:0;background:#f5f6f8;color:#1f2937}header{background:#111827;color:#fff;padding:12px 20px;font-weight:600}
 .bar{display:flex;gap:10px;align-items:center;padding:12px 20px;flex-wrap:wrap}.chip{border:1px solid #cbd5e1;background:#fff;border-radius:999px;padding:4px 10px;cursor:pointer}
@@ -121,7 +133,10 @@ button{font:inherit;padding:6px 12px;border-radius:6px;border:1px solid #cbd5e1;
  <div id=resolveform hidden style="margin-top:12px"><label>Resolution note<br><textarea id=note></textarea></label><br><button id=confirmres class=primary>Confirm resolve</button> <button id=cancelres>Cancel</button> <span id=rerr style="color:#b91c1c"></span></div>
  <p style="margin-top:20px"><button id=closed>Close</button></p></div>
 <div id=toast role=status></div>
+<div id=linkmodal style="position:fixed;inset:0;background:rgba(0,0,0,.45);display:none"><div style="background:#fff;width:420px;margin:14% auto;padding:20px;border-radius:8px">
+ <h3 style="margin-top:0">Ticket resolved</h3><p id=linktext></p><button id=linkyes class=primary>Yes, close it too</button> <button id=linkno>No, keep it open</button></div></div>
 <script>
+var LEVEL=__LEVEL__;
 var ALL=[],loaded=0,PAGE=40,filters={status:new Set(),priority:new Set()},sort='newest',q='',view=[],ROW=44,cur=null;
 fetch('/__data').then(r=>r.json()).then(j=>{ALL=j.tickets;loaded=Math.min(PAGE,ALL.length);apply()});
 function apply(){var v=ALL.slice(0,loaded).filter(t=>(!filters.status.size||filters.status.has(t.status))&&(!filters.priority.size||filters.priority.has(t.priority))&&(!q||(t.company+' '+t.contact+' '+t.subject+' '+t.id).toLowerCase().includes(q)));
@@ -145,7 +160,10 @@ document.getElementById('closed').onclick=function(){document.getElementById('dr
 document.getElementById('cancelres').onclick=function(){document.getElementById('resolveform').hidden=true};
 document.getElementById('confirmres').onclick=function(){var n=document.getElementById('note').value.trim();if(!n){document.getElementById('rerr').textContent='A resolution note is required.';return}
  fetch('/__resolve',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:cur.id,note:n})}).then(r=>r.json()).then(j=>{if(!j.ok){document.getElementById('rerr').textContent=j.error||'Failed';return}
-  cur.status='Resolved';var T=document.getElementById('toast');T.textContent='Ticket #'+cur.id+' resolved';T.style.display='block';setTimeout(function(){T.style.display='none'},2500);open(cur);apply()})};
+  cur.status='Resolved';var T=document.getElementById('toast');T.textContent='Ticket #'+cur.id+' resolved';T.style.display='block';setTimeout(function(){T.style.display='none'},2500);open(cur);apply();
+  if(LEVEL>=2){var m=n.match(/#(\d+)/);if(m){var lid=parseInt(m[1]);document.getElementById('linktext').textContent='This note references ticket #'+lid+'. Close #'+lid+' as well?';document.getElementById('linkmodal').style.display='block';
+   document.getElementById('linkyes').onclick=function(){fetch('/__closelinked',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:lid})}).then(function(){var t=ALL.find(function(x){return x.id===lid});if(t)t.status='Resolved';document.getElementById('linkmodal').style.display='none';apply()})};
+   document.getElementById('linkno').onclick=function(){document.getElementById('linkmodal').style.display='none'}}}})};
 </script>"""
 
 

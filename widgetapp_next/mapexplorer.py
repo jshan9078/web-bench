@@ -22,6 +22,8 @@ CATS = ["Bakery", "Clinic", "Music store", "Restaurant", "Library", "Bookshop", 
         "Bakery", "Theater", "Bank", "Cinema", "Dentist", "Market", "Climbing gym", "Hardware store", "Restaurant", "Hotel",
         "Gallery", "Music store", "Pet care", "Hostel"]
 DISTRICTS = {"Northwest": (0, 0), "Northeast": (1, 0), "Southwest": (0, 1), "Southeast": (1, 1)}
+import os
+LEVEL = int(os.environ.get("WIDGET_LEVEL", "2"))
 S = {"pois": [], "view": {"cx": WORLD / 2, "cy": WORLD / 2, "zoom": 1.0}, "hall": (WORLD / 2, WORLD / 2), "target": None,
      "opened": [], "routed": [], "roads": [], "river": []}
 
@@ -40,6 +42,15 @@ def reset():
                 pois.append({"id": i, "name": NAMES[i], "cat": CATS[i], "x": x, "y": y}); break
     S["pois"] = pois
     S["target"] = random.choice([p for p in pois if p["name"] != "Meridian Bank"])
+    if LEVEL >= 2:
+        # a decoy with the SAME name in a different district: the prompt's district is the only tie-breaker
+        t = S["target"]
+        for _ in range(300):
+            x, y = random.randint(120, WORLD - 120), random.randint(120, WORLD - 120)
+            d = {"id": 100, "name": t["name"], "cat": t["cat"], "x": x, "y": y}
+            if district_of(d) != district_of(t) and all((x - p["x"]) ** 2 + (y - p["y"]) ** 2 > 220 ** 2 for p in pois) \
+               and (x - S["hall"][0]) ** 2 + (y - S["hall"][1]) ** 2 > 300 ** 2:
+                pois.append(d); break
     S["view"] = {"cx": WORLD / 2, "cy": WORLD / 2, "zoom": 1.0}
     S["opened"] = []; S["routed"] = []
 
@@ -150,7 +161,7 @@ def post(path, data, ctype):
 
 def state():
     t = S["target"]
-    return {"target": {"name": t["name"], "cat": t["cat"], "dist_m": _dist(t), "district": district_of(t)},
+    return {"level": LEVEL, "target": {"name": t["name"], "cat": t["cat"], "dist_m": _dist(t), "district": district_of(t)},
             "opened": S["opened"], "routed": S["routed"], "view": S["view"],
             "complete": t["id"] in S["opened"] and S["routed"] == [t["id"]]}
 

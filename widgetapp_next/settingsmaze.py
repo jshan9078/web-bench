@@ -17,6 +17,7 @@ import base
 DEFAULTS = {"display_name": "Jon Halvorsen", "digest": "Weekly", "alerts": True, "push": False, "billing_email": "billing@halvorsen.example",
             "twostep": False, "sessions_timeout": "30 min", "marketing": False}
 TARGET = {"display_name": "J. Halvorsen", "digest": "Monthly", "twostep": True}
+LEVEL = int(os.environ.get("WIDGET_LEVEL", "2"))
 S = {"saved": dict(DEFAULTS), "saves": []}
 
 
@@ -52,7 +53,7 @@ def post(path, data, ctype):
 
 def state():
     want = dict(DEFAULTS); want.update(TARGET)
-    return {"saved": S["saved"], "expected": want, "n_saves": len(S["saves"]), "complete": S["saved"] == want}
+    return {"level": LEVEL, "saved": S["saved"], "expected": want, "n_saves": len(S["saves"]), "complete": S["saved"] == want}
 
 
 FRAME = """<!doctype html><meta charset=utf-8><style>body{font:14px system-ui;margin:12px}</style>
@@ -69,7 +70,10 @@ parent.postMessage({type:'ready'},'*');
 
 
 def page():
-    return r"""<!doctype html><meta charset=utf-8><title>Account Settings</title>
+    return PAGE.replace("__LEVEL__", str(LEVEL))
+
+
+PAGE = r"""<!doctype html><meta charset=utf-8><title>Account Settings</title>
 <style>body{font:14px system-ui;margin:0;background:#f7f7f8;color:#222}header{padding:14px 22px;background:#fff;border-bottom:1px solid #e5e5e5;font-weight:600}
 .tabs{display:flex;gap:4px;padding:10px 22px 0}.tabs button{font:inherit;padding:8px 14px;border:1px solid transparent;border-bottom:0;background:transparent;cursor:pointer;border-radius:8px 8px 0 0}
 .tabs button[aria-selected=true]{background:#fff;border-color:#e5e5e5}.panel{background:#fff;margin:0 22px;padding:18px;border:1px solid #e5e5e5;border-top:0;min-height:320px}
@@ -94,7 +98,10 @@ iframe{width:100%;height:120px;border:1px solid #e5e5e5;border-radius:6px}</styl
 <footer><button id=save class=primary disabled>Save changes</button><button id=discard disabled>Discard</button><span class=hint id=status>All changes saved</span><span class=hint style="margin-left:auto">Autosave is off</span></footer>
 <div id=modal><div class=box><h3>Unsaved changes</h3><p>You have unsaved changes on this tab. Leaving will discard them.</p><button id=keep>Keep editing</button> <button id=leave>Discard and leave</button></div></div>
 <div id=toast role=status></div>
+<div id=review style="position:fixed;inset:0;background:rgba(0,0,0,.4);display:none"><div style="background:#fff;width:420px;margin:12% auto;padding:20px;border-radius:8px">
+ <h3 style="margin-top:0">Review changes</h3><ul id=reviewlist></ul><label><input type=checkbox id=applybilling checked> Also use the new display name for billing contact (updates billing email)</label><p><button id=reviewok class=primary>Confirm and save</button> <button id=reviewcancel>Back</button></p></div></div>
 <script>
+var LEVEL=__LEVEL__;
 var saved={},cur={},dirty=false,pendingTab=null,frameReady=false;
 fetch('/__settings').then(r=>r.json()).then(j=>{saved=j;cur=Object.assign({},j);paint()});
 function paint(){display_name.value=cur.display_name;marketing.checked=cur.marketing;alerts.checked=cur.alerts;digest.value=cur.digest;push.checked=cur.push;billing_email.value=cur.billing_email;sessions_timeout.value=cur.sessions_timeout;if(frameReady)document.getElementById('tsf').contentWindow.postMessage({type:'init',twostep:cur.twostep},'*');setDirty(JSON.stringify(cur)!==JSON.stringify(saved))}
@@ -109,7 +116,10 @@ leave.onclick=function(){modal.style.display='none';cur=Object.assign({},saved);
 document.querySelectorAll('.sub [role=tab]').forEach(b=>b.onclick=function(){document.querySelectorAll('.sub [role=tab]').forEach(x=>x.setAttribute('aria-selected',x===this));document.getElementById('sub-email').hidden=this.dataset.s!=='email';document.getElementById('sub-push').hidden=this.dataset.s!=='push'});
 document.querySelectorAll('.acc h4').forEach(h=>h.onclick=function(){this.parentElement.classList.toggle('open')});
 discard.onclick=function(){cur=Object.assign({},saved);paint()};
-save.onclick=function(){fetch('/__save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cur)}).then(r=>r.json()).then(()=>{saved=Object.assign({},cur);setDirty(false);toast.textContent='Settings saved';toast.style.display='block';setTimeout(()=>toast.style.display='none',2500)})};
+function doSave(){fetch('/__save',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cur)}).then(r=>r.json()).then(()=>{saved=Object.assign({},cur);setDirty(false);toast.textContent='Settings saved';toast.style.display='block';setTimeout(()=>toast.style.display='none',2500)})}
+save.onclick=function(){if(LEVEL<2){doSave();return}var ul=document.getElementById('reviewlist');ul.innerHTML='';Object.keys(cur).forEach(k=>{if(JSON.stringify(cur[k])!==JSON.stringify(saved[k])){var li=document.createElement('li');li.textContent=k+': '+saved[k]+' → '+cur[k];ul.appendChild(li)}});document.getElementById('applybilling').checked=true;document.getElementById('review').style.display='block'};
+reviewcancel.onclick=function(){document.getElementById('review').style.display='none'};
+reviewok.onclick=function(){if(document.getElementById('applybilling').checked){cur.billing_email=cur.display_name.toLowerCase().replace(/[^a-z]+/g,'.').replace(/^\.|\.$/g,'')+'@halvorsen.example'}document.getElementById('review').style.display='none';doSave()};
 </script>"""
 
 
