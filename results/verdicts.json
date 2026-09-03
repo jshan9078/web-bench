@@ -5497,5 +5497,177 @@
  "36-jspaint-poster.sonnet-xhigh-val": {
   "pass": false,
   "note": "uncapped re-capture: final screenshot shows red canvas with only faint single-pixel marks at the five claimed points, no visible X; agent relied on getImageData readbacks which cannot substitute for visible dots [judge: sonnet rerun-jsp, operator-verified]"
+ },
+ "13-usgs-quake-report.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b2]"
+ },
+ "14-imdb-yearly-top.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b2]"
+ },
+ "15-stock-analyst-targets.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b2]"
+ },
+ "17-currency-meal-budget.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b2]"
+ },
+ "18-npm-package-audit.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b2]"
+ },
+ "19-wiktionary-wotd.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b2]"
+ },
+ "20-nasa-apod-vision.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b2]"
+ },
+ "21-amazon-office-bundle.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b2]"
+ },
+ "22-amazon-earbud-compare.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b2]"
+ },
+ "26-ebay-keyboard-hunt.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b2]"
+ },
+ "27-amazon-review-mining.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b2]"
+ },
+ "29-excalidraw-pipeline.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b3]"
+ },
+ "32-desmos-intersections.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b3]"
+ },
+ "33-osm-street-read.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b3]"
+ },
+ "34-osm-route-measure.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b3]"
+ },
+ "39-youtube-frame-describe.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b3]"
+ },
+ "40-arxiv-pdf-figure.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b3]"
+ },
+ "41-owid-dataset-read.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b3]"
+ },
+ "42-youtube-watch-later.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b3]"
+ },
+ "43-gmail-self-draft.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b3]"
+ },
+ "44-gcal-event.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b3]"
+ },
+ "47-reddit-save.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b4]"
+ },
+ "48-spotify-playlist.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b4]"
+ },
+ "49-x-bookmark.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b4]"
+ },
+ "50-google-flights-nonstop.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b4]"
+ },
+ "51-wikipedia-revision-audit.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b4]"
+ },
+ "53-caniuse-feature.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b4]"
+ },
+ "54-stackoverflow-live.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b4]"
+ },
+ "55-wayback-snapshot.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b4]"
+ },
+ "56-sunrise-reykjavik.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b4]"
+ },
+ "57-hn-debate-analysis.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b4]"
+ },
+ "36-jspaint-poster.spark13-high-val": {
+  "pass": false,
+  "note": "preserved final screenshot shows red canvas with only single-pixel marks, no visible X; agent's own text concedes dots are 'single-pixel, faint, pixel-verified' which the verifier disqualifies [judge: sonnet s13high-b3, operator-verified]"
+ },
+ "01-mlb-latest.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b1]"
+ },
+ "02-hn-summary.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b1]"
+ },
+ "03-weather-nyc.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b1]"
+ },
+ "04-x-projects.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b1]"
+ },
+ "05-amazon-cart.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b1]"
+ },
+ "06-amazon-search-add.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b1]"
+ },
+ "08-airport-departures.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b1]"
+ },
+ "09-recipe-scaling.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b1]"
+ },
+ "10-arxiv-agents-paper.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b1]"
+ },
+ "11-github-trending-audit.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b1]"
+ },
+ "12-wikipedia-current-events.spark13-high-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13high-b1]"
  }
 }
