@@ -104,3 +104,60 @@ What round 1 established:
 
 Criteria check (no config at 100%, all scores distinct): not met, Sonnet and Gemini tie at 10/11.
 Round 2 (v2.1) re-runs the seven changed tasks on all three configs.
+
+### Rounds 2 and 3 (v2.1 and v2.2, 2026-09-03 03:41-04:45)
+
+Round 2 re-ran the seven changed tasks (level-2 widgets; trap items on the history audit, HN census, and
+transcript task). Round 3 added the helpdesk console, map explorer, settings maze, and two Google Maps
+tasks. State before round 4 (Gemini's last three runs wait on its quota; the crosshair widget is new):
+
+```
+task                              sonnet-low-val     gemini-3.7-flash-low            spark-low-val
+58-pixel-scan                               PASS                     FAIL            FAIL (bypass)
+59-spot-difference                          PASS                     PASS            FAIL (bypass)
+60-form-wizard                              PASS                     PASS                     PASS
+61-grid-toggle                              PASS                     PASS                     PASS
+63-wikipedia-edit-audit                     PASS                     PASS                     PASS
+64-hn-comment-census                        PASS                     PASS                     PASS
+65-arxiv-pdf-tables                         PASS                     FAIL                     PASS
+66-wiki-table-reconcile                     PASS                     PASS                     PASS
+68-youtube-transcript                       PASS                     PASS                     PASS
+69-timezone-meeting                         PASS                     PASS                     PASS
+72-amazon-quantity-edit                     PASS                     PASS                     PASS
+73-pdf-table-extract                        PASS                     PASS                     PASS
+74-dashboard-triage                         PASS                     PASS                     PASS
+75-map-explorer                             PASS    FAIL (budget, bypass)            FAIL (bypass)
+78-gmaps-directions                         PASS                (missing)                     PASS
+79-gmaps-place-hours                        PASS                (missing)                     FAIL
+76-settings-maze                            PASS                (missing)                     PASS
+77-crosshair-align                     (missing)                (missing)                (missing)
+score (pass/judged)                        17/17                    11/14                    13/17
+pending/missing                                1                        4                        1
+median s / max s                        52 / 403                 48 / 603                 63 / 177
+
+criteria: no config at 100%: False | all scores distinct: True
+```
+
+Findings:
+
+- **Sonnet 5 low is perfect on 17 tasks**, and clean: no endpoint calls, no budget hits, median 52 s. It
+  solved the map explorer the way a person would (zoom, pan toward the named district, one screenshot-
+  guided click) in 12 calls.
+- **Spark 1.2 low fails by rule-breaking and by fabrication**: it reads page source and drives the
+  widgets' private endpoints (state reads, synthetic clicks, a 10 px grid search against the map's click
+  endpoint), which the guard fails, and it invented a walking distance on the Google Maps place task that
+  no captured panel showed. Where the prompt stated the endpoint rule for the console it complied and
+  passed.
+- **Gemini 3.7 Flash low fails on bookkeeping and precision**: it undercounted the PDF's main-text tables
+  while viewing the right pages, clicked 7 before 6 on the level-2 pixel scan, and burned the entire
+  10-minute budget on the map explorer with 937 calls, ending in a brute-force grid search of its own.
+- **Level-2 vision widgets did not move the strong tiers** (Sonnet cleared all four in under 70 s each);
+  the hardened live tasks produced no new fails. Difficulty that discriminates here is navigation state
+  and instruction discipline, not perception.
+- Harness fixes during these rounds: the wizard's reserved-id bug, the CLI's multi-word text truncation
+  (fixed at the source), the bypass guard's path-only matching, the 10-minute budget, stale-verdict
+  skipping in the Claude matrix, and a 55-second CLI outage during the binary swap (one run re-captured).
+
+Criteria check: scores are distinct (Sonnet 17/17, Spark 13/17, Gemini 11/14 so far) but Sonnet is at
+100%. Round 4 (v2.3) targets Sonnet's known weakness, precision and state, with the crosshair widget and
+the level-2 traps on the console, map, and settings maze.
