@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8858/ . It is a photo of an electricity meter with four pointer dials (read 
+it from screenshots). Read the meter: for each dial take the digit the pointer has already passed 
+(adjacent dials run in opposite directions, as printed), giving a 4-digit reading left to right. 
+Enter it in the form below the photo and submit. Do NOT read the page source or call the site's 
+HTTP endpoints directly. End with the reading.

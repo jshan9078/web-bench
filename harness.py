@@ -202,6 +202,13 @@ TASKS = {
     "154-tower-clock": {"kind": "appstate", "app": "widgetapp/towerclock.py", "port": 8850, "v2": True},
     "155-speedometer-needle": {"kind": "appstate", "app": "widgetapp/speedo.py", "port": 8851, "v2": True, "saturated": True},
     "156-thermometer-read": {"kind": "appstate", "app": "widgetapp/thermo.py", "port": 8852, "v2": True, "saturated": True},
+    # ---- v3 (2026-09-03): pass@2-validated set; image-only interactive UIs and meter reading
+    "157-kiosk-order": {"kind": "appstate", "app": "widgetapp/kiosk.py", "port": 8853, "v2": True},
+    "158-rd-wifi": {"kind": "appstate", "app": "widgetapp/wifitray.py", "port": 8854, "v2": True},
+    "159-thermostat": {"kind": "appstate", "app": "widgetapp/thermostat.py", "port": 8855, "v2": True},
+    "160-parking-meter": {"kind": "appstate", "app": "widgetapp/parkmeter.py", "port": 8856, "v2": True},
+    "161-defect-marking": {"kind": "appstate", "app": "widgetapp/defects.py", "port": 8857, "v2": True},
+    "162-utility-meter": {"kind": "appstate", "app": "widgetapp/utilitymeter.py", "port": 8858, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8853/ . It is a self-service food kiosk. It is rendered as an IMAGE at the 
+page's top-left that responds to clicks (use raw coordinates via click --at X,Y; screenshot pixels 
+map 1:1; the image refreshes after each click, so take a fresh screenshot to see the result). Order 
+exactly 2 x "Veggie Wrap" and 1 x "Lemonade" and nothing else, decline any add-on offered, and 
+place the order (the screen confirms an order number). Do NOT read the page source or call the 
+site's HTTP endpoints directly. End with a one-line confirmation.
