@@ -9,7 +9,7 @@
  "success": false,
  "needs_judge": false,
  "blocked": false,
- "judge_note": "Never finished; no route details, null answer [judge: sonnet sfb0]",
+ "judge_note": "UPHELD on re-audit: claimed hung CLI type command is contradicted by the daemon log (all type calls completed in 0.1s ok=True); run then idled 244s with zero daemon activity, agent stalled itself waiting for a self-created monitor [re-audit 2026-09-02, operator-verified]",
  "answer": null,
  "wall_s": 99.33,
  "wall_total_s": 343.5,

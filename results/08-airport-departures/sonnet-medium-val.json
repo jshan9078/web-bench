@@ -9,7 +9,7 @@
  "success": false,
  "needs_judge": false,
  "blocked": false,
- "judge_note": "Stated 06:00 vs board's 06:10 [judge: sonnet s2b2]",
+ "judge_note": "UPHELD on re-audit: the SCHEDULED DEPARTURES board was captured in-trace; agent reported flight-page gate times (06:00/06:10/06:20) instead of the board's times as the prompt requires; 22/24 configs read the board correctly, so not a prompt ambiguity [re-audit 2026-09-02]",
  "answer": "EDV5066 (Endeavor Air) \u2192 JFK, 06:00AM EDT, on time; ACA700 (Air Canada) \u2192 LGA, 06:10AM EDT, on time; EDV5031 (Endeavor Air) \u2192 DTW, 06:20AM EDT, on time",
  "wall_s": 96.09,
  "wall_total_s": 114.5,

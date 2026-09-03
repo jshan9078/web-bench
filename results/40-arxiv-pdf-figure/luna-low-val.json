@@ -9,7 +9,7 @@
  "success": false,
  "needs_judge": false,
  "blocked": false,
- "judge_note": "No screenshot of the actual PDF page 1 exists in the trace (only the arXiv abstract page); the figure description was pulled from the HTML-render DOM via eval, not read visually from a page-1 screenshot as the task and verifier require. [judge: sonnet luna-b1]",
+ "judge_note": "UPHELD on re-audit: one transient CDP Page.navigate timeout, agent gave up after 12 calls/226s and extracted the description via DOM eval instead of the required page-1 screenshot; 22/26 configs rendered the PDF [re-audit 2026-09-02]",
  "answer": null,
  "wall_s": 215.46,
  "wall_total_s": 225.7,
