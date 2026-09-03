@@ -580,3 +580,18 @@ task                             spark-low-val           sonnet-low-val         
 All three configs relayed the one-time code inside its window, read the handwritten total, measured the offset
 part to within 1 mm, navigated the calendar 14 months out, and reordered the list (Spark via a probe of the
 private endpoints, which fails it). Batch 2 adds one discriminating task (107). Perception rounds 16 and 17 follow.
+
+### Round 16 (2026-09-03): perception batch 1 (+103 re-run)
+
+```
+task                             spark-low-val           sonnet-low-val             opus-low-val
+103-fine-print                            PASS                     PASS                     PASS
+108-shelf-count                           PASS                     PASS                     PASS
+109-legend-match                          PASS                     PASS                     PASS
+110-analog-clock                          PASS                     PASS                     FAIL
+111-fill-level                            PASS                     PASS                     PASS
+```
+
+Counting 23-37 boxes, matching six legend colours, reading fill ratios and magnified fine print were all solved.
+The analog clock separated: Opus read 11:32 for 11:28 (hour-hand offset). Sonnet 5 low and Opus 5 low now have
+distinct scores (29/31 vs 28/31) for the first time. Fine precision remains the productive direction.
