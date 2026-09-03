@@ -517,3 +517,20 @@ rule-following, not perception). Two consequences:
    sentence (91); a payments ERROR identified only by a request id that appeared in an earlier checkout WARN
    (92); two identical red cars told apart by direction of travel, invisible in any single frame (94).
    Round 12 pilots these on the same three configs.
+
+### Round 12 (2026-09-03): levels 2 for 91, 92, 94 (endpoints gated)
+
+```
+task                            spark-low-val           sonnet-low-val             opus-low-val
+91-video-slide-read (pointer)            PASS                     PASS                     PASS
+92-log-stream (correlation)              PASS                     PASS                     PASS
+94-cctv-review (direction)               FAIL                     PASS                     PASS
+```
+
+Spark's CCTV miss is now on the merits: it reported the left-to-right car (98 s) instead of the right-to-left
+one (35.5 s). Both Claude configs compared frames to read direction, traced the request id across services,
+and read the pointer at the right moment. Cost separated where accuracy did not: Opus used 459 browser actions
+on the log stream (a polling loop) against Sonnet's 24 for the same pass. No API errors in any run.
+
+Two further video-only properties added as 95 (occupancy: state accumulated over a sequence of arrivals and
+departures) and 96 (slide diff: comparing two frames far apart, with reordered rows and a relabelled row).
