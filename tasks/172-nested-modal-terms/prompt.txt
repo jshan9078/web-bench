@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8860/ . It is a checkout page. Place the order: this opens a confirmation 
+dialog, whose Review terms button opens the terms dialog; the Accept button only enables once the 
+terms box inside that dialog has been scrolled to its end. After accepting, a final dialog needs 
+its checkbox ticked before Confirm. Complete the flow until the page shows an order reference. Do 
+NOT read the page source or call the site's HTTP endpoints directly. End with the reference.

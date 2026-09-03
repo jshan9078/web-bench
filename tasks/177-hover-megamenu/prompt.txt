@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8861/ . It is a retailer site whose only navigation is a hover mega menu 
+(submenus appear when you hover a department, then a category; nothing is listed until hovered; 
+site search is unavailable). Navigate to the Turntables category page and add the product "Orbit 
+Plus" (and nothing else) to the wishlist. Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with a one-line confirmation.

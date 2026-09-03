@@ -209,6 +209,12 @@ TASKS = {
     "160-parking-meter": {"kind": "appstate", "app": "widgetapp/parkmeter.py", "port": 8856, "v2": True},
     "161-defect-marking": {"kind": "appstate", "app": "widgetapp/defects.py", "port": 8857, "v2": True},
     "162-utility-meter": {"kind": "appstate", "app": "widgetapp/utilitymeter.py", "port": 8858, "v2": True},
+    "163-gmaps-route-options": {"kind": "judge", "v2": True},
+    "164-gcal-recurring": {"profile": True, "kind": "judge", "v2": True},
+    "167-github-issue-pr": {"kind": "judge", "v2": True},
+    "171-spreadsheet-grid": {"kind": "appstate", "app": "widgetapp/gridsheet.py", "port": 8859, "v2": True},
+    "172-nested-modal-terms": {"kind": "appstate", "app": "widgetapp/termsmodal.py", "port": 8860, "v2": True},
+    "177-hover-megamenu": {"kind": "appstate", "app": "widgetapp/megamenu.py", "port": 8861, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -583,7 +589,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu")
 
 
 def widget_bypass(bundle):

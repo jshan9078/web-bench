@@ -1,0 +1,8 @@
+Open Google Maps (https://www.google.com/maps) and get DRIVING directions from "Union Station, 
+Toronto" to "Toronto Zoo". Report the recommended route's distance and travel time. Then make the 
+trip go via "Toronto Reference Library" BEFORE the zoo (three-point route: Union Station, then the 
+library, then the zoo; use Add destination and arrange the order however the UI allows) and report 
+the new total distance and time. Finally open the route Options, enable both "Avoid tolls" and 
+"Avoid highways", and report the resulting total distance and time for the three-point route. Never 
+estimate; read every figure from the page. If a consent or sign-in interstitial appears, dismiss it 
+without signing in. End with the three distance/time pairs.
