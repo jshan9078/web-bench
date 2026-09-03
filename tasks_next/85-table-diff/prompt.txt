@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8805/ . The page shows two dense stock-sheet snapshots ("Monday" and "Tuesday") as
+one IMAGE; nothing is in the DOM, so read them from screenshots. Exactly five cells changed between the
+two. List every changed cell in the form below the image, one per line as "Row, Column, TuesdayValue"
+(row label and column header as printed), and submit. Some changes are a single digit; compare every cell.
+Do NOT read the page source or call the site's HTTP endpoints directly. End with the five lines.

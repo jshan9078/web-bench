@@ -12,7 +12,7 @@ import os
 LEVEL = int(os.environ.get("WIDGET_LEVEL", "2"))
 # level 1 (pilot round 1): 10 circles r=20, 6 decoys with random numbers, 900x1500
 # level 2: same 10 circles and scene, r=16, 8 decoy squares that all reuse a real circle's number and sit near it
-W, H, R, N, ND = (900, 1500, 20, 10, 6) if LEVEL == 1 else (900, 1500, 16, 10, 8)
+W, H, R, N, ND = (900, 1500, 20, 10, 6) if LEVEL == 1 else ((900, 1500, 16, 10, 8) if LEVEL == 2 else (900, 1500, 10, 10, 10))
 COLORS = [(219, 68, 55), (66, 133, 244), (15, 157, 88), (244, 180, 0), (171, 71, 188), (0, 150, 136)]
 S = {"targets": [], "decoys": [], "clicks": []}
 
@@ -52,7 +52,7 @@ def render():
     img = Image.new("RGB", (W, H), (247, 248, 250)); dr = ImageDraw.Draw(img)
     dr.text((16, 12), "Click the numbered CIRCLES in ascending order (1..%d). Squares are decoys. The page scrolls." % N,
             fill=(90, 96, 105), font=base.font(17))
-    f = base.font(20 if LEVEL == 1 else 16)
+    f = base.font(20 if LEVEL == 1 else (16 if LEVEL == 2 else 11))
     for t in S["targets"]:
         c = COLORS[(t["n"] - 1) % len(COLORS)]
         dr.ellipse([t["x"] - R, t["y"] - R, t["x"] + R, t["y"] + R], fill=c)

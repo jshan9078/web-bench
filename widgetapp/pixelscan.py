@@ -8,7 +8,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from PIL import Image, ImageDraw
 import base
 
-W, H, R, N, ND = 900, 1500, 20, 10, 6
+import os
+LEVEL = int(os.environ.get("WIDGET_LEVEL", "2"))
+# level 1 (pilot round 1): 10 circles r=20, 6 decoys with random numbers, 900x1500
+# level 2: same 10 circles and scene, r=16, 8 decoy squares that all reuse a real circle's number and sit near it
+W, H, R, N, ND = (900, 1500, 20, 10, 6) if LEVEL == 1 else ((900, 1500, 16, 10, 8) if LEVEL == 2 else (900, 1500, 10, 10, 10))
 COLORS = [(219, 68, 55), (66, 133, 244), (15, 157, 88), (244, 180, 0), (171, 71, 188), (0, 150, 136)]
 S = {"targets": [], "decoys": [], "clicks": []}
 
@@ -23,11 +27,24 @@ def _place(k, existing):
 
 
 def reset():
-    c = _place(N, []); d = _place(ND, c)
+    c = _place(N, [])
     nums = list(range(1, N + 1)); random.shuffle(nums)
     S["targets"] = [{"n": nums[i], "x": c[i][0], "y": c[i][1]} for i in range(N)]
-    dn = random.sample(range(1, 21), ND)
-    S["decoys"] = [{"n": dn[i], "x": d[i][0], "y": d[i][1]} for i in range(ND)]
+    if LEVEL == 1:
+        d = _place(ND, c); dn = random.sample(range(1, 21), ND)
+        S["decoys"] = [{"n": dn[i], "x": d[i][0], "y": d[i][1]} for i in range(ND)]
+    else:
+        # each decoy copies a real circle's number and is placed within ~120 px of that circle, so the
+        # trap is discrimination (shape) at the moment of clicking, not more searching
+        S["decoys"] = []
+        twins = random.sample(S["targets"], ND)
+        for t in twins:
+            for _ in range(200):
+                ang = random.uniform(0, 6.283); dist = random.uniform(3.0 * R, 7.5 * R)
+                x = int(t["x"] + dist * __import__("math").cos(ang)); y = int(t["y"] + dist * __import__("math").sin(ang))
+                if R + 30 <= x <= W - R - 30 and 70 <= y <= H - R - 30 and \
+                   all((x - o["x"]) ** 2 + (y - o["y"]) ** 2 > (2.6 * R) ** 2 for o in S["targets"] + S["decoys"]):
+                    S["decoys"].append({"n": t["n"], "x": x, "y": y}); break
     S["clicks"] = []
 
 
@@ -35,7 +52,7 @@ def render():
     img = Image.new("RGB", (W, H), (247, 248, 250)); dr = ImageDraw.Draw(img)
     dr.text((16, 12), "Click the numbered CIRCLES in ascending order (1..%d). Squares are decoys. The page scrolls." % N,
             fill=(90, 96, 105), font=base.font(17))
-    f = base.font(20)
+    f = base.font(20 if LEVEL == 1 else (16 if LEVEL == 2 else 11))
     for t in S["targets"]:
         c = COLORS[(t["n"] - 1) % len(COLORS)]
         dr.ellipse([t["x"] - R, t["y"] - R, t["x"] + R, t["y"] + R], fill=c)
@@ -66,7 +83,7 @@ def state():
         if c["hit"] is not None and c["hit"] not in order:
             order.append(c["hit"])
     decoy_hits = sum(1 for c in S["clicks"] if c["decoy"] is not None)
-    return {"n_targets": N, "clicks": S["clicks"], "hit_order": order, "decoy_hits": decoy_hits,
+    return {"level": LEVEL, "n_targets": N, "clicks": S["clicks"], "hit_order": order, "decoy_hits": decoy_hits,
             "complete": order == list(range(1, N + 1)) and decoy_hits == 0}
 
 

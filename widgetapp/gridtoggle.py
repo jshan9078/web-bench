@@ -8,7 +8,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from PIL import Image, ImageDraw
 import base
 
+import os
+LEVEL = int(os.environ.get("WIDGET_LEVEL", "2"))
 G, CELL, M = 8, 58, 30
+NFILL, NRING, NSQ, NROUND = (10, 9, 7, 0) if LEVEL == 1 else (10, 8, 6, 8)
+GR = 11 if LEVEL == 1 else 8
 W = H = G * CELL + 2 * M + 30
 S = {"cells": {}, "on": set(), "clicks": []}
 
@@ -16,9 +20,10 @@ S = {"cells": {}, "on": set(), "clicks": []}
 def reset():
     keys = [(r, c) for r in range(G) for c in range(G)]; random.shuffle(keys)
     S["cells"] = {}
-    for k in keys[:10]: S["cells"][k] = "filled"
-    for k in keys[10:19]: S["cells"][k] = "ring"
-    for k in keys[19:26]: S["cells"][k] = "square"
+    i = 0
+    for kind, n in (("filled", NFILL), ("ring", NRING), ("square", NSQ), ("rounded", NROUND)):
+        for k in keys[i:i + n]: S["cells"][k] = kind
+        i += n
     S["on"] = set(); S["clicks"] = []
 
 
@@ -29,7 +34,7 @@ def _rc(x, y):
 
 def render():
     img = Image.new("RGB", (W, H), (255, 255, 255)); dr = ImageDraw.Draw(img)
-    dr.text((M, 8), "Select every FILLED circle (not rings, not squares). A click toggles a cell.", fill=(90, 96, 105), font=base.font(14))
+    dr.text((M, 8), "Select only FILLED circles (not rings, squares, rounded). Click toggles.", fill=(90, 96, 105), font=base.font(14))
     col = (52, 73, 94)
     for r in range(G):
         for c in range(G):
@@ -38,13 +43,15 @@ def render():
             dr.rectangle([x0, y0, x0 + CELL, y0 + CELL], fill=(255, 243, 205) if sel else (255, 255, 255), outline=(200, 200, 200))
             if sel:
                 dr.rectangle([x0 + 2, y0 + 2, x0 + CELL - 2, y0 + CELL - 2], outline=(230, 160, 0), width=2)
-            kind = S["cells"].get((r, c)); cx, cy, rr = x0 + CELL / 2, y0 + CELL / 2, 11
+            kind = S["cells"].get((r, c)); cx, cy, rr = x0 + CELL / 2, y0 + CELL / 2, GR
             if kind == "filled":
                 dr.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], fill=col)
             elif kind == "ring":
                 dr.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], outline=col, width=3)
             elif kind == "square":
                 dr.rectangle([cx - rr, cy - rr, cx + rr, cy + rr], fill=col)
+            elif kind == "rounded":
+                dr.rounded_rectangle([cx - rr, cy - rr, cx + rr, cy + rr], radius=int(rr * 0.4), fill=col)
     return base.png(img)
 
 
@@ -66,7 +73,7 @@ def click(x, y):
 
 def state():
     filled = {k for k, v in S["cells"].items() if v == "filled"}
-    return {"n_filled": len(filled), "selected": sorted(list(k) for k in S["on"]), "clicks": len(S["clicks"]),
+    return {"level": LEVEL, "n_filled": len(filled), "selected": sorted(list(k) for k in S["on"]), "clicks": len(S["clicks"]),
             "wrong_selected": sorted(list(k) for k in S["on"] - filled), "missing": sorted(list(k) for k in filled - S["on"]),
             "complete": S["on"] == filled}
 

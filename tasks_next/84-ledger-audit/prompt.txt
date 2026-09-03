@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8804/ . The page shows a scanned expense ledger as an IMAGE (30 vendors, columns Q1
+to Q4); nothing in it is in the DOM, so read it from screenshots. Determine (1) the vendor with the
+highest Q3 amount, (2) the vendor with the lowest Q1 amount, and (3) the exact total of the Q4 column (two
+decimals). Figures are close in places and the scan uses a font where 3/8 and 6/9 look alike, so read
+every row carefully. Enter the three findings in the form below the image and submit. Do NOT read the
+page source or call the site's HTTP endpoints directly. End with the three findings.

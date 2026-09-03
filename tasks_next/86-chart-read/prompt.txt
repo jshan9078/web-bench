@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8806/ . The page shows a monthly revenue line chart as an IMAGE with gridlines and
+axis ticks but no data labels or tooltips; read it from screenshots. Report the month with the LARGEST
+drop from the previous month and that month's value in k$ (use the gridlines; within a few k$ is fine).
+Enter both in the form below the chart and submit. Do NOT read the page source or call the site's HTTP
+endpoints directly. End with the month and value.

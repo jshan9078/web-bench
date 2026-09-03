@@ -122,7 +122,7 @@ TASKS = {
     "57-hn-debate-analysis": {"kind": "judge"},
     # ---- v2 task set (2026-09-03): designed to discriminate; see tasks/V2-DESIGN.md. Excluded from the
     # v1 sweeps/scoreboard until piloted (BENCH_SET=v2 selects them; see sweep_tasks()).
-    "58-pixel-scan": {"kind": "appstate", "app": "widgetapp/pixelscan.py", "port": 8792, "v2": True},
+    "58-pixel-scan": {"kind": "appstate", "app": "widgetapp/pixelscan.py", "port": 8792, "v2": True, "level": 3},
     "59-spot-difference": {"kind": "appstate", "app": "widgetapp/spotdiff.py", "port": 8793, "v2": True},
     "60-form-wizard": {"kind": "appstate", "app": "widgetapp/wizard.py", "port": 8794, "v2": True},
     "61-grid-toggle": {"kind": "appstate", "app": "widgetapp/gridtoggle.py", "port": 8795, "v2": True},
@@ -145,6 +145,10 @@ TASKS = {
     "81-memory-flow": {"kind": "appstate", "app": "widgetapp/memoryflow.py", "port": 8801, "v2": True},
     "82-blur-validation": {"kind": "appstate", "app": "widgetapp/blurform.py", "port": 8802, "v2": True},
     "83-reconcile-rule": {"kind": "appstate", "app": "widgetapp/reconcile.py", "port": 8803, "v2": True, "fill_from_state": True},
+    "84-ledger-audit": {"kind": "appstate", "app": "widgetapp/ledger.py", "port": 8804, "v2": True},
+    "85-table-diff": {"kind": "appstate", "app": "widgetapp/tablediff.py", "port": 8805, "v2": True},
+    "86-chart-read": {"kind": "appstate", "app": "widgetapp/chartread.py", "port": 8806, "v2": True},
+    "87-gcal-scheduling": {"profile": True, "kind": "judge", "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -238,7 +242,9 @@ def ensure_app(t):
     try:
         _widget_req(port, "/__state")
     except Exception:
-        subprocess.Popen([sys.executable, str(script), str(port)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        env = dict(os.environ)
+        if t.get("level"): env["WIDGET_LEVEL"] = str(t["level"])      # per-task difficulty level for the widget server
+        subprocess.Popen([sys.executable, str(script), str(port)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, env=env)
         time.sleep(0.9)
     try:
         _widget_req(port, "/__reset", data=b"{}")
@@ -508,7 +514,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer")
 
 
 def widget_bypass(bundle):
