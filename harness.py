@@ -138,7 +138,7 @@ TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
 
 
 def sweep_tasks():
-    """Task names a sweep iterates: BENCH_SET=v1 (default) | v2 | all.\n\nTIME BUDGET: you have 10 minutes of wall-clock time for this task. The run is terminated when the budget runs out, so work efficiently, avoid repeating actions, and give your final answer before then."""
+    """Task names a sweep iterates: BENCH_SET=v1 (default) | v2 | all."""
     which = os.environ.get("BENCH_SET", "v1")
     return TASKS_V1 if which == "v1" else TASKS_V2 if which == "v2" else list(TASKS)
 # Prompts live in tasks/<name>/prompt.txt (one subdirectory per task; see tasks/<name>/verifier.md for
