@@ -68,6 +68,14 @@ in the manifest below:
   were already met in a final answer). Budget-terminated runs are never re-captured for that reason
   alone. The agent prompt states the budget. Supersedes the 30-minute operator grind policy for all runs
   from this date; earlier runs keep their recorded verdicts.
+- 2026-09-03 (browser CLI text truncation): the browser CLI's `type`/`fill` verbs kept only the first
+  word of an unquoted multi-word value (plain and batch forms), while SKILL.md documented
+  `type @e4 My project` as valid. Fixed in browser-cli (words after the target are joined) and installed
+  before any Gemini or Sonnet round-2 wizard run. Runs that failed solely because a typed value was
+  truncated by this defect are harness failures and are re-captured; a run that saw the truncated value
+  on screen and still confirmed is judged on that evidence only when the defect is not the cause of the
+  fail criterion. One affected run: 60-form-wizard spark-low-val (round 2, name "Priya Raman" arrived
+  as "Priya").
 
 ## Re-audits
 
