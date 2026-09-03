@@ -17,7 +17,7 @@ def make(mod, W, H):
             S["submissions"].append(str(data.get("answer") or "").strip()); return (json.dumps({"n": len(S["submissions"])}), "application/json")
         return None
     def state():
-        st = dict(mod.answer_state()); st["submissions"] = S["submissions"]; st["complete"] = any(mod.check(s) for s in S["submissions"]); return st
+        st = dict(mod.answer_state()); st["submissions"] = S["submissions"]; st["complete"] = bool(S["submissions"]) and mod.check(S["submissions"][-1]); return st   # the LAST submission is the answer
     def page():
         return base.image_page(mod.TITLE, W, H, extra_html=f"""
 <div style="position:absolute;top:{H + 12}px;left:20px;font:14px system-ui;width:{W - 40}px"><p>{mod.QUESTION}</p><label>Answer <input id=a size=14></label> <button id=go>Submit</button> <span id=msg></span>

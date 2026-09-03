@@ -12,7 +12,7 @@ S = {"xs": [], "ys": [], "target": (0, 0), "pin": None, "confirmed": None}
 
 
 def reset():
-    xs = sorted(random.sample(range(70, 850, 40), 7)); ys = sorted(random.sample(range(70, 570, 40), 6))
+    xs = sorted(random.sample(range(150, 860, 40), 7)); ys = sorted(random.sample(range(60, 580, 40), 6))
     S["xs"], S["ys"] = xs, ys; S["target"] = (random.randrange(7), random.randrange(6)); S["pin"] = None; S["confirmed"] = None
 
 
@@ -23,10 +23,10 @@ def render():
     img = Image.new("RGB", (W, H), (232, 236, 226)); d = ImageDraw.Draw(img)
     d.rectangle([S["xs"][1] + 6, S["ys"][3] + 6, S["xs"][3] - 6, S["ys"][5] - 6], fill=(190, 222, 180)); d.text((S["xs"][1] + 14, S["ys"][3] + 12), "Riverside Park", fill=(70, 110, 60), font=base.font(12, False))
     for i, y in enumerate(S["ys"]):
-        d.line([(20, y), (W - 20, y)], fill=(255, 255, 255), width=10); d.line([(20, y), (W - 20, y)], fill=(200, 200, 205), width=1); d.text((24, y - 18), EW[i], fill=(60, 60, 70), font=base.font(11, False))
+        d.line([(110, y), (W - 20, y)], fill=(255, 255, 255), width=10); d.line([(110, y), (W - 20, y)], fill=(200, 200, 205), width=1); d.text((30, y - 16), EW[i], fill=(60, 60, 70), font=base.font(12))
     for j, x in enumerate(S["xs"]):
-        d.line([(x, 20), (x, H - 20)], fill=(255, 255, 255), width=10); d.line([(x, 20), (x, H - 20)], fill=(200, 200, 205), width=1)
-        t = Image.new("RGBA", (70, 14), (0, 0, 0, 0)); ImageDraw.Draw(t).text((0, 0), NS[j], fill=(60, 60, 70), font=base.font(11, False)); img.paste(t.rotate(90, expand=True), (x + 6, 26), t.rotate(90, expand=True))
+        d.line([(x, 44), (x, H - 48)], fill=(255, 255, 255), width=10); d.line([(x, 44), (x, H - 48)], fill=(200, 200, 205), width=1)
+        d.text((x - 20, H - 42), NS[j], fill=(60, 60, 70), font=base.font(12)); d.text((x - 20, 26), NS[j], fill=(60, 60, 70), font=base.font(12))
     if S["pin"]:
         px, py = S["pin"]; d.polygon([(px, py), (px - 9, py - 18), (px + 9, py - 18)], fill=(220, 40, 40)); d.ellipse([px - 11, py - 30, px + 11, py - 8], fill=(220, 40, 40)); d.ellipse([px - 4, py - 23, px + 4, py - 15], fill=(255, 255, 255))
     return base.png(img)
