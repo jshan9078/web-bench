@@ -720,3 +720,26 @@ all), and calendar all-day judgement (Opus). What separates Spark: rule-followin
 
 Thirty-two v2 tasks are flagged saturated by the pilot; they stay in the registry for the full-matrix run,
 where weaker configurations may still fail them.
+
+## pass@2 check (2026-09-03)
+
+Every (task, config) pair that failed among the 20 discriminating tasks was re-run once under a "val2" label
+(25 pairs). Rule (user's): if the failing config passes on the retry, the failure was noise and the task does not
+count as a discriminator.
+
+| task | failing config(s) attempt 1 | attempt 2 | status |
+|---|---|---|---|
+| 58 pixel scan, 59 spot difference, 76 settings maze, 95 lot occupancy, 99 seat map, 118 odometer, 137 crop corners, 138 keypad, 139 traffic count, 154 tower clock | Spark | Spark fails again (mostly endpoint probing; 118 and 154 misreads) | valid |
+| 90 dial | Spark, Sonnet, Opus | Spark and Opus pass, Sonnet fails again | valid (Sonnet) |
+| 137 crop corners | Spark, Sonnet | Sonnet passes | valid via Spark |
+| 139 traffic count | Spark, Opus | Opus passes (11/11) | valid via Spark |
+| 75 map explorer, 94 CCTV, 107 reorder, 128 remote desktop | Spark | Spark passes | invalid |
+| 77 crosshair | Sonnet | passes | invalid |
+| 110 analog clock, 127 tick clock | Opus | passes | invalid |
+| 79 Maps hours, 87 Calendar | Spark; Spark and Opus | pass (judged) | invalid, kept by decision (Google) |
+
+Result: 11 tasks hold under pass@2, 9 are flagged `pass2_invalid` (the two Google ones stay in the sweep set by
+decision). Every Claude-side miss on the merits from the single-run pilots (crosshair, both analog clocks, the
+Opus dial and traffic count) passed on retry: those were single-run noise. The only Claude failure that
+reproduced is Sonnet on the dial. Spark's failures reproduce because endpoint probing is a stable behaviour.
+The sweep set is now 13 tasks (11 valid discriminators + 79 + 87 kept).

@@ -6393,5 +6393,17 @@
  "117-gmaps-transit.spark-low-val": {
   "pass": true,
   "note": "Arrive-by control used (Options -> Arrive by -> Mon Sep 7 -> 9:00 AM), URL and route panel text captured confirm 7:44 AM departure, 1 hr 1 min duration, 1 transfer, first line Line 1 (Yonge-University), matching the reported answer exactly. [judge: sonnet batch-116-117]"
+ },
+ "79-gmaps-place-hours.spark-low-val2": {
+  "pass": true,
+  "note": "Address, 4.6/1,767 reviews, full expanded weekly hours (Sunday Closed) and Open-now status all captured verbatim in the trace; Nearby coffee search found Balzac's (same address) and Directions confirmed distances for both Balzac's (36 m/1 min) and Mos Mos Coffee (270 m/4 min), never estimated. [judge: sonnet batch1]"
+ },
+ "87-gcal-scheduling.spark-low-val2": {
+  "pass": true,
+  "note": "Correctly identified Mon Sep 7 as blocked by the all-day Labour Day holiday and created the event on Tue Sep 8, 14:30-15:15, single 30-min notification, Private visibility, all confirmed via captured edit-page screenshot and text; deletion confirmed by post-delete text showing only the Labour Day event remains. [judge: sonnet batch1]"
+ },
+ "87-gcal-scheduling.opus-low-val2": {
+  "pass": true,
+  "note": "Agent self-corrected an initial Sep 7 placement after the holiday layer rendered, ending on Tue Sep 8, 14:30-15:15, single 30-min notification, Private visibility, all confirmed in the captured event-detail popup text and grid screenshot; deletion confirmed by post-delete day view reading 'No events'. [judge: sonnet batch1]"
  }
 }

@@ -136,11 +136,11 @@ TASKS = {
     "73-pdf-table-extract": {"kind": "judge", "retired": True},
     # ---- v2.2 (2026-09-03): hard local test sites + real-map navigation (see tasks/V2-DESIGN.md)
     "74-dashboard-triage": {"kind": "appstate", "app": "widgetapp/dashboard.py", "port": 8796, "retired": True},
-    "75-map-explorer": {"kind": "appstate", "app": "widgetapp/mapexplorer.py", "port": 8797, "v2": True, "fill_from_state": True},
+    "75-map-explorer": {"kind": "appstate", "app": "widgetapp/mapexplorer.py", "port": 8797, "v2": True, "pass2_invalid": True, "fill_from_state": True},
     "78-gmaps-directions": {"kind": "judge", "v2": True, "saturated": True, "keep": True},
-    "79-gmaps-place-hours": {"kind": "judge", "v2": True, "keep": True},
+    "79-gmaps-place-hours": {"kind": "judge", "v2": True, "pass2_invalid": True, "keep": True},
     "76-settings-maze": {"kind": "appstate", "app": "widgetapp/settingsmaze.py", "port": 8798, "v2": True},
-    "77-crosshair-align": {"kind": "appstate", "app": "widgetapp/crosshair.py", "port": 8799, "v2": True, "level": 2},
+    "77-crosshair-align": {"kind": "appstate", "app": "widgetapp/crosshair.py", "port": 8799, "v2": True, "pass2_invalid": True, "level": 2},
     "80-live-list": {"kind": "appstate", "app": "widgetapp/livelist.py", "port": 8800, "retired": True},
     "81-memory-flow": {"kind": "appstate", "app": "widgetapp/memoryflow.py", "port": 8801, "retired": True},
     "82-blur-validation": {"kind": "appstate", "app": "widgetapp/blurform.py", "port": 8802, "retired": True},
@@ -148,7 +148,7 @@ TASKS = {
     "84-ledger-audit": {"kind": "appstate", "app": "widgetapp/ledger.py", "port": 8804, "retired": True},
     "85-table-diff": {"kind": "appstate", "app": "widgetapp/tablediff.py", "port": 8805, "retired": True},
     "86-chart-read": {"kind": "appstate", "app": "widgetapp/chartread.py", "port": 8806, "retired": True},
-    "87-gcal-scheduling": {"profile": True, "kind": "judge", "v2": True},
+    "87-gcal-scheduling": {"profile": True, "kind": "judge", "v2": True, "pass2_invalid": True, "keep": True},
     "88-cancel-flow": {"kind": "appstate", "app": "widgetapp/darkpatterns.py", "port": 8808, "retired": True},
     "89-gcal-last-free": {"profile": True, "kind": "judge", "v2": True, "saturated": True, "keep": True},
     "90-dial-set": {"kind": "appstate", "app": "widgetapp/dial.py", "port": 8810, "v2": True, "fill_from_state": True},
@@ -156,7 +156,7 @@ TASKS = {
     "91-video-slide-read": {"kind": "appstate", "app": "widgetapp/videoplayer.py", "port": 8811, "v2": True, "saturated": True, "level": 2},
     "92-log-stream": {"kind": "appstate", "app": "widgetapp/logtail.py", "port": 8812, "v2": True, "saturated": True, "level": 2},
     "93-ticker-tape": {"kind": "appstate", "app": "widgetapp/ticker.py", "port": 8813, "v2": True, "saturated": True},
-    "94-cctv-review": {"kind": "appstate", "app": "widgetapp/cctv.py", "port": 8814, "v2": True, "level": 2},
+    "94-cctv-review": {"kind": "appstate", "app": "widgetapp/cctv.py", "port": 8814, "v2": True, "pass2_invalid": True, "level": 2},
     "95-lot-occupancy": {"kind": "appstate", "app": "widgetapp/parkinglot.py", "port": 8815, "v2": True},
     "96-slide-diff": {"kind": "appstate", "app": "widgetapp/slidediff.py", "port": 8816, "v2": True, "saturated": True},
     # ---- v2.4 (2026-09-03): real-world browser angles (locale, icon-only UI, seat maps, dual axes, sort bugs, fine print)
@@ -170,11 +170,11 @@ TASKS = {
     "104-receipt-total": {"kind": "appstate", "app": "widgetapp/receipt.py", "port": 8824, "v2": True, "saturated": True},
     "105-ruler-measure": {"kind": "appstate", "app": "widgetapp/ruler.py", "port": 8825, "v2": True, "saturated": True},
     "106-datepicker": {"kind": "appstate", "app": "widgetapp/datepicker.py", "port": 8826, "v2": True, "saturated": True},
-    "107-reorder-list": {"kind": "appstate", "app": "widgetapp/reorder.py", "port": 8827, "v2": True},
+    "107-reorder-list": {"kind": "appstate", "app": "widgetapp/reorder.py", "port": 8827, "v2": True, "pass2_invalid": True},
     # ---- v2.5 (2026-09-03): perception (the failure mode that has actually separated configs)
     "108-shelf-count": {"kind": "appstate", "app": "widgetapp/shelfcount.py", "port": 8828, "v2": True, "saturated": True},
     "109-legend-match": {"kind": "appstate", "app": "widgetapp/legendmatch.py", "port": 8829, "v2": True, "saturated": True},
-    "110-analog-clock": {"kind": "appstate", "app": "widgetapp/analogclock.py", "port": 8830, "v2": True},
+    "110-analog-clock": {"kind": "appstate", "app": "widgetapp/analogclock.py", "port": 8830, "v2": True, "pass2_invalid": True},
     "111-fill-level": {"kind": "appstate", "app": "widgetapp/filllevel.py", "port": 8831, "v2": True, "saturated": True},
     "112-gantt-read": {"kind": "appstate", "app": "widgetapp/gantt.py", "port": 8832, "v2": True, "saturated": True},
     "113-pie-share": {"kind": "appstate", "app": "widgetapp/pieshare.py", "port": 8833, "v2": True, "saturated": True},
@@ -189,8 +189,8 @@ TASKS = {
     "120-gauge-needle": {"kind": "appstate", "app": "widgetapp/gauge.py", "port": 8838, "v2": True, "saturated": True},
     "122-drop-pin": {"kind": "appstate", "app": "widgetapp/droppin.py", "port": 8840, "v2": True, "saturated": True},
     "125-custom-slider": {"kind": "appstate", "app": "widgetapp/rangeslider.py", "port": 8841, "v2": True, "saturated": True},
-    "127-clock-ticks": {"kind": "appstate", "app": "widgetapp/clockticks.py", "port": 8839, "v2": True},
-    "128-remote-desktop": {"kind": "appstate", "app": "widgetapp/remotedesktop.py", "port": 8842, "v2": True},
+    "127-clock-ticks": {"kind": "appstate", "app": "widgetapp/clockticks.py", "port": 8839, "v2": True, "pass2_invalid": True},
+    "128-remote-desktop": {"kind": "appstate", "app": "widgetapp/remotedesktop.py", "port": 8842, "v2": True, "pass2_invalid": True},
     "136-dashcam-speed": {"kind": "appstate", "app": "widgetapp/dashcam.py", "port": 8843, "v2": True, "saturated": True},
     "137-crop-corners": {"kind": "appstate", "app": "widgetapp/cropcorners.py", "port": 8845, "v2": True},
     "138-virtual-keypad": {"kind": "appstate", "app": "widgetapp/keypad.py", "port": 8844, "v2": True},
@@ -209,11 +209,12 @@ TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
 
 def sweep_tasks():
     """Task names a sweep iterates: BENCH_SET=v1 (default) | v2 (discriminating v2 tasks only) | v2all | all.
-    A v2 task flagged `saturated` (every pilot config passed it; see v2_saturation.py) is skipped by
-    BENCH_SET=v2 unless it is also flagged `keep` (the Google Maps tasks, kept by decision)."""
+    A v2 task flagged `saturated` (every pilot config passed it; see v2_saturation.py) or `pass2_invalid`
+    (every config that failed it passed a second attempt, 2026-09-03 pass@2 check) is skipped by BENCH_SET=v2
+    unless it is also flagged `keep` (the Google Maps and Calendar tasks, kept by decision)."""
     which = os.environ.get("BENCH_SET", "v1")
     if which == "v1": return TASKS_V1
-    if which == "v2": return [k for k in TASKS_V2 if not (TASKS[k].get("saturated") and not TASKS[k].get("keep"))]
+    if which == "v2": return [k for k in TASKS_V2 if TASKS[k].get("keep") or not (TASKS[k].get("saturated") or TASKS[k].get("pass2_invalid"))]
     if which == "v2all": return TASKS_V2
     return list(TASKS)
 # Prompts live in tasks/<name>/prompt.txt (one subdirectory per task; see tasks/<name>/verifier.md for
