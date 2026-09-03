@@ -693,8 +693,8 @@ def compare():
 
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "report"
-    if cmd == "tasks":
-        print("\n".join(TASKS))
+    if cmd == "tasks":                 # the sweep set (BENCH_SET=v1 default | v2 | all)
+        print("\n".join(sweep_tasks()))
     elif cmd == "setup":
         setup(sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else None)
     elif cmd == "record":

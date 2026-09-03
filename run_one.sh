@@ -3,12 +3,12 @@
 # full stream captured) -> record raw bundle -> score.  RUN IN YOUR OWN TERMINAL (needs your login).
 # Usage: run_one.sh <task> <model> <effort> <run_label>
 #   model: opus|sonnet|haiku    effort: low|medium|high|xhigh|max
-# Env: MAX_TURNS (60), BENCH_PROFILE (default), CLAUDE_BIN (override binary), BROWSER_CLI/BROWSER_DAEMON.
+# Env: MAX_TURNS (500, runaway valve), BENCH_PROFILE (default), CLAUDE_BIN (override binary), BROWSER_CLI/BROWSER_DAEMON.
 set -u
 cd "$(dirname "$0")"
 TASK=$1; MODEL=$2; EFFORT=$3; RUN=$4
 CONFIG="$MODEL-$EFFORT"
-MAX_TURNS=${MAX_TURNS:-60}
+MAX_TURNS=${MAX_TURNS:-500}   # uncapped harness (2026-09-01 amendment); 500 is a runaway valve only
 # BENCH_PROFILE: only pass through if the caller set it. Empty means harness omits --profile and
 # the daemon's active profile (the signed-in one) applies. Do NOT default to a named profile here:
 # naming a nonexistent profile silently creates a fresh logged-out one.
