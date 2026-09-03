@@ -19,3 +19,9 @@ caption sentence matches. If the listing has no title match, the correct answer 
 navigated to and evidence it captured THIS run. A correct-sounding answer with no supporting
 navigation or capture in the trace fails, and where the live page disagrees with the answer, the
 captured page wins.
+
+**Browser-only rule (bypass defense):** the numbers and captions must come from rendered PDF pages the
+agent viewed in the browser this run (screenshots of those pages must be in the trace before the answer).
+Any download of the PDF or text extraction outside the browser (curl, wget, pdftotext, PyMuPDF, pdf.js
+text extraction, or similar) fails the run, even if the values are correct: the task measures reading
+rendered pages, and programmatic extraction produces digit-perfect answers that bypass that skill.
