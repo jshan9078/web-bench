@@ -12,7 +12,7 @@ S = {"xs": [], "ys": [], "target": (0, 0), "pin": None, "confirmed": None}
 
 
 def reset():
-    xs = sorted(random.sample(range(150, 860, 40), 7)); ys = sorted(random.sample(range(60, 580, 40), 6))
+    xs = sorted(random.sample(range(150, 870, 80), 7)); ys = sorted(random.sample(range(70, 580, 70), 6))
     S["xs"], S["ys"] = xs, ys; S["target"] = (random.randrange(7), random.randrange(6)); S["pin"] = None; S["confirmed"] = None
 
 
