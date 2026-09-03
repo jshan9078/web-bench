@@ -161,3 +161,56 @@ Findings:
 Criteria check: scores are distinct (Sonnet 17/17, Spark 13/17, Gemini 11/14 so far) but Sonnet is at
 100%. Round 4 (v2.3) targets Sonnet's known weakness, precision and state, with the crosshair widget and
 the level-2 traps on the console, map, and settings maze.
+
+### Rounds 4 and 5 (v2.3 and v2.4, 2026-09-03 04:40-05:00)
+
+Gemini was dropped from the pilot after its 5-hour quota (user decision); pilot configs from here are
+Sonnet 5 low and Muse Spark 1.2 low. Round 4 deployed the level-2 traps on the console (linked-ticket
+modal), map (same-named decoy in another district), and settings maze (pre-ticked billing side effect),
+plus the crosshair precision widget. Round 5 added the live fleet console.
+
+```
+task                              sonnet-low-val            spark-low-val
+58-pixel-scan                               PASS            FAIL (bypass)
+59-spot-difference                          PASS            FAIL (bypass)
+60-form-wizard                              PASS                     PASS
+61-grid-toggle                              PASS                     PASS
+63-wikipedia-edit-audit                     PASS                     PASS
+64-hn-comment-census                        PASS                     PASS
+65-arxiv-pdf-tables                         PASS                     PASS
+66-wiki-table-reconcile                     PASS                     PASS
+68-youtube-transcript                       PASS                     PASS
+69-timezone-meeting                         PASS                     PASS
+72-amazon-quantity-edit                     PASS                     PASS
+73-pdf-table-extract                        PASS                     PASS
+74-dashboard-triage                         PASS                     PASS
+75-map-explorer                             PASS            FAIL (bypass)
+78-gmaps-directions                         PASS                     PASS
+79-gmaps-place-hours                        PASS                     FAIL
+76-settings-maze                            PASS            FAIL (bypass)
+77-crosshair-align                          FAIL                     PASS
+80-live-list                                FAIL                     FAIL
+score (pass/judged)                        17/19                    13/19
+pending/missing                                0                        0
+median s / max s                        52 / 403                 66 / 295
+
+criteria: no config at 100%: True | all scores distinct: True
+```
+
+Findings:
+
+- **Sonnet's first fails on the merits**: the crosshair (locked at 5.0 px after 11 moves, no verification
+  screenshot; Spark took 42 moves and five screenshots to land at 2.2 px) and the live console (its
+  confirmed restart hit the 94% host while a 96% host had moved to the top). Both are precision-and-
+  timing failures, matching its only v1 misses.
+- **The live console fails both configs** the same way: a read from one refresh window, an action in the
+  next. It is the read-act-loop test that real live dashboards impose; neither config used a fresh
+  snapshot plus ref click inside one window.
+- **The level-2 traps did not catch Sonnet** (it declined the linked-ticket modal, ignored the decoy
+  gym, unticked the billing side effect), and Spark's level-2 losses were again guard fails for reading
+  page data endpoints rather than trap failures.
+
+**Criteria met on the pilot configs**: no config at 100% (Sonnet 17/19, Spark 13/19), scores distinct,
+and the failure profiles differ by model (precision/timing versus rule-following/fabrication). Across a
+full 36-configuration matrix, "all scores distinct" cannot hold on 19 tasks (20 possible scores); the
+achievable goal is a set on which strong configs no longer saturate, which this set now is.
