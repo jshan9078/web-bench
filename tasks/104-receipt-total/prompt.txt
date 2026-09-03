@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8824/ . It is a photo of a restaurant receipt (read it from screenshots). 
+Report the amount actually charged INCLUDING the tip that was written on the receipt, enter it in 
+the form below the photo and submit. Do NOT read the page source or call the site's HTTP endpoints 
+directly. End with the amount.

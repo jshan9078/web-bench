@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8827/ . It is a runbook editor with an ordered list of steps. Move the step 
+"Rotate API keys" so that it comes DIRECTLY AFTER the step "Notify on-call" (not "Notify on-call 
+lead"), leaving the relative order of all other steps unchanged, then click Save order. Do NOT read 
+the page source or call the site's HTTP endpoints directly. End with the final order.

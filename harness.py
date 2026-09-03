@@ -166,6 +166,11 @@ TASKS = {
     "100-dual-axis-chart": {"kind": "appstate", "app": "widgetapp/dualaxis.py", "port": 8820, "v2": True},
     "102-admin-table": {"kind": "appstate", "app": "widgetapp/admintable.py", "port": 8822, "v2": True},
     "103-fine-print": {"kind": "appstate", "app": "widgetapp/fineprint.py", "port": 8823, "v2": True},
+    "101-otp-relay": {"kind": "appstate", "app": "widgetapp/otprelay.py", "port": 8821, "v2": True},
+    "104-receipt-total": {"kind": "appstate", "app": "widgetapp/receipt.py", "port": 8824, "v2": True},
+    "105-ruler-measure": {"kind": "appstate", "app": "widgetapp/ruler.py", "port": 8825, "v2": True},
+    "106-datepicker": {"kind": "appstate", "app": "widgetapp/datepicker.py", "port": 8826, "v2": True},
+    "107-reorder-list": {"kind": "appstate", "app": "widgetapp/reorder.py", "port": 8827, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -539,7 +544,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book")
 
 
 def widget_bypass(bundle):

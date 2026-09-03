@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8821/ . It is an authenticator app showing rotating 6-digit codes for two 
+accounts. Follow the link to verify a new device for Northwind Mail and enter the current Northwind 
+Mail code so the device is verified (the page confirms success). Codes expire, so read a fresh one. 
+Do NOT read the page source or call the site's HTTP endpoints directly. End with a one-line 
+confirmation.

@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8826/ . It is a hotel booking form whose date fields open a calendar (typing 
+is disabled). Book a stay checking in on the LAST Friday of November 2027, checking out three 
+nights later, for two guests, and click Confirm booking (the page shows a booking reference). Do 
+NOT read the page source or call the site's HTTP endpoints directly. End with the dates you booked.

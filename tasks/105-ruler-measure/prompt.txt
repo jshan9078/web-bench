@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8825/ . It is a listing photo of two replacement parts next to a ruler (read 
+it from screenshots). Report the length of part A in millimetres (within 2 mm), enter it in the 
+form below the photo and submit. Do NOT read the page source or call the site's HTTP endpoints 
+directly. End with the length.
