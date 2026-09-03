@@ -17,10 +17,10 @@ reasons unrelated to browsing skill.
 
 ## Results (full matrix, 2026-08-29 to 2026-09-02)
 
-**35 configurations x 44 tasks = 1,540 runs, all judged, pass@1.** Seven model families: **Claude
+**36 configurations x 44 tasks = 1,584 runs, all judged, pass@1.** Seven model families: **Claude
 Opus 5, Sonnet 5, and Haiku 4.5** via Claude Code, **Gemini 3.7 Flash** (its three levels)
-via Antigravity, **GPT-5.6 Luna** via the Codex CLI, and **Muse Spark 1.2 and 1.3** via Muse Code; **Gemini 3.8 Flash**
-is in progress (low and medium complete, high capturing). Opus, Sonnet, Luna, and both Sparks swept
+via Antigravity, **Gemini 3.8 Flash** (three levels) via Antigravity, **GPT-5.6 Luna** via the Codex CLI, and
+**Muse Spark 1.2 and 1.3** via Muse Code. Opus, Sonnet, Luna, and both Sparks swept
 five thinking levels each (Spark's scale tops out at `ultra` rather than `max`). Median time is
 browser-active seconds per task (the same field for every family). Haiku 4.5 does not support the
 effort parameter (Claude Code silently ignores `--effort` on it; run telemetry confirms zero
@@ -40,6 +40,7 @@ answers an hour apart.
 | Gemini 3.7 Flash | high | 43/44 | 97.7% | 35s | $0.175 |
 | Gemini 3.8 Flash | low | 44/44 | 100.0% | 46s | $0.153 |
 | Gemini 3.8 Flash | medium | 44/44 | 100.0% | 58s | $0.192 |
+| Gemini 3.8 Flash | high | 42/44 | 95.5% | 70s | $0.221 |
 | GPT-5.6 Luna | low | 36/43 | 83.7% | 29s | $0.014 |
 | GPT-5.6 Luna | medium | 39/43 | 90.7% | 45s | $0.016 |
 | GPT-5.6 Luna | high | 38/44 | 86.4% | 49s | $0.022 |
@@ -111,7 +112,11 @@ fixed along the way, is in `JUDGE_PROMPT.md`.
   careless errors the other families' low tiers don't.
 - **Gemini Flash is the cheap-and-fast baseline that everyone else is measured against.** 3.7's
   low tier is the fastest cheap config in the matrix (26s, $0.117, 97.7%) and its medium tier is
-  perfect; 3.8's low and medium tiers are both perfect (44/44) at $0.15-0.19. 3.7 was the
+  perfect; 3.8's low and medium tiers are both perfect (44/44) at $0.15-0.19, while its high tier
+  drops to 95.5% at $0.22 and 70s: above medium the extra reasoning buys nothing on this suite, and
+  its two misses were self-inflicted (asking for a FlightAware sign-in while the accessible board
+  it had already read listed the flights, and reporting a relative upload time that contradicted
+  the absolute date in its own captures). 3.7 was the
   only family to reliably clear the two hardest interaction tasks (the Desmos math-input editor
   and JS Paint under a no-GPU WebGL error dialog) at every level, suggesting its agent harness
   paces keystroke-heavy widget input better than the Claude-side agents.

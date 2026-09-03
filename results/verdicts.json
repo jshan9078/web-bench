@@ -6021,5 +6021,177 @@
  "36-jspaint-poster.sonnet-medium-val": {
   "pass": false,
   "note": "re-capture: preserved final shot is a flat red canvas with no visible dots even under contrast enhancement; agent claimed faint single-pixel dots via readback, which the verifier disqualifies [judge: sonnet recap, operator-verified]"
+ },
+ "13-usgs-quake-report.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Configured 1-Day/All-Magnitudes/Worldwide feed, top result M6.2 South Sandwich Islands matches event page (mag/depth/UTC time all grounded in trace) [judge: sonnet 38high-b2]"
+ },
+ "14-imdb-yearly-top.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Advanced search grounded with release_date=2026-01-01, num_votes=25000, feature, sorted user_rating desc; Punjab '95 8.8/106K top result; director Honey Trehan's filmography confirms both other titles as director credits [judge: sonnet 38high-b2]"
+ },
+ "15-stock-analyst-targets.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "All five values (price, day range, market cap, earnings date, avg analyst target) grounded in captured NVDA quote/analysis pages [judge: sonnet 38high-b2]"
+ },
+ "17-currency-meal-budget.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "XE rate and converted JPY amount, Numbeo meal price all grounded; floor(284948.34/1200)=237 correct [judge: sonnet 38high-b2]"
+ },
+ "18-npm-package-audit.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Header recency 'Published 9 months ago' (not sidebar) correctly used per amendment; version, weekly downloads, GitHub open issues all grounded [judge: sonnet 38high-b2]"
+ },
+ "19-wiktionary-wotd.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Word pugnacious, POS, definition, and Jack London quote all grounded in captured entry page matching WOTD 3 September 2026 [judge: sonnet 38high-b2]"
+ },
+ "20-nasa-apod-vision.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Screenshot confirmed via video frame: title/date match, visual description (crescent eclipse, orange sky, stork silhouette in nest, rim light) accurately matches image, gist matches explanation text [judge: sonnet 38high-b2]"
+ },
+ "21-amazon-office-bundle.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Cart_before empty, cart_after shows both items (Lepro lamp .99, Amazon Basics mouse .99) subtotal .98 under ; both ratings (4.7, 4.4) grounded in trace [judge: sonnet 38high-b2]"
+ },
+ "22-amazon-earbud-compare.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Cart_before empty, cart_after shows Anker P20i added (.99); price/rating/count/battery for both products grounded in trace; tie-break on higher-rated using captured histogram data reasonable [judge: sonnet 38high-b2]"
+ },
+ "26-ebay-keyboard-hunt.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Cart screenshot confirms AZIO MGK1-RGB keyboard .99, free shipping, seller tysda 99.2% feedback, BIN confirmed in trace, all under  [judge: sonnet 38high-b2]"
+ },
+ "27-amazon-review-mining.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Signed-in session confirmed; rating 4.6/101,081 grounded; three complaints (seal/pressurization, dent/damage, used-sold-as-new) each supported by multiple captured critical reviews within past 12 months with matching dates [judge: sonnet 38high-b2]"
+ },
+ "01-mlb-latest.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Games and Cubs box-score scorers (Suzuki, Bregman, Taylor, Hoerner) match captured MLB pages this run [judge: sonnet 38high-b1]"
+ },
+ "02-hn-summary.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Themed summary matches captured HN front page and includes dedicated Agents section with two real front-page stories [judge: sonnet 38high-b1]"
+ },
+ "03-weather-nyc.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "High/low and conditions match captured NWS Central Park forecast page exactly [judge: sonnet 38high-b1]"
+ },
+ "04-x-projects.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Project list matches jshan9078.github.io projects page reached from X profile; SLM benchmarked models match the linked blog's tables exactly [judge: sonnet 38high-b1]"
+ },
+ "05-amazon-cart.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Cart_before empty, cart_after shows both books added this run (subtotal 61.49, 2 items), matching trace of two add-to-cart actions [judge: sonnet 38high-b1]"
+ },
+ "06-amazon-search-add.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Trace shows search, sponsored-filtering to find first genuine result (index 5, B0DLFQSK4M), and cart_after confirms it added with 1 item [judge: sonnet 38high-b1]"
+ },
+ "08-airport-departures.gemini-3.8-flash-high": {
+  "pass": false,
+  "note": "Not a wall: the sign-in redirect gates only the expanded /departures and /scheduled boards; the airport page's embedded departures board, which this run opened and used for one flight (JZA512 to KPHL), listed 11 distinct US-bound destinations in the captured output, and 27 configurations completed the task from it without logging in. The agent abandoned the accessible board, made 14 search_web calls, and asked for a sign-in. Judge's blocked verdict overturned on the run's own evidence; the judge's live curl check was also outside the offline-evidence rule. [judge: sonnet 38high-b1; overturned by operator re-audit 2026-09-03]"
+ },
+ "09-recipe-scaling.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Recipe name/rating/count/yield match captured Allrecipes page; 48->36 cookie scaling arithmetic is correct [judge: sonnet 38high-b1]"
+ },
+ "10-arxiv-agents-paper.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "arXiv:2609.01918 correctly identified as first agent-mentioning title in cs.CL new listing; id/title/2-author count verified on abstract page [judge: sonnet 38high-b1]"
+ },
+ "11-github-trending-audit.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "google-research/timesfm top trending repo; description, 343 stars today, 30,051 total stars, v3.0.0 (Aug 28 2026) release, and 149 open issues all confirmed on pages visited this run [judge: sonnet 38high-b1]"
+ },
+ "12-wikipedia-current-events.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "All three reported items and their linked articles (Estonian presidential election, MLS/US Open Cup, Leipzig Airport drone incidents) confirmed under Sept 2 2026 section of captured portal [judge: sonnet 38high-b1]"
+ },
+ "47-reddit-save.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "screenshot confirms saved post matches #1 organic top/week post (2.1K pts, 51 comments), trace shows unsave + empty saved-items confirming cleanup [judge: sonnet 38high-b4]"
+ },
+ "48-spotify-playlist.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "screenshot shows webbench mix playlist with Bohemian Rhapsody by Queen, toast confirms Make private action, trace shows deletion and library-search-not-found cleanup [judge: sonnet 38high-b4]"
+ },
+ "49-x-bookmark.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "screenshot shows Bookmarks page with newest non-pinned AnthropicAI post on top, eval confirms no pinned posts and post absent after unbookmark cleanup [judge: sonnet 38high-b4]"
+ },
+ "50-google-flights-nonstop.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "dates match first-Monday-of-month-after-next rule (Nov 2/Nov 9 2026), nonstop filter applied, both reported fares/times match captured results page [judge: sonnet 38high-b4]"
+ },
+ "51-wikipedia-revision-audit.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "history page eval confirms latest revision 03:47 31 Aug 2026 by OAbot with matching summary, reference count 174 confirmed via DOM count [judge: sonnet 38high-b4]"
+ },
+ "53-caniuse-feature.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "screenshot shows support table with 94.72% global usage and version ranges confirming Firefox 121 last to ship, matches text report [judge: sonnet 38high-b4]"
+ },
+ "54-stackoverflow-live.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Newest tab confirmed selected on rust tag, question title/asker/counts/summary grounded in captured question page [judge: sonnet 38high-b4]"
+ },
+ "55-wayback-snapshot.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "screenshot of June 15 2010 apple.com snapshot shows exact headline iPhone 4 / This changes everything. Again. and nav items Store/Mac/iPod [judge: sonnet 38high-b4]"
+ },
+ "56-sunrise-reykjavik.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "sunrise/sunset/day-length values for Sep 4 2026 match captured timeanddate.com table exactly [judge: sonnet 38high-b4]"
+ },
+ "57-hn-debate-analysis.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "#1 story Muse Spark 1.3 (493 pts) confirmed via score selector, both bertili and notatoad comments grounded in captured thread text matching summarized arguments [judge: sonnet 38high-b4]"
+ },
+ "29-excalidraw-pipeline.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Final screenshot shows IN -> WORK -> OUT left to right via text-tool pixel clicks this run [judge: sonnet 38high-b3]"
+ },
+ "32-desmos-intersections.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Screenshot shows both curves and Desmos-rendered label (-2.33036,-0.77679) matching reported (-2.33,-0.78); 5-intersection count computed from actual viewport bounds this run [judge: sonnet 38high-b3]"
+ },
+ "33-osm-street-read.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Zoomed screenshot legibly shows Mill Street and Trinity Street bordering the Distillery District, URL coords 18/43.650060/-79.361029 match [judge: sonnet 38high-b3]"
+ },
+ "34-osm-route-measure.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Screenshot shows route line and routing panel: 975m, 0:13, Start on West Wing 20m, Turn right onto unnamed road 1000m, matching reported answer [judge: sonnet 38high-b3]"
+ },
+ "36-jspaint-poster.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Final screenshot shows canvas flooded red with 5 black dots in a recognizable X (center + 4 corners) [judge: sonnet 38high-b3]"
+ },
+ "39-youtube-frame-describe.gemini-3.8-flash-high": {
+  "pass": false,
+  "note": "Trace's own DOM reads show the page displaying an absolute upload date '2 Sept 2026' (confirmed 3x via eval/text), but agent reported recency as '12 hours ago', an ungrounded fabrication contradicting the captured page per grounding rule; title/views/frame description otherwise correct [judge: sonnet 38high-b3]"
+ },
+ "40-arxiv-pdf-figure.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Page-1 screenshot confirms title, 8 listed authors, and a Figure 1 comparing a common trial-and-error agent vs an implicit-world-model agent, matching the reported answer [judge: sonnet 38high-b3]"
+ },
+ "41-owid-dataset-read.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Table screenshot shows Japan, 2023 column, 84.7 years, matching reported year/value [judge: sonnet 38high-b3]"
+ },
+ "42-youtube-watch-later.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Verification screenshot (pre-cleanup) shows Watch Later containing 'lofi hip hop radio beats to relax/study to' by Lofi Girl; trace then shows removal and end-state confirms empty playlist [judge: sonnet 38high-b3]"
+ },
+ "43-gmail-self-draft.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Drafts screenshot shows subject 'webbench draft check' with body 'September 3, 2026 / Muse Spark 1.3' (HN #1 title read via DOM this run); no send action; trace shows discard and empty Drafts after [judge: sonnet 38high-b3]"
+ },
+ "44-gcal-event.gemini-3.8-flash-high": {
+  "pass": true,
+  "note": "Screenshot shows 'webbench sync' event on Monday Sept 7 2026 (correct next-Monday from Sept 3 run date) at 10 AM slot on the grid; cleanup deletion confirmed in agent report [judge: sonnet 38high-b3]"
  }
 }

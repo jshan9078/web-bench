@@ -116,3 +116,13 @@ in the manifest below:
   un-recorded and retryable as before, but its stream is preserved as raw/<task>.<run>.failstream.txt
   so the cause can be inspected. The paused task was never recorded, so no verdict was affected; it
   is retried on the next resume pass.
+
+- **2026-09-03 gemini-3.8-flash-high / 08-airport-departures: judge 'blocked' overturned to fail.**
+  The judge accepted FlightAware's sign-in redirect on the expanded `/departures` and `/scheduled`
+  boards as a forced-login wall and confirmed it with a live curl. Two problems: the live check is
+  outside the offline-evidence rule, and the run's own captured output shows the airport page's
+  embedded departures board listing 11 distinct US-bound destinations, from which the agent had
+  already opened one flight page before abandoning the board, making 14 `search_web` calls, and
+  asking the operator to sign in. 27 configurations completed the task from that embedded board
+  without logging in. A login gate on a sub-page that the task does not need is not a wall under
+  rule 6. Recorded as a model failure.
