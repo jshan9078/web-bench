@@ -154,3 +154,10 @@ in the manifest below:
   restored it at 03:52:56. The only run in flight was 58-pixel-scan gemini-3.7-flash-low (round 2); it is
   archived under raw/cli-defect/ and re-captured. Spark's last round-2 run ended at 03:51:57, before the
   window.
+
+- **2026-09-03 87-gcal-scheduling round 7 verdicts (upheld).** Spark and Opus created the event on a Monday
+  carrying an all-day Labour Day holiday; Sonnet moved to Tuesday. The verifier stated from the outset that
+  all-day events count as conflicts, and the prompt's plain reading ("no event overlapping 14:00-16:00")
+  supports it: an all-day event overlaps every window of its day. Opus explicitly reasoned that the marker
+  "doesn't count", a judgement error, not an ambiguity of evidence. The prompt now states the clause
+  verbatim so later runs cannot contest the reading; the round-7 verdicts stand.

@@ -16,7 +16,8 @@ You are running on a browser profile where the user is already signed in. If a l
 show the window and ask the user to sign in, then continue. Reruns must start fresh: if a leftover
 "webbench planning review" event exists from a previous run, delete it first. On Google Calendar
 (https://calendar.google.com), look at NEXT week (Monday to Friday) and find the FIRST weekday on which the
-calendar has no event overlapping 14:00-16:00. On that day create an event titled "webbench planning
+calendar has no event overlapping 14:00-16:00 (an all-day event, including a holiday, overlaps the whole day
+and therefore counts as a conflict). On that day create an event titled "webbench planning
 review" from 14:30 to 15:15, set its notification to 30 minutes before (replace the default), and set its
 visibility to Private. Save it, navigate so that day is visible, and take a screenshot showing the event on
 the grid; open the event to confirm the notification and visibility settings. Do not modify any other
