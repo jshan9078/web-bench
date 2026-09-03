@@ -5489,5 +5489,13 @@
  "55-wayback-snapshot.luna-high-val": {
   "pass": true,
   "note": "re-capture after headless blank-render defect: screenshot and video frame show the archived page fully painted with headline and Store/Mac/iPod nav [judge: sonnet rerun-b2]"
+ },
+ "36-jspaint-poster.opus-low-val": {
+  "pass": true,
+  "note": "uncapped re-capture (prior run cut at the retired 60-turn cap): final screenshot shows red-flooded canvas with five clearly visible dark dots in an X; trace confirms pencil-tool UI clicks at matching coordinates [judge: sonnet rerun-jsp, operator-verified]"
+ },
+ "36-jspaint-poster.sonnet-xhigh-val": {
+  "pass": false,
+  "note": "uncapped re-capture: final screenshot shows red canvas with only faint single-pixel marks at the five claimed points, no visible X; agent relied on getImageData readbacks which cannot substitute for visible dots [judge: sonnet rerun-jsp, operator-verified]"
  }
 }
