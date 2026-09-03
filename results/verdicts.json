@@ -6441,5 +6441,13 @@
  "167-github-issue-pr.spark-low-val": {
   "pass": true,
   "note": "Matches GitHub API ground truth exactly: issue #4297 closed by merged PR #4487, author davidism, merged 2022-03-15T15:36:16Z (agent reported the exact ISO timestamp, corroborated via its own live API calls plus page navigation to both the issue and PR pages this run). [judge: sonnet 163-164-167-batch]"
+ },
+ "163-gmaps-route-options.spark-low-val2": {
+  "pass": true,
+  "note": "Evidence shows all three legs with matching figures (58min/36.3km direct; 1h13min/35.8km via library in correct order Union Station->Library->Zoo; 1h35min/36.3km with avoid tolls+highways), and the run's own eval calls (#ucc-5/#ucc-4 .checked returning true/true) plus the final accessibility snapshot showing a checked route radio confirm both avoid options were actually enabled when the final totals were read, unlike attempt 1's unchecked-state defect. [judge: sonnet 163-167-batch]"
+ },
+ "167-github-issue-pr.opus-low-val2": {
+  "pass": false,
+  "note": "Ground truth (re-verified via GitHub API this session) is issue #4297 closed by merged PR #4487 (davidism, merged 2022-03-15T15:36:16Z); the run instead reported issue #4295/PR #4298/delicb/Nov 15 2021 after visiting #4297's page and incorrectly concluding it was closed manually with no merged PR, missing the linked PR #4487 in its timeline. [judge: sonnet 163-167-batch]"
  }
 }

@@ -769,3 +769,9 @@ disagree on the issue (#4297 vs #4295), settled against the GitHub API.
 glyph were solved by all three: INVALID. 179 people count HOLDS for Sonnet (21 for 22, then 15 for 19 after 498
 actions); Opus's second attempt is re-run separately (a pipeline bug let a Claude run consume the pairs list).
 Counting people over a two-minute clip is a genuine, reproducible failure.
+
+### Iteration B2: second attempts on the real-site failures
+
+163 Maps route options: Spark applied both options correctly on the retry (INVALID). 167 GitHub issue-to-PR: Opus
+failed both attempts the same way (visited #4297, judged it "closed manually", reported the older #4295/#4298):
+VALID, a genuine navigation-and-reading failure verified against the GitHub API.

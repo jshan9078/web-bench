@@ -209,7 +209,7 @@ TASKS = {
     "160-parking-meter": {"kind": "appstate", "app": "widgetapp/parkmeter.py", "port": 8856, "v2": True, "pass2_invalid": True},
     "161-defect-marking": {"kind": "appstate", "app": "widgetapp/defects.py", "port": 8857, "v2": True, "pass2_invalid": True},
     "162-utility-meter": {"kind": "appstate", "app": "widgetapp/utilitymeter.py", "port": 8858, "v2": True, "pass2_invalid": True},
-    "163-gmaps-route-options": {"kind": "judge", "v2": True},
+    "163-gmaps-route-options": {"kind": "judge", "v2": True, "pass2_invalid": True},
     "164-gcal-recurring": {"profile": True, "kind": "judge", "v2": True},
     "167-github-issue-pr": {"kind": "judge", "v2": True},
     "171-spreadsheet-grid": {"kind": "appstate", "app": "widgetapp/gridsheet.py", "port": 8859, "v2": True},
