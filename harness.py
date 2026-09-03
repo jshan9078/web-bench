@@ -149,7 +149,9 @@ TASKS = {
     "85-table-diff": {"kind": "appstate", "app": "widgetapp/tablediff.py", "port": 8805, "v2": True, "saturated": True},
     "86-chart-read": {"kind": "appstate", "app": "widgetapp/chartread.py", "port": 8806, "v2": True, "saturated": True},
     "87-gcal-scheduling": {"profile": True, "kind": "judge", "v2": True},
-    "88-cancel-flow": {"kind": "appstate", "app": "widgetapp/darkpatterns.py", "port": 8808, "v2": True, "saturated": True},    "89-gcal-last-free": {"profile": True, "kind": "judge", "v2": True, "saturated": True},    "90-dial-set": {"kind": "appstate", "app": "widgetapp/dial.py", "port": 8810, "v2": True, "fill_from_state": True},
+    "88-cancel-flow": {"kind": "appstate", "app": "widgetapp/darkpatterns.py", "port": 8808, "v2": True, "saturated": True},
+    "89-gcal-last-free": {"profile": True, "kind": "judge", "v2": True, "saturated": True},
+    "90-dial-set": {"kind": "appstate", "app": "widgetapp/dial.py", "port": 8810, "v2": True, "fill_from_state": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
