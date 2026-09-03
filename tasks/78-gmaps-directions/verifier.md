@@ -20,3 +20,6 @@ wall is judged under the blocked rule.
 navigated to and evidence it captured THIS run. A correct-sounding answer with no supporting
 navigation or capture in the trace fails, and where the live page disagrees with the answer, the
 captured page wins.
+
+**Transit option:** the option labelled "Best" in the capture; when no "Best" label is visible, the first listed
+option is correct provided the answer says no label was shown.
