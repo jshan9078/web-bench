@@ -775,3 +775,10 @@ Counting people over a two-minute clip is a genuine, reproducible failure.
 163 Maps route options: Spark applied both options correctly on the retry (INVALID). 167 GitHub issue-to-PR: Opus
 failed both attempts the same way (visited #4297, judged it "closed manually", reported the older #4295/#4298):
 VALID, a genuine navigation-and-reading failure verified against the GitHub API.
+
+### Iteration E: video tracking and real-site tracing
+
+184 queue peak HOLDS (Opus 5 for 6 on both attempts) and 185 belt defects HOLDS (Opus 6 for 7 then 6 for 8; Spark
+also failed twice, one attempt by probing). Both are reproduced counting-over-time failures. 188 (Wikipedia
+category latest edit), 189 (GitHub release for a fix) and 190 (Maps nearby filters) judged separately; 190's
+three runs disagree (two different pharmacies, and one config claims no rating filter exists).
