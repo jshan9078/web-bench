@@ -1,0 +1,7 @@
+Open http://127.0.0.1:8816/ . It is a recording of a presentation playing in a video player (the 
+video autoplays; use the player controls, the keyboard shortcuts, or click a transcript line to 
+seek). The slides are burned into the video, so read them from screenshots. The presenter shows a 
+DRAFT budget table early in the talk and a CORRECTED version near the end. Exactly one line item's 
+AMOUNT changed between the two tables. Report that line item and its corrected amount. Enter both 
+in the form under the player and submit. Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with the item and amount.

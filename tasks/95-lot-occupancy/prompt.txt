@@ -1,0 +1,7 @@
+Open http://127.0.0.1:8815/ . It is playback of a 4-minute top-down parking-camera recording 
+rendered on a canvas (read frames from screenshots), with a timeline that marks motion events, a 
+seek bar, step buttons and a speed control. Cars arrive and leave during the recording. Report the 
+camera clock burned into the frame (HH:MM:SS) at the moment the lot FIRST holds exactly four parked 
+cars (cars stationary in bays; a car still driving in or out does not count). Enter it in the form 
+under the player and submit. Do NOT read the page source or call the site's HTTP endpoints 
+directly. End with the time.

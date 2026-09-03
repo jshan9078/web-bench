@@ -157,6 +157,8 @@ TASKS = {
     "92-log-stream": {"kind": "appstate", "app": "widgetapp/logtail.py", "port": 8812, "v2": True, "level": 2},
     "93-ticker-tape": {"kind": "appstate", "app": "widgetapp/ticker.py", "port": 8813, "v2": True},
     "94-cctv-review": {"kind": "appstate", "app": "widgetapp/cctv.py", "port": 8814, "v2": True, "level": 2},
+    "95-lot-occupancy": {"kind": "appstate", "app": "widgetapp/parkinglot.py", "port": 8815, "v2": True},
+    "96-slide-diff": {"kind": "appstate", "app": "widgetapp/slidediff.py", "port": 8816, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
