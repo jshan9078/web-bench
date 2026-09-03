@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8834/ . The page shows a latency scatter plot as an IMAGE with a dashed SLA 
+line (read it from screenshots). Count exactly how many points lie ABOVE the SLA line, enter the 
+number in the form and submit. Do NOT read the page source or call the site's HTTP endpoints 
+directly. End with the count.

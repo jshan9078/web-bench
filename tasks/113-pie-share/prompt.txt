@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8833/ . The page shows a pie chart of traffic sources as an IMAGE with a 
+legend and no percentage labels (read it from screenshots). The question under the chart names a 
+segment; estimate its share as a percentage (within 4 points), enter it in the form and submit. Do 
+NOT read the page source or call the site's HTTP endpoints directly. End with the percentage.

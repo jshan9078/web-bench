@@ -176,6 +176,10 @@ TASKS = {
     "109-legend-match": {"kind": "appstate", "app": "widgetapp/legendmatch.py", "port": 8829, "v2": True},
     "110-analog-clock": {"kind": "appstate", "app": "widgetapp/analogclock.py", "port": 8830, "v2": True},
     "111-fill-level": {"kind": "appstate", "app": "widgetapp/filllevel.py", "port": 8831, "v2": True},
+    "112-gantt-read": {"kind": "appstate", "app": "widgetapp/gantt.py", "port": 8832, "v2": True},
+    "113-pie-share": {"kind": "appstate", "app": "widgetapp/pieshare.py", "port": 8833, "v2": True},
+    "114-scatter-threshold": {"kind": "appstate", "app": "widgetapp/scatter.py", "port": 8834, "v2": True},
+    "115-heatmap-max": {"kind": "appstate", "app": "widgetapp/heatmap.py", "port": 8835, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

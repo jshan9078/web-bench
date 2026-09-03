@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8835/ . The page shows a weekday-by-hour activity heatmap as an IMAGE with a 
+colour scale and no numbers (read it from screenshots). Identify the single cell with the HIGHEST 
+activity and enter it as 'Day HH' (for example: Tue 14) in the form and submit. Do NOT read the 
+page source or call the site's HTTP endpoints directly. End with the day and hour.
