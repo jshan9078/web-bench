@@ -3,7 +3,7 @@
 stock for some parts. A Data policy page states the precedence rule: the DETAIL page is authoritative when
 its "last updated" is newer than the list's snapshot time, otherwise the LIST is. Task: for the named part,
 report the authoritative stock count and press "Mark verified" on the authoritative page (each page has its
-own button). complete = exactly one verify click, on the correct page for the target part."""
+own button). complete = every verify click is on the correct page for the target part (repeat clicks on it are fine)."""
 import json, random, sys, os, datetime
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import base
@@ -47,7 +47,7 @@ def state():
     v = S["verifies"]
     return {"target": {"name": t["name"], "id": t["id"], "authoritative_page": auth, "stock": t["detail_stock"] if auth == "detail" else t["list_stock"],
                        "list_stock": t["list_stock"], "detail_stock": t["detail_stock"], "updated": t["updated"].strftime("%Y-%m-%d %H:%M"), "snapshot": S["snapshot"].strftime("%Y-%m-%d %H:%M")},
-            "verifies": v, "complete": len(v) == 1 and v[0]["id"] == t["id"] and v[0]["page"] == auth}
+            "verifies": v, "complete": bool(v) and all(x["id"] == t["id"] and x["page"] == auth for x in v)}   # idempotent: repeats of the correct verify are fine
 
 
 def page():

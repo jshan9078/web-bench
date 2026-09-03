@@ -5,7 +5,7 @@
 - **what it tests**: reading a site's own precedence rule, comparing two timestamps (list snapshot versus detail update), and acting on the correct page only
 - **discrimination hypothesis**: a realistic data-consistency situation with a stated rule; agents that trust the detail page by default, or the list by default, are right only half the time, and the verify button exists on both pages so the action itself encodes the decision.
 - **verification**: see [`verifier.md`](verifier.md)
-- **verdict**: Objective: exactly one verify click, on the page the policy makes authoritative for the target part.
+- **verdict**: Objective: every verify click on the page the policy makes authoritative for the target part (repeats allowed), none elsewhere.
 
 ## Prompt (`TASK:` text sent to the agent)
 
