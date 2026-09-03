@@ -743,3 +743,14 @@ decision). Every Claude-side miss on the merits from the single-run pilots (cros
 Opus dial and traffic count) passed on retry: those were single-run noise. The only Claude failure that
 reproduced is Sonnet on the dial. Spark's failures reproduce because endpoint probing is a stable behaviour.
 The sweep set is now 15 tasks (11 valid discriminators plus the four Google tasks 78, 79, 87, 89 kept by decision).
+
+## pass@2 iterations toward a validated set (2026-09-03, evening)
+
+Rule: a task counts only if some config fails BOTH attempts. Legitimacy rule (user): tasks must test browsing and
+control; failures that reproduce only as endpoint probing are reported separately from capability failures.
+
+### Iteration A: image-only interactive UIs (kiosk, Wi-Fi tray, thermostat, parking meter, defect marking, meter dials)
+
+All six INVALID: Spark's two first-attempt failures were endpoint probing and cleared on retry; Opus misread the
+meter's first dial (8902 for 7902) and read it correctly on retry. Image-only click interfaces are solved by all
+three configs; no more of these.
