@@ -681,3 +681,42 @@ task                              spark-low-val           sonnet-low-val        
 
 Sub-tick bearing (all within 1 degree), area fraction (within 1 point) and the readout-less slider were solved by
 all three. The tower clock separated: Spark read 1:44 for 1:47 after zooming. Discriminating count: 20, the target.
+
+### Round 23 (2026-09-03): speedometer, thermometer
+
+```
+task                              spark-low-val           sonnet-low-val             opus-low-val
+155-speedometer-needle                     PASS                     PASS                     PASS
+156-thermometer-read                       PASS                     PASS                     PASS
+```
+
+Both sub-tick readings were within 1 unit for every config (the dial's failure was apparently its integer-target
+reading rule as much as its precision). Flagged saturated.
+
+## Standing after 23 rounds (2026-09-03)
+
+Pilot configs: Spark 1.2 low (contributor), Sonnet 5 low, Opus 5 low. 54 v2 tasks piloted in total.
+
+| config | pass | accuracy | median s |
+|---|---|---|---|
+| Opus 5 low | 49/54 | 90.7% | 34 |
+| Sonnet 5 low | 51/54 | 94.4% | 33 |
+| Spark 1.2 low | 37/54 | 68.5% | 69 |
+
+**20 discriminating tasks** (at least one pilot config fails), which with the two kept Google tasks form the
+22-task sweep set (`BENCH_SET=v2`):
+
+- Perception and precision: 58 pixel scan, 59 spot difference, 77 crosshair, 90 dial, 110 analog clock,
+  127 tick-only clock, 154 tower clock (zoom), 137 crop corners, 118 odometer.
+- Video and time: 94 CCTV direction, 95 lot occupancy, 139 traffic count.
+- Interactive canvases and image-only UIs: 75 map explorer, 76 settings maze, 99 seat map, 107 reorder,
+  128 remote desktop, 138 virtual keypad.
+- Real sites: 79 Maps place hours, 87 Calendar scheduling (all-day judgement); 78 and 89 kept by decision.
+
+What separates the Claude configs on the merits: analog clock reading (Opus twice), event counting over
+video (Opus), two-point pixel precision on a rotated shape (Sonnet), fine estimation (crosshair: Sonnet; dial:
+all), and calendar all-day judgement (Opus). What separates Spark: rule-following on interactive canvases
+(it probes private endpoints, now 403 and still flagged), direction perception, and clock reading.
+
+Thirty-two v2 tasks are flagged saturated by the pilot; they stay in the registry for the full-matrix run,
+where weaker configurations may still fail them.
