@@ -641,3 +641,16 @@ check-and-correct loop) were solved by every config. The tick-only clock separat
 5:27 (hand confusion), its second analog-clock miss. Lesson: the dial failed everyone because its tolerance was
 a fifth of a tick spacing; the gauge passed everyone at three quarters of a tick. Batch 9 targets sub-tick
 interpolation and clock reading in realistic wrappers, plus a slider with no numeric readout.
+
+### Round 20 (2026-09-03): remote desktop, dashcam
+
+```
+task                             spark-low-val           sonnet-low-val             opus-low-val
+128-remote-desktop               FAIL (bypass)                     PASS                     PASS
+136-dashcam-speed                         PASS                     PASS                     PASS
+```
+
+Both Claude configs operated the image-only desktop in 4 and 11 clicks; Spark reached the right end state in 33
+clicks but probed the private endpoints twice. The dashcam speed was read within tolerance by all three, Spark
+after 648 browser actions and 413 s, which the speed and cost charts will show even though accuracy ties.
+Discriminating count after this round: 16.
