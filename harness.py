@@ -192,6 +192,9 @@ TASKS = {
     "127-clock-ticks": {"kind": "appstate", "app": "widgetapp/clockticks.py", "port": 8839, "v2": True},
     "128-remote-desktop": {"kind": "appstate", "app": "widgetapp/remotedesktop.py", "port": 8842, "v2": True},
     "136-dashcam-speed": {"kind": "appstate", "app": "widgetapp/dashcam.py", "port": 8843, "v2": True},
+    "137-crop-corners": {"kind": "appstate", "app": "widgetapp/cropcorners.py", "port": 8845, "v2": True},
+    "138-virtual-keypad": {"kind": "appstate", "app": "widgetapp/keypad.py", "port": 8844, "v2": True},
+    "139-traffic-count": {"kind": "appstate", "app": "widgetapp/carcount.py", "port": 8846, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

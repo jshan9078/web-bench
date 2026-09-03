@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8845/ . It is a document-scanner step: a photo of a receipt on a desk, 
+rendered as an IMAGE at the page's top-left (read it from screenshots; click with raw coordinates 
+via click --at X,Y; screenshot pixels map 1:1). Click exactly on the receipt's TOP-LEFT corner, 
+then exactly on its BOTTOM-RIGHT corner (markers appear after each click; a third click starts 
+over; take a fresh screenshot to check), then click Confirm corners. Do NOT read the page source or 
+call the site's HTTP endpoints directly. End with the two coordinates you confirmed.

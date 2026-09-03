@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8844/ . It is a bank sign-in page whose access code must be typed on an IMAGE 
+keypad at the page's top-left (the key layout is shuffled; read it from a screenshot and click keys 
+with raw coordinates via click --at X,Y; screenshot pixels map 1:1). The page shows the 6-digit 
+access code as text. Enter that code on the keypad and press the keypad's Enter key. Do NOT read 
+the page source or call the site's HTTP endpoints directly. End with a one-line confirmation.

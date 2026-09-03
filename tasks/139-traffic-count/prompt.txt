@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8846/ . It is a 2-minute traffic-camera clip in a player (canvas video with 
+play/pause, seek, 1 s and 10 s steps and playback speed; read frames from screenshots). Count how 
+many VEHICLES (cars and vans, not pedestrians) pass through the frame during the whole clip, enter 
+the exact number in the form under the player and submit. Do NOT read the page source or call the 
+site's HTTP endpoints directly. End with the count.
