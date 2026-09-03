@@ -243,9 +243,22 @@ def setup(task, run=None):
             run_cli("screenshot", "-o", str(RAW / f"{task}.{run}.cart_before.jpg"), sid=sid)
     # tag the page title so record_cdp.py can locate this exact target; do it BEFORE t0 so the
     # marker call is excluded from the run's metrics.
+    rec_ws = None
     if os.environ.get("BENCH_RECORD"):
         run_cli("eval", f"document.title='REC-{sid}'", sid=sid)
-    META.write_text(json.dumps({"task": task, "sid": sid, "t0": time.time(),
+        # Resolve the tab's DevTools ws URL NOW, before the agent can navigate away and the page
+        # title changes: the URL is stable for the tab's lifetime, so record_cdp.py can attach by it
+        # instead of racing the title marker (seven uncapped reruns lost their video that way).
+        try:
+            import record_cdp
+            for _ in range(20):
+                rec_ws = record_cdp.find_target(sid)
+                if rec_ws:
+                    break
+                time.sleep(0.25)
+        except BaseException:  # record_cdp sys.exit()s at import if websockets is missing; never abort setup
+            rec_ws = None
+    META.write_text(json.dumps({"task": task, "sid": sid, "t0": time.time(), "rec_ws": rec_ws,
                                 "cpu0": tree_cpu(daemon_pid()),
                                 "visible": bool(os.environ.get("BENCH_VISIBLE"))}))
     mode = "a VISIBLE window" if os.environ.get("BENCH_VISIBLE") else "headless (you cannot see the screen)"
@@ -355,6 +368,27 @@ def record(task, kw):
         stream_dst = f"{task}.{run}.stream.txt"; shutil.copyfile(stream_src, RAW / stream_dst)
     text, usage = _parse_stream(stream_src, harness) if stream_src else ("", {})
     answer = _answer_from(text); blocked = _blocked_from(text)
+    # Preserve every screenshot the agent saved to an explicit path (agents pick names like
+    # /tmp/jspaint_final.jpg that later runs overwrite) into raw/ NOW, while the file still holds
+    # this run's pixels. Found in the 2026-09-02 re-audit: three reruns shared one /tmp name.
+    preserved = []
+    try:
+        events = []
+        for line in RLOG.read_text(errors="ignore").splitlines():
+            if sid in line:
+                try:
+                    events.append(json.loads(line))
+                except Exception:
+                    pass
+        for ev in events:
+            if ev.get("action") != "screenshot":
+                continue
+            src = (ev.get("params") or {}).get("output")
+            if src and Path(src).expanduser().exists():
+                dst = f"{task}.{run}.shot{len(preserved)+1}.jpg"
+                shutil.copyfile(Path(src).expanduser(), RAW / dst); preserved.append(dst)
+    except Exception as e:
+        print(f"[record] screenshot preservation skipped: {e}")
     # everything the model did through the CLI, verbatim from the daemon log
     reqs = []
     for line in (RLOG.read_text().splitlines() if RLOG.exists() else []):

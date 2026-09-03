@@ -49,7 +49,15 @@ def find_target(sid):
 
 async def run(sid, out):
     ws_url = None
-    for _ in range(40):  # the page may take a moment to get its marker title
+    # Preferred: the ws URL the harness resolved at setup (results/current.json), immune to the
+    # page title changing once the agent navigates. Fallback: the REC-<sid> title scan.
+    try:
+        meta = json.loads(Path("results/current.json").read_text())
+        if meta.get("sid") == sid and meta.get("rec_ws"):
+            ws_url = meta["rec_ws"]
+    except Exception:
+        ws_url = None
+    for _ in range(40 if not ws_url else 0):  # the page may take a moment to get its marker title
         ws_url = find_target(sid)
         if ws_url:
             break

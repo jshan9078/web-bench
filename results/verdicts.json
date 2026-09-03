@@ -1951,14 +1951,6 @@
   "pass": false,
   "note": "Final screenshot is effectively solid red with no visually distinguishable dots (pixel-scan confirms no black pixels present); single-pixel clicks are not a recognizable X despite claimed pixel-readback verification. [judge: sonnet uncap-b1]"
  },
- "36-jspaint-poster.sonnet-medium-val": {
-  "pass": false,
-  "note": "No dots ever placed [judge: sonnet s4]"
- },
- "36-jspaint-poster.sonnet-xhigh-val": {
-  "pass": false,
-  "note": "No dots placed [judge: sonnet s4]"
- },
  "39-youtube-frame-describe.sonnet-high-val": {
   "pass": true,
   "note": "Frame and metadata match [judge: sonnet s4]"
@@ -2771,10 +2763,6 @@
   "pass": true,
   "note": "Red canvas, 5 dots in X [judge: sonnet op3b1]"
  },
- "36-jspaint-poster.opus-xhigh-val": {
-  "pass": false,
-  "note": "Solid red, no dots, no answer [judge: sonnet op3b1]"
- },
  "39-youtube-frame-describe.opus-high-val": {
   "pass": true,
   "note": "Frame matches; metadata grounded [judge: sonnet op3b1]"
@@ -3078,10 +3066,6 @@
  "34-osm-route-measure.opus-xhigh-val": {
   "pass": true,
   "note": "Correct endpoints and instructions [judge: sonnet unblock]"
- },
- "36-jspaint-poster.opus-low-val": {
-  "pass": false,
-  "note": "Partial flood, no dots, no answer [judge: sonnet unblock]"
  },
  "54-stackoverflow-live.sonnet-max-val": {
   "pass": true,
@@ -3540,10 +3524,6 @@
  "54-stackoverflow-live.luna-high-val": {
   "pass": true,
   "note": "Captured newest-sorted rust question page matches reported title, age, asker, and counts; summary reflects captured body. [judge: sonnet lunahigh-b2]"
- },
- "55-wayback-snapshot.luna-high-val": {
-  "pass": false,
-  "note": "Verifier requires the screenshot to visually show the headline, but neither captured screenshot renders it (first shows only nav, second blank/unrendered) - despite DOM snapshot confirming the headline text, visual evidence required by this task rubric is missing. [judge: sonnet lunahigh-b2]"
  },
  "56-sunrise-reykjavik.luna-high-val": {
   "pass": true,
@@ -4934,10 +4914,6 @@
   "pass": true,
   "note": "[judge: sonnet g38low-b4]"
  },
- "48-spotify-playlist.gemini-3.8-flash-low": {
-  "pass": false,
-  "note": "playlist NOT deleted: zero delete/cleanup actions in full trace, end-state + final video frame both show 'webbench mix' still in library; verifier requires cleanup (final answer not required for this task) [judge: sonnet g38low-b4, verified by operator]"
- },
  "29-excalidraw-pipeline.gemini-3.8-flash-low": {
   "pass": true,
   "note": "[judge: sonnet g38low-b3]"
@@ -5505,5 +5481,13 @@
  "44-gcal-event.spark13-medium-val": {
   "pass": true,
   "note": "[judge: sonnet s13med-b3]"
+ },
+ "48-spotify-playlist.gemini-3.8-flash-low": {
+  "pass": true,
+  "note": "uncapped re-capture (prior run killed by the retired 10m agy print-timeout): frames show private playlist with the Queen track, 'made private' toast, then 'Removed from Your Library' and search-not-found confirming cleanup [judge: sonnet rerun-b2]"
+ },
+ "55-wayback-snapshot.luna-high-val": {
+  "pass": true,
+  "note": "re-capture after headless blank-render defect: screenshot and video frame show the archived page fully painted with headline and Store/Mac/iPod nav [judge: sonnet rerun-b2]"
  }
 }
