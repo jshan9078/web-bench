@@ -6013,5 +6013,13 @@
  "12-wikipedia-current-events.spark13-ultra-val": {
   "pass": true,
   "note": "[judge: sonnet s13ultra-b1]"
+ },
+ "36-jspaint-poster.opus-xhigh-val": {
+  "pass": true,
+  "note": "re-capture (harness lost the first re-capture's final screenshot): preserved final shot shows red canvas with five distinct black dots in an X via fill/brush UI clicks [judge: sonnet recap, operator-verified]"
+ },
+ "36-jspaint-poster.sonnet-medium-val": {
+  "pass": false,
+  "note": "re-capture: preserved final shot is a flat red canvas with no visible dots even under contrast enhancement; agent claimed faint single-pixel dots via readback, which the verifier disqualifies [judge: sonnet recap, operator-verified]"
  }
 }
