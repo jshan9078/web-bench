@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8850/ . It is a town-square webcam still with a clock on the tower; the clock 
+is small, and the page has a magnifier (click the photo to zoom into that area). What time does the 
+tower clock show? Enter it as HH:MM (12-hour, within 2 minutes) in the form below the photo and 
+submit. Do NOT read the page source or call the site's HTTP endpoints directly. End with the time.

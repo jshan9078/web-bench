@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8849/ . It is a sound-settings panel whose volume bar is an IMAGE at the 
+page's top-left with no numeric readout (click on the bar with raw coordinates via click --at X,Y 
+to set the level; screenshot pixels map 1:1; the image refreshes after each click). Set the volume 
+to the percentage stated on the page, within 3 points, then click Save. Do NOT read the page source 
+or call the site's HTTP endpoints directly. End with the level you set.

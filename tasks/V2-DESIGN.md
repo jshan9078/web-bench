@@ -625,3 +625,19 @@ The two real-site judgement tasks produced identical answers from all three conf
 empty, so the longest stretch is the whole of Tuesday). Spark's odometer run probed the private endpoints and
 also misread the last digit; the Claude configs read all six seven-segment digits under glare. Discriminating
 count after this round: 14.
+
+### Round 19 (2026-09-03): fine precision batch
+
+```
+task                             spark-low-val           sonnet-low-val             opus-low-val
+120-gauge-needle                          PASS                     PASS                     PASS
+122-drop-pin                              PASS                     PASS                     PASS
+125-custom-slider                         PASS                     PASS                     PASS
+127-clock-ticks                           PASS                     PASS                     FAIL
+```
+
+Needle reading to within one minor tick, pin placement within 8 px and slider handles within 5 (all with a
+check-and-correct loop) were solved by every config. The tick-only clock separated again: Opus read 11:28 for
+5:27 (hand confusion), its second analog-clock miss. Lesson: the dial failed everyone because its tolerance was
+a fifth of a tick spacing; the gauge passed everyone at three quarters of a tick. Batch 9 targets sub-tick
+interpolation and clock reading in realistic wrappers, plus a slider with no numeric readout.

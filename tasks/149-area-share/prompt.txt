@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8848/ . It is a satellite survey tile of a field outlined in yellow with a 
+flooded region in dark blue, rendered as an IMAGE (read it from screenshots). Estimate what 
+percentage of the outlined field is flooded (within 5 points), enter it in the form below the tile 
+and submit. Do NOT read the page source or call the site's HTTP endpoints directly. End with the 
+percentage.

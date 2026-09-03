@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8847/ . It is a marina weather-station panel with a compass rose and a 
+wind-direction arrow, rendered as an IMAGE (read it from screenshots; ticks every 10 degrees, 
+labels every 30). Report the direction the arrow points in degrees (0-359, within 3 degrees), enter 
+it in the form below the panel and submit. Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with the degrees.
