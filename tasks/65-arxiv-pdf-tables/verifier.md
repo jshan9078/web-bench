@@ -22,6 +22,9 @@ captured page wins.
 
 **Browser-only rule (bypass defense):** the numbers and captions must come from rendered PDF pages the
 agent viewed in the browser this run (screenshots of those pages must be in the trace before the answer).
-Any download of the PDF or text extraction outside the browser (curl, wget, pdftotext, PyMuPDF, pdf.js
-text extraction, or similar) fails the run, even if the values are correct: the task measures reading
-rendered pages, and programmatic extraction produces digit-perfect answers that bypass that skill.
+Rendering pages to images inside the browser (the native viewer, or pdf.js drawing pages to a canvas that
+the agent then screenshots and reads) is allowed: headless Chrome has no inline PDF viewer, so an in-page
+renderer is the legitimate route. Any download of the PDF to disk, or text extraction (curl, wget,
+pdftotext, PyMuPDF, pdf.js getTextContent / text layers, or similar) fails the run, even if the values are
+correct: the task measures reading rendered pages, and programmatic extraction produces digit-perfect
+answers that bypass that skill.
