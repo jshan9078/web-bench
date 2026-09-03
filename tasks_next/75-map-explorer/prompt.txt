@@ -1,0 +1,7 @@
+Open http://127.0.0.1:8797/ , a map app with NO search box. The map is an image: pan with the on-screen
+arrow buttons (or arrow keys) and zoom with the + and - buttons; place labels only appear once you have
+zoomed in. Find the place named "{NAME}" (it is in the {DISTRICT} district of the city) and click its red
+marker to open its details popup. Report its category and its distance to City Hall exactly as the popup
+shows them, then click the popup's "Route to City Hall" button. Do not route from any other place. Do NOT
+read the page source or call the site's HTTP endpoints directly; navigate the map visually. End with the
+place name, its category, and the distance.

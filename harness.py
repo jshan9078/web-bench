@@ -134,6 +134,11 @@ TASKS = {
     "69-timezone-meeting": {"kind": "judge", "v2": True},
     "72-amazon-quantity-edit": {"profile": True, "kind": "judge", "cart": True, "v2": True},
     "73-pdf-table-extract": {"kind": "judge", "v2": True},
+    # ---- v2.2 (2026-09-03): hard local test sites + real-map navigation (see tasks/V2-DESIGN.md)
+    "74-dashboard-triage": {"kind": "appstate", "app": "widgetapp/dashboard.py", "port": 8796, "v2": True},
+    "75-map-explorer": {"kind": "appstate", "app": "widgetapp/mapexplorer.py", "port": 8797, "v2": True, "fill_from_state": True},
+    "78-gmaps-directions": {"kind": "judge", "v2": True},
+    "79-gmaps-place-hours": {"kind": "judge", "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -264,6 +269,14 @@ def setup(task, run=None):
     ensure_daemon()
     if t.get("app"):
         ensure_app(t)
+    prompt_text = t["prompt"]
+    if t.get("fill_from_state"):      # per-run target from the app (e.g. the map explorer's place + district)
+        try:
+            st = json.loads(_widget_req(t.get("port", PIXEL_PORT), "/__state"))
+            tgt = st.get("target") or {}
+            prompt_text = prompt_text.replace("{NAME}", str(tgt.get("name", ""))).replace("{DISTRICT}", str(tgt.get("district", "")))
+        except Exception as e:
+            print(f"[setup] fill_from_state failed: {e}")
     try:
         for s in json.loads(run_cli("list") or "[]"):
             run_cli(s["session_id"], "delete")
@@ -310,7 +323,7 @@ def setup(task, run=None):
                                 "cpu0": tree_cpu(daemon_pid()),
                                 "visible": bool(os.environ.get("BENCH_VISIBLE"))}))
     mode = "a VISIBLE window" if os.environ.get("BENCH_VISIBLE") else "headless (you cannot see the screen)"
-    body = PREAMBLE.format(sid=sid, mode=mode) + "\n\nTASK: " + t["prompt"]
+    body = PREAMBLE.format(sid=sid, mode=mode) + "\n\nTASK: " + prompt_text
     if os.environ.get("BENCH_HARNESS") in ("agy", "codex", "muse"):
         # agy/codex can't load a Claude skill; point them at the shipped SKILL.md for equivalent guidance
         print(f"First, read the browser CLI reference at {SKILL} to learn the available commands and targeting "
@@ -489,7 +502,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act")
 
 
 def widget_bypass(bundle):
