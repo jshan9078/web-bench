@@ -1,0 +1,7 @@
+Open http://127.0.0.1:8796/ , a helpdesk console. Find the ticket that is (a) from the company "Halvorsen
+Logistics" exactly (there is a similarly named company; ignore it), (b) priority High, (c) status Open, and
+(d) the most recently opened among those. Open it and RESOLVE it with the resolution note
+"Duplicate of #<id>", where <id> is the ticket number of the company's OTHER ticket that is still Open (any
+priority). Notes: only the first 40 tickets are loaded until you use "Load more"; the list only renders the
+rows near your scroll position, so filters and search are the reliable way to narrow it; changing the sort
+clears the filters. Do not resolve any other ticket. End with the resolved ticket id and the id you cited.
