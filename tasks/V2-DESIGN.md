@@ -534,3 +534,16 @@ on the log stream (a polling loop) against Sonnet's 24 for the same pass. No API
 
 Two further video-only properties added as 95 (occupancy: state accumulated over a sequence of arrivals and
 departures) and 96 (slide diff: comparing two frames far apart, with reordered rows and a relabelled row).
+
+### Round 13 (2026-09-03): 95 lot occupancy, 96 slide diff
+
+```
+task                            spark-low-val           sonnet-low-val             opus-low-val
+95-lot-occupancy                FAIL (bypass)                     PASS                     PASS
+96-slide-diff                            PASS                     PASS                     PASS
+```
+
+Spark's lot answer was inside the window but it probed private endpoints three times (each answered 403 under
+the gate; the attempt itself is the rule violation). Standing over the six video tasks: Sonnet 6/6, Opus 6/6,
+Spark 4/6. Per the set-composition rule, 91, 92, 93 and 96 (passed by every pilot config) are flagged saturated
+and leave the sweep set; 94 and 95 stay. Sonnet 5 low and Opus 5 low remain tied on every task piloted today.

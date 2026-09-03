@@ -137,7 +137,7 @@ TASKS = {
     # ---- v2.2 (2026-09-03): hard local test sites + real-map navigation (see tasks/V2-DESIGN.md)
     "74-dashboard-triage": {"kind": "appstate", "app": "widgetapp/dashboard.py", "port": 8796, "retired": True},
     "75-map-explorer": {"kind": "appstate", "app": "widgetapp/mapexplorer.py", "port": 8797, "v2": True, "fill_from_state": True},
-    "78-gmaps-directions": {"kind": "judge", "v2": True, "keep": True},
+    "78-gmaps-directions": {"kind": "judge", "v2": True, "saturated": True, "keep": True},
     "79-gmaps-place-hours": {"kind": "judge", "v2": True, "keep": True},
     "76-settings-maze": {"kind": "appstate", "app": "widgetapp/settingsmaze.py", "port": 8798, "v2": True},
     "77-crosshair-align": {"kind": "appstate", "app": "widgetapp/crosshair.py", "port": 8799, "v2": True, "level": 2},
@@ -150,15 +150,15 @@ TASKS = {
     "86-chart-read": {"kind": "appstate", "app": "widgetapp/chartread.py", "port": 8806, "retired": True},
     "87-gcal-scheduling": {"profile": True, "kind": "judge", "v2": True},
     "88-cancel-flow": {"kind": "appstate", "app": "widgetapp/darkpatterns.py", "port": 8808, "retired": True},
-    "89-gcal-last-free": {"profile": True, "kind": "judge", "v2": True, "keep": True},
+    "89-gcal-last-free": {"profile": True, "kind": "judge", "v2": True, "saturated": True, "keep": True},
     "90-dial-set": {"kind": "appstate", "app": "widgetapp/dial.py", "port": 8810, "v2": True, "fill_from_state": True},
     # ---- v2.3 (2026-09-03): fast-moving, video-like content (see tasks/V2-DESIGN.md)
-    "91-video-slide-read": {"kind": "appstate", "app": "widgetapp/videoplayer.py", "port": 8811, "v2": True, "level": 2},
-    "92-log-stream": {"kind": "appstate", "app": "widgetapp/logtail.py", "port": 8812, "v2": True, "level": 2},
-    "93-ticker-tape": {"kind": "appstate", "app": "widgetapp/ticker.py", "port": 8813, "v2": True},
+    "91-video-slide-read": {"kind": "appstate", "app": "widgetapp/videoplayer.py", "port": 8811, "v2": True, "saturated": True, "level": 2},
+    "92-log-stream": {"kind": "appstate", "app": "widgetapp/logtail.py", "port": 8812, "v2": True, "saturated": True, "level": 2},
+    "93-ticker-tape": {"kind": "appstate", "app": "widgetapp/ticker.py", "port": 8813, "v2": True, "saturated": True},
     "94-cctv-review": {"kind": "appstate", "app": "widgetapp/cctv.py", "port": 8814, "v2": True, "level": 2},
     "95-lot-occupancy": {"kind": "appstate", "app": "widgetapp/parkinglot.py", "port": 8815, "v2": True},
-    "96-slide-diff": {"kind": "appstate", "app": "widgetapp/slidediff.py", "port": 8816, "v2": True},
+    "96-slide-diff": {"kind": "appstate", "app": "widgetapp/slidediff.py", "port": 8816, "v2": True, "saturated": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
