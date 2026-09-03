@@ -23,7 +23,7 @@ def draw():
             d.text((cx + (r - 26) * math.cos(ang) - 5, cy + (r - 26) * math.sin(ang) - 8), str(k), fill=(30, 30, 30), font=base.font(13))
         v = S["digits"][i] + S["frac"][i]; ang = math.radians((v * 36 if cw else -v * 36) - 90)
         d.line([cx - 14 * math.cos(ang), cy - 14 * math.sin(ang), cx + (r - 30) * math.cos(ang), cy + (r - 30) * math.sin(ang)], fill=(200, 30, 30), width=4); d.ellipse([cx - 5, cy - 5, cx + 5, cy + 5], fill=(30, 30, 30))
-        d.text((cx - 22, cy + r + 10), ["1000", "100", "10", "1"][i], fill=(60, 60, 60), font=base.font(12, False)); d.text((cx - 12, cy - r - 24), "↻" if cw else "↺", fill=(60, 60, 60), font=base.font(16))
+        d.text((cx - 22, cy + r + 10), ["1000", "100", "10", "1"][i], fill=(60, 60, 60), font=base.font(12, False)); d.text((cx - 16, cy - r - 26), "CW" if cw else "CCW", fill=(60, 60, 60), font=base.font(12))
     return img
 
 
