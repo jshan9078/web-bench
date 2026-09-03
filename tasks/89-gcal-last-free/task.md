@@ -1,0 +1,26 @@
+# 89-gcal-last-free
+
+- **kind**: action + scheduling (LLM-judge)
+- **site**: calendar.google.com (signed-in profile)
+- **what it tests**: scanning a whole week rather than stopping at the first candidate (the LAST free weekday), all-day conflicts, and two editor settings (description, colour) that live behind different controls
+- **discrimination hypothesis**: agents that pattern-match "check Monday, take it" fail the reversed rule; the all-day holiday rule already split the models once.
+- **verification**: see [`verifier.md`](verifier.md)
+- **verdict**: Judge: the chosen day is the last conflict-free weekday on the captured week, the event has the requested time, description, and colour, and the cleanup is shown.
+
+## Prompt (`TASK:` text sent to the agent)
+
+See [`prompt.txt`](prompt.txt) (the runtime source). Verbatim:
+
+```
+You are running on a browser profile where the user is already signed in. If a login page appears anyway,
+show the window and ask the user to sign in, then continue. Reruns must start fresh: if a leftover
+"webbench retro" event exists from a previous run, delete it first. On Google Calendar
+(https://calendar.google.com), look at NEXT week (Monday to Friday) and find the LAST weekday of that week
+on which the calendar has no event overlapping 09:00-11:00 (an all-day event, including a holiday,
+overlaps the whole day and counts as a conflict). On that day create an event titled "webbench retro"
+from 09:30 to 10:15, add the description "notes: bring the Q3 numbers", and set the event colour to
+Tomato. Save it, navigate so that day is visible, take a screenshot showing the event on the grid, and
+open it to confirm the description and colour. Do not modify any other event. Then delete the event and
+confirm it is gone, noting the cleanup. If every weekday has a conflict, say so and create nothing. End
+with the exact date you used (or "no free day") and the settings you confirmed.
+```

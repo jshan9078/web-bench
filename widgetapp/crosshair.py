@@ -2,8 +2,9 @@
 """77-crosshair-align: precision under feedback. A target ring is drawn at a random spot in the image; a
 crosshair starts elsewhere. Arrow keys move it 1 px (Shift+arrow: 10 px); Enter locks it. The crosshair
 and ring exist only in the server-rendered image, so every adjustment needs a fresh screenshot.
-Level 2 adds a decoy ring (dashed) and the target ring is drawn in the same colour as the crosshair.
-complete = locked within 3 px of the target centre, and at most two locks."""
+Level 1: 3 px tolerance, two locks allowed. Level 2: 2 px tolerance and ONE lock only (verify before
+committing). A dashed decoy ring is present at both levels.
+complete = last lock within tolerance and no more locks than allowed."""
 import random, sys, os, math
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from PIL import Image, ImageDraw
@@ -26,7 +27,7 @@ def reset():
 
 def render():
     img = Image.new("RGB", (W, H), (250, 250, 252)); dr = ImageDraw.Draw(img)
-    dr.text((14, 10), "Move the crosshair onto the SOLID ring's centre with the arrow keys (Shift = 10 px), then press Enter.", fill=(90, 96, 105), font=base.font(15))
+    dr.text((14, 10), ("Move the crosshair onto the SOLID ring's centre with the arrow keys (Shift = 10 px), then press Enter." if LEVEL == 1 else "Move the crosshair onto the SOLID ring's centre (arrows; Shift = 10 px). ONE Enter only: verify first."), fill=(90, 96, 105), font=base.font(15))
     tx, ty = S["target"]; col = (30, 100, 200)
     dr.ellipse([tx - 14, ty - 14, tx + 14, ty + 14], outline=col, width=2); dr.ellipse([tx - 2, ty - 2, tx + 2, ty + 2], fill=col)
     if S["decoy"]:
@@ -69,7 +70,8 @@ def state():
     tx, ty = S["target"]
     dists = [math.hypot(x - tx, y - ty) for x, y in S["locks"]]
     return {"level": LEVEL, "target": S["target"], "cur": S["cur"], "locks": S["locks"], "lock_dists": [round(d, 1) for d in dists],
-            "moves": S["moves"], "complete": bool(dists) and dists[-1] <= 3 and len(S["locks"]) <= 2}
+            "tolerance": (3 if LEVEL == 1 else 2), "max_locks": (2 if LEVEL == 1 else 1),
+            "moves": S["moves"], "complete": bool(dists) and dists[-1] <= (3 if LEVEL == 1 else 2) and len(S["locks"]) <= (2 if LEVEL == 1 else 1)}
 
 
 if __name__ == "__main__":

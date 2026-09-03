@@ -305,3 +305,67 @@ fabrication), and Gemini (bookkeeping, precision, budget) from each other and fr
 policy reconciliation, decoys, timing under a fair window) are all solved by the current best models;
 the remaining model-attributable, realistic levers are dense perception (reading small figures in a
 dense rendered ledger with near-ties) and instruction discipline under on-page dark patterns.
+
+### Rounds 7 and 8 (v2.6-v2.7, 2026-09-03 05:45-06:10) and the saturation cut
+
+Round 7: dense-perception tasks (scanned ledger audit, stock-sheet diff, unlabeled chart), pixel scan at
+level 3, and a Google Calendar scheduling task. Round 8: spot-the-difference at level 3 (design-QA
+subtleties) and a subscription-cancellation flow built from dark patterns.
+
+```
+task                                opus-low-val           sonnet-low-val            spark-low-val
+58-pixel-scan                               PASS                     PASS            FAIL (bypass)
+59-spot-difference                          PASS                     PASS            FAIL (bypass)
+60-form-wizard                              PASS                     PASS                     PASS
+61-grid-toggle                              PASS                     PASS                     PASS
+63-wikipedia-edit-audit                     PASS                     PASS                     PASS
+64-hn-comment-census                        PASS                     PASS                     PASS
+65-arxiv-pdf-tables                         PASS                     PASS                     PASS
+66-wiki-table-reconcile                     PASS                     PASS                     PASS
+68-youtube-transcript                       PASS                     PASS                     PASS
+69-timezone-meeting                         PASS                     PASS                     PASS
+72-amazon-quantity-edit                     PASS                     PASS                     PASS
+73-pdf-table-extract                        PASS                     PASS                     PASS
+74-dashboard-triage                         PASS                     PASS                     PASS
+75-map-explorer                             PASS                     PASS            FAIL (bypass)
+78-gmaps-directions                         PASS                     PASS                     PASS
+79-gmaps-place-hours                        PASS                     PASS                     FAIL
+76-settings-maze                            PASS                     PASS            FAIL (bypass)
+77-crosshair-align                          PASS                     FAIL                     PASS
+80-live-list                                PASS                     PASS                     PASS
+81-memory-flow                              PASS                     PASS                     PASS
+82-blur-validation                          PASS                     PASS                     PASS
+83-reconcile-rule                           PASS                     PASS                     PASS
+84-ledger-audit                             PASS                     PASS                     PASS
+85-table-diff                               PASS                     PASS                     PASS
+86-chart-read                               PASS                     PASS                     PASS
+87-gcal-scheduling                          FAIL                     PASS                     FAIL
+88-cancel-flow                              PASS                     PASS                     PASS
+score (pass/judged)                        26/27                    26/27                    21/27
+pending/missing                                0                        0                        0
+median s / max s                        36 / 222                 41 / 403                 58 / 295
+
+criteria: no config at 100%: True | all scores distinct: False
+```
+
+- **Perception density does not separate these models.** All three read 120 ledger figures, five changed
+  cells, and an unlabeled chart exactly; Sonnet and Opus cleared the level-3 pixel scan and design-QA
+  differences clean (Opus in a quarter of Sonnet's time). Spark solved every one of them on the merits and
+  lost them to the endpoint guard.
+- **Opus's first miss is a judgement miss.** On the Calendar task the first weekday carried an all-day
+  holiday; Opus reasoned it "doesn't count" and scheduled under it, Spark ignored it, Sonnet caught it and
+  moved to Tuesday. The verifier stated the all-day rule from the outset; the prompt now states it too.
+- **Dark patterns did not bite**: all three cancelled cleanly, no offers, no pause, opt-in unticked.
+- Two verifier fixes during these rounds, both to keep tooling out of verdicts: the table-diff parser no
+  longer depends on line breaks (typing newlines is a CLI matter) and the catalogue verify is idempotent.
+
+**Saturation cut (user rule: no task that every config passes, Google Maps kept):** 20 of 27 tasks are
+flagged saturated and leave the BENCH_SET=v2 sweep set. The set that remains:
+
+```
+58-pixel-scan (level 3), 59-spot-difference (level 3), 75-map-explorer, 76-settings-maze,
+77-crosshair-align, 78-gmaps-directions (kept), 79-gmaps-place-hours, 87-gcal-scheduling
+```
+
+On it: Opus 7/8, Sonnet 7/8, Spark 2/8. No config at 100%; Opus and Sonnet tie, each on a single miss
+of a different kind (judgement versus verification discipline).

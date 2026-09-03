@@ -16,8 +16,8 @@ Open http://127.0.0.1:8799/ . The page is one image showing a SOLID blue ring wi
 decoy ring, and a thin blue crosshair; none of it is in the DOM, so take a `screenshot` to see it. Move
 the crosshair onto the centre of the SOLID ring using the arrow keys (each press moves 1 px; hold Shift
 for 10 px), taking fresh screenshots to check your position, and press Enter to lock it once it is within
-3 px of the centre. The page must have keyboard focus for the keys to work (click on the page first if
-needed). You may lock at most twice, so verify before pressing Enter. The footer shows the crosshair's
-current pixel coordinates but never the target's. Do NOT read the page source or call the site's HTTP
-endpoints directly. End by reporting the coordinates you locked at.
+2 px of the centre. You get ONE lock only, so verify with a screenshot before pressing Enter. The page
+must have keyboard focus for the keys to work (click on the page first if needed). The footer shows the
+crosshair's current pixel coordinates but never the target's. Do NOT read the page source or call the
+site's HTTP endpoints directly. End by reporting the coordinates you locked at.
 ```
