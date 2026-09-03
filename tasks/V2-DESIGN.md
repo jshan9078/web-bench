@@ -565,3 +565,18 @@ Claude configs, mostly in under 30 s. Spark's seat-map run reached the right pai
 four times. 103 is re-run with a corrected prompt in round 16. Lesson for batch 3: after 15 rounds, the only
 things that have defeated the Claude configs on the merits are fine visual estimation (dial, crosshair) and a
 judgement call (Calendar all-day event); traps that can be reasoned through do not. Batch 3 targets perception.
+
+### Round 15 (2026-09-03): real-world angles, batch 2
+
+```
+task                             spark-low-val           sonnet-low-val             opus-low-val
+101-otp-relay                             PASS                     PASS                     PASS
+104-receipt-total                         PASS                     PASS                     PASS
+105-ruler-measure                         PASS                     PASS                     PASS
+106-datepicker                            PASS                     PASS                     PASS
+107-reorder-list                 FAIL (bypass)                     PASS                     PASS
+```
+
+All three configs relayed the one-time code inside its window, read the handwritten total, measured the offset
+part to within 1 mm, navigated the calendar 14 months out, and reordered the list (Spark via a probe of the
+private endpoints, which fails it). Batch 2 adds one discriminating task (107). Perception rounds 16 and 17 follow.
