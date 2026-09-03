@@ -137,8 +137,8 @@ TASKS = {
     # ---- v2.2 (2026-09-03): hard local test sites + real-map navigation (see tasks/V2-DESIGN.md)
     "74-dashboard-triage": {"kind": "appstate", "app": "widgetapp/dashboard.py", "port": 8796, "v2": True},
     "75-map-explorer": {"kind": "appstate", "app": "widgetapp/mapexplorer.py", "port": 8797, "v2": True, "fill_from_state": True},
-    "78-gmaps-directions": {"kind": "judge", "v2": True},
-    "79-gmaps-place-hours": {"kind": "judge", "v2": True},
+    "78-gmaps-directions": {"kind": "judge", "v2": True, "keep": True},
+    "79-gmaps-place-hours": {"kind": "judge", "v2": True, "keep": True},
     "76-settings-maze": {"kind": "appstate", "app": "widgetapp/settingsmaze.py", "port": 8798, "v2": True},
     "77-crosshair-align": {"kind": "appstate", "app": "widgetapp/crosshair.py", "port": 8799, "v2": True},
     "80-live-list": {"kind": "appstate", "app": "widgetapp/livelist.py", "port": 8800, "v2": True},
@@ -155,9 +155,14 @@ TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
 
 
 def sweep_tasks():
-    """Task names a sweep iterates: BENCH_SET=v1 (default) | v2 | all."""
+    """Task names a sweep iterates: BENCH_SET=v1 (default) | v2 (discriminating v2 tasks only) | v2all | all.
+    A v2 task flagged `saturated` (every pilot config passed it; see v2_saturation.py) is skipped by
+    BENCH_SET=v2 unless it is also flagged `keep` (the Google Maps tasks, kept by decision)."""
     which = os.environ.get("BENCH_SET", "v1")
-    return TASKS_V1 if which == "v1" else TASKS_V2 if which == "v2" else list(TASKS)
+    if which == "v1": return TASKS_V1
+    if which == "v2": return [k for k in TASKS_V2 if not (TASKS[k].get("saturated") and not TASKS[k].get("keep"))]
+    if which == "v2all": return TASKS_V2
+    return list(TASKS)
 # Prompts live in tasks/<name>/prompt.txt (one subdirectory per task; see tasks/<name>/verifier.md for
 # how each run is scored). This directory is the source of truth for task prompts.
 _TDIR = HERE / "tasks"
