@@ -47,6 +47,11 @@ sites with programmatic verification are allowed where live sites cannot verify 
   zoom buttons, labels only at zoom 2 or more, random layout and target each run, a popup with one
   allowed action. The prompt names the place and its district (filled from the app's per-run state).
   Pass = the target's popup opened and Route clicked for it alone.
+- **76-settings-maze** (local, objective): an account-settings app. Top-level tabs, a nested tab strip, an
+  accordion, a custom toggle inside a shadow root inside an iframe, an unsaved-changes modal that
+  interrupts tab switches, and a footer Save that is the only way to persist. Pass = saved state equals the
+  defaults plus exactly the three requested changes (a decoy notification setting and the billing email
+  must stay untouched).
 - **78-gmaps-directions** and **79-gmaps-place-hours** (live, judged): Google Maps directions with travel-
   mode switching and step details, and a place card with weekday hours, open/closed status, and a Nearby
   search with a displayed distance.
