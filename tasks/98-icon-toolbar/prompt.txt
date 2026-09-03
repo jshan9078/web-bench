@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8818/ . It is a shared-documents list; each row has icon-only action buttons. 
+Archive the document titled "Q3 vendor contracts". Do not delete, duplicate, or otherwise act on 
+any other document, and do not delete this one (delete is immediate). Do NOT read the page source 
+or call the site's HTTP endpoints directly. End with a one-line confirmation.

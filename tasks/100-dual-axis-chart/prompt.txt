@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8820/ . The page shows a monthly performance chart as an IMAGE: revenue bars 
+against the LEFT axis (k$) and a gross-margin line against the RIGHT axis (%). Read it from 
+screenshots. Report the month with the HIGHEST gross margin and the revenue (k$) in that month 
+(within a few k$ is fine). Enter both in the form below the chart and submit. Do NOT read the page 
+source or call the site's HTTP endpoints directly. End with the month and revenue.

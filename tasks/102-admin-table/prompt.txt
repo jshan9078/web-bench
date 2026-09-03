@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8822/ . It is a customers table in an admin tool (paginated, sortable, with a 
+rows-per-page selector). Which customer has the HIGHEST outstanding balance? Enter that customer's 
+id in the form at the bottom and submit. Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with the customer id and name.

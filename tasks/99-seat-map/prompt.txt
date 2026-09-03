@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8819/ . It is a theatre seat map rendered as an IMAGE with a legend (read it 
+from screenshots; click seats with raw coordinates via click --at X,Y; the image starts at the 
+page's top-left so screenshot pixels map 1:1). Select the two CHEAPEST adjacent available seats 
+(same row, consecutive seat numbers, not across the aisle) that are NOT restricted view, then click 
+Confirm selection. Do NOT read the page source or call the site's HTTP endpoints directly. End with 
+the two seat ids.

@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8817/ . It is the invoices page of a French accounting system. Report the 
+total amount of all invoices dated in March 2026 (any status), enter it in the form at the bottom 
+and submit (comma or dot decimals are both accepted). Do NOT read the page source or call the 
+site's HTTP endpoints directly. End with the total.

@@ -159,6 +159,13 @@ TASKS = {
     "94-cctv-review": {"kind": "appstate", "app": "widgetapp/cctv.py", "port": 8814, "v2": True, "level": 2},
     "95-lot-occupancy": {"kind": "appstate", "app": "widgetapp/parkinglot.py", "port": 8815, "v2": True},
     "96-slide-diff": {"kind": "appstate", "app": "widgetapp/slidediff.py", "port": 8816, "v2": True, "saturated": True},
+    # ---- v2.4 (2026-09-03): real-world browser angles (locale, icon-only UI, seat maps, dual axes, sort bugs, fine print)
+    "97-locale-ledger": {"kind": "appstate", "app": "widgetapp/localeledger.py", "port": 8817, "v2": True},
+    "98-icon-toolbar": {"kind": "appstate", "app": "widgetapp/icontoolbar.py", "port": 8818, "v2": True},
+    "99-seat-map": {"kind": "appstate", "app": "widgetapp/seatmap.py", "port": 8819, "v2": True},
+    "100-dual-axis-chart": {"kind": "appstate", "app": "widgetapp/dualaxis.py", "port": 8820, "v2": True},
+    "102-admin-table": {"kind": "appstate", "app": "widgetapp/admintable.py", "port": 8822, "v2": True},
+    "103-fine-print": {"kind": "appstate", "app": "widgetapp/fineprint.py", "port": 8823, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
