@@ -2837,7 +2837,7 @@
  },
  "32-desmos-intersections.opus-medium-val": {
   "pass": false,
-  "note": "No answer; no labeled point [judge: sonnet op3b0]"
+  "note": "operator-terminated uncapped rerun at ~14 min of active Desmos widget work (no native intersection label achieved); scored fail on captured evidence per the operator grind policy [re-audit rerun 2026-09-02]"
  },
  "32-desmos-intersections.opus-xhigh-val": {
   "pass": false,
