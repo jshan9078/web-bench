@@ -13,6 +13,7 @@ PALETTE = [(219, 68, 55), (66, 133, 244), (15, 157, 88), (244, 180, 0), (171, 71
 import os
 LEVEL = int(os.environ.get("WIDGET_LEVEL", "2"))
 NDIFF = 4 if LEVEL == 1 else 5
+MISS_BUDGET_L3 = 2
 NSHAPES = 14
 MISS_BUDGET = 3 if LEVEL == 1 else 2
 S = {"shapes": [], "diffs": [], "clicks": []}
@@ -41,10 +42,23 @@ def reset():
     diffs.append({"type": "move", "i": idx[2], "shape": c, "x": c["x"], "y": c["y"], "from": (shapes[idx[2]]["x"], shapes[idx[2]]["y"])})
     extra = _shape(shapes + [c])
     diffs.append({"type": "add", "i": None, "shape": extra, "x": extra["x"], "y": extra["y"]})
-    if LEVEL >= 2:
+    if LEVEL == 2:
         # a fifth, subtler difference: same position and color, different outline (shape kind)
         e = dict(shapes[idx[3]]); e["kind"] = random.choice([k for k in ("circle", "square", "triangle") if k != e["kind"]])
         diffs.append({"type": "reshape", "i": idx[3], "shape": e, "x": e["x"], "y": e["y"]})
+    if LEVEL >= 3:
+        # design-QA subtleties replace the loud recolor/move: a hue shift, a 6 px nudge, a 15% size change
+        diffs.clear()
+        a = dict(shapes[idx[0]]); r_, g_, b_ = a["color"]; a["color"] = (min(255, int(r_ * 0.75 + 40)), g_, min(255, int(b_ * 1.15 + 10)))
+        diffs.append({"type": "tint", "i": idx[0], "shape": a, "x": a["x"], "y": a["y"]})
+        b = shapes[idx[1]]
+        diffs.append({"type": "remove", "i": idx[1], "shape": None, "x": b["x"], "y": b["y"]})
+        c = dict(shapes[idx[2]]); c["x"] += 6; c["y"] -= 5
+        diffs.append({"type": "nudge", "i": idx[2], "shape": c, "x": c["x"], "y": c["y"], "from": (shapes[idx[2]]["x"], shapes[idx[2]]["y"])})
+        d = dict(shapes[idx[3]]); d["r"] = max(8, int(d["r"] * 0.85))
+        diffs.append({"type": "shrink", "i": idx[3], "shape": d, "x": d["x"], "y": d["y"]})
+        extra = _shape(shapes); extra["r"] = 9
+        diffs.append({"type": "add", "i": None, "shape": extra, "x": extra["x"], "y": extra["y"]})
     S["diffs"] = diffs
 
 
@@ -74,7 +88,8 @@ def render():
             _draw(dr, d["shape"], PW + GAP)
         else:
             _draw(dr, s, PW + GAP)
-    _draw(dr, [d for d in S["diffs"] if d["type"] == "add"][0]["shape"], PW + GAP)
+    for d in S["diffs"]:
+        if d["type"] == "add": _draw(dr, d["shape"], PW + GAP)
     return base.png(img)
 
 
@@ -88,7 +103,7 @@ def click(x, y):
         rx = x - (PW + GAP)
         for k, d in enumerate(S["diffs"]):
             near = (rx - d["x"]) ** 2 + (y - d["y"]) ** 2 <= 34 ** 2
-            if not near and d["type"] == "move":   # the vacated spot is an equally valid "difference"
+            if not near and d["type"] in ("move", "nudge"):   # the vacated spot is an equally valid "difference"
                 fx, fy = d["from"]; near = (rx - fx) ** 2 + (y - fy) ** 2 <= 34 ** 2
             if near:
                 found = k; break
@@ -101,7 +116,7 @@ def state():
     misses = sum(1 for c in S["clicks"] if c["found"] is None)
     return {"level": LEVEL, "n_diffs": NDIFF, "miss_budget": MISS_BUDGET, "clicks": S["clicks"], "found": found, "misses": misses,
             "diff_types": [d["type"] for d in S["diffs"]],
-            "complete": len(found) == NDIFF and misses <= MISS_BUDGET}
+            "complete": len(found) == NDIFF and misses <= (MISS_BUDGET_L3 if LEVEL >= 3 else MISS_BUDGET)}
 
 
 if __name__ == "__main__":

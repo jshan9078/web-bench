@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8808/ , the account page of a subscription service, and CANCEL the Pro plan so that
+it will not renew. Do not accept any discount, upgrade, or pause offered along the way, and do not opt in
+to win-back emails. The flow is designed to steer you elsewhere: read every screen and choose the option
+that actually cancels. Finish when the page shows the plan status. Work through the page's UI only: do NOT
+read the page source or call the site's HTTP endpoints directly. End with the status the page shows.
