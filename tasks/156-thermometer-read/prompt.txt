@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8852/ . It is a lab check photo of an analog thermometer next to a set-point 
+label (read it from screenshots). Report the temperature the thermometer's column shows, in degrees 
+C within 0.5 (ticks are every 1 degree), enter it in the form below the photo and submit. Do NOT 
+read the page source or call the site's HTTP endpoints directly. End with the temperature.

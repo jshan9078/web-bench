@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8851/ . It is a photo of a car's instrument cluster (read it from 
+screenshots). Report the speed shown by the SPEEDOMETER needle in km/h, within 2 km/h (ticks are 
+every 10 km/h; not the tachometer), enter it in the form below the photo and submit. Do NOT read 
+the page source or call the site's HTTP endpoints directly. End with the speed.

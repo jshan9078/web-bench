@@ -200,6 +200,8 @@ TASKS = {
     "149-area-share": {"kind": "appstate", "app": "widgetapp/areashare.py", "port": 8848, "v2": True},
     "151-blind-slider": {"kind": "appstate", "app": "widgetapp/blindslider.py", "port": 8849, "v2": True},
     "154-tower-clock": {"kind": "appstate", "app": "widgetapp/towerclock.py", "port": 8850, "v2": True},
+    "155-speedometer-needle": {"kind": "appstate", "app": "widgetapp/speedo.py", "port": 8851, "v2": True},
+    "156-thermometer-read": {"kind": "appstate", "app": "widgetapp/thermo.py", "port": 8852, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
