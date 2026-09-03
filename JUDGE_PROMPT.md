@@ -90,3 +90,19 @@ in the manifest below:
   pass evidence for 55-wayback luna-medium; the verdict was re-derived from the archived
   video and a recovered frame saved alongside the bundle. Zero failures were attributable
   to prompt wording or site outages.
+  Rerun outcomes (same day): three Desmos re-captures were operator-terminated under the
+  30-minute grind policy and scored fail on captured evidence (the task is solved by 18/26
+  configs, so the environment is not at fault); spotify gemini-3.8-flash-low and wayback
+  luna-high re-captured cleanly and PASS; JS Paint opus-low re-captured and PASSES (five
+  visible dots), sonnet-xhigh FAILS (faint single pixels, pixel-readback reliance). Two
+  harness defects surfaced during the reruns and are fixed: (1) the recorder located the
+  page by its REC-<sid> title and lost the race to the agent's first navigation on all seven
+  uncapped Claude reruns (no video); setup now resolves the tab's DevTools ws URL before the
+  agent starts and the recorder attaches by it; (2) agents save screenshots to shared names
+  like /tmp/jspaint_final.jpg, so three consecutive reruns overwrote each other's final
+  frame; record() now copies every screenshot into raw/ at capture time. A first judge pass
+  on the four JS Paint reruns had cited "video frames" that could only have come from the
+  previous attempt's archived videos; those four verdicts were discarded and the runs were
+  re-judged strictly on their own timestamp-verified screenshots. The final-state evidence
+  for JS Paint opus-xhigh and sonnet-medium was lost to defect (2); both are re-captured
+  as a harness-defect remedy (not a retry for score), with the defective captures archived.
