@@ -762,3 +762,10 @@ three configs; no more of these.
 the right cell and were marked wrong, Sonnet followed the literal cell. Fixed (C5) and re-run in iteration D.
 163 (Maps route options), 164 (Calendar recurrence), 167 (GitHub issue to PR) judged separately; 167's runs
 disagree on the issue (#4297 vs #4295), settled against the GitHub API.
+
+### Iteration C: perception-limit tasks
+
+178 dense count (56, 65 and 60 blue boxes among ~150: all exact), 180 radio tuner, 182 map measure and 183 odd
+glyph were solved by all three: INVALID. 179 people count HOLDS for Sonnet (21 for 22, then 15 for 19 after 498
+actions); Opus's second attempt is re-run separately (a pipeline bug let a Claude run consume the pairs list).
+Counting people over a two-minute clip is a genuine, reproducible failure.
