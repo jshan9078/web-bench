@@ -742,4 +742,4 @@ Result: 11 tasks hold under pass@2, 9 are flagged `pass2_invalid` (the two Googl
 decision). Every Claude-side miss on the merits from the single-run pilots (crosshair, both analog clocks, the
 Opus dial and traffic count) passed on retry: those were single-run noise. The only Claude failure that
 reproduced is Sonnet on the dial. Spark's failures reproduce because endpoint probing is a stable behaviour.
-The sweep set is now 13 tasks (11 valid discriminators + 79 + 87 kept).
+The sweep set is now 15 tasks (11 valid discriminators plus the four Google tasks 78, 79, 87, 89 kept by decision).
