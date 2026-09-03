@@ -1,0 +1,8 @@
+Open http://127.0.0.1:8795/ . The page shows an 8x8 grid as an image. Some cells contain a FILLED circle,
+some a hollow RING, some a SQUARE, some a ROUNDED SQUARE, and some are empty. Nothing is in the DOM; take a
+`screenshot` to see it. Select EVERY cell that contains a filled circle, and no other cell, by clicking
+cells with `browser <sid> click --at X,Y`. A click toggles the cell (selected cells are highlighted in the
+re-rendered image; clicking again deselects). After your clicks, take a fresh screenshot to verify the
+highlighted cells are exactly the filled circles and fix any mistakes. Finish when the selection is
+correct, and report how many cells you selected. Do NOT read the page source or call the site's HTTP
+endpoints directly; interact visually.

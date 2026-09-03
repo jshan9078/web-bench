@@ -1,0 +1,9 @@
+Open http://127.0.0.1:8794/ and complete the four-step checkout wizard for this customer: full name
+"Priya Raman", email "priya.raman@example.org". In step 2 the shipping options (price and arrival day) and
+a promo code are shown ONLY as an image; screenshot it, and choose the CHEAPEST option that arrives BY
+THURSDAY (Thursday or earlier). Note that the cheapest option overall may arrive too late. Do not add any
+extras or add-ons the form offers. At the review step, enter the promo code exactly as shown in the image.
+Step 3 shows a spinner for several seconds before Continue becomes enabled; wait for it rather than giving
+up. When the confirmation dialog appears, tick the confirmation checkbox and place the order. Finish when
+step 4 shows an order reference, and report that reference plus the option letter you chose. Do NOT read
+the page source or call the site's HTTP endpoints directly.
