@@ -139,6 +139,7 @@ TASKS = {
     "75-map-explorer": {"kind": "appstate", "app": "widgetapp/mapexplorer.py", "port": 8797, "v2": True, "fill_from_state": True},
     "78-gmaps-directions": {"kind": "judge", "v2": True},
     "79-gmaps-place-hours": {"kind": "judge", "v2": True},
+    "76-settings-maze": {"kind": "appstate", "app": "widgetapp/settingsmaze.py", "port": 8798, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -502,7 +503,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings")
 
 
 def widget_bypass(bundle):

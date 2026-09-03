@@ -1,0 +1,7 @@
+Open http://127.0.0.1:8798/ , an account-settings app. Make exactly these three changes and save them:
+(1) set the display name to "J. Halvorsen"; (2) under Notifications, set the EMAIL DIGEST frequency to
+Monthly (leave the immediate email alerts as they are); (3) under Security, turn Two-step verification ON.
+Change nothing else (in particular do not touch the billing email). The app has no autosave: use the
+"Save changes" button in the footer, and note that switching top-level tabs with unsaved changes asks
+whether to discard them. Work through the page's UI only: do NOT read the page source or call the site's
+HTTP endpoints directly. End by confirming the three saved values.
