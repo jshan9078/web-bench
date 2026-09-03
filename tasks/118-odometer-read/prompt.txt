@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8836/ . It is a dashboard photo taken for a mileage check (read it from 
+screenshots; there is some glare). Report the ODOMETER reading (total distance in km, not the trip 
+meter), enter the number in the form below the photo and submit. Do NOT read the page source or 
+call the site's HTTP endpoints directly. End with the reading.

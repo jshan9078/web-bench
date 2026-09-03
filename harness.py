@@ -180,6 +180,11 @@ TASKS = {
     "113-pie-share": {"kind": "appstate", "app": "widgetapp/pieshare.py", "port": 8833, "v2": True},
     "114-scatter-threshold": {"kind": "appstate", "app": "widgetapp/scatter.py", "port": 8834, "v2": True},
     "115-heatmap-max": {"kind": "appstate", "app": "widgetapp/heatmap.py", "port": 8835, "v2": True},
+    # ---- v2.6 (2026-09-03): judgement on real sites + two more photo-reading tasks
+    "116-gcal-longest-gap": {"profile": True, "kind": "judge", "v2": True},
+    "117-gmaps-transit": {"kind": "judge", "v2": True},
+    "118-odometer-read": {"kind": "appstate", "app": "widgetapp/odometer.py", "port": 8836, "v2": True},
+    "119-handwritten-note": {"kind": "appstate", "app": "widgetapp/stickynote.py", "port": 8837, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

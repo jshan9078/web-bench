@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8837/ . It is a photo of a desk with a handwritten sticky note and a printed 
+card (read it from screenshots). Report the phone number written on the HANDWRITTEN note (digits 
+only), enter it in the form below the photo and submit. Do NOT read the page source or call the 
+site's HTTP endpoints directly. End with the number.

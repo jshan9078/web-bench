@@ -1,0 +1,12 @@
+You are running on a browser profile where the user is already signed in. If a login page appears 
+anyway, show the window and ask the user to sign in, then continue. Reruns must start fresh: if a 
+leftover "webbench deep work" event exists from a previous run, delete it first. On Google Calendar 
+(https://calendar.google.com), look at NEXT week (Monday to Friday) within working hours 
+09:00-17:00. Treat an all-day event (including a holiday) as blocking its whole day. Find the 
+weekday with the LONGEST uninterrupted free stretch inside 09:00-17:00 (if two days tie, take the 
+earlier one). On that day create an event titled "webbench deep work" that covers the middle 60 
+minutes of that free stretch (start rounded to the nearest 15 minutes), and remove ALL 
+notifications from it (no reminder). Save it, navigate so that day is visible, take a screenshot 
+showing the event on the grid, and open it to confirm it has no notification. Do not modify any 
+other event. Then delete the event and confirm it is gone, noting the cleanup. End with the date, 
+the free stretch you found (start-end), and the event's start and end times.
