@@ -4,13 +4,14 @@ live ops console). Task: restart the server that is using the MOST CPU at the mo
 records, for each Restart click, which host was top-ranked at that instant. A click from a stale screenshot
 lands on a row that has moved; a fresh snapshot + ref click, or reading the current top row and acting
 immediately, succeeds. complete = exactly one restart, and its host was the top-CPU host at click time.
-Level 2: TICK 4 s and a transient "Restart" confirmation that must be confirmed within 6 s."""
+Level 2: TICK 12 s and a "Restart" confirmation that stays open 15 s. The verdict is taken at the
+Restart BUTTON press (not the confirm), so only acting on a stale read fails."""
 import json, random, sys, os, time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import base
 
 LEVEL = int(os.environ.get("WIDGET_LEVEL", "2"))
-TICK = 6 if LEVEL == 1 else 4
+TICK = 15 if LEVEL == 1 else 12   # comfortably above any harness round-trip: a fail must be a stale read, never slow tooling
 HOSTS = ["api-01", "api-02", "api-03", "db-primary", "db-replica", "cache-01", "cache-02", "worker-01", "worker-02", "worker-03", "ingest-01", "edge-01"]
 S = {"seed": 0, "t0": 0.0, "restarts": [], "confirm_open": None}
 
@@ -48,9 +49,13 @@ def get(path):
 
 def post(path, data, ctype):
     if path == "/__restart":
-        host = str(data.get("host", "")); tick, rows = _snapshot()
+        host = str(data.get("host", "")); now_tick, _ = _snapshot()
+        try: tick = int(data.get("tick_at_press"))
+        except Exception: tick = now_tick
+        if tick < 0 or tick > now_tick: tick = now_tick
+        _, rows = _snapshot(S["t0"] + tick * TICK + 0.01)      # the table as it stood when Restart was pressed
         top = max(rows, key=lambda r: r["cpu"])["host"]
-        S["restarts"].append({"host": host, "top_at_click": top, "tick": tick, "cpu_of_host": next((r["cpu"] for r in rows if r["host"] == host), None)})
+        S["restarts"].append({"host": host, "top_at_click": top, "tick": tick, "confirm_tick": now_tick, "cpu_of_host": next((r["cpu"] for r in rows if r["host"] == host), None)})
         return (json.dumps({"ok": True, "restarted": host}), "application/json")
     return None
 
@@ -70,15 +75,15 @@ button{font:inherit;padding:4px 10px;border-radius:6px;border:1px solid #475569;
 .note{color:#94a3b8;font-size:12px}</style>
 <header><b>Fleet Console</b><span class=note>Live: metrics refresh every <span id=tick></span> s and the table reorders. <span id=age></span></span></header>
 <table><thead><tr><th>#</th><th>Host</th><th>CPU</th><th>Mem</th><th>Uptime</th><th></th></tr></thead><tbody id=tb></tbody></table>
-<div id=confirm role=dialog><div class=box><h3 style="margin-top:0">Restart <span id=chost></span>?</h3><p class=note>This dialog closes on its own after 6 seconds.</p><button id=cyes>Confirm restart</button> <button id=cno>Cancel</button></div></div>
+<div id=confirm role=dialog><div class=box><h3 style="margin-top:0">Restart <span id=chost></span>?</h3><p class=note>This dialog closes on its own after 15 seconds.</p><button id=cyes>Confirm restart</button> <button id=cno>Cancel</button></div></div>
 <div id=toast role=status></div>
 <script>
-var LEVEL=__LEVEL__,cur=null,pending=null,ctimer=null,lastTick=-1,lastAt=0;
+var LEVEL=__LEVEL__,cur=null,pending=null,pendingTick=-1,ctimer=null,lastTick=-1,lastAt=0;
 function load(){fetch('/__rows').then(r=>r.json()).then(j=>{document.getElementById('tick').textContent=j.tick_s;if(j.tick!==lastTick){lastTick=j.tick;lastAt=Date.now();render(j.rows)}})}
 function render(rows){var tb=document.getElementById('tb');tb.innerHTML='';rows.forEach((r,i)=>{var tr=document.createElement('tr');tr.className='row';tr.innerHTML='<td>'+(i+1)+'</td><td>'+r.host+'</td><td><span class=bar style="width:'+r.cpu+'px"></span><span class="'+(r.cpu>=80?'hot':'')+'">'+r.cpu+'%</span></td><td>'+r.mem+'%</td><td>'+r.uptime_d+' d</td><td><button data-h="'+r.host+'" aria-label="Restart '+r.host+'">Restart</button></td>';tb.appendChild(tr)});
- tb.querySelectorAll('button').forEach(b=>b.onclick=function(){var h=this.dataset.h;if(LEVEL<2){restart(h);return}pending=h;document.getElementById('chost').textContent=h;document.getElementById('confirm').style.display='block';clearTimeout(ctimer);ctimer=setTimeout(function(){document.getElementById('confirm').style.display='none';pending=null},6000)})}
-function restart(h){fetch('/__restart',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({host:h})}).then(r=>r.json()).then(j=>{var t=document.getElementById('toast');t.textContent='Restart requested for '+j.restarted;t.style.display='block';setTimeout(()=>t.style.display='none',3000)})}
-document.getElementById('cyes').onclick=function(){if(pending){restart(pending)}document.getElementById('confirm').style.display='none';pending=null;clearTimeout(ctimer)};
+ tb.querySelectorAll('button').forEach(b=>b.onclick=function(){var h=this.dataset.h;if(LEVEL<2){restart(h,lastTick);return}pending=h;pendingTick=lastTick;document.getElementById('chost').textContent=h;document.getElementById('confirm').style.display='block';clearTimeout(ctimer);ctimer=setTimeout(function(){document.getElementById('confirm').style.display='none';pending=null},15000)})}
+function restart(h,t){fetch('/__restart',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({host:h,tick_at_press:t})}).then(r=>r.json()).then(j=>{var t=document.getElementById('toast');t.textContent='Restart requested for '+j.restarted;t.style.display='block';setTimeout(()=>t.style.display='none',3000)})}
+document.getElementById('cyes').onclick=function(){if(pending){restart(pending,pendingTick)}document.getElementById('confirm').style.display='none';pending=null;clearTimeout(ctimer)};
 document.getElementById('cno').onclick=function(){document.getElementById('confirm').style.display='none';pending=null;clearTimeout(ctimer)};
 setInterval(function(){document.getElementById('age').textContent='(last refresh '+Math.round((Date.now()-lastAt)/1000)+' s ago)'},500);
 load();setInterval(load,700);

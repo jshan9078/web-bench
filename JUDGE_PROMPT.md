@@ -76,6 +76,11 @@ in the manifest below:
   on screen and still confirmed is judged on that evidence only when the defect is not the cause of the
   fail criterion. One affected run: 60-form-wizard spark-low-val (round 2, name "Priya Raman" arrived
   as "Priya").
+- 2026-09-03 (latency independence): a failure must be attributable to the model and the harness it
+  operates in, never to the browser CLI's round-trip time or the machine. Timing-sensitive tasks must give
+  a window that comfortably exceeds any harness round-trip (the live console's refresh window was raised
+  from 4 s to 12 s and its verdict is taken at the Restart button press). Runs captured under a timing that
+  did not meet this rule are archived (raw/latency-defect/) and re-captured; their verdicts are void.
 
 ## Re-audits
 
