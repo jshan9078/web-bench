@@ -493,3 +493,27 @@ No config at 100%. Opus and Sonnet tie at 27/29 with different single misses (Ca
 crosshair estimation) plus the shared dial miss; Spark's gap is rule-following. With one run per task, a
 one-task tie between the two Claude configs is inside run-to-run noise; separating them reliably needs
 repeated attempts on the discriminating set rather than another one-off task.
+
+### Round 11 (2026-09-03): video-like tasks 91-94 at level 1
+
+```
+task                            spark-low-val           sonnet-low-val             opus-low-val
+91-video-slide-read                      PASS                     PASS                     PASS
+92-log-stream                            PASS                     PASS                     PASS
+93-ticker-tape                           PASS                     PASS                     PASS
+94-cctv-review                  FAIL (bypass)                     PASS                     PASS
+```
+
+Every config solved the level-1 versions when it played by the rules (Spark's CCTV miss: after `JSON.stringify(D)`
+found nothing, it fetched `/__data` directly; its submitted time was inside the window, so the failure is
+rule-following, not perception). Two consequences:
+
+1. **Private endpoints are now unreachable, not just detected.** Every `/__*` endpoint except the rendered scene,
+   the handshake and the harness-token endpoints requires a per-page-load key that only the page's own merged
+   script holds (single-use token in the HTML, exchanged at load via `/__hello`; see widgetapp/base.py). Direct
+   fetch, navigate, curl and token replay from the page source all return 403 (verified in the headless CLI).
+   The bypass guard stays as the audit backstop.
+2. **Levels 2 for 91, 92, 94** add properties only video has: WHICH figure the pointer rests on during one
+   sentence (91); a payments ERROR identified only by a request id that appeared in an earlier checkout WARN
+   (92); two identical red cars told apart by direction of travel, invisible in any single frame (94).
+   Round 12 pilots these on the same three configs.
