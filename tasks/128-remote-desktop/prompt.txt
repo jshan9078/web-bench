@@ -1,0 +1,7 @@
+Open http://127.0.0.1:8842/ . It is a browser-based remote desktop session: the whole desktop is an 
+IMAGE at the page's top-left that responds to clicks (click with raw coordinates via click --at 
+X,Y; screenshot pixels map 1:1; the image refreshes after each click, so take a fresh screenshot to 
+see the result). On the remote desktop, open the Settings app, turn ON the "Night light" toggle 
+(not "Night light schedule"), leave every other setting as it is, and close the Settings window. Do 
+NOT read the page source or call the site's HTTP endpoints directly. End with a one-line 
+confirmation.

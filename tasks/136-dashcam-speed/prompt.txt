@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8843/ . It is a dashcam clip review player (canvas video with a speed 
+overlay; use the play/pause, seek bar and 1 s steps; read frames from screenshots). Several 
+roadside signs pass; exactly one is a RED octagonal sign. Report the speed shown on the overlay at 
+the moment the car passes that red sign (within 3 km/h), enter it in the form under the player and 
+submit. Do NOT read the page source or call the site's HTTP endpoints directly. End with the speed.

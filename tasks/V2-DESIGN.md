@@ -595,3 +595,18 @@ task                             spark-low-val           sonnet-low-val         
 Counting 23-37 boxes, matching six legend colours, reading fill ratios and magnified fine print were all solved.
 The analog clock separated: Opus read 11:32 for 11:28 (hour-hand offset). Sonnet 5 low and Opus 5 low now have
 distinct scores (29/31 vs 28/31) for the first time. Fine precision remains the productive direction.
+
+### Round 17 (2026-09-03): perception batch 2
+
+```
+task                             spark-low-val           sonnet-low-val             opus-low-val
+112-gantt-read                            PASS                     PASS                     PASS
+113-pie-share                             PASS                     PASS                     PASS
+114-scatter-threshold                     PASS                     PASS                     PASS
+115-heatmap-max                           PASS                     PASS                     PASS
+```
+
+Gantt coverage, pie shares (within 2 points), exact counts above a threshold line and the darkest heatmap cell
+were all read correctly by all three. Chart perception is saturated at these tolerances; what has separated
+configs is fine geometry (needle angles, hand positions, pixel placement), rule-following on interactive
+canvases, and calendar judgement. Batch 7 adds a remote-desktop (image-only UI) task and a dashcam clip.

@@ -190,6 +190,8 @@ TASKS = {
     "122-drop-pin": {"kind": "appstate", "app": "widgetapp/droppin.py", "port": 8840, "v2": True},
     "125-custom-slider": {"kind": "appstate", "app": "widgetapp/rangeslider.py", "port": 8841, "v2": True},
     "127-clock-ticks": {"kind": "appstate", "app": "widgetapp/clockticks.py", "port": 8839, "v2": True},
+    "128-remote-desktop": {"kind": "appstate", "app": "widgetapp/remotedesktop.py", "port": 8842, "v2": True},
+    "136-dashcam-speed": {"kind": "appstate", "app": "widgetapp/dashcam.py", "port": 8843, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
