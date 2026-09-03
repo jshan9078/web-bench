@@ -5841,5 +5841,177 @@
  "12-wikipedia-current-events.spark13-xhigh-val": {
   "pass": true,
   "note": "[judge: sonnet s13xhigh-b1]"
+ },
+ "13-usgs-quake-report.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b2]"
+ },
+ "14-imdb-yearly-top.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b2]"
+ },
+ "15-stock-analyst-targets.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b2]"
+ },
+ "17-currency-meal-budget.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b2]"
+ },
+ "18-npm-package-audit.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b2]"
+ },
+ "19-wiktionary-wotd.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b2]"
+ },
+ "20-nasa-apod-vision.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b2]"
+ },
+ "21-amazon-office-bundle.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b2]"
+ },
+ "22-amazon-earbud-compare.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b2]"
+ },
+ "26-ebay-keyboard-hunt.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b2]"
+ },
+ "27-amazon-review-mining.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b2]"
+ },
+ "29-excalidraw-pipeline.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b3]"
+ },
+ "32-desmos-intersections.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b3]"
+ },
+ "33-osm-street-read.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b3]"
+ },
+ "34-osm-route-measure.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b3]"
+ },
+ "36-jspaint-poster.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b3]"
+ },
+ "39-youtube-frame-describe.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b3]"
+ },
+ "40-arxiv-pdf-figure.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b3]"
+ },
+ "41-owid-dataset-read.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b3]"
+ },
+ "42-youtube-watch-later.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b3]"
+ },
+ "43-gmail-self-draft.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b3]"
+ },
+ "44-gcal-event.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b3]"
+ },
+ "47-reddit-save.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b4]"
+ },
+ "48-spotify-playlist.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b4]"
+ },
+ "49-x-bookmark.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b4]"
+ },
+ "50-google-flights-nonstop.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b4]"
+ },
+ "51-wikipedia-revision-audit.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b4]"
+ },
+ "53-caniuse-feature.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b4]"
+ },
+ "54-stackoverflow-live.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b4]"
+ },
+ "55-wayback-snapshot.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b4]"
+ },
+ "56-sunrise-reykjavik.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b4]"
+ },
+ "57-hn-debate-analysis.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b4]"
+ },
+ "01-mlb-latest.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b1]"
+ },
+ "02-hn-summary.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b1]"
+ },
+ "03-weather-nyc.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b1]"
+ },
+ "04-x-projects.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b1]"
+ },
+ "05-amazon-cart.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b1]"
+ },
+ "06-amazon-search-add.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b1]"
+ },
+ "08-airport-departures.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b1]"
+ },
+ "09-recipe-scaling.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b1]"
+ },
+ "10-arxiv-agents-paper.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b1]"
+ },
+ "11-github-trending-audit.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b1]"
+ },
+ "12-wikipedia-current-events.spark13-ultra-val": {
+  "pass": true,
+  "note": "[judge: sonnet s13ultra-b1]"
  }
 }
