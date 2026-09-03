@@ -18,5 +18,7 @@ Logistics" exactly (there is a similarly named company; ignore it), (b) priority
 "Duplicate of #<id>", where <id> is the ticket number of the company's OTHER ticket that is still Open (any
 priority). Notes: only the first 40 tickets are loaded until you use "Load more"; the list only renders the
 rows near your scroll position, so filters and search are the reliable way to narrow it; changing the sort
-clears the filters. Do not resolve any other ticket. End with the resolved ticket id and the id you cited.
+clears the filters. Do not resolve any other ticket. Work through the page's UI only: do NOT read the page source or call the site's
+HTTP endpoints directly (the task measures navigating the console). End with the resolved ticket id and
+the id you cited.
 ```
