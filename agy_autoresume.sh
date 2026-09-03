@@ -17,9 +17,14 @@ probe() {  # returns 0 if quota available
 while true; do
   DONE=$(ls results/*/"$SLUG".json 2>/dev/null | wc -l | tr -d ' ')
   if [ "$DONE" -ge "$NEED" ]; then echo "$(date +%H:%M:%S) AUTORESUME: all $NEED $SLUG captured" >> "$LOG"; break; fi
+  # Do not spend a probe call while another benchmark holds the browser; just wait.
+  if pgrep -f "muse_sweep.sh|muse_one.sh|run_one.sh|rerun_uncapped.sh|codex_one.sh|env_rerun_launcher.sh|resume_tiers.sh" >/dev/null 2>&1; then
+    sleep 900; continue
+  fi
   if probe; then
     echo "$(date +%H:%M:%S) AUTORESUME: quota available ($DONE/$NEED done) - running sweep pass" >> "$LOG"
-    ./agy_sweep.sh "$SLUG" >> "$LOG" 2>&1
+    ./agy_sweep.sh "$SLUG" >> "$LOG" 2>&1; rc=$?
+    [ $rc -eq 3 ] && sleep 900   # deferred (busy) or quota hit mid-pass: back off before re-probing
   else
     echo "$(date +%H:%M:%S) AUTORESUME: quota still exhausted ($DONE/$NEED) - waiting 15m" >> "$LOG"
     sleep 900
