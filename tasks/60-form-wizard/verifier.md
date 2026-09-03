@@ -15,3 +15,8 @@ and the run's screenshots, video, and full model stream.
 navigated to and evidence it captured THIS run. A correct-sounding answer with no supporting
 navigation or capture in the trace fails, and where the live page disagrees with the answer, the
 captured page wins.
+
+**Endpoint bypass rule:** the harness fails the run, regardless of the widget state, if the browser
+command log shows the agent addressing the widget's private endpoints itself (`__state`, `__submit`,
+`__click`, `__reset`, `__step3`) through eval/fetch, navigate, or a shell tool. The page's own JavaScript
+calls them legitimately and never appears in that log; viewing `__scene.png` directly is allowed.

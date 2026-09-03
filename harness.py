@@ -489,12 +489,30 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state")
+
+
+def widget_bypass(bundle):
+    """True when the agent addressed the widget server's private endpoints itself (eval/fetch/navigate/curl)
+    instead of interacting through the page. The page's own JS calls them legitimately; those never
+    appear in the browser command log, so any appearance there is agent-driven. Reading /__scene.png is
+    fine (it is what the page shows)."""
+    import re
+    pat = re.compile("|".join(re.escape(p) for p in WIDGET_PRIVATE))
+    for e in bundle.get("requests_log") or []:
+        if e.get("action") in ("eval", "navigate", "goto", "open") and pat.search(json.dumps(e.get("params") or {})):
+            return True
+    return False
+
+
 def _judge(task, bundle):
     """Return True/False for programmatic kinds, or None for LLM-judged ('judge') kinds (pending)."""
     t = TASKS[task]; kind = t["kind"]
     if kind == "judge":
         return None
     if kind in ("pixelstate", "appstate"):   # objective: the widget server judged the interaction
+        if widget_bypass(bundle):             # ...unless the agent drove the server's endpoints directly
+            return False
         return bool((bundle.get("pixel_state") or {}).get("complete"))
     if kind == "cart":
         ev = bundle.get("cart_evidence") or {}; hay = (ev.get("text", "") + " " + ev.get("asins", "")).lower()
