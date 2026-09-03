@@ -754,3 +754,11 @@ control; failures that reproduce only as endpoint probing are reported separatel
 All six INVALID: Spark's two first-attempt failures were endpoint probing and cleared on retry; Opus misread the
 meter's first dial (8902 for 7902) and read it correctly on retry. Image-only click interfaces are solved by all
 three configs; no more of these.
+
+### Iteration B: real-site navigation and DOM control
+
+172 (stacked modals, in-element scroll) and 177 (hover mega menu) were solved by all three on attempt 1: INVALID.
+171 (spreadsheet grid) was voided: the prompt named cell C4 for Adapters, which is row 5; Opus and Spark edited
+the right cell and were marked wrong, Sonnet followed the literal cell. Fixed (C5) and re-run in iteration D.
+163 (Maps route options), 164 (Calendar recurrence), 167 (GitHub issue to PR) judged separately; 167's runs
+disagree on the issue (#4297 vs #4295), settled against the GitHub API.

@@ -14,7 +14,7 @@ def reset():
     cells = {"A1": "Item", "B1": "Qty", "C1": "Unit price", "D1": "Line total"}
     for i, (n, q, p) in enumerate(items, start=2): cells[f"A{i}"] = n; cells[f"B{i}"] = str(q); cells[f"C{i}"] = f"{p:.2f}"; cells[f"D{i}"] = f"=B{i}*C{i}"
     cells["A7"] = "Total"; S["cells"] = cells; S["saved"] = None
-    S["target"] = {"A6": "Batteries", "C4": "1.40", "D7": "=SUM(D2:D6)"}
+    S["target"] = {"A6": "Batteries", "C5": "1.40", "D7": "=SUM(D2:D6)"}
 
 
 def value(ref, depth=0):
@@ -60,7 +60,7 @@ def state():
         cur = S["cells"]; S["cells"] = sv
         try:
             total = value("D7"); expect = sum(float(value(f"B{i}")) * float(value(f"C{i}")) for i in range(2, 7))
-            ok = sv.get("A6") == "Batteries" and value("C4") == "1.40" and sv.get("D7", "").upper().replace(" ", "") == "=SUM(D2:D6)" and abs(float(total) - expect) < 0.01 and all(sv.get(k) == S["cells"].get(k) for k in [])
+            ok = sv.get("A6") == "Batteries" and value("C5") == "1.40" and sv.get("D7", "").upper().replace(" ", "") == "=SUM(D2:D6)" and abs(float(total) - expect) < 0.01 and all(sv.get(k) == S["cells"].get(k) for k in [])
         except Exception: ok = False
         S["cells"] = cur
     return {"target": S["target"], "saved": S["saved"], "complete": ok}
