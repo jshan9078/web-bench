@@ -6369,5 +6369,29 @@
  "89-gcal-last-free.opus-low-val": {
   "pass": true,
   "note": "Correctly chose Fri Sep 11 (only day with no 09:00-11:00 conflict after Mon's all-day Labour Day); grid screenshot and popup confirm 9:30-10:15, exact description, Tomato colour via aria-label, deletion confirmed via toast and search returning no results [judge: sonnet v2-gcal2-b1]"
+ },
+ "116-gcal-longest-gap.opus-low-val": {
+  "pass": true,
+  "note": "Correctly identified Mon Sep 7 Labour Day as all-day-blocking, Tue-Fri tied at full 09:00-17:00 free, earliest Tue Sep 8 chosen; event 12:30-13:30 (middle 60min) created, notification removal confirmed via edit-page snapshot showing only 'Add notification' (no Remove button) after 'Notification removed. 0 remaining.' toast, grid screenshot shows event, and deletion confirmed via search 'No events found' and day view empty. [judge: sonnet batch-116-117]"
+ },
+ "116-gcal-longest-gap.sonnet-low-val": {
+  "pass": true,
+  "note": "Same correct day/stretch/event reasoning (Tue Sep 8, 12:30-13:30); accessibility snapshot explicitly shows 'Notification removed. 0 remaining.' and only 'Add notification' button remaining, grid screenshot shows the event, and final snapshot shows 'No events, Tuesday, September 8' with week reverting to 1 event (Labour Day only), confirming cleanup. [judge: sonnet batch-116-117]"
+ },
+ "116-gcal-longest-gap.spark-low-val": {
+  "pass": true,
+  "note": "Same correct day/stretch/event (Tue Sep 8, 12:30-13:30); screenshots confirm event on grid, edit page shows only 'Add notification' (reminder removed), and final screenshot shows 'Event deleted' toast with Tuesday's slot empty, matching cleanup requirement. [judge: sonnet batch-116-117]"
+ },
+ "117-gmaps-transit.opus-low-val": {
+  "pass": true,
+  "note": "Arrive-by 9:00 AM Mon Sep 7 was set (typed '9:00 AM' into the arrive-by field; URL param 8j1788771600 = 2026-09-07 09:00 UTC matching the session's GMT+00 profile); captured route panel text matches the reported answer exactly: depart 7:44 AM, arrive 8:45 AM, 1 hr 1 min, 1 transfer (Line 1 subway -> Bus 94), first line Line 1 (Yonge-University). [judge: sonnet batch-116-117]"
+ },
+ "117-gmaps-transit.sonnet-low-val": {
+  "pass": true,
+  "note": "Same arrive-by-9AM-Monday route captured (identical URL timestamp and panel text as the other two runs' independent captures); reported departure 7:44 AM, 1 hr 1 min, 1 transfer, first line Line 1 (Yonge-University) matches the captured route panel verbatim. [judge: sonnet batch-116-117]"
+ },
+ "117-gmaps-transit.spark-low-val": {
+  "pass": true,
+  "note": "Arrive-by control used (Options -> Arrive by -> Mon Sep 7 -> 9:00 AM), URL and route panel text captured confirm 7:44 AM departure, 1 hr 1 min duration, 1 transfer, first line Line 1 (Yonge-University), matching the reported answer exactly. [judge: sonnet batch-116-117]"
  }
 }
