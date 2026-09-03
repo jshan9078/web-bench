@@ -225,6 +225,11 @@ TASKS = {
     "188-wikipedia-category-latest": {"kind": "judge", "v2": True},
     "189-github-release-fix": {"kind": "judge", "v2": True},
     "190-gmaps-nearby-filter": {"kind": "judge", "v2": True},
+    "191-direction-count": {"kind": "appstate", "app": "widgetapp/dircount.py", "port": 8869, "v2": True},
+    "192-parcel-sort": {"kind": "appstate", "app": "widgetapp/parcelsort.py", "port": 8870, "v2": True},
+    "193-door-events": {"kind": "appstate", "app": "widgetapp/doorevents.py", "port": 8871, "v2": True},
+    "194-wikipedia-revert": {"kind": "judge", "v2": True},
+    "195-github-oldest-approved-pr": {"kind": "judge", "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

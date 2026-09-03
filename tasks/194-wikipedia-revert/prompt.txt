@@ -1,0 +1,6 @@
+Open English Wikipedia (https://en.wikipedia.org) and open the page history of the article "Toronto 
+Public Library". Among the 50 most recent revisions, find the MOST RECENT edit that was 
+subsequently reverted (undone or rolled back by a later edit). Report the reverted edit's timestamp 
+(UTC) and its editor, and the timestamp and editor of the edit that reverted it. Use the history 
+page (its tags and edit summaries, and diffs if needed); read everything from the pages, do not 
+guess. End with those four items.

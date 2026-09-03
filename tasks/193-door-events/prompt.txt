@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8871/ . It is a 2-minute entrance camera clip in a player (canvas video with 
+play/pause, seek, 1 s and 10 s steps and playback speed; read frames from screenshots). An 
+automatic sliding door opens repeatedly; sometimes a person walks through, sometimes it opens with 
+nobody passing. Count exactly how many times the door opened with NOBODY passing through, enter the 
+number in the form under the player and submit. Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with the count.
