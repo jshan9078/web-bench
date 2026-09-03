@@ -668,3 +668,16 @@ Three discriminators in one round. The rotated receipt's bottom-right corner was
 Sonnet (12 px against a 10 px tolerance, it clicked the bounding box rather than the rotated corner); Opus
 checked and corrected. The keypad and the traffic clip both caught Spark probing endpoints; Opus counted 9 of 10
 vehicles in the clip (Sonnet counted correctly after 287 actions). Discriminating count after this round: 19.
+
+### Round 22 (2026-09-03): wind vane, area share, blind slider, tower clock
+
+```
+task                              spark-low-val           sonnet-low-val             opus-low-val
+141-wind-vane                              PASS                     PASS                     PASS
+149-area-share                             PASS                     PASS                     PASS
+151-blind-slider                           PASS                     PASS                     PASS
+154-tower-clock                            FAIL                     PASS                     PASS
+```
+
+Sub-tick bearing (all within 1 degree), area fraction (within 1 point) and the readout-less slider were solved by
+all three. The tower clock separated: Spark read 1:44 for 1:47 after zooming. Discriminating count: 20, the target.
