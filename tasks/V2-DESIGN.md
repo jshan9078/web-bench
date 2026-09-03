@@ -214,3 +214,46 @@ Findings:
 and the failure profiles differ by model (precision/timing versus rule-following/fabrication). Across a
 full 36-configuration matrix, "all scores distinct" cannot hold on 19 tasks (20 possible scores); the
 achievable goal is a set on which strong configs no longer saturate, which this set now is.
+
+### Opus leg and the latency rule (2026-09-03 05:00-05:25)
+
+Opus 5 low ran the full set once. The live console was then found to violate the latency-independence
+rule (a 4 s window made the CLI's round-trip part of the verdict); it was raised to 12 s with the verdict
+taken at the Restart button press, the three 4 s captures were voided, and all three configs passed the
+re-capture.
+
+```
+task                                opus-low-val           sonnet-low-val            spark-low-val
+58-pixel-scan                               PASS                     PASS            FAIL (bypass)
+59-spot-difference                          PASS                     PASS            FAIL (bypass)
+60-form-wizard                              PASS                     PASS                     PASS
+61-grid-toggle                              PASS                     PASS                     PASS
+63-wikipedia-edit-audit                     PASS                     PASS                     PASS
+64-hn-comment-census                        PASS                     PASS                     PASS
+65-arxiv-pdf-tables                         PASS                     PASS                     PASS
+66-wiki-table-reconcile                     PASS                     PASS                     PASS
+68-youtube-transcript                       PASS                     PASS                     PASS
+69-timezone-meeting                         PASS                     PASS                     PASS
+72-amazon-quantity-edit                     PASS                     PASS                     PASS
+73-pdf-table-extract                        PASS                     PASS                     PASS
+74-dashboard-triage                         PASS                     PASS                     PASS
+75-map-explorer                             PASS                     PASS            FAIL (bypass)
+78-gmaps-directions                         PASS                     PASS                     PASS
+79-gmaps-place-hours                        PASS                     PASS                     FAIL
+76-settings-maze                            PASS                     PASS            FAIL (bypass)
+77-crosshair-align                          PASS                     FAIL                     PASS
+80-live-list                                PASS                     PASS                     PASS
+score (pass/judged)                        19/19                    18/19                    14/19
+pending/missing                                0                        0                        0
+median s / max s                        39 / 190                 47 / 403                 66 / 295
+
+criteria: no config at 100%: False | all scores distinct: True
+```
+
+Opus is clean on every task (fastest median, no endpoint calls, no budget hits) and beat both tasks that
+separated the others: the crosshair in one planned batch of 52 moves to 0.0 px, and the map by
+navigation. Sonnet's single miss is verification discipline; Spark's are rule-following and one
+fabricated figure. The set therefore discriminates the three configs but does not expose a weakness in
+Opus; candidate next traps (memory across a flow, blur-only validation with a late dependent field,
+reconciliation under a stated precedence rule) target reasoning under UI constraints rather than
+perception or timing.
