@@ -60,7 +60,9 @@ PREAMBLE = (
     "retry once — these often clear on their own. If it persists or needs human input, do NOT try to "
     "bypass it and do NOT report it as a normal failure: run `browser {sid} show` to make the window "
     "visible so the user can solve it, say exactly what they need to do, and make the LAST line exactly "
-    "`BLOCKED: <which site/wall stopped you>`."
+    "`BLOCKED: <which site/wall stopped you>`. "
+    "TIME BUDGET: you have 10 minutes of wall-clock time for this task. The run is terminated when the budget "
+    "runs out, so work efficiently, avoid repeating actions, and give your final answer before then."
 )
 
 AMAZON = "www.amazon.ca"   # marketplace; book ASINs (ISBN-10) are the same across marketplaces
