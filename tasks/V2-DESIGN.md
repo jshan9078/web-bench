@@ -369,3 +369,47 @@ flagged saturated and leave the BENCH_SET=v2 sweep set. The set that remains:
 
 On it: Opus 7/8, Sonnet 7/8, Spark 2/8. No config at 100%; Opus and Sonnet tie, each on a single miss
 of a different kind (judgement versus verification discipline).
+
+### Round 9 (2026-09-03 06:10-06:28): crosshair level 2 and a second Calendar task
+
+Crosshair at 2 px with a single lock: Opus 0.0 px in 23 moves, Spark 0.0 px in 59 moves, Sonnet 6 px off
+after 146 moves and 25 screenshots. The second Calendar task (last free weekday, description, colour)
+passed for all three and is flagged saturated. Standing: Opus 27/28, Sonnet 27/28, Spark 22/28; no config
+at 100%; Opus and Sonnet tie with one miss each (rule interpretation versus pixel estimation).
+
+```
+task                                opus-low-val           sonnet-low-val            spark-low-val
+58-pixel-scan                               PASS                     PASS            FAIL (bypass)
+59-spot-difference                          PASS                     PASS            FAIL (bypass)
+60-form-wizard                              PASS                     PASS                     PASS
+61-grid-toggle                              PASS                     PASS                     PASS
+63-wikipedia-edit-audit                     PASS                     PASS                     PASS
+64-hn-comment-census                        PASS                     PASS                     PASS
+65-arxiv-pdf-tables                         PASS                     PASS                     PASS
+66-wiki-table-reconcile                     PASS                     PASS                     PASS
+68-youtube-transcript                       PASS                     PASS                     PASS
+69-timezone-meeting                         PASS                     PASS                     PASS
+72-amazon-quantity-edit                     PASS                     PASS                     PASS
+73-pdf-table-extract                        PASS                     PASS                     PASS
+74-dashboard-triage                         PASS                     PASS                     PASS
+75-map-explorer                             PASS                     PASS            FAIL (bypass)
+78-gmaps-directions                         PASS                     PASS                     PASS
+79-gmaps-place-hours                        PASS                     PASS                     FAIL
+76-settings-maze                            PASS                     PASS            FAIL (bypass)
+77-crosshair-align                          PASS                     FAIL                     PASS
+80-live-list                                PASS                     PASS                     PASS
+81-memory-flow                              PASS                     PASS                     PASS
+82-blur-validation                          PASS                     PASS                     PASS
+83-reconcile-rule                           PASS                     PASS                     PASS
+84-ledger-audit                             PASS                     PASS                     PASS
+85-table-diff                               PASS                     PASS                     PASS
+86-chart-read                               PASS                     PASS                     PASS
+87-gcal-scheduling                          FAIL                     PASS                     FAIL
+88-cancel-flow                              PASS                     PASS                     PASS
+89-gcal-last-free                           PASS                     PASS                     PASS
+score (pass/judged)                        27/28                    27/28                    22/28
+pending/missing                                0                        0                        0
+median s / max s                        38 / 233                 44 / 403                 60 / 295
+
+criteria: no config at 100%: True | all scores distinct: False
+```
