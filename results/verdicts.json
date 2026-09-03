@@ -6405,5 +6405,41 @@
  "87-gcal-scheduling.opus-low-val2": {
   "pass": true,
   "note": "Agent self-corrected an initial Sep 7 placement after the holiday layer rendered, ending on Tue Sep 8, 14:30-15:15, single 30-min notification, Private visibility, all confirmed in the captured event-detail popup text and grid screenshot; deletion confirmed by post-delete day view reading 'No events'. [judge: sonnet batch1]"
+ },
+ "163-gmaps-route-options.opus-low-val": {
+  "pass": true,
+  "note": "Captured evidence (DOM text/eval reads at each stage) shows correct 2-point (1h6m/35.6km), 3-point in order Union Station->Library->Zoo (1h22m/35.5km), and 3-point with both avoidHighways and avoidTolls confirmed checked via eval (1h39m/35.2km); all figures match the agent's reported answer. [judge: sonnet 163-164-167-batch]"
+ },
+ "163-gmaps-route-options.sonnet-low-val": {
+  "pass": true,
+  "note": "Screenshots confirm all three stages: 2-point Union Station->Zoo (1h4m/35.6km), 3-point correctly ordered via Library (1h23m/36.0km), and both Highways+Tolls checkboxes visibly ticked with totals 1h39m/35.2km; figures match reported answer exactly. [judge: sonnet 163-164-167-batch]"
+ },
+ "163-gmaps-route-options.spark-low-val": {
+  "pass": false,
+  "note": "Run's own final captured end_state URL param (!2m1!3b1, i.e. avoid-ferries only) and glyph-state in end_text_excerpt show Avoid Highways and Avoid Tolls both UNCHECKED at the true end of the run (only Ferries checked), contradicting the agent's reported 'both enabled' figures of 1h27min/37.3km; agent's own answer also self-reports inconsistent readings (1h39m/34.5km vs 1h27m/37.3km) indicating it never stabilized on a valid avoid-tolls+avoid-highways state. [judge: sonnet 163-164-167-batch]"
+ },
+ "164-gcal-recurring.opus-low-val": {
+  "pass": true,
+  "note": "Screenshots confirm month view with exactly 6 correct occurrences (Sep 8,10,15,17,22,24 2026), occurrence detail popup shows 'Weekly on Tuesday, Thursday, 6 times' with Sage color dot, and final screenshot shows month view cleared after series deletion. [judge: sonnet 163-164-167-batch]"
+ },
+ "164-gcal-recurring.sonnet-low-val": {
+  "pass": true,
+  "note": "Screenshots confirm month view with exactly 6 correct occurrences (Sep 8,10,15,17,22,24 2026), occurrence detail popup shows 'Weekly on Tuesday, Thursday, 6 times' with Sage color dot, and final screenshot (with 'Event deleted' toast) shows month view cleared. [judge: sonnet 163-164-167-batch]"
+ },
+ "164-gcal-recurring.spark-low-val": {
+  "pass": true,
+  "note": "Screenshots confirm month view with exactly 6 correct occurrences (Sep 8,10,15,17,22,24 2026), occurrence detail popup shows 'Weekly on Tuesday, Thursday, 6 times' with Sage color dot, and final screenshot (with 'Event deleted' toast) shows month view cleared. [judge: sonnet 163-164-167-batch]"
+ },
+ "167-github-issue-pr.opus-low-val": {
+  "pass": false,
+  "note": "GitHub API ground truth (issues?state=closed&labels=bug sorted by closed_at) shows #4297 (closed 2022-03-15T15:37:17Z) is the most recently closed bug issue, closed by merged PR #4487 (davidism, merged 2022-03-15T15:36:16Z) per the timeline cross-reference; opus reported the older #4295/PR #4298 (delicb, Nov 2021), incorrectly ruling out #4297 as having no closing PR when the API timeline shows one. [judge: sonnet 163-164-167-batch]"
+ },
+ "167-github-issue-pr.sonnet-low-val": {
+  "pass": true,
+  "note": "Matches GitHub API ground truth exactly: issue #4297 closed by merged PR #4487, author davidism, merged 2022-03-15T15:36:16Z (agent reported March 15, 2022); agent navigated to and read both the issue #4297 page and the PR #4487 page this run. [judge: sonnet 163-164-167-batch]"
+ },
+ "167-github-issue-pr.spark-low-val": {
+  "pass": true,
+  "note": "Matches GitHub API ground truth exactly: issue #4297 closed by merged PR #4487, author davidism, merged 2022-03-15T15:36:16Z (agent reported the exact ISO timestamp, corroborated via its own live API calls plus page navigation to both the issue and PR pages this run). [judge: sonnet 163-164-167-batch]"
  }
 }
