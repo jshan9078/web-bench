@@ -142,3 +142,10 @@ in the manifest below:
   asking the operator to sign in. 27 configurations completed the task from that embedded board
   without logging in. A login gate on a sub-page that the task does not need is not a wall under
   rule 6. Recorded as a model failure.
+
+- **2026-09-03 CLI binary swap window (harness, one run affected).** Installing the text-truncation fix
+  by copying the new build over the uv tool's binary in place invalidated its code signature; every
+  `browser` invocation was killed (exit 137) from 03:52:01 until a fresh copy with an ad-hoc signature
+  restored it at 03:52:56. The only run in flight was 58-pixel-scan gemini-3.7-flash-low (round 2); it is
+  archived under raw/cli-defect/ and re-captured. Spark's last round-2 run ended at 03:51:57, before the
+  window.
