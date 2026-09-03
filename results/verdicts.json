@@ -6193,5 +6193,181 @@
  "44-gcal-event.gemini-3.8-flash-high": {
   "pass": true,
   "note": "Screenshot shows 'webbench sync' event on Monday Sept 7 2026 (correct next-Monday from Sept 3 run date) at 10 AM slot on the grid; cleanup deletion confirmed in agent report [judge: sonnet 38high-b3]"
+ },
+ "63-wikipedia-edit-audit.spark-low-val": {
+  "pass": true,
+  "note": "5 non-bot/non-minor rows, revert status, and the 12-entry minor(2)/bot(1) counts all match the captured history page text exactly; well grounded via repeated navigation/eval on the history page. [judge: sonnet v2r2-sparklow-b1]"
+ },
+ "64-hn-comment-census.spark-low-val": {
+  "pass": true,
+  "note": "Exact top-level count 114 and all 3 tied authors (simonw, jampa, mattlondon @14 direct replies) verified via a grounded DOM eval trace walking indent levels; matches captured thread. [judge: sonnet v2r2-sparklow-b1]"
+ },
+ "65-arxiv-pdf-tables.spark-low-val": {
+  "pass": true,
+  "note": "Browser-only pdf.js render+screenshot compliant (no curl/wget/pdftotext/text-layer use found); correctly identifies arXiv:2609.01772, 10 pages, Table 1 caption 'Automatic metric results on MEMECULT-1K.' matches, and 5 main-text tables (Table 1-5), confirmed by its own screenshots showing Appendix A (Table 6 onward) starting only after References. [judge: sonnet v2-pdf-recap-b1]"
+ },
+ "66-wiki-table-reconcile.spark-low-val": {
+  "pass": true,
+  "note": "Trace shows two clicks on #mwwg producing headerSortDown and the captured post-sort table rows match the reported top-3 (Pinnacle One Yonge/Shandong IFC/270 Park Ave); infobox values captured via navigation to each article match [judge: sonnet v2-sparklow-b1]"
+ },
+ "68-youtube-transcript.spark-low-val": {
+  "pass": true,
+  "note": "Title/date/no-chapters/closest transcript line (1:04) match captured page; agent thoroughly searched the open transcript panel's DOM for an auto-generated/English label and found none, grounding its 'No' answer to item 5 in this run's captured evidence. [judge: sonnet v2r2-sparklow-b1]"
+ },
+ "69-timezone-meeting.spark-low-val": {
+  "pass": true,
+  "note": "Planner configured with Toronto/Berlin/Tokyo and next-Monday date; full hourly timetable captured via eval confirms no all-three 08-18 slot and earliest Toronto 02:00 for Berlin/Tokyo 08-22 windows, offsets match captured details page [judge: sonnet v2-sparklow-b1]"
+ },
+ "72-amazon-quantity-edit.spark-low-val": {
+  "pass": true,
+  "note": "cart_before empty, cart_after shows exactly one line item (Energizer AA Batteries) at qty 2, unit price .98, subtotal .96 -- harness ground truth matches agent's reported values exactly [judge: sonnet v2-sparklow-b1]"
+ },
+ "73-pdf-table-extract.spark-low-val": {
+  "pass": true,
+  "note": "Browser-only pdf.js render-to-canvas+screenshot compliant (a stray navigation to ar5iv.org redirected back to the arxiv abs page and was not used as a source); correctly identifies arXiv:2609.02304, Table 1 on page 10, caption matches, last column 'beta averaged', max +0.6099 at AbductiveNLI, matching the same table independently confirmed via the companion gemini run's screenshot. [judge: sonnet v2-pdf-recap-b1]"
+ },
+ "63-wikipedia-edit-audit.gemini-3.7-flash-low": {
+  "pass": true,
+  "note": "Top-5 non-bot/non-minor rows and 12-entry counts (2 minor: Nurg,AnomieBOT; 1 bot: AnomieBOT) match captured history text verbatim, no reverts shown, grounded in this run's history-page capture [judge: sonnet v2r2-gem37low-b1]"
+ },
+ "64-hn-comment-census.gemini-3.7-flash-low": {
+  "pass": true,
+  "note": "Agent's own in-run DOM eval of .athing.comtr on the captured thread computes totalTopLevelCount=114 and a 3-way 14-reply tie (simonw, jampa, mattlondon), matching the answer exactly; all tied authors named per the no-tolerance/all-ties trap [judge: sonnet v2r2-gem37low-b1]"
+ },
+ "66-wiki-table-reconcile.gemini-3.7-flash-low": {
+  "pass": true,
+  "note": "Trace shows two clicks on sort header producing year-desc order (2026,2025,2025) confirmed by table snapshot; all three articles opened and infobox architect/floors/height match reported values and list-height agreement [judge: sonnet v2-gem37low-b1]"
+ },
+ "68-youtube-transcript.gemini-3.7-flash-low": {
+  "pass": true,
+  "note": "Transcript panel opened via engagement-panel eval; captured panel text contains no language selector/auto-generated marker (only search box + line list + 'Sync to video time'), so 'no label present' is correctly grounded in this run's own capture, consistent with title/date/no-chapters/1:04 line already verified [judge: sonnet v2r2-gem37low-b1]"
+ },
+ "69-timezone-meeting.gemini-3.7-flash-low": {
+  "pass": true,
+  "note": "Planner configured with Toronto/Berlin/Tokyo and next-Monday date; full captured hourly table confirms no all-three 08-18 slot and earliest 02:00 Toronto for Berlin/Tokyo 08-22 windows; offsets match captured details page (UTC-4/+2/+9) [judge: sonnet v2-gem37low-b1]"
+ },
+ "72-amazon-quantity-edit.gemini-3.7-flash-low": {
+  "pass": true,
+  "note": "cart_before empty, cart_after shows exactly one line item (Energizer AA Batteries) at qty 2, unit price $11.98, subtotal $23.96, matching agent's reported values exactly [judge: sonnet v2-gem37low-b1]"
+ },
+ "73-pdf-table-extract.gemini-3.7-flash-low": {
+  "pass": true,
+  "note": "Browser-only pdf.js render-to-canvas+screenshot compliant throughout (including troubleshooting an initial blank-canvas screenshot bug via legitimate re-render, not text extraction); correctly identifies arXiv:2609.02304, first qualifying table is Table 1 on PDF page 10, caption matches, last numeric column 'beta averaged', max +0.6099 at row AbductiveNLI, confirmed directly in the archived close-up screenshot (shot26.jpg) captured before the final answer. [judge: sonnet v2-pdf-recap-b1]"
+ },
+ "65-arxiv-pdf-tables.sonnet-low-val": {
+  "pass": true,
+  "note": "First benchmark-titled listing entry (2609.01772) opened via pdf.js viewer, page-3 screenshot shows Table 1 caption verbatim matching answer, 10 pages and 5 main-text tables confirmed by paging screenshots, no curl/wget/pdftotext/PyMuPDF used [judge: sonnet v2-sonnetlow-b1]"
+ },
+ "66-wiki-table-reconcile.sonnet-low-val": {
+  "pass": true,
+  "note": "Sort header clicked and DOM-read table confirms descending year order (2026,2025,2025); all three articles opened, infobox architect/floors/height match reported values and list-height agreement [judge: sonnet v2-sonnetlow-b1]"
+ },
+ "69-timezone-meeting.sonnet-low-val": {
+  "pass": true,
+  "note": "Planner configured with Toronto/Berlin/Tokyo and next Monday (Sept 7 2026); captured details table confirms UTC-4/+2/+9 offsets and Q2 answer (Toronto 2am); Q1 'no slot' consistent with these offsets [judge: sonnet v2-sonnetlow-b1]"
+ },
+ "72-amazon-quantity-edit.sonnet-low-val": {
+  "pass": true,
+  "note": "cart_before empty, cart_after shows exactly one line item (Energizer AA Batteries) at qty 2, unit price .98, subtotal .96, matching agent's reported values exactly [judge: sonnet v2-sonnetlow-b1]"
+ },
+ "73-pdf-table-extract.sonnet-low-val": {
+  "pass": true,
+  "note": "First evaluation-titled listing entry (2609.02304) opened via pdf.js viewer; page-10 screenshot shows Table 1 with last column '\u03b2 averaged', max +0.6099 at AbductiveNLI, matching exactly; no curl/wget/pdftotext/PyMuPDF used [judge: sonnet v2-sonnetlow-b1]"
+ },
+ "65-arxiv-pdf-tables.gemini-3.7-flash-low": {
+  "pass": false,
+  "note": "Browser-only pdf.js render+screenshot compliant and grounded (viewed pages 1-6 of the 10-page PDF), but undercounted main-text tables as 4; the captured PDF (same paper, cross-checked via the companion spark-low-val run's own page screenshots) shows 5 main-text tables (Table 1-5) before References/Appendix A (Table 6+), and Table 5 falls on a page the agent did view, so this is a miscount, not a grounding gap. [judge: sonnet v2-pdf-recap-b1]"
+ },
+ "63-wikipedia-edit-audit.sonnet-low-val": {
+  "pass": true,
+  "note": "Five non-bot/non-minor edits, deltas, timestamps, revert status, and 12-entry minor/bot counts (2 minor, 1 bot) all match the captured history page text exactly; grounded via navigation+text extraction [judge: sonnet v2r3-live-b1]"
+ },
+ "64-hn-comment-census.sonnet-low-val": {
+  "pass": true,
+  "note": "Agent's own DOM-nesting eval on the captured #2 story thread computed 54 top-level comments, sole max-replies leader simonw with 23 direct replies, no ties; matches captured evidence [judge: sonnet v2r3-live-b1]"
+ },
+ "68-youtube-transcript.sonnet-low-val": {
+  "pass": true,
+  "note": "Correct first Videos-tab upload, title/date match captured text, transcript panel opened and scrolled, 1:04 line correctly closest to 1:00, no chapters and no visible language selector both confirmed absent in captured DOM/snapshot [judge: sonnet v2r3-live-b1]"
+ },
+ "78-gmaps-directions.sonnet-low-val": {
+  "pass": true,
+  "note": "WALKING mode (3e2) selected with step list opened showing 41 min/2.8 km via University Ave and first step 'Head north on York Street Path Connection'; TRANSIT mode (3e3) selected showing 24 min via bus 320B/320S from Yonge St at Front St East; all values match captured panel text [judge: sonnet v2r3-live-b1]"
+ },
+ "78-gmaps-directions.spark-low-val": {
+  "pass": true,
+  "note": "Same walking (41 min/2.8 km, York Street Path Connection first step) and transit (24 min, first vehicle 320A Yonge Blue Night to Steeles from Yonge St at Front St East) figures grounded in captured page text after mode switches [judge: sonnet v2r3-live-b1]"
+ },
+ "79-gmaps-place-hours.sonnet-low-val": {
+  "pass": true,
+  "note": "Address, 4.6/1,765 reviews, Closed status, and Balzac's Reference Library at 1 min/36m (via Directions tool) all grounded in captured text; hours dropdown genuinely expanded to only Thursday in this signed-out capture (confirmed via screenshot), so 'Sunday not available' is the honest grounded answer per the per-run hours-availability rule [judge: sonnet v2r3-live-b1]"
+ },
+ "79-gmaps-place-hours.spark-low-val": {
+  "pass": false,
+  "note": "Agent itself admits closest shop Balzac's has no displayed distance ('no separate distance... At this place'), violating the verifier's 'shop without a displayed distance fails' rule; the substituted '4 min/290 m' figure for Cafe Landwer never appears in any captured tool_result/page text in the trace (no directions navigation occurred) and is ungrounded per rule 2 [judge: sonnet v2r3-live-b1]"
+ },
+ "63-wikipedia-edit-audit.opus-low-val": {
+  "pass": true,
+  "note": "Captured history text confirms all 5 non-bot/non-minor edits (user, timestamp, delta, summary, no-revert tags) and the 12-most-recent minor(2)/bot(1) counts exactly match the page text. [judge: sonnet v2-opuslow-b1]"
+ },
+ "64-hn-comment-census.opus-low-val": {
+  "pass": true,
+  "note": "Story #2 (Muse Spark 1.3) confirmed via front-page scrape; DOM-nesting eval grounds top-level count 54 and sole max-reply comment simonw/23/no ties (winners array length 1). [judge: sonnet v2-opuslow-b1]"
+ },
+ "65-arxiv-pdf-tables.opus-low-val": {
+  "pass": true,
+  "note": "First 'benchmark'-titled listing entry confirmed in captured listing text; pdf.js numPages=10 (metadata, not text extraction) and screenshots of pages 3-6 show Tables 1-4 captions plus page-5 reference to Table 5 before the References/Appendix boundary; Table 1 caption screenshot matches exactly. [judge: sonnet v2-opuslow-b1]"
+ },
+ "66-wiki-table-reconcile.opus-low-val": {
+  "pass": true,
+  "note": "Trace shows headerSortDown click and the captured post-sort table's top rows are Shandong IFC/270 Park Ave/Nanjing Financial City II (all 2025, no 2026 row above them); infobox architect/floors/height for all three match captured article text exactly. [judge: sonnet v2-opuslow-b1]"
+ },
+ "68-youtube-transcript.opus-low-val": {
+  "pass": true,
+  "note": "Newest Videos-tab entry, upload date, chapter-count eval (0), transcript panel snapshot (1:04 nearest to 1:00), and auto-generated-label eval (all false) are all captured in the trace and match the reported answer. [judge: sonnet v2-opuslow-b1]"
+ },
+ "69-timezone-meeting.opus-low-val": {
+  "pass": true,
+  "note": "Planner URL/table configured for Toronto/Berlin/Tokyo on next-Monday Sep 7 2026 (run date Thu Sep 3); captured hour table verifies no 08:00-18:00 triple overlap and Mon 2am Toronto as earliest slot with Berlin/Tokyo both in 08:00-22:00; offsets -4/+2/+9 confirmed from table. [judge: sonnet v2-opuslow-b1]"
+ },
+ "72-amazon-quantity-edit.opus-low-val": {
+  "pass": true,
+  "note": "cart_before empty, cart_after shows exactly one line item (Energizer AA 20-count) at quantity 2, unit price .98, subtotal .96 -- matches reported answer exactly. [judge: sonnet v2-opuslow-b1]"
+ },
+ "73-pdf-table-extract.opus-low-val": {
+  "pass": true,
+  "note": "First 'evaluation'-titled cs.LG/recent entry [32] confirmed in captured listing; screenshots of pages 1-9 show no earlier 3+-row numeric table, and page-10 screenshot shows Table 1 with last column 'beta averaged' max +0.6099 at row AbductiveNLI, matching the reported answer exactly. [judge: sonnet v2-opuslow-b1]"
+ },
+ "78-gmaps-directions.opus-low-val": {
+  "pass": true,
+  "note": "Walking panel captured with mode selected, 41 min/2.8 km via University Ave and first step 'Head north on York Street Path Connection' all in captured text; transit captured at 24 min/320S, and a body-wide regex scan for 'best' found only the mode-bar tab label, grounding the 'no option labeled Best' claim. [judge: sonnet v2-opuslow-b1]"
+ },
+ "79-gmaps-place-hours.opus-low-val": {
+  "pass": true,
+  "note": "Place card captured: address, 4.6/1,765 reviews, Closed/Opens 11am, and expanded hours showing only Thursday (correctly reported as the only day shown, signed-out view); Nearby search for coffee shop returned Balzac's Reference Library with no listed distance, so Directions was used per protocol, giving 1 min/36 m as reported. [judge: sonnet v2-opuslow-b1]"
+ },
+ "87-gcal-scheduling.spark-low-val": {
+  "pass": false,
+  "note": "Chose Monday Sep 7, which has an all-day 'Labour Day' event (all-day events count as conflicts per task); event settings (2:30-3:15, 30-min notification, Private) and deletion were correct but the day itself violates the pass criteria [judge: sonnet v2-gcal-b1]"
+ },
+ "87-gcal-scheduling.sonnet-low-val": {
+  "pass": true,
+  "note": "Correctly identified Monday Sep 7's all-day Labour Day conflict from captured week text, created 'webbench planning review' on Tuesday Sep 8 2:30-3:15pm with single 30-min notification and Private visibility (confirmed via event dialog text), screenshot shows event on Tue grid, deleted and confirmed gone [judge: sonnet v2-gcal-b1]"
+ },
+ "87-gcal-scheduling.opus-low-val": {
+  "pass": false,
+  "note": "Chose Monday Sep 7 despite its own captured evidence showing the all-day 'Labour Day' event there; explicitly (mis)reasoned the all-day marker doesn't count as overlapping 14:00-16:00, contradicting the task's explicit rule; settings/deletion otherwise correct but wrong day fails per verifier [judge: sonnet v2-gcal-b1]"
+ },
+ "89-gcal-last-free.spark-low-val": {
+  "pass": true,
+  "note": "Correctly chose Fri Sep 11 (only day with no 09:00-11:00 conflict after Mon's all-day Labour Day); grid screenshot shows event, popup confirms 9:30-10:15, description exact, Tomato colour confirmed via aria-label, deletion confirmed via Event deleted toast [judge: sonnet v2-gcal2-b1]"
+ },
+ "89-gcal-last-free.sonnet-low-val": {
+  "pass": true,
+  "note": "Correctly chose Fri Sep 11 (only day with no 09:00-11:00 conflict after Mon's all-day Labour Day); grid screenshot and popup confirm 9:30-10:15, exact description, Tomato colour via aria-label, deletion confirmed via toast and search returning no results [judge: sonnet v2-gcal2-b1]"
+ },
+ "89-gcal-last-free.opus-low-val": {
+  "pass": true,
+  "note": "Correctly chose Fri Sep 11 (only day with no 09:00-11:00 conflict after Mon's all-day Labour Day); grid screenshot and popup confirm 9:30-10:15, exact description, Tomato colour via aria-label, deletion confirmed via toast and search returning no results [judge: sonnet v2-gcal2-b1]"
  }
 }
