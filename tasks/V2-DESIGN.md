@@ -654,3 +654,17 @@ Both Claude configs operated the image-only desktop in 4 and 11 clicks; Spark re
 clicks but probed the private endpoints twice. The dashcam speed was read within tolerance by all three, Spark
 after 648 browser actions and 413 s, which the speed and cost charts will show even though accuracy ties.
 Discriminating count after this round: 16.
+
+### Round 21 (2026-09-03): crop corners, virtual keypad, traffic count
+
+```
+task                              spark-low-val           sonnet-low-val             opus-low-val
+137-crop-corners                           FAIL                     FAIL                     PASS
+138-virtual-keypad                FAIL (bypass)                     PASS                     PASS
+139-traffic-count                 FAIL (bypass)                     PASS                     FAIL
+```
+
+Three discriminators in one round. The rotated receipt's bottom-right corner was missed by Spark (63 px) and
+Sonnet (12 px against a 10 px tolerance, it clicked the bounding box rather than the rotated corner); Opus
+checked and corrected. The keypad and the traffic clip both caught Spark probing endpoints; Opus counted 9 of 10
+vehicles in the clip (Sonnet counted correctly after 287 actions). Discriminating count after this round: 19.
