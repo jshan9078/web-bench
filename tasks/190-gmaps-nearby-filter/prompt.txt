@@ -1,0 +1,7 @@
+Open Google Maps (https://www.google.com/maps), search for "Toronto Reference Library", then use 
+its Nearby search for "pharmacy". Apply the results filters Open now and Rating 4.0+ (use the 
+filter chips or the All filters panel). Among the filtered results, report the pharmacy with the 
+SHORTEST walking time from the library (open Directions for the top candidates if the list shows no 
+times), with its name, address, rating and the walking time Google shows. Never estimate; read 
+every figure from the page. If a consent or sign-in interstitial appears, dismiss it without 
+signing in. End with those items.

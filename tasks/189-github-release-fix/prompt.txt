@@ -1,0 +1,6 @@
+Open https://github.com/pallets/flask (no sign-in needed). Issue #4297 was fixed by a merged pull 
+request. Using the repository's Releases page and the CHANGES.rst changelog, find the FIRST 
+released version whose changelog lists that fix, and report the version number, the release's date, 
+and the exact changelog line describing the fix. Read everything from the pages you navigate to; do 
+not guess. If a consent or sign-in interstitial appears, dismiss it without signing in. End with 
+those items.

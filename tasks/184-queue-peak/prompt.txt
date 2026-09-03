@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8867/ . It is a 2-minute service-counter camera clip in a player (canvas 
+video with play/pause, seek, 1 s and 10 s steps and playback speed; read frames from screenshots). 
+People join the queue on the left and leave after being served at the counter. Report the MAXIMUM 
+number of people waiting in the queue at the same moment at any point in the clip (exact), enter it 
+in the form under the player and submit. Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with the number.

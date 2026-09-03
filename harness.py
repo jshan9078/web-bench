@@ -220,6 +220,11 @@ TASKS = {
     "180-radio-tuner": {"kind": "appstate", "app": "widgetapp/tuner.py", "port": 8864, "v2": True},
     "182-map-measure": {"kind": "appstate", "app": "widgetapp/mapmeasure.py", "port": 8865, "v2": True},
     "183-odd-glyph": {"kind": "appstate", "app": "widgetapp/oddglyph.py", "port": 8866, "v2": True},
+    "184-queue-peak": {"kind": "appstate", "app": "widgetapp/queuepeak.py", "port": 8867, "v2": True},
+    "185-belt-defects": {"kind": "appstate", "app": "widgetapp/beltdefects.py", "port": 8868, "v2": True},
+    "188-wikipedia-category-latest": {"kind": "judge", "v2": True},
+    "189-github-release-fix": {"kind": "judge", "v2": True},
+    "190-gmaps-nearby-filter": {"kind": "judge", "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

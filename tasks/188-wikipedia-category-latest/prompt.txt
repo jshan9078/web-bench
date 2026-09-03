@@ -1,0 +1,6 @@
+Open English Wikipedia (https://en.wikipedia.org) and go to the category page "Category:Public 
+libraries in Toronto". Among the ARTICLES directly in that category (not subcategories), find the 
+one whose most recent edit is the latest in time. Report the article title, the date and time (UTC) 
+of that edit, and the editor's username, as shown on that article's history page. Use the site's 
+own tools (each article's View history, or the Related changes tool on the category page) and read 
+everything from the pages; do not guess. End with those three items.

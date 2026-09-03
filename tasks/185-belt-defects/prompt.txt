@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8868/ . It is a 2-minute bottling-line inspection clip in a player (canvas 
+video with play/pause, seek, 1 s and 10 s steps and playback speed; read frames from screenshots). 
+Bottles pass left to right; a correctly capped bottle has a red cap, a defective one has no cap. 
+Count exactly how many defective (capless) bottles pass during the clip, enter the number in the 
+form under the player and submit. Do NOT read the page source or call the site's HTTP endpoints 
+directly. End with the count.
