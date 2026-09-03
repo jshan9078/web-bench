@@ -1,0 +1,8 @@
+Open http://127.0.0.1:8800/ , a live fleet console: the metrics refresh every few seconds and the table
+REORDERS on every refresh, so row positions are never stable. Restart the ONE server that is using the
+MOST CPU at the moment you act: read the current table, identify the top-CPU host, click that host's
+Restart button and confirm in the dialog (the dialog closes on its own after a few seconds). Two hosts are
+usually close at the top, so read the numbers rather than the bar lengths, and act within the same refresh
+window as your reading (a click aimed from a stale screenshot lands on whatever row has moved there).
+Restart exactly one server. Work through the page's UI only: do NOT read the page source or call the
+site's HTTP endpoints directly. End by naming the host you restarted and its CPU figure.
