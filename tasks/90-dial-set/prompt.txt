@@ -1,0 +1,7 @@
+Open http://127.0.0.1:8810/ . The page is one image of a gain dial: a needle over a scale from 0 to 100
+with a tick every unit and a label every 10; the current value is never printed, so read the needle
+against the ticks from a `screenshot`. Turn the dial to exactly {TARGET} using the arrow keys (each press
+turns it 0.5; hold Shift for 5), taking fresh screenshots to check, and press Enter ONCE to confirm when
+the needle is within one tick of {TARGET}. There is only one confirmation, so verify with a screenshot
+before pressing Enter. The page must have keyboard focus (click on it first if needed). Do NOT read the
+page source or call the site's HTTP endpoints directly. End by reporting the value you confirmed.
