@@ -1,6 +1,6 @@
 Open Google Maps (https://www.google.com/maps). Get directions from "Union Station, Toronto" to
 "Royal Ontario Museum" and switch the travel mode to WALKING. Report the walking time and distance shown
 for the recommended route, and the first turn instruction from the step-by-step directions (open the
-details to read the steps). Then switch to TRANSIT and report the duration Google shows for the best
-transit option and which transit line it uses first. If a consent or sign-in interstitial appears, dismiss
+details to read the steps). Then switch to TRANSIT and report the duration Google shows for the option it marks as "Best"
+(not merely the first listed) and which transit line that option uses first. If a consent or sign-in interstitial appears, dismiss
 it without signing in. Base everything on what the page shows. End with those five items.

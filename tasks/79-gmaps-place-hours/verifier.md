@@ -19,3 +19,8 @@ shop without a displayed distance, fails.
 navigated to and evidence it captured THIS run. A correct-sounding answer with no supporting
 navigation or capture in the trace fails, and where the live page disagrees with the answer, the
 captured page wins.
+
+**Signed-out hours:** Google's signed-out card sometimes exposes only one day's hours. An answer that reports
+exactly what the expanded card showed (including "only today's hours shown") is correct; a Sunday value
+that does not appear in the capture fails. A nearby-shop distance must appear in a captured Directions or
+results panel; an estimated figure fails.
