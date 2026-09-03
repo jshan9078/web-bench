@@ -1,0 +1,7 @@
+Open https://en.wikipedia.org/wiki/List_of_tallest_buildings . In the main ranked table of the world's
+tallest buildings, sort by the year-completed column in DESCENDING order using the column's sort control
+(URL parameters do not sort this table; click the header and confirm the order changed on the page). Take
+the THREE most recently completed buildings shown after sorting. For each, open its own Wikipedia article
+and report from its infobox: the architect (or architecture firm), the floor count, and the height in
+metres; then state whether that height agrees with the height shown in the list (within 1 m). Report the
+sorted top three as displayed plus the three comparisons. End with those items.

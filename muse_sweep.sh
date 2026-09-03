@@ -9,7 +9,7 @@ EFFORT=$1
 MODEL=${2:-muse-spark-1.2-contributor}
 export SPARK_PREFIX=${3:-spark}
 RUN="$SPARK_PREFIX-$EFFORT-val"
-for T in $(python3 -c "import harness; print('\n'.join(harness.TASKS))"); do
+for T in $(python3 -c "import harness; print('\n'.join(harness.sweep_tasks()))"); do
   if [ -f "results/$T/$RUN.json" ]; then echo "skip $T (done)"; continue; fi
   echo "=== $T $RUN $(date +%H:%M:%S)"
   ./muse_one.sh "$T" "$MODEL" "$EFFORT" "$RUN" || echo "RUN FAILED: $T"

@@ -1,0 +1,7 @@
+On arXiv, open the cs.LG recent listing (https://arxiv.org/list/cs.LG/recent). Scanning in order, find the
+FIRST paper whose title contains "evaluation" or "evaluating" (case-insensitive) and open its PDF. Locate
+the FIRST table in the paper that contains at least three rows of numeric results. Zoom in as needed to
+read it reliably. Report: the arXiv identifier, the table's number and caption (first sentence), the
+header of its LAST numeric column, the maximum value in that column, and the row label (first column
+entry) of the row containing that maximum. Base everything on what the rendered PDF shows. End with those
+items.

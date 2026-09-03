@@ -11,7 +11,7 @@ RUN="$SLUG"
 if pgrep -f "muse_sweep.sh|muse_one.sh|run_one.sh|rerun_uncapped.sh|codex_one.sh|env_rerun_launcher.sh" >/dev/null 2>&1; then
   echo "BUSY: another benchmark sweep is driving the browser, deferring agy pass"; exit 3
 fi
-for T in $(python3 -c "import harness; print('\n'.join(harness.TASKS))"); do
+for T in $(python3 -c "import harness; print('\n'.join(harness.sweep_tasks()))"); do
   if [ -f "results/$T/$RUN.json" ]; then echo "skip $T (done)"; continue; fi
   echo "=== $T $RUN $(date +%H:%M:%S)"
   ./agy_one.sh "$T" "$SLUG" "$RUN"; rc=$?

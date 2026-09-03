@@ -9,7 +9,7 @@ RUN="$SHORT-$EFFORT-val"
 # Optional skip list: tasks solved by EVERY judged config (incl. luna-low) are not re-run
 # for the remaining OpenAI configs; see results/openai_skip_tasks.txt (one task id per line).
 SKIP_FILE=results/openai_skip_tasks.txt
-for T in $(python3 -c "import harness; print('\n'.join(harness.TASKS))"); do
+for T in $(python3 -c "import harness; print('\n'.join(harness.sweep_tasks()))"); do
   if [ -f "$SKIP_FILE" ] && grep -qx "$T" "$SKIP_FILE"; then echo "skip $T (all-config-pass list)"; continue; fi
   if [ -f "results/$T/$RUN.json" ]; then echo "skip $T (done)"; continue; fi
   echo "=== $T $RUN $(date +%H:%M:%S)"

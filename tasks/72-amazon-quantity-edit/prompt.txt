@@ -1,0 +1,6 @@
+On Amazon (https://www.amazon.ca), search for "AA batteries" and open the FIRST genuine (non-sponsored)
+result. Add it to the cart with QUANTITY 3 (use the quantity selector on the product page or set it in the
+cart). Then open the cart and CHANGE that item's quantity to 2. Make sure the cart contains ONLY this item
+at quantity 2 (remove anything else that is there). Leave the cart page open. Report the item title, its
+unit price, and the cart subtotal shown after the change. Do NOT proceed to checkout, sign up for anything,
+or place any order. End with those three values.

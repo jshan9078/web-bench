@@ -118,7 +118,29 @@ TASKS = {
     "55-wayback-snapshot": {"kind": "judge"},
     "56-sunrise-reykjavik": {"kind": "judge"},
     "57-hn-debate-analysis": {"kind": "judge"},
+    # ---- v2 task set (2026-09-03): designed to discriminate; see tasks/V2-DESIGN.md. Excluded from the
+    # v1 sweeps/scoreboard until piloted (BENCH_SET=v2 selects them; see sweep_tasks()).
+    "58-pixel-scan": {"kind": "appstate", "app": "widgetapp/pixelscan.py", "port": 8792, "v2": True},
+    "59-spot-difference": {"kind": "appstate", "app": "widgetapp/spotdiff.py", "port": 8793, "v2": True},
+    "60-form-wizard": {"kind": "appstate", "app": "widgetapp/wizard.py", "port": 8794, "v2": True},
+    "61-grid-toggle": {"kind": "appstate", "app": "widgetapp/gridtoggle.py", "port": 8795, "v2": True},
+    "63-wikipedia-edit-audit": {"kind": "judge", "v2": True},
+    "64-hn-comment-census": {"kind": "judge", "v2": True},
+    "65-arxiv-pdf-tables": {"kind": "judge", "v2": True},
+    "66-wiki-table-reconcile": {"kind": "judge", "v2": True},
+    "68-youtube-transcript": {"kind": "judge", "v2": True},
+    "69-timezone-meeting": {"kind": "judge", "v2": True},
+    "72-amazon-quantity-edit": {"profile": True, "kind": "judge", "cart": True, "v2": True},
+    "73-pdf-table-extract": {"kind": "judge", "v2": True},
 }
+TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2")]
+TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
+
+
+def sweep_tasks():
+    """Task names a sweep iterates: BENCH_SET=v1 (default) | v2 | all."""
+    which = os.environ.get("BENCH_SET", "v1")
+    return TASKS_V1 if which == "v1" else TASKS_V2 if which == "v2" else list(TASKS)
 # Prompts live in tasks/<name>/prompt.txt (one subdirectory per task; see tasks/<name>/verifier.md for
 # how each run is scored). This directory is the source of truth for task prompts.
 _TDIR = HERE / "tasks"
@@ -176,19 +198,25 @@ CART_URL = f"https://{AMAZON}/gp/cart/view.html"
 PIXEL_PORT = 8791
 
 
-def ensure_pixelapp():
-    """Start the localhost canvas challenge (server-rendered scene) and reset it to a fresh layout."""
+def ensure_app(t):
+    """Start the task's localhost widget server (pixelapp for `app: True`, else the given script) and
+    reset it to a fresh random layout so every run starts clean."""
     import urllib.request
+    port = t.get("port", PIXEL_PORT)
+    script = HERE / "pixelapp/server.py" if t.get("app") is True else HERE / t["app"]
     try:
-        urllib.request.urlopen(f"http://127.0.0.1:{PIXEL_PORT}/__state", timeout=1)
+        urllib.request.urlopen(f"http://127.0.0.1:{port}/__state", timeout=1)
     except Exception:
-        subprocess.Popen([sys.executable, str(HERE / "pixelapp/server.py"), str(PIXEL_PORT)],
-                         stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        time.sleep(0.7)
+        subprocess.Popen([sys.executable, str(script), str(port)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        time.sleep(0.9)
     try:
-        urllib.request.urlopen(urllib.request.Request(f"http://127.0.0.1:{PIXEL_PORT}/__reset", data=b"{}", method="POST")).read()
+        urllib.request.urlopen(urllib.request.Request(f"http://127.0.0.1:{port}/__reset", data=b"{}", method="POST")).read()
     except Exception:
         pass
+
+
+def ensure_pixelapp():
+    ensure_app(TASKS["07-pixel-click"])
 
 
 def _clear_cart(sid, rounds=15):
@@ -215,7 +243,7 @@ def setup(task, run=None):
     t = TASKS[task]
     ensure_daemon()
     if t.get("app"):
-        ensure_pixelapp()
+        ensure_app(t)
     try:
         for s in json.loads(run_cli("list") or "[]"):
             run_cli(s["session_id"], "delete")
@@ -421,7 +449,7 @@ def record(task, kw):
     if TASKS[task].get("app"):
         import urllib.request
         try:
-            pixel_state = json.load(urllib.request.urlopen(f"http://127.0.0.1:{PIXEL_PORT}/__state", timeout=2))
+            pixel_state = json.load(urllib.request.urlopen(f"http://127.0.0.1:{TASKS[task].get('port', PIXEL_PORT)}/__state", timeout=2))
         except Exception:
             pixel_state = None
     video = f"{task}.{run}.mp4" if (RAW / f"{task}.{run}.mp4").exists() else None
@@ -446,7 +474,7 @@ def _judge(task, bundle):
     t = TASKS[task]; kind = t["kind"]
     if kind == "judge":
         return None
-    if kind == "pixelstate":          # objective: server hit-tested the pixel clicks (ascending order)
+    if kind in ("pixelstate", "appstate"):   # objective: the widget server judged the interaction
         return bool((bundle.get("pixel_state") or {}).get("complete"))
     if kind == "cart":
         ev = bundle.get("cart_evidence") or {}; hay = (ev.get("text", "") + " " + ev.get("asins", "")).lower()

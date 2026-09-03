@@ -1,0 +1,6 @@
+On arXiv, open the cs.CL new-submissions listing (https://arxiv.org/list/cs.CL/new). Scanning in listing
+order, find the FIRST paper whose TITLE contains the word "benchmark" (case-insensitive; "benchmarks" and
+"benchmarking" count). Open that paper's PDF. Report: (1) its arXiv identifier, (2) the total number of
+pages of the PDF, (3) how many numbered tables appear in the MAIN TEXT (Table 1 through Table N, stopping
+before any appendix or supplementary section), and (4) the first sentence of Table 1's caption. Page
+through the PDF as needed and base the counts on what you actually see. End with those four items.

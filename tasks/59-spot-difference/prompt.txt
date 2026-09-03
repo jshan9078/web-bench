@@ -1,0 +1,8 @@
+Open http://127.0.0.1:8793/ . The page is a single image with two panels side by side: the LEFT panel is
+the original and the RIGHT panel differs from it in exactly FOUR places (a shape that changed color, a
+shape that is missing, a shape that moved, and a shape that was added). Nothing is in the DOM; take a
+`screenshot` to see the panels. Click each of the four differences ON THE RIGHT PANEL, at the location
+where the right panel differs (for a moved shape, click its NEW position on the right; for a missing
+shape, click where it should have been on the right), using `browser <sid> click --at X,Y`. You have a
+budget of three wrong clicks, so compare carefully before clicking. Finish once all four differences are
+clicked. Do NOT read the page source or call the site's HTTP endpoints directly; interact visually.
