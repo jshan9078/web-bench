@@ -142,6 +142,9 @@ TASKS = {
     "76-settings-maze": {"kind": "appstate", "app": "widgetapp/settingsmaze.py", "port": 8798, "v2": True},
     "77-crosshair-align": {"kind": "appstate", "app": "widgetapp/crosshair.py", "port": 8799, "v2": True},
     "80-live-list": {"kind": "appstate", "app": "widgetapp/livelist.py", "port": 8800, "v2": True},
+    "81-memory-flow": {"kind": "appstate", "app": "widgetapp/memoryflow.py", "port": 8801, "v2": True},
+    "82-blur-validation": {"kind": "appstate", "app": "widgetapp/blurform.py", "port": 8802, "v2": True},
+    "83-reconcile-rule": {"kind": "appstate", "app": "widgetapp/reconcile.py", "port": 8803, "v2": True, "fill_from_state": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -505,7 +508,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify")
 
 
 def widget_bypass(bundle):

@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8803/ , a parts catalogue. The inventory list and a part's detail page can show
+different stock counts; the site's Data policy page states which one is authoritative and when. For the
+part "{NAME}", determine the authoritative stock count according to that policy (compare the times the
+policy refers to) and press "Mark verified" on the authoritative page for that part, and only there.
+Report the count and which page you verified on. Work through the page's UI only: do NOT read the page
+source or call the site's HTTP endpoints directly. End with the count and the page.

@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8802/ and save this SHIPPING address exactly: Mara Lindqvist, 48 Rue Sainte-Anne,
+Québec, Canada, province QC, postal code G1R 3X3, phone +1 418 555 0147. The form validates fields only
+when you leave them, and any format rule is shown in that message; some fields appear only after a
+country is chosen. Make sure the address actually saved (the page shows a reference) and that it is the
+address above, not the billing address the form offers. Work through the page's UI only: do NOT read the
+page source or call the site's HTTP endpoints directly. End with the reference shown.
