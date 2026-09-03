@@ -29,26 +29,35 @@ export BENCH_RECORD=1
 prompt=$($PY harness.py setup "$TASK" "$RUN") || { echo "setup failed"; exit 1; }
 SID=$($PY -c "import json;print(json.load(open('results/current.json'))['sid'])")
 
-STREAM=$(mktemp); mkdir -p "${RES:-results}/$TASK"; CPU=${RES:-results}/$TASK/$RUN.cpu.jsonl
+STREAM=$(mktemp); AGY_ERR=$(mktemp); mkdir -p "${RES:-results}/$TASK"; CPU=${RES:-results}/$TASK/$RUN.cpu.jsonl
 $PY sample_cpu.py "$CPU" 0.25 & SAMPLER=$!
 $PY record_cdp.py "$SID" "$RAW_MP4" 2>>"$LOG" & REC=$!
 sleep 1.5
 
 REPO=$(pwd)   # so agy can read SKILL.md (outside the run cwd)
 agy -p "$prompt" --model "$SLUG" "${PERM[@]}" --add-dir "$REPO" \
-    --output-format stream-json --print-timeout "$PRINT_TIMEOUT" >"$STREAM" 2>>"$LOG"
+    --output-format stream-json --print-timeout "$PRINT_TIMEOUT" >"$STREAM" 2>"$AGY_ERR"
 kill $SAMPLER 2>/dev/null
 kill -TERM $REC 2>/dev/null; wait $REC 2>/dev/null
 
-# Quota/rate-limit guard: if agy failed to produce a real result (empty stream, no SUCCESS result,
-# or an explicit quota/rate-limit error), DO NOT record a husk bundle -- leave the task un-recorded
-# so the sweep's skip logic retries it on a later resume (e.g. after the 5-hour limit refreshes).
-if grep -qiE "resource_exhausted|rate limit|quota|too many requests|\"status\": ?\"(FAILED|ERROR)\"|error.*limit" "$STREAM" 2>/dev/null \
-   || ! grep -q '"event":"result"' "$STREAM" 2>/dev/null; then
-  echo "$(date +%H:%M:%S) $RUN $TASK $CONFIG QUOTA/FAIL - not recorded (retryable)" >> "$LOG"
-  rm -f "$STREAM" "$RAW_MP4"
+# Quota/rate-limit guard: decide ONLY from agy's own result event (and agy's stderr for this run),
+# never from page content streamed back through tool outputs. The previous keyword grep over the
+# whole stream matched ordinary page text ("quota", "limit", "FAILED" occur in a third of good
+# streams) and paused the gemini-3.8-high sweep on a Wiktionary page at 78% quota (2026-09-03).
+# A run with no SUCCESS result is left un-recorded (exit 3) so the sweep retries it on resume; the
+# stream is preserved under raw/ as *.failstream.txt so the cause can be inspected.
+RESULT=$(grep '"event":"result"' "$STREAM" 2>/dev/null | tail -1)
+STATUS=$(printf '%s' "$RESULT" | $PY -c "import json,sys
+try: print(json.loads(sys.stdin.read())['result'].get('status',''))
+except Exception: print('')" 2>/dev/null)
+QUOTA_ERR=$(grep -iE "resource_exhausted|rate.?limit|quota|too many requests|429" "$AGY_ERR" 2>/dev/null | head -2)
+if [ "$STATUS" != "SUCCESS" ] || [ -n "$QUOTA_ERR" ]; then
+  KEEP=raw/$TASK.$RUN.failstream.txt; cp "$STREAM" "$KEEP" 2>/dev/null
+  echo "$(date +%H:%M:%S) $RUN $TASK $CONFIG NO-SUCCESS (status='${STATUS:-none}' stderr='${QUOTA_ERR:0:160}') - not recorded (retryable), stream kept at $KEEP" >> "$LOG"
+  cat "$AGY_ERR" >> "$LOG"; rm -f "$STREAM" "$RAW_MP4" "$AGY_ERR"
   exit 3
 fi
+cat "$AGY_ERR" >> "$LOG"; rm -f "$AGY_ERR"
 
 $PY harness.py record "$TASK" "run=$RUN" "config=$CONFIG" "harness=agy" "model=$SLUG" "effort=" "stream=$STREAM" "cpu=$CPU"
 $PY harness.py score "$TASK.$RUN"

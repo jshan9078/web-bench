@@ -106,3 +106,13 @@ in the manifest below:
   re-judged strictly on their own timestamp-verified screenshots. The final-state evidence
   for JS Paint opus-xhigh and sonnet-medium was lost to defect (2); both are re-captured
   as a harness-defect remedy (not a retry for score), with the defective captures archived.
+
+- **2026-09-03 agy quota guard false positive (harness, no runs affected).** The gemini-3.8-flash-high
+  sweep paused at 19-wiktionary-wotd with "QUOTA hit" while the 5-hour quota stood at 78%. Cause:
+  agy_one.sh's guard grepped the whole stream-json for "quota", "rate limit", "limit", "FAILED", and
+  matched ordinary page content streamed back through tool outputs (a third of recorded 3.8 streams
+  contain "limit"; a dictionary page contained "quota"). Fix: the guard now decides only from agy's
+  own result event (status must be SUCCESS) and from agy's per-run stderr; a non-SUCCESS run stays
+  un-recorded and retryable as before, but its stream is preserved as raw/<task>.<run>.failstream.txt
+  so the cause can be inspected. The paused task was never recorded, so no verdict was affected; it
+  is retried on the next resume pass.
