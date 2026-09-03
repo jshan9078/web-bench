@@ -4,7 +4,7 @@ price/stock sheet. Exactly five cells changed. Task: list the changed cells (row
 for each, the Tuesday value. Each cell is a 12 px figure; lookalike digits and one change in the last
 decimal make skimming fail. complete = the submitted set of changed cells equals the true set and the
 Tuesday values match."""
-import json, random, sys, os
+import json, random, sys, os, re
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from PIL import Image, ImageDraw
 import base
@@ -65,12 +65,12 @@ def post(path, data, ctype):
 
 
 def _parse(text):
+    """Triples 'Row, Column, Value' anywhere in the text: line breaks are optional, because typing a
+    newline into a textarea depends on the agent's tooling and must not decide the verdict."""
     out = set()
-    for line in text.splitlines():
-        parts = [p.strip() for p in line.split(",")]
-        if len(parts) >= 3:
-            try: out.add((parts[0].lower(), parts[1].lower(), round(float(parts[2]), 2)))
-            except ValueError: pass
+    rows = "|".join(re.escape(r) for r in ROWS); cols = "|".join(re.escape(c) for c in COLS)
+    for m in re.finditer(rf"({rows})\s*,\s*({cols})\s*,\s*(-?\d+(?:\.\d+)?)", text, re.I):
+        out.add((m.group(1).lower(), m.group(2).lower(), round(float(m.group(3)), 2)))
     return out
 
 
