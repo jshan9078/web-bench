@@ -22,7 +22,11 @@ except Exception:
 
 def candidate_ports():
     dirs = list((Path.home() / ".browser-daemon" / "profiles").glob("*"))
-    dirs += list(Path(os.environ.get("TMPDIR", "/tmp")).glob("browser-daemon-*"))
+    # Ephemeral browsers live under the DAEMON's temp dir, which a caller with a stripped
+    # environment (env -i drops TMPDIR) cannot see via $TMPDIR: scan every plausible location.
+    for base in {os.environ.get("TMPDIR", "/tmp"), "/tmp", tempfile.gettempdir()}:
+        dirs += list(Path(base).glob("browser-daemon-*"))
+    dirs += list(Path("/var/folders").glob("*/*/T/browser-daemon-*"))   # macOS per-user temp
     ports = []
     for d in dirs:
         f = d / "DevToolsActivePort"

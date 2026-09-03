@@ -19,7 +19,7 @@ while read -r TASK HARNESS MODEL EFFORT RUN; do
   for f in raw/"$TASK.$RUN".*; do [ -e "$f" ] && mv "$f" "raw/attempt1/$(basename "$f")"; done
   rm -f "results/$TASK/$RUN.json" "results/$TASK/$RUN.cpu.jsonl"
   case "$HARNESS" in
-    claude) env -i HOME="$HOME" PATH="$PATH" MAX_TURNS=500 ./run_one.sh "$TASK" "$MODEL" "$EFFORT" "$RUN" >> "$LOG" 2>&1 ;;
+    claude) env -i HOME="$HOME" PATH="$PATH" TMPDIR="${TMPDIR:-}" MAX_TURNS=500 ./run_one.sh "$TASK" "$MODEL" "$EFFORT" "$RUN" >> "$LOG" 2>&1 ;;
     agy)    PRINT_TIMEOUT=180m ./agy_one.sh "$TASK" "$MODEL" "$RUN" >> "$LOG" 2>&1 ;;
     codex)  ./codex_one.sh "$TASK" "$MODEL" "$EFFORT" "$RUN" >> "$LOG" 2>&1 ;;
     *)      echo "unknown harness $HARNESS" >> "$LOG" ;;
