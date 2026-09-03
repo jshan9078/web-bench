@@ -257,3 +257,51 @@ fabricated figure. The set therefore discriminates the three configs but does no
 Opus; candidate next traps (memory across a flow, blur-only validation with a late dependent field,
 reconciliation under a stated precedence rule) target reasoning under UI constraints rather than
 perception or timing.
+
+### Round 6 (v2.5, 2026-09-03 05:28-05:34): realistic trap sites
+
+Three sites built on real-product patterns: a pairing flow with no way back (a code shown once must be
+recalled at the end; restarting issues a new code), a shipping form with blur-only validation, a late
+dependent field, a silent failed submit, and a pre-ticked option that saves the billing address while
+showing a success reference, and a parts catalogue whose list and detail pages disagree with a stated
+precedence rule. All nine runs passed, cleanly, in 21-42 s. (The catalogue's verify check was made
+idempotent after Spark pressed the correct button twice; a repeat click on the right control is not a
+navigation failure.)
+
+```
+task                                opus-low-val           sonnet-low-val            spark-low-val
+58-pixel-scan                               PASS                     PASS            FAIL (bypass)
+59-spot-difference                          PASS                     PASS            FAIL (bypass)
+60-form-wizard                              PASS                     PASS                     PASS
+61-grid-toggle                              PASS                     PASS                     PASS
+63-wikipedia-edit-audit                     PASS                     PASS                     PASS
+64-hn-comment-census                        PASS                     PASS                     PASS
+65-arxiv-pdf-tables                         PASS                     PASS                     PASS
+66-wiki-table-reconcile                     PASS                     PASS                     PASS
+68-youtube-transcript                       PASS                     PASS                     PASS
+69-timezone-meeting                         PASS                     PASS                     PASS
+72-amazon-quantity-edit                     PASS                     PASS                     PASS
+73-pdf-table-extract                        PASS                     PASS                     PASS
+74-dashboard-triage                         PASS                     PASS                     PASS
+75-map-explorer                             PASS                     PASS            FAIL (bypass)
+78-gmaps-directions                         PASS                     PASS                     PASS
+79-gmaps-place-hours                        PASS                     PASS                     FAIL
+76-settings-maze                            PASS                     PASS            FAIL (bypass)
+77-crosshair-align                          PASS                     FAIL                     PASS
+80-live-list                                PASS                     PASS                     PASS
+81-memory-flow                              PASS                     PASS                     PASS
+82-blur-validation                          PASS                     PASS                     PASS
+83-reconcile-rule                           PASS                     PASS                     PASS
+score (pass/judged)                        22/22                    21/22                    17/22
+pending/missing                                0                        0                        0
+median s / max s                        37 / 190                 44 / 403                 60 / 295
+
+criteria: no config at 100%: False | all scores distinct: True
+```
+
+Where this leaves the set: it separates Sonnet (one precision miss), Spark (rule-following and one
+fabrication), and Gemini (bookkeeping, precision, budget) from each other and from Opus, but nothing in
+22 tasks exposes a weakness in Opus 5 low. Realistic traps of the kinds tried (memory, validation state,
+policy reconciliation, decoys, timing under a fair window) are all solved by the current best models;
+the remaining model-attributable, realistic levers are dense perception (reading small figures in a
+dense rendered ledger with near-ties) and instruction discipline under on-page dark patterns.
