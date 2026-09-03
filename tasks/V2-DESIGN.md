@@ -782,3 +782,8 @@ VALID, a genuine navigation-and-reading failure verified against the GitHub API.
 also failed twice, one attempt by probing). Both are reproduced counting-over-time failures. 188 (Wikipedia
 category latest edit), 189 (GitHub release for a fix) and 190 (Maps nearby filters) judged separately; 190's
 three runs disagree (two different pharmacies, and one config claims no rating filter exists).
+
+Judged: 188 (Wikipedia category latest edit) and 189 (GitHub release for the fix) passed for all three, verified
+against the MediaWiki and GitHub APIs; both saturated. 190 (Maps nearby filters) failed Sonnet (missed a closer,
+higher-rated result in an incompletely scrolled list) and Opus (reported a 3.9-rated pharmacy); Spark found the
+right one. Second attempts queued (E2).
