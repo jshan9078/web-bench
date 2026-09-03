@@ -9,6 +9,7 @@
 #      PRINT_TIMEOUT (default 10m), BENCH_PROFILE, BROWSER_CLI/BROWSER_DAEMON.
 set -u
 cd "$(dirname "$0")"
+RUN_BUDGET_S=${RUN_BUDGET_S:-600}   # wall-clock budget per run (2026-09-03 rule: no run over 10 minutes)
 TASK=$1; SLUG=$2; RUN=$3
 CONFIG="$SLUG"
 # BENCH_PROFILE: only pass through if the caller set it (see run_one.sh note; empty = daemon's
@@ -35,8 +36,9 @@ $PY record_cdp.py "$SID" "$RAW_MP4" 2>>"$LOG" & REC=$!
 sleep 1.5
 
 REPO=$(pwd)   # so agy can read SKILL.md (outside the run cwd)
-agy -p "$prompt" --model "$SLUG" "${PERM[@]}" --add-dir "$REPO" \
+$PY budget_exec.py "$RUN_BUDGET_S" agy -p "$prompt" --model "$SLUG" "${PERM[@]}" --add-dir "$REPO" \
     --output-format stream-json --print-timeout "$PRINT_TIMEOUT" >"$STREAM" 2>"$AGY_ERR"
+AGENT_RC=$?; BUDGET_HIT=0; [ "$AGENT_RC" -eq 124 ] && BUDGET_HIT=1 && echo "$(date +%H:%M:%S) $RUN $TASK BUDGET HIT (${RUN_BUDGET_S}s): recorded as a terminated run" >> "$LOG"
 kill $SAMPLER 2>/dev/null
 kill -TERM $REC 2>/dev/null; wait $REC 2>/dev/null
 
@@ -51,7 +53,7 @@ STATUS=$(printf '%s' "$RESULT" | $PY -c "import json,sys
 try: print(json.loads(sys.stdin.read())['result'].get('status',''))
 except Exception: print('')" 2>/dev/null)
 QUOTA_ERR=$(grep -iE "resource_exhausted|rate.?limit|quota|too many requests|429" "$AGY_ERR" 2>/dev/null | head -2)
-if [ "$STATUS" != "SUCCESS" ] || [ -n "$QUOTA_ERR" ]; then
+if [ "$BUDGET_HIT" -ne 1 ] && { [ "$STATUS" != "SUCCESS" ] || [ -n "$QUOTA_ERR" ]; }; then
   KEEP=raw/$TASK.$RUN.failstream.txt; cp "$STREAM" "$KEEP" 2>/dev/null
   echo "$(date +%H:%M:%S) $RUN $TASK $CONFIG NO-SUCCESS (status='${STATUS:-none}' stderr='${QUOTA_ERR:0:160}') - not recorded (retryable), stream kept at $KEEP" >> "$LOG"
   cat "$AGY_ERR" >> "$LOG"; rm -f "$STREAM" "$RAW_MP4" "$AGY_ERR"
@@ -59,7 +61,7 @@ if [ "$STATUS" != "SUCCESS" ] || [ -n "$QUOTA_ERR" ]; then
 fi
 cat "$AGY_ERR" >> "$LOG"; rm -f "$AGY_ERR"
 
-$PY harness.py record "$TASK" "run=$RUN" "config=$CONFIG" "harness=agy" "model=$SLUG" "effort=" "stream=$STREAM" "cpu=$CPU"
+$PY harness.py record "$TASK" "run=$RUN" "config=$CONFIG" "harness=agy" "model=$SLUG" "effort=" "stream=$STREAM" "cpu=$CPU" "budget=$BUDGET_HIT" "budget_s=$RUN_BUDGET_S"
 $PY harness.py score "$TASK.$RUN"
 rm -f "$STREAM"
 echo "$(date +%H:%M:%S) $RUN $TASK $CONFIG done" >> "$LOG"

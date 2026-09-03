@@ -8,6 +8,7 @@
 # enforced for this harness (recorded as a harness difference, like Antigravity's own loop).
 set -u
 cd "$(dirname "$0")"
+RUN_BUDGET_S=${RUN_BUDGET_S:-600}   # wall-clock budget per run (2026-09-03 rule: no run over 10 minutes)
 TASK=$1; MODEL=$2; EFFORT=$3; RUN=$4
 SHORT=${MODEL#gpt-5.6-}
 CONFIG="$SHORT-$EFFORT"
@@ -25,14 +26,15 @@ $PY sample_cpu.py "$CPU" 0.25 & SAMPLER=$!
 $PY record_cdp.py "$SID" "$RAW_MP4" 2>>"$LOG" & REC=$!
 sleep 1.5
 
-codex exec --json --skip-git-repo-check \
+$PY budget_exec.py "$RUN_BUDGET_S" codex exec --json --skip-git-repo-check \
     -m "$MODEL" -c model_reasoning_effort="$EFFORT" \
     --dangerously-bypass-approvals-and-sandbox \
     "$prompt" < /dev/null > "$STREAM" 2>>"$LOG"
+AGENT_RC=$?; BUDGET_HIT=0; [ "$AGENT_RC" -eq 124 ] && BUDGET_HIT=1 && echo "$(date +%H:%M:%S) $RUN $TASK BUDGET HIT (${RUN_BUDGET_S}s): recorded as a terminated run" >> "$LOG"
 kill $SAMPLER 2>/dev/null
 kill -TERM $REC 2>/dev/null; wait $REC 2>/dev/null
 
-$PY harness.py record "$TASK" "run=$RUN" "config=$CONFIG" "harness=codex" "model=$MODEL" "effort=$EFFORT" "stream=$STREAM" "cpu=$CPU"
+$PY harness.py record "$TASK" "run=$RUN" "config=$CONFIG" "harness=codex" "model=$MODEL" "effort=$EFFORT" "stream=$STREAM" "cpu=$CPU" "budget=$BUDGET_HIT" "budget_s=$RUN_BUDGET_S"
 $PY harness.py score "$TASK.$RUN"
 rm -f "$STREAM"
 echo "$(date +%H:%M:%S) $RUN $TASK $CONFIG done" >> "$LOG"

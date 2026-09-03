@@ -60,6 +60,14 @@ in the manifest below:
   evidence captured up to that point (no rerun). This tightens the earlier ~2h precedent;
   every previously successful uncapped Desmos/JS Paint solve finished inside 22 minutes, so
   the threshold clips no known winning pattern.
+- 2026-09-03 (run budget): every run has a 10-minute wall-clock budget, enforced by the runners
+  (`budget_exec.py`; the agent's process group is terminated at 600 s and the bundle records
+  `budget_hit`). Tasks are designed to be finishable well inside that budget, so a budget-terminated run
+  is an ordinary failure of the configuration, not a harness constraint: score it on the evidence
+  captured up to termination (objective widget state as it stood; judged tasks fail unless the criteria
+  were already met in a final answer). Budget-terminated runs are never re-captured for that reason
+  alone. The agent prompt states the budget. Supersedes the 30-minute operator grind policy for all runs
+  from this date; earlier runs keep their recorded verdicts.
 
 ## Re-audits
 

@@ -19,6 +19,8 @@ re-audit actually observed, and nothing else:
 7. **Verify-then-correct actions** with harness ground truth: 72-amazon-quantity-edit.
 8. **Dense numeric reading from rendered PDFs**: 73-pdf-table-extract.
 
+Two rules added 2026-09-03: (1) every task must be finishable well inside a 10-minute wall-clock budget by a competent agent, and runs are terminated at 10 minutes; (2) difficulty comes from traps and discrimination, never from length: more targets, rows, pages, or repeated actions add time and cost without adding a new way to be wrong.
+
 Design rules kept from v1: no puzzle or knowledge tasks (every task is solvable by careful browsing with
 no domain knowledge), no outcome that one API call covers, no site with known bot walls, offline
 judging from captured evidence, live data wherever the answer could otherwise be memorized. The four

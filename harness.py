@@ -138,7 +138,7 @@ TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
 
 
 def sweep_tasks():
-    """Task names a sweep iterates: BENCH_SET=v1 (default) | v2 | all."""
+    """Task names a sweep iterates: BENCH_SET=v1 (default) | v2 | all.\n\nTIME BUDGET: you have 10 minutes of wall-clock time for this task. The run is terminated when the budget runs out, so work efficiently, avoid repeating actions, and give your final answer before then."""
     which = os.environ.get("BENCH_SET", "v1")
     return TASKS_V1 if which == "v1" else TASKS_V2 if which == "v2" else list(TASKS)
 # Prompts live in tasks/<name>/prompt.txt (one subdirectory per task; see tasks/<name>/verifier.md for
@@ -477,6 +477,7 @@ def record(task, kw):
         "agent_result_text": text, "agent_usage_raw": usage, "answer": answer, "blocked": blocked,
         "stream_file": stream_dst, "video_file": video,
         "cart_before": cart_before, "cart_after": cart_after, "pixel_state": pixel_state,
+        "budget_hit": str(kw.get("budget", "0")) == "1", "budget_s": int(kw.get("budget_s") or 0) or None,
         "requests_log": reqs, "cpu_series": cpu_series,
         "cpu0": meta.get("cpu0"), "cpu1": cpu1, "end_state": end_state, "cart_evidence": cart_evidence,
     }

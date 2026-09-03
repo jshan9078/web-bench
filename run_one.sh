@@ -6,6 +6,7 @@
 # Env: MAX_TURNS (500, runaway valve), BENCH_PROFILE (default), CLAUDE_BIN (override binary), BROWSER_CLI/BROWSER_DAEMON.
 set -u
 cd "$(dirname "$0")"
+RUN_BUDGET_S=${RUN_BUDGET_S:-600}   # wall-clock budget per run (2026-09-03 rule: no run over 10 minutes)
 TASK=$1; MODEL=$2; EFFORT=$3; RUN=$4
 CONFIG="$MODEL-$EFFORT"
 MAX_TURNS=${MAX_TURNS:-500}   # uncapped harness (2026-09-01 amendment); 500 is a runaway valve only
@@ -55,13 +56,14 @@ sleep 1.5                                                  # let the recorder at
 # stream-json captures EVERY step (tool calls + outputs) = the full trace, saved before we judge.
 # NOTE: `claude -p --output-format stream-json` REQUIRES --verbose (verbose logs go to stderr/$LOG;
 # stdout stays clean ndjson that record() parses).
-"$CLAUDE" -p "$prompt" --model "$MODEL" "${EFFORT_ARG[@]}" \
+python3 budget_exec.py "$RUN_BUDGET_S" "$CLAUDE" -p "$prompt" --model "$MODEL" "${EFFORT_ARG[@]}" \
     --allowedTools Bash --dangerously-skip-permissions --verbose \
     --output-format stream-json --max-turns "$MAX_TURNS" >"$STREAM" 2>>"$LOG"
+AGENT_RC=$?; BUDGET_HIT=0; [ "$AGENT_RC" -eq 124 ] && BUDGET_HIT=1 && echo "$(date +%H:%M:%S) $RUN $TASK BUDGET HIT (${RUN_BUDGET_S}s): recorded as a terminated run" >> "$LOG"
 kill $SAMPLER 2>/dev/null
 kill -TERM $REC 2>/dev/null; wait $REC 2>/dev/null       # finalize the mp4
 
-$PY harness.py record "$TASK" "run=$RUN" "config=$CONFIG" "harness=claude" "model=$MODEL" "effort=$EFFORT" "stream=$STREAM" "cpu=$CPU"
+$PY harness.py record "$TASK" "run=$RUN" "config=$CONFIG" "harness=claude" "model=$MODEL" "effort=$EFFORT" "stream=$STREAM" "cpu=$CPU" "budget=$BUDGET_HIT" "budget_s=$RUN_BUDGET_S"
 $PY harness.py score "$TASK.$RUN"
 rm -f "$STREAM"
 echo "$(date +%H:%M:%S) $RUN $TASK $CONFIG done" >> "$LOG"
