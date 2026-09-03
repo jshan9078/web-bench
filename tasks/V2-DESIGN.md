@@ -30,6 +30,30 @@ carry no judge noise and their difficulty can be tuned by changing constants in 
 Rollout: v2 tasks are registered with `v2: True` and are excluded from the v1 sweeps, scoreboard, and
 published tables until piloted. Run them with `BENCH_SET=v2` (sweeps) or by name (single runs).
 
+## v2.2 additions (2026-09-03): hard test sites and real-map navigation
+
+The user's framing: the benchmark exists to find the model that can handle browser tasks on sites that
+offer no MCP or CLI, so quick, correct navigation of an ordinary UI is the skill, whether or not an API
+exists for the same outcome. Two consequences: Google Maps tasks are valid again, and difficult local test
+sites with programmatic verification are allowed where live sites cannot verify deterministically.
+
+- **74-dashboard-triage** (local, objective): a SaaS-style helpdesk console. Virtualized list (only rows
+  near the scroll position exist in the DOM), 180 tickets behind "Load more" pages of 40, filter chips, a
+  custom sort menu that clears filters, a detail drawer, a note-required confirm flow with a toast, a
+  similarly named decoy company, and a more recent High ticket from the target company that is Pending
+  rather than Open. Pass = exactly the target ticket resolved with a note citing the company's other open
+  ticket.
+- **75-map-explorer** (local, objective, vision): a map with no search box. Pan buttons or arrow keys,
+  zoom buttons, labels only at zoom 2 or more, random layout and target each run, a popup with one
+  allowed action. The prompt names the place and its district (filled from the app's per-run state).
+  Pass = the target's popup opened and Route clicked for it alone.
+- **78-gmaps-directions** and **79-gmaps-place-hours** (live, judged): Google Maps directions with travel-
+  mode switching and step details, and a place card with weekday hours, open/closed status, and a Nearby
+  search with a displayed distance.
+
+All four are registered in the v2 set; Spark and Gemini capture them in the post-round-2 sweeps, Sonnet
+in a round-3 leg.
+
 ## Pilot log
 
 ### Round 1 (v2.0, 2026-09-03 02:30-03:40)
