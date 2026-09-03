@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8865/ . It is a trail map rendered as an IMAGE with a scale bar and a red 
+route from marker S to marker F made of straight segments (read it from screenshots). Measure the 
+route's total length in metres using the scale bar (within 6 percent), enter it in the form below 
+the map and submit. Do NOT read the page source or call the site's HTTP endpoints directly. End 
+with the length.

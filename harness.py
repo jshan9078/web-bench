@@ -215,6 +215,11 @@ TASKS = {
     "171-spreadsheet-grid": {"kind": "appstate", "app": "widgetapp/gridsheet.py", "port": 8859, "v2": True},
     "172-nested-modal-terms": {"kind": "appstate", "app": "widgetapp/termsmodal.py", "port": 8860, "v2": True},
     "177-hover-megamenu": {"kind": "appstate", "app": "widgetapp/megamenu.py", "port": 8861, "v2": True},
+    "178-dense-count": {"kind": "appstate", "app": "widgetapp/densecount.py", "port": 8862, "v2": True},
+    "179-people-count": {"kind": "appstate", "app": "widgetapp/peoplecount.py", "port": 8863, "v2": True},
+    "180-radio-tuner": {"kind": "appstate", "app": "widgetapp/tuner.py", "port": 8864, "v2": True},
+    "182-map-measure": {"kind": "appstate", "app": "widgetapp/mapmeasure.py", "port": 8865, "v2": True},
+    "183-odd-glyph": {"kind": "appstate", "app": "widgetapp/oddglyph.py", "port": 8866, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

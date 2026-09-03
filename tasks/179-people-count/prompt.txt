@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8863/ . It is a 2-minute lobby camera clip in a player (canvas video with 
+play/pause, seek, 1 s and 10 s steps and playback speed; read frames from screenshots). Count 
+exactly how many PEOPLE cross the corridor during the whole clip (several cross close together; a 
+cleaning cart also passes and does not count). Enter the number in the form under the player and 
+submit. Do NOT read the page source or call the site's HTTP endpoints directly. End with the count.

@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8866/ . It is a print proof sheet: a 6-row by 10-column grid of the same 
+arrow icon, rendered as an IMAGE (read it from screenshots). Exactly one icon is printed mirrored 
+left-to-right. Identify its cell as row letter plus column number (for example C7), enter it in the 
+form below the sheet and submit. Do NOT read the page source or call the site's HTTP endpoints 
+directly. End with the cell.

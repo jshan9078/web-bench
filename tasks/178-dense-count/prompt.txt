@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8862/ . It is a warehouse camera photo of a tightly packed pallet of boxes in 
+three colours (read it from screenshots; some boxes partly overlap). Count the BLUE boxes exactly, 
+enter the number in the form below the photo and submit. Do NOT read the page source or call the 
+site's HTTP endpoints directly. End with the count.
