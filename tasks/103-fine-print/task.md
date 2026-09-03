@@ -14,6 +14,6 @@ See [`prompt.txt`](prompt.txt) (the runtime source). Verbatim:
 ```
 Open http://127.0.0.1:8823/ . It is a product-listing photo of a device label. Report the serial 
 number printed after "S/N" on the label. The text is small; the page has a magnifier (click the 
-photo to zoom into that area). Do NOT read the page source or call the site's HTTP endpoints 
-directly. End with the serial number.
+photo to zoom into that area). Enter the serial number in the form under the photo and submit. Do 
+NOT read the page source or call the site's HTTP endpoints directly. End with the serial number.
 ```

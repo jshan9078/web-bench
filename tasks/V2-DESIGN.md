@@ -547,3 +547,21 @@ Spark's lot answer was inside the window but it probed private endpoints three t
 the gate; the attempt itself is the rule violation). Standing over the six video tasks: Sonnet 6/6, Opus 6/6,
 Spark 4/6. Per the set-composition rule, 91, 92, 93 and 96 (passed by every pilot config) are flagged saturated
 and leave the sweep set; 94 and 95 stay. Sonnet 5 low and Opus 5 low remain tied on every task piloted today.
+
+### Round 14 (2026-09-03): real-world angles, batch 1
+
+```
+task                            spark-low-val           sonnet-low-val             opus-low-val
+97-locale-ledger                         PASS                     PASS                     PASS
+98-icon-toolbar                          PASS                     PASS                     PASS
+99-seat-map                     FAIL (bypass)                     PASS                     PASS
+100-dual-axis-chart                      PASS                     PASS                     PASS
+102-admin-table                          PASS                     PASS                     PASS
+103-fine-print                        (voided: prompt omitted the form submission; all three read the serial correctly)
+```
+
+The reasoning traps (locale, string sort, dual axis, icon glyphs, seat constraints) were all seen through by both
+Claude configs, mostly in under 30 s. Spark's seat-map run reached the right pair but probed private endpoints
+four times. 103 is re-run with a corrected prompt in round 16. Lesson for batch 3: after 15 rounds, the only
+things that have defeated the Claude configs on the merits are fine visual estimation (dial, crosshair) and a
+judgement call (Calendar all-day event); traps that can be reasoned through do not. Batch 3 targets perception.
