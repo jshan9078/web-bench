@@ -171,6 +171,11 @@ TASKS = {
     "105-ruler-measure": {"kind": "appstate", "app": "widgetapp/ruler.py", "port": 8825, "v2": True},
     "106-datepicker": {"kind": "appstate", "app": "widgetapp/datepicker.py", "port": 8826, "v2": True},
     "107-reorder-list": {"kind": "appstate", "app": "widgetapp/reorder.py", "port": 8827, "v2": True},
+    # ---- v2.5 (2026-09-03): perception (the failure mode that has actually separated configs)
+    "108-shelf-count": {"kind": "appstate", "app": "widgetapp/shelfcount.py", "port": 8828, "v2": True},
+    "109-legend-match": {"kind": "appstate", "app": "widgetapp/legendmatch.py", "port": 8829, "v2": True},
+    "110-analog-clock": {"kind": "appstate", "app": "widgetapp/analogclock.py", "port": 8830, "v2": True},
+    "111-fill-level": {"kind": "appstate", "app": "widgetapp/filllevel.py", "port": 8831, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

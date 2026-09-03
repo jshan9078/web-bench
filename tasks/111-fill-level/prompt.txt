@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8831/ . It is a tank-farm overview showing five storage tanks of different 
+sizes with their liquid levels as an IMAGE (read it from screenshots; only 0, 50 and 100 marks are 
+drawn). What is tank C's fill level as a percentage of ITS OWN capacity (within 5 points)? Enter it 
+in the form below the image and submit. Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with the percentage.

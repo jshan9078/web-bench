@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8830/ . It is a photo of three office wall clocks labelled by city (read it 
+from screenshots). What time does the TOKYO clock show? Enter it as HH:MM (12-hour, within 2 
+minutes) in the form below the photo and submit. Do NOT read the page source or call the site's 
+HTTP endpoints directly. End with the time.

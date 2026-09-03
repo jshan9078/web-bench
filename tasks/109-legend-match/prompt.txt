@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8829/ . The page shows a six-region monthly sales line chart as an IMAGE with 
+a colour legend (read it from screenshots). Which region had the HIGHEST sales in September, and 
+what was its value in k units (within a few)? Enter your answer in the form as 'Region, value' and 
+submit. Do NOT read the page source or call the site's HTTP endpoints directly. End with the region 
+and value.
