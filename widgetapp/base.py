@@ -44,8 +44,24 @@ document.getElementById('s').addEventListener('click',function(e){
 </script>""" % (title, w, h, extra_html)
 
 
+def _token():
+    """Harness-only secret gating /__state and /__reset. Created by the harness (ensure_app) and read
+    here at startup, so the agent's browser never sees it; without it those endpoints answer 403."""
+    import os
+    p = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".token")
+    try:
+        return open(p).read().strip()
+    except Exception:
+        return None
+
+
 def serve(app, default_port):
+    TOKEN = _token()
+
     class Handler(BaseHTTPRequestHandler):
+        def _authed(self):
+            return TOKEN is not None and self.headers.get("X-Bench-Token", "") == TOKEN
+
         def log_message(self, *a):
             pass
 
@@ -63,6 +79,8 @@ def serve(app, default_port):
             elif path == "/__scene.png":
                 self._send(200, app.render(), "image/png")
             elif path == "/__state":
+                if not self._authed():
+                    return self._send(403, b"forbidden", "text/plain")
                 self._send(200, json.dumps(app.state()), "application/json")
             elif hasattr(app, "get") and app.get(path) is not None:
                 body, ctype = app.get(path)
@@ -78,6 +96,8 @@ def serve(app, default_port):
                 data = {"_raw": raw.decode(errors="ignore")}
             path = self.path.split("?")[0]
             if path == "/__reset":
+                if not self._authed():
+                    return self._send(403, b"forbidden", "text/plain")
                 app.reset(); self._send(200, json.dumps({"ok": True}), "application/json")
             elif path == "/__click":
                 try:

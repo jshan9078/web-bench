@@ -198,19 +198,37 @@ CART_URL = f"https://{AMAZON}/gp/cart/view.html"
 PIXEL_PORT = 8791
 
 
+WIDGET_TOKEN_FILE = HERE / "widgetapp/.token"
+
+
+def widget_token():
+    """Harness-only secret for the widget servers' /__state and /__reset (created once, gitignored)."""
+    if not WIDGET_TOKEN_FILE.exists():
+        import secrets
+        WIDGET_TOKEN_FILE.write_text(secrets.token_hex(16))
+    return WIDGET_TOKEN_FILE.read_text().strip()
+
+
+def _widget_req(port, path, data=None):
+    import urllib.request
+    req = urllib.request.Request(f"http://127.0.0.1:{port}{path}", data=data, method="POST" if data is not None else "GET",
+                                 headers={"X-Bench-Token": widget_token()})
+    return urllib.request.urlopen(req, timeout=2).read()
+
+
 def ensure_app(t):
     """Start the task's localhost widget server (pixelapp for `app: True`, else the given script) and
     reset it to a fresh random layout so every run starts clean."""
-    import urllib.request
     port = t.get("port", PIXEL_PORT)
     script = HERE / "pixelapp/server.py" if t.get("app") is True else HERE / t["app"]
+    widget_token()
     try:
-        urllib.request.urlopen(f"http://127.0.0.1:{port}/__state", timeout=1)
+        _widget_req(port, "/__state")
     except Exception:
         subprocess.Popen([sys.executable, str(script), str(port)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         time.sleep(0.9)
     try:
-        urllib.request.urlopen(urllib.request.Request(f"http://127.0.0.1:{port}/__reset", data=b"{}", method="POST")).read()
+        _widget_req(port, "/__reset", data=b"{}")
     except Exception:
         pass
 
@@ -447,9 +465,8 @@ def record(task, kw):
             cart_after = after_path.name
     pixel_state = None                       # app tasks: capture the server's click log (objective verdict)
     if TASKS[task].get("app"):
-        import urllib.request
         try:
-            pixel_state = json.load(urllib.request.urlopen(f"http://127.0.0.1:{TASKS[task].get('port', PIXEL_PORT)}/__state", timeout=2))
+            pixel_state = json.loads(_widget_req(TASKS[task].get("port", PIXEL_PORT), "/__state"))
         except Exception:
             pixel_state = None
     video = f"{task}.{run}.mp4" if (RAW / f"{task}.{run}.mp4").exists() else None
