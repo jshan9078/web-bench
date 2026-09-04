@@ -6541,5 +6541,13 @@
  "205-gmaps-transit-compare.spark-low-val": {
   "pass": true,
   "note": "Captured route list and details (arrive by Mon, Sep 7, 8:00 AM) show the same numerals as sonnet's run (1 for the 58-min route, 2 for the 54-min routes); agent correctly reported fewest transfers = 1 (58 min, 6:51-7:49) and fastest = 54 min (6:55-7:49, 2 transfers) as different routes. [judge: sonnet 204-205-batch]"
+ },
+ "204-gcal-week-hours.sonnet-low-val2": {
+  "pass": true,
+  "note": "Captured both required views (Sep6-12 via direct navigate URL and Sep13-19 via Next-week click), covering all 7 target days Mon Sep7-Sun Sep13; every day explicitly shows No events/No all-day events except the correctly-excluded Labour Day all-day holiday on Sep7, so 0 timed hours is grounded and correct. [judge: sonnet 204-205-batch]"
+ },
+ "205-gmaps-transit-compare.opus-low-val2": {
+  "pass": true,
+  "note": "Unlike attempt 1, this run correctly identified that the route-row numerals (1/2) are TTC subway line badges (Line 1/Line 2), not transfer counts, confirmed by opening full step-by-step details for the reported 6:55-7:49 route (Line 2 Bloor-Danforth -> UP Express, 2 legs = 1 transfer); this route ties for fastest (54 min, the minimum total time among all 6 captured options) and ties for fewest transfers (1, the minimum across the captured list), so reporting fewest-transfers=fastest=same route with depart 6:55 AM, arrive 7:49 AM, 54 min, 1 transfer matches the captured evidence. [judge: sonnet 204-205-batch]"
  }
 }

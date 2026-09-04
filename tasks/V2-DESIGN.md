@@ -811,3 +811,8 @@ transit compare): the runs disagree on the fastest route's transfer count; judge
 208 red crossers HOLDS (Sonnet 11 for 13 then 5 for 6; Spark twice), 211 bus boarding HOLDS (Sonnet 6 for 14 then
 12 for 18; Spark twice by probing), 206 elevator stops holds only via Spark's probing (both Claude configs exact),
 210 tray racks INVALID (all three exact on attempt 1).
+
+G2: 204 Calendar hours: Sonnet covered all seven days on retry (INVALID). 205 Maps transit compare: Opus passed on
+retry, and its retry showed that the numerals in the route rows are TTC line numbers, not transfer counts, which
+means the attempt-1 verdicts (two passes for "2 transfers") rest on a misread the judge shared; the task's answer
+is too ambiguous in Maps' current UI to keep. INVALID and noted as a task-design flaw.
