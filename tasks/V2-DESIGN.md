@@ -855,3 +855,10 @@ stands at 20.
 
 I2: 213 GitHub reopened issue HOLDS through Spark (two runs hitting the 10-minute budget with no answer; Sonnet
 found #5817 correctly on retry). Validated set: 21.
+
+### v1 tasks under pass@2 (three pilot configs, 2026-09-04)
+
+Only two v1 pairs had failed at pass@1 among Spark 1.2 low, Sonnet 5 low and Opus 5 low. 10 arXiv agents paper:
+Sonnet passed on retry (INVALID as a discriminator for these configs). 36 JS Paint poster: Spark failed again
+(single-pixel dots, indistinguishable from noise): HOLDS. So the v1 set contributes 1 task under this rule, for a
+combined validated set of 22 (21 v2 + JS Paint).

@@ -6581,5 +6581,13 @@
  "213-github-reopened-issue.sonnet-low-val2": {
   "pass": true,
   "note": "Reports #5817 'asyncio is not compatible with gevent', reopened 2025-09-19 by awoimbee, matching ground truth; requests_log shows this run navigated to github.com/pallets/flask/issues/5817 (and dozens of other closed issues while scanning) confirming grounding in this run's own evidence."
+ },
+ "10-arxiv-agents-paper.sonnet-low-val2": {
+  "pass": true,
+  "note": "First listing entry [1] arXiv:2609.02889 has 'Agents' in its own title, confirmed as truly first via the captured cs.CL new-submissions text; abstract page confirms id/title/6-author match and the summary accurately reflects the abstract; both listing and abstract page were navigated and captured this run."
+ },
+ "36-jspaint-poster.spark-low-val2": {
+  "pass": false,
+  "note": "Final screenshots (shot1.jpg and jspaint_final.jpg) show the canvas flooded red but the five dots are only single-pixel specks indistinguishable from JPEG noise at normal viewing, visible only after 8x cropped zoom; agent itself relied on getImageData pixel-readback rather than a visually distinct mark, same faint-pixel failure mode noted as FAIL precedent for JS Paint runs."
  }
 }
