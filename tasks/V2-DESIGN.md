@@ -834,3 +834,10 @@ Spark's probing no longer counts, so Spark rarely fails now; the discriminating 
 counting over video (large misses after hundreds of actions) and Opus's on one real-site reasoning task.
 Iterations I and J add ten more clips in distinct scenarios; the honest ceiling for the set will be reported
 when they finish.
+
+### Iteration I: four clips, GitHub reopened issue, Maps cycling savings
+
+217 queue leavers HOLDS (Sonnet: no submission within the 10-minute budget, then 3 for 5). 216 forklift trips,
+218 vending dispensed and 219 no-parking were solved by all three (Spark's states complete despite probing):
+INVALID. 213 (most recently reopened GitHub issue) and 214 (Maps cycling savings, a genuine tie at 23 minutes for
+both destinations) judged separately; Spark's 213 run hit the budget with no answer.
