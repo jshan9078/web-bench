@@ -17,6 +17,11 @@ def reset():
             a = random.uniform(3, 110); cars.append({"t_in": round(a, 1), "t_out": round(a + random.uniform(2.5, 9), 1), "side": random.randrange(4), "col": random.choice(COLS)})
         peak = max(sum(1 for c in cars if c["t_in"] <= x["t_in"] < c["t_out"]) for x in cars)
         if 4 <= peak <= 7: break
+    cells = [(325 + (k % 4) * 50, 150 + (k // 4) * 50) for k in range(16)]
+    for c in sorted(cars, key=lambda c: c["t_in"]):
+        used = {c2.get("cell") for c2 in cars if "cell" in c2 and c2["t_in"] < c["t_out"] + 3 and c["t_in"] - 3 < c2["t_out"]}
+        c["cell"] = random.choice([k for k in range(16) if k not in used] or list(range(16)))
+    for c in cars: c["x"], c["y"] = cells[c["cell"]]
     S["cars"] = cars; S["peak"] = peak
 
 
@@ -25,10 +30,12 @@ def answer(): return S["peak"]
 
 
 SCENE_JS = r"""function scene(t){cx.fillStyle='#4d7c0f';cx.fillRect(0,0,800,450);cx.fillStyle='#374151';cx.fillRect(300,0,200,450);cx.fillRect(0,125,800,200);cx.strokeStyle='#fbbf24';cx.lineWidth=3;cx.strokeRect(300,125,200,200);
- var inside=0;D.cars.forEach(function(c,i){var e=3,x,y,ang;var lane=(i%2)*60-30;if(t<c.t_in-e||t>c.t_out+e)return;var f;if(t<c.t_in){f=(t-(c.t_in-e))/e}else if(t<=c.t_out){f=null;inside++}else{f=(t-c.t_out)/e}
-  var p=f===null?0:(t<c.t_in?f-1:f);var d=p*420;var cxp=400+lane*(c.side%2?1:-1),cyp=225+lane;
-  if(c.side===0){x=cxp;y=cyp+d}else if(c.side===1){x=cxp+d;y=cyp}else if(c.side===2){x=cxp;y=cyp-d}else{x=cxp-d;y=cyp}
-  cx.fillStyle=c.col;cx.save();cx.translate(x,y);cx.rotate(c.side%2?0:Math.PI/2);rr(-22,-12,44,24,5);cx.restore()});
+ var E=[[400,-40],[860,225],[400,490],[-60,225]];
+ D.cars.forEach(function(c){var e=3;if(t<c.t_in-e||t>c.t_out+e)return;var x,y,en=E[c.side];
+  if(t<c.t_in){var f=(t-(c.t_in-e))/e;x=en[0]+(c.x-en[0])*f;y=en[1]+(c.y-en[1])*f}
+  else if(t<=c.t_out){x=c.x;y=c.y}
+  else{var f=(t-c.t_out)/e,ex=E[(c.side+2)%4];x=c.x+(ex[0]-c.x)*f;y=c.y+(ex[1]-c.y)*f}
+  cx.fillStyle=c.col;cx.save();cx.translate(x,y);cx.rotate(c.side%2?0:Math.PI/2);rr(-20,-11,40,22,5);cx.restore()});
  overlay(t,'XING-4')}"""
 clipapp.make(sys.modules[__name__])
 if __name__ == "__main__":
