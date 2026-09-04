@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8954/ . It is a 45-second office timelapse in a player (canvas video with 
+play/pause, seek, 1 s and 10 s steps and playback speed; read frames from screenshots). The wall 
+clock runs fast (timelapse) and the status lamp turns GREEN once. Report the time the wall clock 
+showed at the moment the lamp turned green, as HH:MM within one minute, enter it in the form under 
+the player and submit. Do NOT read the page source or call the site's HTTP endpoints directly. End 
+with the time.

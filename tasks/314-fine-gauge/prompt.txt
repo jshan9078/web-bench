@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8952/ . The page shows an IMAGE of a gauge with labelled ticks every 10 units 
+and no minor ticks (read it from screenshots). Report the value the needle indicates, within 1 
+unit, enter it in the form and submit. Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with the value.

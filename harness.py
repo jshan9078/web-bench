@@ -319,6 +319,12 @@ TASKS = {
     "308-ellipse-centre": {"kind": "appstate", "app": "widgetapp/ellipsecentre.py", "port": 8948, "v2": True},
     "311-keyboard-only": {"kind": "appstate", "app": "widgetapp/keyboardlist.py", "port": 8949, "v2": True},
     "312-hover-menu": {"kind": "appstate", "app": "widgetapp/hovermenu.py", "port": 8950, "v2": True},
+    "313-clock-grid": {"kind": "appstate", "app": "widgetapp/clockgrid.py", "port": 8951, "v2": True},
+    "314-fine-gauge": {"kind": "appstate", "app": "widgetapp/finegauge.py", "port": 8952, "v2": True},
+    "315-corner-click": {"kind": "appstate", "app": "widgetapp/cornerclick.py", "port": 8953, "v2": True},
+    "316-clock-at-event": {"kind": "appstate", "app": "widgetapp/clockevent.py", "port": 8954, "v2": True},
+    "317-parallel-pairs": {"kind": "appstate", "app": "widgetapp/parallelpairs.py", "port": 8955, "v2": True},
+    "318-week-free-time": {"kind": "appstate", "app": "widgetapp/weekfree.py", "port": 8956, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -693,7 +699,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu", "__book", "__merge", "__edit", "__bulk", "__create", "__cart", "__publish", "__order", "__request", "__login", "__mail", "__tag", "__savetags", "__board", "__flip", "__layout", "__press", "__lit", "__play", "__tile", "__undo", "__vals", "__freeze")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__cal", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu", "__book", "__merge", "__edit", "__bulk", "__create", "__cart", "__publish", "__order", "__request", "__login", "__mail", "__tag", "__savetags", "__board", "__flip", "__layout", "__press", "__lit", "__play", "__tile", "__undo", "__vals", "__freeze")
 
 
 def widget_bypass(bundle):

@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8953/ . The page shows an IMAGE at the top-left with one rotated square 
+outline (read it from screenshots; click with raw coordinates via click --at X,Y; screenshot pixels 
+map 1:1). Click the square's TOP-MOST corner within 5 px (a red circle marks your click; re-click 
+to move it), then click Confirm. Do NOT read the page source or call the site's HTTP endpoints 
+directly. End with the coordinates you chose.

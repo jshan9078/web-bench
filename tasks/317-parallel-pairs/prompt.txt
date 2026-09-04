@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8955/ . The page shows an IMAGE of six labelled pairs of lines (read it from 
+screenshots). Five pairs are parallel and one pair is not. Report the letter of the non-parallel 
+pair, enter it in the form and submit. Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with the letter.
