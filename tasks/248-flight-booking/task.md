@@ -13,11 +13,10 @@ See [`prompt.txt`](prompt.txt) (the runtime source). Verbatim:
 
 ```
 Open http://127.0.0.1:8912/ . It is an airline booking site. Book a flight from Harbor City to 
-Northport on the date shown in the search form's placeholder rules below: use the date 2026-10-21 
-if the form accepts it, otherwise the first date it accepts, for 2 adults. Choose the CHEAPEST fare 
-(across all flights that day) that INCLUDES a checked bag. Enter the passengers Ana Silva and Tomas 
-Berg. On the seat map choose two free seats next to each other in the same row consisting of a 
-window seat and the middle seat beside it (A with B, or E with F). Confirm the booking (the page 
-shows a reference). Do NOT read the page source or call the site's HTTP endpoints directly. End 
-with the flight, fare, seats and reference.
+Northport on 2026-10-21 for 2 adults. Choose the CHEAPEST fare (across all flights that day) that 
+INCLUDES a checked bag. Enter the passengers Ana Silva and Tomas Berg. On the seat map choose two 
+free seats next to each other in the same row consisting of a window seat and the middle seat 
+beside it (A with B, or E with F). Confirm the booking (the page shows a reference). Do NOT read 
+the page source or call the site's HTTP endpoints directly. End with the flight, fare, seats and 
+reference.
 ```
