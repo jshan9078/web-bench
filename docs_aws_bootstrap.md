@@ -37,3 +37,5 @@ instance (shared browser daemon and CPU sampler would confound timings).
 - `record_cdp.py` needs the `websockets` module for video capture; it is installed at boot.
 - macOS AppleDouble files (`._*.json`) in the tarball broke `harness.py score` on Linux; the bundle step strips them.
 - A fleet instance runs one worker; `aws/fleet.sh launch <ami> N <lane> <family>` spreads providers across workers.
+
+AMIs: ami-08449c48154d36209 (claude, muse, agy signed in; codex on an exhausted account) and ami-0b32d4721497dc0e2 (adds the Codex API-key login for Luna). Seed i-00d609dd25ff82ec5 is stopped, keep it for future re-logins.
