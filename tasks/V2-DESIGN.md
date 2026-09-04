@@ -787,3 +787,10 @@ Judged: 188 (Wikipedia category latest edit) and 189 (GitHub release for the fix
 against the MediaWiki and GitHub APIs; both saturated. 190 (Maps nearby filters) failed Sonnet (missed a closer,
 higher-rated result in an incompletely scrolled list) and Opus (reported a 3.9-rated pharmacy); Spark found the
 right one. Second attempts queued (E2).
+
+### Iteration F: three tracking clips and two real-site traces
+
+191 direction count, 192 parcel sort and 193 door events all HOLD: Sonnet failed each twice (8 for 14 then 3 for
+10; 13 for 20 then 12 for 13; 8 for 9 then 5 for 8); Spark failed 191 and 192 twice (one attempt each by
+probing); Opus read 192 and 193 correctly and 191 on retry. 194 (Wikipedia revert) and 195 (GitHub oldest approved
+PR, correct answer "none exists") passed for all three, API-verified: saturated.
