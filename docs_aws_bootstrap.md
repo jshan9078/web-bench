@@ -17,3 +17,13 @@ Per instance (the operator does the sign-ins; they use personal accounts):
 Notes: widget servers are started on demand by `harness.py setup`; the real-site tasks need outbound HTTPS to
 github.com, en.wikipedia.org and jspaint.app; keep the instance clock in UTC; do not run two shards on one
 instance (shared browser daemon and CPU sampler would confound timings).
+
+## Seed sign-in notes (2026-09-04)
+
+- claude: `npm install -g @anthropic-ai/claude-code`, sign in interactively; the browser-cli skill must be copied to
+  `~/.claude/skills/browser-cli` (scp from the workstation; `mkdir -p ~/.claude/skills` first).
+- codex: `npm install -g @openai/codex`, `codex login`; the runner passes `--skip-git-repo-check`. The account must
+  have quota: a free-tier login reports "You've hit your usage limit" and every Luna run fails.
+- muse: the Linux build is a single static binary (muse-bin-<ver>); `chmod +x` and symlink it to `~/.local/bin/muse`.
+- agy: installed by the operator (no public Linux install source in this repo); `agy -p "..." --model <slug>` must answer.
+- Verify each CLI with a trivial prompt from ~/web-bench before baking the AMI; the AMI carries the logins.
