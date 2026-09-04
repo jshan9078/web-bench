@@ -956,3 +956,8 @@ over video, calendar judgement and a GitHub cross-reference trace. Batch X targe
 ### Iteration P2: flight booking and inbox triage re-runs (after the design fixes)
 
 Opus 5 low solved both at attempt 1. INVALID.
+
+### Iteration T: synthetic visual batch 2 (Opus 5 low only)
+
+All six (rotated odd one out, occluded circles, sequence recall, tiny targets, freeze sum, strip order) solved at
+attempt 1. INVALID. Static visual puzzles, timing and precision clicks do not separate Opus 5 low.
