@@ -852,3 +852,6 @@ Spark produced no answer inside the budget. Retries queued for Sonnet and Spark 
 library returns (Sonnet 14 for 17 then 10 for 12; Spark no answer then 16 for 13) HOLD. 220 ferry boarding, 221
 drone drops and 224 crane lifts were solved by all three: INVALID. Under the state-only rule the validated set
 stands at 20.
+
+I2: 213 GitHub reopened issue HOLDS through Spark (two runs hitting the 10-minute budget with no answer; Sonnet
+found #5817 correctly on retry). Validated set: 21.

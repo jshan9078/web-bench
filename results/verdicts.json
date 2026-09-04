@@ -6573,5 +6573,13 @@
  "214-gmaps-cycle-savings.spark-low-val": {
   "pass": true,
   "note": "Same four grounded panel readings (City Hall 31/8, Casa Loma 35/12) confirmed in captured snapshots/text; tie of 23 min each correctly derived. [judge: sonnet batch-213-214]"
+ },
+ "213-github-reopened-issue.spark-low-val2": {
+  "pass": false,
+  "note": "budget_hit=true with empty agent_result_text and no screenshots \u2014 no answer produced within the run's budget."
+ },
+ "213-github-reopened-issue.sonnet-low-val2": {
+  "pass": true,
+  "note": "Reports #5817 'asyncio is not compatible with gevent', reopened 2025-09-19 by awoimbee, matching ground truth; requests_log shows this run navigated to github.com/pallets/flask/issues/5817 (and dozens of other closed issues while scanning) confirming grounding in this run's own evidence."
  }
 }
