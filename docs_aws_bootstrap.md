@@ -27,3 +27,13 @@ instance (shared browser daemon and CPU sampler would confound timings).
 - muse: the Linux build is a single static binary (muse-bin-<ver>); `chmod +x` and symlink it to `~/.local/bin/muse`.
 - agy: installed by the operator (no public Linux install source in this repo); `agy -p "..." --model <slug>` must answer.
 - Verify each CLI with a trivial prompt from ~/web-bench before baking the AMI; the AMI carries the logins.
+
+## Linux worker lessons (2026-09-04)
+
+- The daemon must run under a virtual display (`xvfb-run -a browser daemon --auto`): the default profile launches a
+  headed Chromium, and without a display session creation fails intermittently and can stop the daemon. The
+  harness now retries `browser create` three times and aborts the run if no session id comes back.
+- Ubuntu's apt botocore predates S3 conditional writes; the worker upgrades boto3/botocore at boot.
+- `record_cdp.py` needs the `websockets` module for video capture; it is installed at boot.
+- macOS AppleDouble files (`._*.json`) in the tarball broke `harness.py score` on Linux; the bundle step strips them.
+- A fleet instance runs one worker; `aws/fleet.sh launch <ami> N <lane> <family>` spreads providers across workers.
