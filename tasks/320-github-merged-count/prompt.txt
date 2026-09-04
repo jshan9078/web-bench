@@ -1,0 +1,3 @@
+Using the GitHub website (github.com, no API calls), find how many pull requests in the 
+pallets/click repository were MERGED between 2025-01-01 and 2025-03-31 inclusive, and the title of 
+the most recently merged one in that period. End with ANSWER: <count>; <title>.

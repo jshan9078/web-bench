@@ -945,3 +945,10 @@ tags: both passed (judged against the compare API). 264 password reset: every ru
 ours: the app's password-set endpoint was named /__reset, which collides with the harness's own reset endpoint
 (harness-secret only), so the page's submit got 403 and showed nothing. Endpoint renamed to /__setpw; all 264
 runs voided (raw/voided, results/voided) and the task re-queued on Opus 5 low.
+
+### Iteration S: synthetic visual batch 1 (Opus 5 low only)
+
+All eight (shadow iframe form, moving target, line trace, maze exit, nested scroll code, memory pairs, count
+intersections, hue order) solved by Opus at pass@2 (line trace failed once). INVALID. Opus 5 low handles static
+visual puzzles and fast DOM interaction; its documented failures remain clocks, peak-occupancy and defect counting
+over video, calendar judgement and a GitHub cross-reference trace. Batch X targets those modes.

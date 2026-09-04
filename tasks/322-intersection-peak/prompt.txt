@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8957/ . It is a clip in a player (canvas video with play/pause, seek, 1 s and 
+10 s steps and playback speed; read frames from screenshots). It shows a four-way intersection from 
+above for 2 minutes; cars enter the yellow central box from any side, wait, and leave. Report the 
+maximum number of cars that were inside the yellow box at the same moment, enter it in the form 
+under the player and submit. Do NOT read the page source or call the site's HTTP endpoints 
+directly. End with the number.
