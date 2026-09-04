@@ -867,3 +867,8 @@ combined validated set of 22 (21 v2 + JS Paint).
 
 226 fare gates (Sonnet twice) and 228 pool pots (Sonnet and Opus twice) HOLD; 229 bridge boats, 230 coffee cups
 and 231 car wash resolved per the table below; 227 bin pickup solved by all three (INVALID).
+
+### Iteration L: six clips
+
+233 bag belt (all three fail twice), 234 hand hygiene (Sonnet twice) and 235 tennis serves (Spark and Sonnet
+twice) HOLD; 232 toll booth, 236 bike dock and 237 barrier reversals solved by all three on retry (INVALID).
