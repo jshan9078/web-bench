@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8906/ . It is a 2-minute ATM lobby camera clip in a player (canvas video with 
+play/pause, seek, 1 s and 10 s steps and playback speed; read frames from screenshots). Customers 
+use the machine one at a time: some transactions dispense cash (green notes appear in the slot 
+below the screen), some only show a BALANCE screen, and some are DECLINED (red screen). Count 
+exactly how many transactions dispensed cash, enter the number in the form under the player and 
+submit. Do NOT read the page source or call the site's HTTP endpoints directly. End with the count.

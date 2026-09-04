@@ -267,6 +267,10 @@ TASKS = {
     "239-loading-bay": {"kind": "appstate", "app": "widgetapp/dockloading.py", "port": 8902, "v2": True},
     "240-trolley-returns": {"kind": "appstate", "app": "widgetapp/lostcart.py", "port": 8903, "v2": True, "pass2_invalid": True},
     "241-printer-jams": {"kind": "appstate", "app": "widgetapp/printqueue.py", "port": 8904, "v2": True, "pass2_invalid": True},
+    "242-ski-lift": {"kind": "appstate", "app": "widgetapp/liftqueue.py", "port": 8905, "v2": True},
+    "243-atm-cash": {"kind": "appstate", "app": "widgetapp/atmqueue.py", "port": 8906, "v2": True},
+    "244-dog-park": {"kind": "appstate", "app": "widgetapp/dogpark.py", "port": 8907, "v2": True},
+    "245-recycling-sort": {"kind": "appstate", "app": "widgetapp/recyclesort.py", "port": 8908, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
