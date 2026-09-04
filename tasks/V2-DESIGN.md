@@ -922,3 +922,11 @@ that one stays a fail). 248 flight booking: the task itself was wrong (random ta
 prompt); fixed and re-run. 249 inbox triage: the manager's "by end of day" made the star rule ambiguous; wording
 fixed and re-run. 246 Wikipedia sandbox edit: hCaptcha blocks anonymous publishing, recorded as an environment
 wall. 253 OSM nearest stop: judged against Overpass.
+
+### Iteration Q: browser-control batch 2
+
+All six local tasks (map pan, config editor with auto-close, helpdesk escalation, team calendar slot, shop
+variants, survey builder) were solved by both configs on the first attempt: INVALID. 262 GitHub blame: both
+reported 0ec7f71 by pgjones, 2023-08-19; judged. Conclusion so far: realistic DOM workflows, even multi-step ones
+with validation and traps, are within reach of both configs; the remaining yield is in perception, timing and
+synthetic challenges (batches S and T) and in real-site tool use (OSM).
