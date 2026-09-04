@@ -841,3 +841,7 @@ when they finish.
 218 vending dispensed and 219 no-parking were solved by all three (Spark's states complete despite probing):
 INVALID. 213 (most recently reopened GitHub issue) and 214 (Maps cycling savings, a genuine tie at 23 minutes for
 both destinations) judged separately; Spark's 213 run hit the budget with no answer.
+
+Judged: 214 (Maps cycling savings) passed for all three, a correct tie: INVALID. 213 (most recently reopened
+issue): Opus correct once the ground truth excludes pull requests; Sonnet reported the close date and hedged;
+Spark produced no answer inside the budget. Retries queued for Sonnet and Spark (I2).

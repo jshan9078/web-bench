@@ -6549,5 +6549,29 @@
  "205-gmaps-transit-compare.opus-low-val2": {
   "pass": true,
   "note": "Unlike attempt 1, this run correctly identified that the route-row numerals (1/2) are TTC subway line badges (Line 1/Line 2), not transfer counts, confirmed by opening full step-by-step details for the reported 6:55-7:49 route (Line 2 Bloor-Danforth -> UP Express, 2 legs = 1 transfer); this route ties for fastest (54 min, the minimum total time among all 6 captured options) and ties for fewest transfers (1, the minimum across the captured list), so reporting fewest-transfers=fastest=same route with depart 6:55 AM, arrive 7:49 AM, 54 min, 1 transfer matches the captured evidence. [judge: sonnet 204-205-batch]"
+ },
+ "213-github-reopened-issue.opus-low-val": {
+  "pass": true,
+  "note": "Re-audit 2026-09-04: restricting to true issues (the task and GitHub's Issues tab exclude pull requests), the most recently reopened issue is #5817, reopened 2025-09-19T08:53:54Z by awoimbee, exactly as reported; the judge's earlier ground truth (#6067) was a pull request."
+ },
+ "213-github-reopened-issue.sonnet-low-val": {
+  "pass": false,
+  "note": "Hedged without confirming an answer (explicitly states it cannot confirm #5817 is the most recent reopen due to rate-limiting), which the task's fail rule treats as a fail regardless; also does not match the true most recent reopened event, #6067/davidism/2026-06-29. [judge: sonnet batch-213-214]"
+ },
+ "213-github-reopened-issue.spark-low-val": {
+  "pass": false,
+  "note": "Produced no answer (answer null, agent_result_text empty), which fails per the task's explicit rule for empty results. [judge: sonnet batch-213-214]"
+ },
+ "214-gmaps-cycle-savings.opus-low-val": {
+  "pass": true,
+  "note": "Requests log shows navigation to walking(!3e2)/cycling(!3e1) panels for both City Hall and Casa Loma; captured panel text confirms City Hall 31min walk/8min cycle and Casa Loma 35min walk/12min cycle, matching the reported answer, and the tied 23-min saving follows arithmetically. [judge: sonnet batch-213-214]"
+ },
+ "214-gmaps-cycle-savings.sonnet-low-val": {
+  "pass": true,
+  "note": "Same four grounded panel readings (City Hall 31/8, Casa Loma 35/12) confirmed in captured snapshots/text; tie of 23 min each correctly derived. [judge: sonnet batch-213-214]"
+ },
+ "214-gmaps-cycle-savings.spark-low-val": {
+  "pass": true,
+  "note": "Same four grounded panel readings (City Hall 31/8, Casa Loma 35/12) confirmed in captured snapshots/text; tie of 23 min each correctly derived. [judge: sonnet batch-213-214]"
  }
 }

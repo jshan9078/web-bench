@@ -161,3 +161,9 @@ in the manifest below:
   supports it: an all-day event overlaps every window of its day. Opus explicitly reasoned that the marker
   "doesn't count", a judgement error, not an ambiguity of evidence. The prompt now states the clause
   verbatim so later runs cannot contest the reading; the round-7 verdicts stand.
+
+- 2026-09-04 re-audit (213-github-reopened-issue): the GitHub events API lists pull requests among "issues".
+  The task asks for issues as the Issues tab shows them, so pull requests are excluded from the ground truth.
+  Opus's attempt 1 (#5817, reopened 2025-09-19 by awoimbee) is correct and was changed to PASS; Sonnet's (wrong
+  date, hedged) and Spark's (no answer within budget) failures stand. Judges verifying against this API must
+  filter `.issue.pull_request == null`.
