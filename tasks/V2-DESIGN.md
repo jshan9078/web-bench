@@ -901,3 +901,14 @@ The list is results/validated_set.json: 29 v2 tasks plus 36 JS Paint from v1. Fa
 Sonnet on 22 tasks, Spark on 8, Opus on 5 (some tasks fail more than one). The set is dominated by tracking and
 counting over two-minute clips, plus fine perception (dial, odometer, tower clock, spot difference), two
 real-site navigation tasks (GitHub issue trace, GitHub reopened issue) and the JS Paint drawing task.
+
+## v4 (2026-09-04): toward 60 validated tasks on Sonnet 5 low and Opus 5 low
+
+Rules now: validation on the two Claude configs only (Spark dropped), pass@2, server state only. The user asked for
+genuine browser control and navigation, and later allowed synthetic visual and DOM challenges to probe where the
+models fall. Standing at the start: 25 validated (tracking clips, dial, GitHub issue trace, pool pots, coffee cups).
+
+Batches in flight: P (Wikipedia sandbox edit, rich text, flight booking, inbox triage, CRM merge, edit conflict,
+keyboard grid, OSM nearest stop), Q (map pan, config editor, helpdesk, team calendar, shop variants, survey builder,
+GitHub blame), R (checkout, password reset, timesheet, gallery tagging, GitHub compare), S (shadow/iframe form,
+moving target, line trace, maze exit, nested scroll, memory pairs, intersections, hue order).
