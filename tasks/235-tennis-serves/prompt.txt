@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8898/ . It is a 2-minute court camera clip in a player (canvas video with 
+play/pause, seek, 1 s and 10 s steps and playback speed; read frames from screenshots). Serves come 
+from the bottom; a serve that lands in the service box is IN, one that lands beyond the line is 
+called OUT (an OUT banner appears and the line judge raises an arm). Count exactly how many serves 
+were IN, enter the number in the form under the player and submit. Do NOT read the page source or 
+call the site's HTTP endpoints directly. End with the count.

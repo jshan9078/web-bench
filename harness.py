@@ -257,6 +257,12 @@ TASKS = {
     "229-bridge-boats": {"kind": "appstate", "app": "widgetapp/liftbridge.py", "port": 8892, "v2": True},
     "230-coffee-cups": {"kind": "appstate", "app": "widgetapp/coffeeorders.py", "port": 8893, "v2": True},
     "231-car-wash": {"kind": "appstate", "app": "widgetapp/carwash.py", "port": 8894, "v2": True},
+    "232-toll-booth": {"kind": "appstate", "app": "widgetapp/tollbooth.py", "port": 8895, "v2": True},
+    "233-bag-belt": {"kind": "appstate", "app": "widgetapp/bagbelt.py", "port": 8896, "v2": True},
+    "234-hand-hygiene": {"kind": "appstate", "app": "widgetapp/handwash.py", "port": 8897, "v2": True},
+    "235-tennis-serves": {"kind": "appstate", "app": "widgetapp/tennisserves.py", "port": 8898, "v2": True},
+    "236-bike-dock": {"kind": "appstate", "app": "widgetapp/bikedock.py", "port": 8899, "v2": True},
+    "237-barrier-reversals": {"kind": "appstate", "app": "widgetapp/barrierreverse.py", "port": 8900, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

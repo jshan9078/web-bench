@@ -1,0 +1,20 @@
+# 233-bag-belt
+
+- **kind**: persistent-object accounting over video (programmatic)
+- **site**: localhost widget (widgetapp/bagbelt.py, port 8896)
+- **what it tests**: tracking which bags on a rotating carousel were taken and which remain at the end
+- **discrimination hypothesis**: bags circulate and are removed at varying times; counting appearances or removals alone is wrong; exact final count.
+- **verification**: see [`verifier.md`](verifier.md)
+- **verdict**: Objective: the last submitted count equals the number of bags on the belt at the end.
+
+## Prompt (`TASK:` text sent to the agent)
+
+See [`prompt.txt`](prompt.txt) (the runtime source). Verbatim:
+
+```
+Open http://127.0.0.1:8896/ . It is a 2-minute baggage reclaim camera clip in a player (canvas 
+video with play/pause, seek, 1 s and 10 s steps and playback speed; read frames from screenshots). 
+Bags appear on the carousel and go round; passengers lift some off. Count exactly how many bags are 
+still on the belt at the END of the clip, enter the number in the form under the player and submit. 
+Do NOT read the page source or call the site's HTTP endpoints directly. End with the count.
+```
