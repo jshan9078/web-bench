@@ -158,6 +158,7 @@ def cmd_complete(S, args, quiet=False):
     if not os.path.exists(f"raw/{t}.{l}.json"):
         # local-import of an older label without -val suffix
         c = cfg_of(l); files = glob.glob(f"raw/{t}.{c}.*") + glob.glob(f"results/{t}/{c}.*")
+    if w == "local-import": files = [f for f in files if f.endswith(".json")]   # runs already on the workstation: metadata only
     for f in files: S.put_file(f.replace(f"raw/{t}.{cfg_of(l)}.", f"raw/{t}.{l}."), f)
     res = {}
     for cand in (f"results/{t}/{l}.json", f"results/{t}/{cfg_of(l)}.json"):
