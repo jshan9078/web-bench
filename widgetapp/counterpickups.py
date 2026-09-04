@@ -20,8 +20,8 @@ def answer(): return sum(1 for p in S["plates"] if p["w"] == 1)
 
 
 SCENE_JS = r"""function scene(t){cx.fillStyle='#292524';cx.fillRect(0,0,800,450);cx.fillStyle='#a16207';cx.fillRect(100,200,600,40);cx.fillStyle='#57534e';cx.fillRect(100,240,600,210);var W=['#dc2626','#2563eb','#16a34a'];
- D.plates.forEach(function(p){var dt=t-p.t,x=150+p.slot*125;if(dt<0||dt>p.wait+2.5)return;if(dt<=p.wait){cx.fillStyle='#f5f5f4';cx.beginPath();cx.arc(x,205,22,0,6.28);cx.fill()}
-  else{var k=(dt-p.wait)/2.5,y=260+(1-Math.abs(k-0.5)*2)*-40+k*180;person(W[p.w],x-12,y+70,t);if(k<0.6){cx.fillStyle='#f5f5f4';cx.beginPath();cx.arc(x+18,y-20,14,0,6.28);cx.fill()}}});
+ D.plates.forEach(function(p){var dt=t-p.t,x=150+p.slot*125;if(dt<0||dt>p.wait+2.5)return;var k=dt<=p.wait?-1:(dt-p.wait)/2.5;if(k<0.5){cx.fillStyle='#f5f5f4';cx.beginPath();cx.arc(x,205,22,0,6.28);cx.fill()}
+  if(k>=0){var y=440-(1-Math.abs(k-0.5)*2)*190;person(W[p.w],x-12,y+70,t);if(k>=0.5){cx.fillStyle='#f5f5f4';cx.beginPath();cx.arc(x+22,y-10,14,0,6.28);cx.fill()}}});
  overlay(t,'PASS-1')}"""
 clipapp.make(sys.modules[__name__])
 if __name__ == "__main__":
