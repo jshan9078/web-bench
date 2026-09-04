@@ -825,3 +825,12 @@ gate on 2026-09-03 12:51), so an appstate verdict is now the server state alone;
 audit annotation ("probed" in tables). Runs from BEFORE the gate that probed and reached a complete state are
 tainted and count as failures (58, 59, 75, 76 Spark attempt 1; a Gemini run on 75). Results were re-scored from
 the recorded server state (38 runs flipped). Tasks that held only through probing are now invalid under pass@2.
+
+### Standing under the state-only rule (2026-09-04, early)
+
+16 tasks hold under pass@2 with a genuine failure: 59 spot difference, 90 dial, 99 seat map, 118 odometer, 154
+tower clock, 167 GitHub issue trace, and ten tracking clips (179, 184, 185, 191, 192, 193, 196, 198, 208, 211).
+Spark's probing no longer counts, so Spark rarely fails now; the discriminating failures are Sonnet's on
+counting over video (large misses after hundreds of actions) and Opus's on one real-site reasoning task.
+Iterations I and J add ten more clips in distinct scenarios; the honest ceiling for the set will be reported
+when they finish.
