@@ -7,8 +7,10 @@
 set -u; cd "$(dirname "$0")"; W=${1:-$(hostname)}; LANE=${2:-local}; FAMILY=${3:-${FAMILY:-all}}; LOG=results/matrix63.log; Q="python3 matrix_queue.py"
 LANEARG=(); [ "$LANE" != all ] && LANEARG=(--lane "$LANE"); [ "$FAMILY" != all ] && LANEARG+=(--family "$FAMILY")
 while :; do
-  read -r T R < <($Q claim "$W" "${LANEARG[@]}")
-  [ -z "${T:-}" ] && { echo "$(date +%H:%M:%S) queue empty for lane $LANE" | tee -a "$LOG"; break; }
+  OUT=$($Q claim "$W" "${LANEARG[@]}" 2>>"$LOG"); RC=$?
+  if [ $RC -ne 0 ]; then ERRS=$((${ERRS:-0}+1)); echo "$(date +%H:%M:%S) claim error rc=$RC ($ERRS)" | tee -a "$LOG"; [ $ERRS -ge 3 ] && exit 2; sleep 30; continue; fi
+  read -r T R <<< "$OUT"
+  [ -z "${T:-}" ] && { echo "$(date +%H:%M:%S) queue empty for lane $LANE family $FAMILY" | tee -a "$LOG"; break; }
   echo "$(date +%H:%M:%S) === $T $R ($W)" | tee -a "$LOG"
   ( while :; do sleep 60; $Q heartbeat "$T" "$R" "$W" >/dev/null 2>&1 || true; done ) & HB=$!
   if [ ! -f "raw/$T.$R.json" ]; then
