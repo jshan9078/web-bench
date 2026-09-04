@@ -986,3 +986,12 @@ Batch Z: eight more clips in new settings (ticker, scoreboard, elevator, chat st
 forklift trips, birds on a wire).
 
 ### Iteration R2 (Sonnet 5 low): 264 password reset solved at attempt 1 after the endpoint fix. INVALID.
+
+### Iterations X, U2, S2 (Sonnet 5 low)
+
+X: 323 two-lane defects VALID (7 for 9, then 6 for 5); intersection peak and room peak solved at pass@2; the
+three real-site tasks (GitHub first release, GitHub merged count, Wikipedia last 2024 edit) went to the judge.
+U2: 303 symbol tally VALID (36 for 41, 37 for 39; Opus had it exact); the other five solved.
+S2: 272 line trace VALID (A for F, A for B) and 285 occluded circles VALID (6 for 7 twice); the other twelve solved
+(their pass2_invalid flags stand; the two validated ones had their Opus-round flags removed).
+Validated set: 34.

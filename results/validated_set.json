@@ -93,5 +93,17 @@
  ],
  "244-dog-park": [
   "sonnet-low-val"
+ ],
+ "272-line-trace": [
+  "sonnet-low-val"
+ ],
+ "285-occluded-circles": [
+  "sonnet-low-val"
+ ],
+ "303-symbol-tally": [
+  "sonnet-low-val"
+ ],
+ "323-two-lane-defects": [
+  "sonnet-low-val"
  ]
 }
