@@ -17,7 +17,7 @@ run() { # task config(label)
   esac
   [ $? -ne 0 ] && echo "$(date +%H:%M:%S) RUN FAILED: $T $R" >> "$LOG"
 }
-for T in "$@"; do for C in spark-low-val sonnet-low-val opus-low-val; do run "$T" "$C"; done; done
+for T in "$@"; do for C in $(echo "${PILOT_CFGS:-sonnet-low-val,opus-low-val}" | tr , " "); do run "$T" "$C"; done; done
 python3 v2_pass2.py pairs "$@" > "results/pairs_$TAG.txt"; while read -r T C; do [ -n "$T" ] && run "$T" "${C}2" </dev/null; done < "results/pairs_$TAG.txt"
 python3 v2_pass2.py summary "$@" >> "$LOG" 2>&1
 echo "$(date +%H:%M:%S) ITER $TAG DONE" >> "$LOG"
