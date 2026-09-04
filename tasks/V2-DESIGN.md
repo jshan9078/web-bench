@@ -984,3 +984,5 @@ All six solved at pass@2 (clock grid failed once: 8:00 for 10:00). INVALID. Fine
 longer separate Sonnet 5 low either; every validated task since the switch comes from tracking over video.
 Batch Z: eight more clips in new settings (ticker, scoreboard, elevator, chat stream, red-light runners, slide deck,
 forklift trips, birds on a wire).
+
+### Iteration R2 (Sonnet 5 low): 264 password reset solved at attempt 1 after the endpoint fix. INVALID.

@@ -288,7 +288,7 @@ TASKS = {
     "260-survey-builder": {"kind": "appstate", "app": "widgetapp/formbuilder.py", "port": 8920, "v2": True, "pass2_invalid": True},
     "262-github-blame": {"kind": "judge", "v2": True, "pass2_invalid": True},
     "263-multi-page-checkout": {"kind": "appstate", "app": "widgetapp/checkoutflow.py", "port": 8921, "v2": True, "pass2_invalid": True},
-    "264-password-reset": {"kind": "appstate", "app": "widgetapp/pwreset.py", "port": 8922, "v2": True},
+    "264-password-reset": {"kind": "appstate", "app": "widgetapp/pwreset.py", "port": 8922, "v2": True, "pass2_invalid": True},
     "265-timesheet-entry": {"kind": "appstate", "app": "widgetapp/timesheet.py", "port": 8923, "v2": True, "pass2_invalid": True},
     "267-gallery-tagging": {"kind": "appstate", "app": "widgetapp/phototag.py", "port": 8924, "v2": True, "pass2_invalid": True},
     "269-github-compare-tags": {"kind": "judge", "v2": True, "pass2_invalid": True},
