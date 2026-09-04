@@ -98,7 +98,7 @@ def serve(app, default_port):
 
         def _keyed(self, path):
             """Private endpoints need the page key; the rendered scene, the handshake and harness endpoints do not."""
-            if not path.startswith("/__") or path in OPEN_PATHS or path.startswith(("/__icon/", "/__zoom")):
+            if not path.startswith("/__") or path in OPEN_PATHS or path.startswith(("/__icon/", "/__zoom", "/__photo/")):
                 return True     # rendered images are what the page shows; only data/action endpoints are keyed
             return self.headers.get("X-K", "") in KEYS
 

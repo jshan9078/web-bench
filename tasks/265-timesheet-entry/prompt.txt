@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8923/ . It is a weekly timesheet grid with a work log in the notes panel. 
+Enter every hour from the work log into the matching project and day cells (leave other cells at 
+0), make sure no day exceeds 8 hours, and submit the timesheet (the page confirms). Do NOT read the 
+page source or call the site's HTTP endpoints directly. End with the weekly total.

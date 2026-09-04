@@ -287,6 +287,11 @@ TASKS = {
     "259-shop-variants": {"kind": "appstate", "app": "widgetapp/shopvariants.py", "port": 8919, "v2": True},
     "260-survey-builder": {"kind": "appstate", "app": "widgetapp/formbuilder.py", "port": 8920, "v2": True},
     "262-github-blame": {"kind": "judge", "v2": True},
+    "263-multi-page-checkout": {"kind": "appstate", "app": "widgetapp/checkoutflow.py", "port": 8921, "v2": True},
+    "264-password-reset": {"kind": "appstate", "app": "widgetapp/pwreset.py", "port": 8922, "v2": True},
+    "265-timesheet-entry": {"kind": "appstate", "app": "widgetapp/timesheet.py", "port": 8923, "v2": True},
+    "267-gallery-tagging": {"kind": "appstate", "app": "widgetapp/phototag.py", "port": 8924, "v2": True},
+    "269-github-compare-tags": {"kind": "judge", "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -661,7 +666,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu", "__book", "__merge", "__edit", "__bulk", "__create", "__cart", "__publish")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu", "__book", "__merge", "__edit", "__bulk", "__create", "__cart", "__publish", "__order", "__request", "__login", "__mail", "__tag", "__savetags")
 
 
 def widget_bypass(bundle):

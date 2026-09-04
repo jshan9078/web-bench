@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8924/ . It is a photo library of 24 thumbnails with a viewer (open a photo to 
+see it large, add or remove tags, move with Prev/Next). Add the tag "red car" to every photo that 
+shows a red CAR (not a red truck, not a blue car) and to no other photo, then click Save tags. Do 
+NOT read the page source or call the site's HTTP endpoints directly. End with the photo numbers you 
+tagged.
