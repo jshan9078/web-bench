@@ -1026,3 +1026,9 @@ Solved at pass@2: lead changes, elevator stops, chat stream, red-light runners (
 value, forklift trips, birds on wire (6 for 9, then exact). INVALID. 332 ticker mentions: Sonnet answered 5 twice
 against a truth of 6, but the ticker list sampled with replacement and held a duplicate HARBOR headline both times,
 so the distinct count really was 5. Design defect: runs voided, sampler fixed (all headlines distinct), re-queued (Z2).
+
+### Iteration AA (Sonnet 5 low): six exact-perception images
+
+VALID: 340 tangled lines (no submission, then 1 for 5) and 344 graph degree (4 for 6, 6 for 3). Solved: coin pile,
+crowd hats (44 exact), dot cluster (61 exact), rectangle pile (26 for 23, then exact). Exact counting of separated
+items is within reach; tracing through crossings is not. Validated set: 38.

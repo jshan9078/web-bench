@@ -103,6 +103,9 @@
  "303-symbol-tally": [
   "sonnet-low-val"
  ],
+ "320-github-merged-count": [
+  "sonnet-low-val"
+ ],
  "323-two-lane-defects": [
   "sonnet-low-val"
  ],
@@ -110,6 +113,12 @@
   "sonnet-low-val"
  ],
  "331-counter-pickups": [
+  "sonnet-low-val"
+ ],
+ "340-tangled-lines": [
+  "sonnet-low-val"
+ ],
+ "344-graph-degree": [
   "sonnet-low-val"
  ]
 }
