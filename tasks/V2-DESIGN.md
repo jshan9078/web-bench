@@ -1000,3 +1000,9 @@ Judge results (Sonnet 5 low): 319 GitHub first release PASS (navigated commit, b
 321 Wikipedia last 2024 edit PASS (history page snapshot); 320 GitHub merged count FAIL: count 7 correct but the
 agent took the first item of the default-sorted search list as the latest merge (#2857, merged 03-16) while #2840
 merged on 03-18. Second attempt queued (X2).
+
+### Iteration Y (Sonnet 5 low): six tracking clips
+
+VALID: 327 bike lane (6 and 12 for 19: cyclists cross in about 2 s among pedestrians) and 331 counter pickups
+(4 for 11, 8 for 9: attributing brief pickups to one of three actors). Solved at pass@2: crosswalk signal (8 for 9,
+then exact), drone landings, parking lot, ball bins. Validated set: 36.
