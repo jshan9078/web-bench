@@ -251,6 +251,12 @@ TASKS = {
     "223-goal-shots": {"kind": "appstate", "app": "widgetapp/goalshots.py", "port": 8886, "v2": True},
     "224-crane-lifts": {"kind": "appstate", "app": "widgetapp/cranelifts.py", "port": 8887, "v2": True, "pass2_invalid": True},
     "225-library-returns": {"kind": "appstate", "app": "widgetapp/libraryreturns.py", "port": 8888, "v2": True},
+    "226-fare-gates": {"kind": "appstate", "app": "widgetapp/fareevaders.py", "port": 8889, "v2": True},
+    "227-bin-pickup": {"kind": "appstate", "app": "widgetapp/binpickup.py", "port": 8890, "v2": True},
+    "228-pool-pots": {"kind": "appstate", "app": "widgetapp/pooltable.py", "port": 8891, "v2": True},
+    "229-bridge-boats": {"kind": "appstate", "app": "widgetapp/liftbridge.py", "port": 8892, "v2": True},
+    "230-coffee-cups": {"kind": "appstate", "app": "widgetapp/coffeeorders.py", "port": 8893, "v2": True},
+    "231-car-wash": {"kind": "appstate", "app": "widgetapp/carwash.py", "port": 8894, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
