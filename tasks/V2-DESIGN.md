@@ -995,3 +995,8 @@ U2: 303 symbol tally VALID (36 for 41, 37 for 39; Opus had it exact); the other 
 S2: 272 line trace VALID (A for F, A for B) and 285 occluded circles VALID (6 for 7 twice); the other twelve solved
 (their pass2_invalid flags stand; the two validated ones had their Opus-round flags removed).
 Validated set: 34.
+
+Judge results (Sonnet 5 low): 319 GitHub first release PASS (navigated commit, branch_commits and release pages);
+321 Wikipedia last 2024 edit PASS (history page snapshot); 320 GitHub merged count FAIL: count 7 correct but the
+agent took the first item of the default-sorted search list as the latest merge (#2857, merged 03-16) while #2840
+merged on 03-18. Second attempt queued (X2).

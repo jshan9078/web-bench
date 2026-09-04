@@ -6623,5 +6623,17 @@
  "269-github-compare-tags.opus-low-val": {
   "pass": true,
   "note": "API truth confirmed: 34 commits, 44 files, last commit 7fff56f davidism 'release version 3.1.1'; run navigated to compare URL, end_state text shows page verbatim matching (Commits 34, Files changed 44) [judge: sonnet batch-269]"
+ },
+ "319-github-first-release.sonnet-low-val": {
+  "pass": true,
+  "note": "Navigated to commit page, branch_commits list (shows 3.0.0 as earliest release tag containing the commit, confirmed via gh api compare: 2.3.x tags are ahead/diverged, 3.0.0/3.0.1 are behind=contains), and releases/tag/3.0.0 page showing Sep 30 2023; answer 3.0.0, Sep 30 2023 matches gh api releases/tags/3.0.0 published_at=2023-09-30. Grounded in 3 real navigations. [judge: sonnet batch-319-320-321]"
+ },
+ "320-github-merged-count.sonnet-low-val": {
+  "pass": false,
+  "note": "Count of 7 is correct and grounded (navigated to the actual pulls search page), but the reported latest-merged title is wrong: agent assumed the first list item (#2857, merged 2025-03-16) was most recent since GitHub's default pulls sort is not by merge date; the truly latest-merged PR per merged_at (verified via gh api repos/pallets/click/pulls/<n>) is #2840 'Move --help option defaults from its class to its decorator' (merged 2025-03-18T17:59:13Z). Title must match per verifier; it does not. [judge: sonnet batch-319-320-321]"
+ },
+ "321-wiki-last-2024-edit.sonnet-low-val": {
+  "pass": true,
+  "note": "Single navigate+snapshot of the article's history page (year=2025&month=1) captured evidence showing '02:55, 8 November 2024' edit by IP 2400:9800:b60:b6df:f46b:2bff:feae:1821 with no summary text present, immediately following the Jan 18/27 2025 edits and preceding the May 7 2024 edit -- correctly identified as the last 2024 edit. Matches Wikipedia API ground truth exactly (user, 2024-11-08T02:55:35Z timestamp, empty comment). Grounded in the actual page snapshot. [judge: sonnet batch-319-320-321]"
  }
 }
