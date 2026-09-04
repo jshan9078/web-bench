@@ -1032,3 +1032,7 @@ so the distinct count really was 5. Design defect: runs voided, sampler fixed (a
 VALID: 340 tangled lines (no submission, then 1 for 5) and 344 graph degree (4 for 6, 6 for 3). Solved: coin pile,
 crowd hats (44 exact), dot cluster (61 exact), rectangle pile (26 for 23, then exact). Exact counting of separated
 items is within reach; tracing through crossings is not. Validated set: 38.
+
+320 GitHub merged count: second Sonnet attempt repeated the mistake (took the first item of the default-ordered list,
+#2857, as the latest merge; #2840 merged two days later). Judged FAIL both times: VALID (real-site judgement).
+Validated set: 39.

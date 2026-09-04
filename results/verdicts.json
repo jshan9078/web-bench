@@ -6635,5 +6635,9 @@
  "321-wiki-last-2024-edit.sonnet-low-val": {
   "pass": true,
   "note": "Single navigate+snapshot of the article's history page (year=2025&month=1) captured evidence showing '02:55, 8 November 2024' edit by IP 2400:9800:b60:b6df:f46b:2bff:feae:1821 with no summary text present, immediately following the Jan 18/27 2025 edits and preceding the May 7 2024 edit -- correctly identified as the last 2024 edit. Matches Wikipedia API ground truth exactly (user, 2024-11-08T02:55:35Z timestamp, empty comment). Grounded in the actual page snapshot. [judge: sonnet batch-319-320-321]"
+ },
+ "320-github-merged-count.sonnet-low-val2": {
+  "pass": false,
+  "note": "Count correct (7) but title wrong: agent read the /pulls?q=...merged:2025-01-01..2025-03-31 list (captured, grounded) and picked the first-listed PR (#2857, 'Rewrite testing docs and move from rst to myst') as most-recently-merged, but GitHub's default list order is by creation/number, not merged date -- #2857 was merged 2025-03-16 while #2840 'Move --help option defaults from its class to its decorator' was merged later, 2025-03-18 (verified via gh api search/issues and gh pr list, total_count=7, same set as captured). Agent never checked individual merge dates or re-sorted, so the reported title/PR does not match ground truth. [judge: sonnet]"
  }
 }
