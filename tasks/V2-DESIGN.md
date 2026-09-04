@@ -961,3 +961,13 @@ Opus 5 low solved both at attempt 1. INVALID.
 
 All six (rotated odd one out, occluded circles, sequence recall, tiny targets, freeze sum, strip order) solved at
 attempt 1. INVALID. Static visual puzzles, timing and precision clicks do not separate Opus 5 low.
+
+### Iteration U (Opus 5 low): all six solved at attempt 1 (word search, blink count, perspective sign, colour grid
+diff, symbol tally, connect the numbers). Not flagged yet: they will be re-run on Sonnet 5 low.
+
+### 2026-09-04 (later): pilot config becomes Sonnet 5 low
+
+Opus 5 low fails only 5 of 155 v2 tasks at pass@2 (4 video clips, 1 GitHub trace); iterations S, T and U yielded
+nothing. The user decided to shift the pilot to Sonnet 5 low, whose double failures are concentrated in
+tracking-over-video clips. V restarted on Sonnet; W, R2 and X follow; U2 (batch U) and S2 (batches S and T) are
+queued for Sonnet afterwards. Validation basis unchanged: any config failing both attempts.

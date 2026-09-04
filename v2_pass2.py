@@ -3,7 +3,7 @@
   v2_pass2.py pairs <task...>    -> prints "<task> <config>" for every attempt-1 failure (appstate tasks only)
   v2_pass2.py summary <task...>  -> per-task table and VALID/INVALID lists; --apply flags pass2_invalid / keeps valid"""
 import json, os, re, sys, harness
-CFGS = os.environ.get("PILOT_CFGS", "opus-low-val").split(",")   # 2026-09-04: Spark then Sonnet dropped; Opus 5 low only
+CFGS = os.environ.get("PILOT_CFGS", "sonnet-low-val").split(",")   # 2026-09-04: pilot config is Sonnet 5 low (Opus 5 low fails only 3% at pass@2)
 GATE_TS = 1788454260.0   # 2026-09-03 12:51 local: per-page key gate commit
 
 
