@@ -224,7 +224,7 @@ TASKS = {
     "185-belt-defects": {"kind": "appstate", "app": "widgetapp/beltdefects.py", "port": 8868, "v2": True},
     "188-wikipedia-category-latest": {"kind": "judge", "v2": True},
     "189-github-release-fix": {"kind": "judge", "v2": True},
-    "190-gmaps-nearby-filter": {"kind": "judge", "v2": True},
+    "190-gmaps-nearby-filter": {"kind": "judge", "v2": True, "pass2_invalid": True},
     "191-direction-count": {"kind": "appstate", "app": "widgetapp/dircount.py", "port": 8869, "v2": True},
     "192-parcel-sort": {"kind": "appstate", "app": "widgetapp/parcelsort.py", "port": 8870, "v2": True},
     "193-door-events": {"kind": "appstate", "app": "widgetapp/doorevents.py", "port": 8871, "v2": True},

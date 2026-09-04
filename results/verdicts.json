@@ -6509,5 +6509,13 @@
  "195-github-oldest-approved-pr.spark-low-val": {
   "pass": true,
   "note": "Correctly concluded no open PR satisfies review:approved (0 results), verified via API calls to /pulls/<n>/reviews for all three PRs (#5665 shows only COMMENTED), matching ground truth and grounded in extensive captured navigation. [judge: sonnet batch-194-195]"
+ },
+ "190-gmaps-nearby-filter.sonnet-low-val2": {
+  "pass": true,
+  "note": "Captured evidence (All-filters screenshot showing only an Hours section, plus a fully-scrolled results list ending at the page footer) confirms no Rating 4.0+ control exists and every pharmacy in the Open-now list tops out at 3.6 (Rexall), so the agent's grounded, non-fabricated conclusion of zero qualifying results is correct for this run's captured state. [judge: sonnet 190-batch]"
+ },
+ "190-gmaps-nearby-filter.opus-low-val2": {
+  "pass": true,
+  "note": "Same live result set as the sonnet run (verified via scrolled list text and a Directions navigation confirming 5 min/400 m to the closest open pharmacy), All-filters screenshot/text shows no rating control, and highest-rated open pharmacy is 3.6 (Rexall); the agent correctly and transparently reported zero pharmacies meet Open now + 4.0+ rather than estimating or fabricating a match. [judge: sonnet 190-batch]"
  }
 }

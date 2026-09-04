@@ -794,3 +794,7 @@ right one. Second attempts queued (E2).
 10; 13 for 20 then 12 for 13; 8 for 9 then 5 for 8); Spark failed 191 and 192 twice (one attempt each by
 probing); Opus read 192 and 193 correctly and 191 on retry. 194 (Wikipedia revert) and 195 (GitHub oldest approved
 PR, correct answer "none exists") passed for all three, API-verified: saturated.
+
+E2: 190 Maps nearby filters: both Claude configs passed on retry (the live results had changed: no open pharmacy
+rated 4.0+, and both reported that correctly), so INVALID under pass@2. Live-site tasks with time-varying answers
+are inherently noisy for this test.
