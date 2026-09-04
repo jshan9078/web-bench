@@ -805,3 +805,9 @@ are inherently noisy for this test.
 then 1 for 3; Spark twice by probing), 197 checkout scans holds only via Spark's probing (both Claude configs
 exact). 204 (Calendar week hours): the week has no timed events, so all three answered zero; judged. 205 (Maps
 transit compare): the runs disagree on the fastest route's transfer count; judged against each run's evidence.
+
+### Iteration H: four tracking clips
+
+208 red crossers HOLDS (Sonnet 11 for 13 then 5 for 6; Spark twice), 211 bus boarding HOLDS (Sonnet 6 for 14 then
+12 for 18; Spark twice by probing), 206 elevator stops holds only via Spark's probing (both Claude configs exact),
+210 tray racks INVALID (all three exact on attempt 1).

@@ -237,7 +237,7 @@ TASKS = {
     "205-gmaps-transit-compare": {"kind": "judge", "v2": True},
     "206-elevator-stops": {"kind": "appstate", "app": "widgetapp/elevatorstops.py", "port": 8875, "v2": True},
     "208-red-crossers": {"kind": "appstate", "app": "widgetapp/redcrossers.py", "port": 8876, "v2": True},
-    "210-tray-racks": {"kind": "appstate", "app": "widgetapp/trayracks.py", "port": 8877, "v2": True},
+    "210-tray-racks": {"kind": "appstate", "app": "widgetapp/trayracks.py", "port": 8877, "v2": True, "pass2_invalid": True},
     "211-bus-boarding": {"kind": "appstate", "app": "widgetapp/busboard.py", "port": 8878, "v2": True},
     "213-github-reopened-issue": {"kind": "judge", "v2": True},
     "214-gmaps-cycle-savings": {"kind": "judge", "v2": True},
