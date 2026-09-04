@@ -27,11 +27,11 @@ def answer():
     return pos + 1
 
 
-SCENE_JS = r"""function scene(t){cx.fillStyle='#14532d';cx.fillRect(0,0,800,450);var slots=[200,400,600],cups=[0,1,2],xs=[200,400,600],ball=D.start,lift=t<3?1-Math.min(1,Math.max(0,(t-2))):0;
- D.swaps.forEach(function(s){if(t<s.t)return;var p=Math.min(1,(t-s.t)/s.d),e=(1-Math.cos(p*Math.PI))/2,ax=slots[s.a],bx=slots[s.b];if(p<1){xs[s.a]=ax+(bx-ax)*e;xs[s.b]=bx+(ax-bx)*e;var ya=Math.sin(p*Math.PI)*40;xs['ya'+s.a]=ya;xs['ya'+s.b]=-ya}else{var tmp=slots[s.a];slots[s.a]=slots[s.b];slots[s.b]=tmp;xs[s.a]=slots[s.a];xs[s.b]=slots[s.b]}});
- var order=[0,1,2].sort(function(i,j){return (xs['ya'+i]||0)-(xs['ya'+j]||0)});
+SCENE_JS = r"""function scene(t){cx.fillStyle='#14532d';cx.fillRect(0,0,800,450);var slots=[200,400,600],perm=[0,1,2],xs=[200,400,600],ya=[0,0,0],ball=D.start,lift=t<3?1-Math.min(1,Math.max(0,(t-2))):0;
+ D.swaps.forEach(function(s){if(t<s.t)return;var p=Math.min(1,(t-s.t)/s.d),e=(1-Math.cos(p*Math.PI))/2,ca=perm[s.a],cb=perm[s.b],ax=slots[s.a],bx=slots[s.b];if(p<1){xs[ca]=ax+(bx-ax)*e;xs[cb]=bx+(ax-bx)*e;ya[ca]=Math.sin(p*Math.PI)*40;ya[cb]=-ya[ca]}else{perm[s.a]=cb;perm[s.b]=ca;xs[ca]=bx;xs[cb]=ax;ya[ca]=0;ya[cb]=0}});
+ var order=[0,1,2].sort(function(i,j){return ya[i]-ya[j]});
  if(t<3){cx.fillStyle='#f59e0b';cx.beginPath();cx.arc(slots[ball],300,14,0,6.28);cx.fill()}
- order.forEach(function(i){var x=xs[i],y=290+(xs['ya'+i]||0)-(i===ball?lift*70:0);cx.fillStyle='#b91c1c';cx.beginPath();cx.moveTo(x-45,y+30);cx.lineTo(x+45,y+30);cx.lineTo(x+30,y-70);cx.lineTo(x-30,y-70);cx.closePath();cx.fill();cx.fillStyle='#7f1d1d';cx.fillRect(x-48,y+26,96,10)});
+ order.forEach(function(i){var x=xs[i],y=290+ya[i]-(i===ball?lift*70:0);cx.fillStyle='#b91c1c';cx.beginPath();cx.moveTo(x-45,y+30);cx.lineTo(x+45,y+30);cx.lineTo(x+30,y-70);cx.lineTo(x-30,y-70);cx.closePath();cx.fill();cx.fillStyle='#7f1d1d';cx.fillRect(x-48,y+26,96,10)});
  overlay(t,'TABLE-1')}"""
 clipapp.make(sys.modules[__name__])
 if __name__ == "__main__":
