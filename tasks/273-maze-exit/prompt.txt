@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8927/ . The page shows a maze as an IMAGE at the page's top-left (read it 
+from screenshots; click with raw coordinates via click --at X,Y; screenshot pixels map 1:1). The 
+red dot is the start; three border openings are marked E, but only one is reachable from the start 
+without crossing walls. Click inside the cell of the reachable opening (a blue circle marks your 
+click; re-click to move it), then click Confirm. Do NOT read the page source or call the site's 
+HTTP endpoints directly. End with which side of the maze the exit is on.

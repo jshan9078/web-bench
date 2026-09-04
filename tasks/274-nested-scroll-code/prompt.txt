@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8932/ . The page has a confirmation ledger further down, inside a scrollable 
+panel that itself contains an inner scrollable list of account lines. Find the line for account 
+HB-4471 and enter its confirmation code in the form at the top of the page, then submit. Do NOT 
+read the page source or call the site's HTTP endpoints directly. End with the code.

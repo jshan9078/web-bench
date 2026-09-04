@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8930/ . The page shows twelve buttons that all say Proceed; only the one with 
+a small blue dot inside it is real, and the buttons reshuffle every 5 seconds. Click the real 
+Proceed button five times in a row (a click on a decoy resets the streak; the page shows the 
+streak). Take a fresh look before each click. Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with a one-line confirmation.

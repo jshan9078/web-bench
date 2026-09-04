@@ -292,6 +292,15 @@ TASKS = {
     "265-timesheet-entry": {"kind": "appstate", "app": "widgetapp/timesheet.py", "port": 8923, "v2": True},
     "267-gallery-tagging": {"kind": "appstate", "app": "widgetapp/phototag.py", "port": 8924, "v2": True},
     "269-github-compare-tags": {"kind": "judge", "v2": True},
+    # ---- v4b (2026-09-04): synthetic visual and DOM challenges (user: tasks need not be realistic)
+    "270-shadow-iframe-form": {"kind": "appstate", "app": "widgetapp/shadowform.py", "port": 8931, "v2": True},
+    "271-moving-target": {"kind": "appstate", "app": "widgetapp/movingtarget.py", "port": 8930, "v2": True},
+    "272-line-trace": {"kind": "appstate", "app": "widgetapp/linetrace.py", "port": 8925, "v2": True},
+    "273-maze-exit": {"kind": "appstate", "app": "widgetapp/mazeexit.py", "port": 8927, "v2": True},
+    "274-nested-scroll-code": {"kind": "appstate", "app": "widgetapp/scrollnest.py", "port": 8932, "v2": True},
+    "275-memory-pairs": {"kind": "appstate", "app": "widgetapp/memorypairs.py", "port": 8929, "v2": True},
+    "281-count-intersections": {"kind": "appstate", "app": "widgetapp/intersections.py", "port": 8926, "v2": True},
+    "282-hue-order": {"kind": "appstate", "app": "widgetapp/huesort.py", "port": 8928, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -666,7 +675,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu", "__book", "__merge", "__edit", "__bulk", "__create", "__cart", "__publish", "__order", "__request", "__login", "__mail", "__tag", "__savetags")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu", "__book", "__merge", "__edit", "__bulk", "__create", "__cart", "__publish", "__order", "__request", "__login", "__mail", "__tag", "__savetags", "__board", "__flip", "__layout", "__press")
 
 
 def widget_bypass(bundle):

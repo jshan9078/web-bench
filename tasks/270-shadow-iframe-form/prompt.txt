@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8931/ . It is a delivery request page whose form is nested inside a component 
+and an embedded frame. Fill the form with: Reference HB-7731, Quantity 14, Contact email 
+ana.silva@example.com, Delivery note "leave at reception", and submit it (the form shows 
+Submitted). Do NOT read the page source or call the site's HTTP endpoints directly. End with a 
+one-line confirmation.

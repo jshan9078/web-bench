@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8925/ . The page shows an IMAGE of six tangled cables running from numbered 
+starts on the left to lettered ends on the right (read it from screenshots). Trace cable 3 and 
+report which letter it connects to; enter the letter in the form below the image and submit. Do NOT 
+read the page source or call the site's HTTP endpoints directly. End with the letter.

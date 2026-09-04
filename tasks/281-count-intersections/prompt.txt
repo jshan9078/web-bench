@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8926/ . The page shows an IMAGE of eight coloured straight line segments 
+(read it from screenshots). Count exactly how many points there are where two segments cross, enter 
+the number in the form below the image and submit. Do NOT read the page source or call the site's 
+HTTP endpoints directly. End with the count.

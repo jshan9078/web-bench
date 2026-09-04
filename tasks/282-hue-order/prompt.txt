@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8928/ . The page shows an IMAGE of nine colour swatches at the top-left (read 
+it from screenshots; click with raw coordinates via click --at X,Y; screenshot pixels map 1:1). 
+Click the swatches in order of hue, starting from the reddest and proceeding through orange, 
+yellow, green, cyan and blue to the most violet (a number appears on each clicked swatch), then 
+click Confirm order. Do NOT read the page source or call the site's HTTP endpoints directly. End 
+with a one-line confirmation.
