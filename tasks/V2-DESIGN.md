@@ -1019,3 +1019,10 @@ still be measured, so the final set has two tiers, reported separately:
   nested scroll; real-site navigation). It is the competence floor: a good agent should score near 100%.
 - Discriminating tier (results/validated_set.json, target 60): tasks some config fails on both attempts. It leans on
   perception over time (video tracking, exact counting, fine reading) because that is where current models fail.
+
+### Iteration Z (Sonnet 5 low): eight recording-style clips
+
+Solved at pass@2: lead changes, elevator stops, chat stream, red-light runners (no submission, then exact), slide deck
+value, forklift trips, birds on wire (6 for 9, then exact). INVALID. 332 ticker mentions: Sonnet answered 5 twice
+against a truth of 6, but the ticker list sampled with replacement and held a duplicate HARBOR headline both times,
+so the distinct count really was 5. Design defect: runs voided, sampler fixed (all headlines distinct), re-queued (Z2).

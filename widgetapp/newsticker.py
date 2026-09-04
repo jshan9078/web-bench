@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""332-ticker-mentions: 2-minute news-channel clip with a scrolling ticker; count the headlines that mention the
+"""332-ticker-mentions: 2-minute news-channel clip with a scrolling ticker; count the DISTINCT headlines that mention the
 word HARBOR. complete = exact."""
 import random, sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -11,7 +11,7 @@ H = ["HARBOR cleanup volunteers wanted", "New cranes arrive at HARBOR terminal",
 
 
 def reset():
-    n = random.randint(20, 26); k = random.randint(5, 9); items = random.sample(BASE * 3, n - k) + random.sample(H * 2, k); random.shuffle(items); S["items"] = items
+    k = random.randint(4, 7); items = random.sample(BASE, random.randint(8, 10)) + random.sample(H, k); random.shuffle(items); S["items"] = items   # all distinct
 
 
 def data(): return {"items": S["items"]}
