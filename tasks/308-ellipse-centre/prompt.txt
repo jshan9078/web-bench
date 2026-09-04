@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8948/ . The page shows an IMAGE at the top-left with one rotated ellipse 
+outline on a speckled background (read it from screenshots; click with raw coordinates via click 
+--at X,Y; screenshot pixels map 1:1). Click the ellipse's exact centre, within 6 px (a red cross 
+marks your click; re-click to move it), then click Confirm. Do NOT read the page source or call the 
+site's HTTP endpoints directly. End with the coordinates you chose.

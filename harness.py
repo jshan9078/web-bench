@@ -313,6 +313,12 @@ TASKS = {
     "301-colour-grid-diff": {"kind": "appstate", "app": "widgetapp/griddiff.py", "port": 8942, "v2": True},
     "303-symbol-tally": {"kind": "appstate", "app": "widgetapp/symboltally.py", "port": 8943, "v2": True},
     "304-connect-the-numbers": {"kind": "appstate", "app": "widgetapp/connectdots.py", "port": 8944, "v2": True},
+    "305-plate-read": {"kind": "appstate", "app": "widgetapp/plateread.py", "port": 8945, "v2": True},
+    "306-shell-game": {"kind": "appstate", "app": "widgetapp/shellgame.py", "port": 8946, "v2": True},
+    "307-angle-read": {"kind": "appstate", "app": "widgetapp/angleread.py", "port": 8947, "v2": True},
+    "308-ellipse-centre": {"kind": "appstate", "app": "widgetapp/ellipsecentre.py", "port": 8948, "v2": True},
+    "311-keyboard-only": {"kind": "appstate", "app": "widgetapp/keyboardlist.py", "port": 8949, "v2": True},
+    "312-hover-menu": {"kind": "appstate", "app": "widgetapp/hovermenu.py", "port": 8950, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

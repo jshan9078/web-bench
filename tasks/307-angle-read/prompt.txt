@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8947/ . The page shows an IMAGE of two rays from a common vertex (read it 
+from screenshots; there is no protractor). Report the angle between the rays in degrees, within 2 
+degrees, enter it in the form and submit. Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with the angle.

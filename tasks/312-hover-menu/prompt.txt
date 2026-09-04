@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8950/ . Using the menu bar (its submenus open on hover), run Data > Export > 
+Legacy formats > "CSV (semicolon)". Do not run any other command (the toolbar Export button and 
+"CSV (comma)" are different commands). Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with the confirmation text shown on the page.
