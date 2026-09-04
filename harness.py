@@ -274,8 +274,8 @@ TASKS = {
     # ---- v4 (2026-09-04): browser control and navigation, validated on Sonnet 5 low and Opus 5 low
     "246-wikipedia-sandbox-edit": {"kind": "judge", "v2": True, "pass2_invalid": True, "blocked_env": True},
     "247-rich-text-format": {"kind": "appstate", "app": "widgetapp/richtext.py", "port": 8909, "v2": True, "pass2_invalid": True},
-    "248-flight-booking": {"kind": "appstate", "app": "widgetapp/flightbook.py", "port": 8912, "v2": True},
-    "249-inbox-triage": {"kind": "appstate", "app": "widgetapp/inboxtriage.py", "port": 8910, "v2": True},
+    "248-flight-booking": {"kind": "appstate", "app": "widgetapp/flightbook.py", "port": 8912, "v2": True, "pass2_invalid": True},
+    "249-inbox-triage": {"kind": "appstate", "app": "widgetapp/inboxtriage.py", "port": 8910, "v2": True, "pass2_invalid": True},
     "250-crm-merge": {"kind": "appstate", "app": "widgetapp/crmmerge.py", "port": 8911, "v2": True},
     "251-edit-conflict": {"kind": "appstate", "app": "widgetapp/conflictform.py", "port": 8913, "v2": True},
     "252-keyboard-datagrid": {"kind": "appstate", "app": "widgetapp/datagrid.py", "port": 8914, "v2": True},

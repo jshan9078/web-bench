@@ -952,3 +952,7 @@ All eight (shadow iframe form, moving target, line trace, maze exit, nested scro
 intersections, hue order) solved by Opus at pass@2 (line trace failed once). INVALID. Opus 5 low handles static
 visual puzzles and fast DOM interaction; its documented failures remain clocks, peak-occupancy and defect counting
 over video, calendar judgement and a GitHub cross-reference trace. Batch X targets those modes.
+
+### Iteration P2: flight booking and inbox triage re-runs (after the design fixes)
+
+Opus 5 low solved both at attempt 1. INVALID.
