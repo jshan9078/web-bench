@@ -930,3 +930,10 @@ variants, survey builder) were solved by both configs on the first attempt: INVA
 reported 0ec7f71 by pgjones, 2023-08-19; judged. Conclusion so far: realistic DOM workflows, even multi-step ones
 with validation and traps, are within reach of both configs; the remaining yield is in perception, timing and
 synthetic challenges (batches S and T) and in real-site tool use (OSM).
+
+### 2026-09-04: Opus 5 low becomes the only pilot config
+
+Per-config attempt-1 pass rates over the 185 tasks all three configs ran: Opus 5 low 90%, Spark 1.2 low 86%,
+Sonnet 5 low 84%. The user decided that further runs use Opus 5 low only and that a task counts as validated when
+ANY config has failed it on both pass@2 attempts (earlier Sonnet and Spark evidence is kept). v2_validated.py
+recomputes results/validated_set.json on that basis. Iteration R's pending Sonnet reruns were cancelled.

@@ -1,6 +1,18 @@
 {
+ "36-jspaint-poster": [
+  "spark-low-val"
+ ],
+ "59-spot-difference": [
+  "spark-low-val"
+ ],
  "90-dial-set": [
   "sonnet-low-val"
+ ],
+ "118-odometer-read": [
+  "spark-low-val"
+ ],
+ "154-tower-clock": [
+  "spark-low-val"
  ],
  "167-github-issue-pr": [
   "opus-low-val"
@@ -30,10 +42,14 @@
   "sonnet-low-val"
  ],
  "208-red-crossers": [
+  "spark-low-val",
   "sonnet-low-val"
  ],
  "211-bus-boarding": [
   "sonnet-low-val"
+ ],
+ "213-github-reopened-issue": [
+  "spark-low-val"
  ],
  "217-queue-leavers": [
   "sonnet-low-val"
@@ -45,6 +61,7 @@
   "sonnet-low-val"
  ],
  "225-library-returns": [
+  "spark-low-val",
   "sonnet-low-val"
  ],
  "226-fare-gates": [
@@ -68,6 +85,7 @@
   "sonnet-low-val"
  ],
  "235-tennis-serves": [
+  "spark-low-val",
   "sonnet-low-val"
  ],
  "239-loading-bay": [
