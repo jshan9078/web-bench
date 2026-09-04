@@ -39,7 +39,7 @@ launch)
   AMI=$2; N=$3; LANE=${4:-local}; FAM=${5:-all}; TYPE=${6:-c7i.xlarge}
   SG=$(aws ec2 describe-security-groups --filters Name=group-name,Values=webbench-worker --query 'SecurityGroups[0].GroupId' --output text)
   sed "s/__BUCKET__/$BUCKET/g; s/__LANE__/$LANE/g; s/__FAMILY__/$FAM/g; s/__SHUTDOWN__/shutdown -h now/" aws/user_data_worker.sh > /tmp/ud_worker.sh
-  aws ec2 run-instances --image-id $AMI --count $N --instance-type $TYPE --key-name $KEY_NAME --security-group-ids $SG --iam-instance-profile Name=webbench-worker --user-data file:///tmp/ud_worker.sh --instance-initiated-shutdown-behavior terminate --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=webbench-worker-$LANE-$FAM},{Key=webbench,Value=worker}]" --query 'Instances[].InstanceId' --output text ;;
+  aws ec2 run-instances --image-id $AMI --count $N --instance-type $TYPE --key-name $KEY_NAME --security-group-ids $SG --iam-instance-profile Name=webbench-worker --user-data file:///tmp/ud_worker.sh --instance-initiated-shutdown-behavior terminate --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=webbench-worker-$LANE-$(echo $FAM | tr , _)},{Key=webbench,Value=worker}]" --query 'Instances[].InstanceId' --output text ;;
 launch-all)
   AMI=$2; N=$3; LANE=${4:-local}; for FAM in spark13 sonnet opus gemini-3.8-flash luna; do echo "$FAM: $("$0" launch $AMI $N $LANE $FAM | tr '\n' ' ')"; done ;;
 status)
