@@ -13,7 +13,7 @@ def passed(t, c):
     if not (os.path.exists(f) and os.path.exists(rawf)): return None
     b = json.load(open(rawf))
     if harness.TASKS[t]["kind"] == "appstate":
-        return bool(json.load(open(f)).get("success")) and not harness.widget_bypass(b)
+        return bool((b.get("pixel_state") or {}).get("complete"))
     return bool(v[k].get("pass")) if k in v else None
 sat, unsat, pending = [], [], []
 for t in harness.TASKS_V2:

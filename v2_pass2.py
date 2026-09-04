@@ -4,13 +4,18 @@
   v2_pass2.py summary <task...>  -> per-task table and VALID/INVALID lists; --apply flags pass2_invalid / keeps valid"""
 import json, os, re, sys, harness
 CFGS = ["spark-low-val", "sonnet-low-val", "opus-low-val"]
+GATE_TS = 1788461460.0   # 2026-09-03 12:51 local: per-page key gate commit
 
 
 def passed(t, r):
     f = f"results/{t}/{r}.json"; rawf = f"raw/{t}.{r}.json"
     if not (os.path.exists(f) and os.path.exists(rawf)): return None
     b = json.load(open(rawf)); res = json.load(open(f))
-    if harness.TASKS[t]["kind"] == "appstate": return bool(res.get("success")) and not harness.widget_bypass(b)
+    if harness.TASKS[t]["kind"] == "appstate":
+        # Runs before the 403 gate (2026-09-03 12:51) that probed private endpoints may have taken the answer from
+        # them: their success is tainted and counts as a failure. Post-gate probes get 403, so only state matters.
+        if b.get("t0", 0) < GATE_TS and harness.widget_bypass(b): return False
+        return bool((b.get("pixel_state") or {}).get("complete"))
     v = json.load(open("results/verdicts.json")); return v.get(f"{t}.{r}", {}).get("pass")
 
 

@@ -122,7 +122,7 @@ TASKS = {
     "57-hn-debate-analysis": {"kind": "judge"},
     # ---- v2 task set (2026-09-03): designed to discriminate; see tasks/V2-DESIGN.md. Excluded from the
     # v1 sweeps/scoreboard until piloted (BENCH_SET=v2 selects them; see sweep_tasks()).
-    "58-pixel-scan": {"kind": "appstate", "app": "widgetapp/pixelscan.py", "port": 8792, "v2": True, "level": 3},
+    "58-pixel-scan": {"kind": "appstate", "app": "widgetapp/pixelscan.py", "port": 8792, "v2": True, "pass2_invalid": True, "level": 3},
     "59-spot-difference": {"kind": "appstate", "app": "widgetapp/spotdiff.py", "port": 8793, "v2": True, "level": 3},
     "60-form-wizard": {"kind": "appstate", "app": "widgetapp/wizard.py", "port": 8794, "retired": True},
     "61-grid-toggle": {"kind": "appstate", "app": "widgetapp/gridtoggle.py", "port": 8795, "retired": True},
@@ -139,7 +139,7 @@ TASKS = {
     "75-map-explorer": {"kind": "appstate", "app": "widgetapp/mapexplorer.py", "port": 8797, "v2": True, "pass2_invalid": True, "fill_from_state": True},
     "78-gmaps-directions": {"kind": "judge", "v2": True, "saturated": True, "keep": True},
     "79-gmaps-place-hours": {"kind": "judge", "v2": True, "pass2_invalid": True, "keep": True},
-    "76-settings-maze": {"kind": "appstate", "app": "widgetapp/settingsmaze.py", "port": 8798, "v2": True},
+    "76-settings-maze": {"kind": "appstate", "app": "widgetapp/settingsmaze.py", "port": 8798, "v2": True, "pass2_invalid": True},
     "77-crosshair-align": {"kind": "appstate", "app": "widgetapp/crosshair.py", "port": 8799, "v2": True, "pass2_invalid": True, "level": 2},
     "80-live-list": {"kind": "appstate", "app": "widgetapp/livelist.py", "port": 8800, "retired": True},
     "81-memory-flow": {"kind": "appstate", "app": "widgetapp/memoryflow.py", "port": 8801, "retired": True},
@@ -157,7 +157,7 @@ TASKS = {
     "92-log-stream": {"kind": "appstate", "app": "widgetapp/logtail.py", "port": 8812, "v2": True, "saturated": True, "level": 2},
     "93-ticker-tape": {"kind": "appstate", "app": "widgetapp/ticker.py", "port": 8813, "v2": True, "saturated": True},
     "94-cctv-review": {"kind": "appstate", "app": "widgetapp/cctv.py", "port": 8814, "v2": True, "pass2_invalid": True, "level": 2},
-    "95-lot-occupancy": {"kind": "appstate", "app": "widgetapp/parkinglot.py", "port": 8815, "v2": True},
+    "95-lot-occupancy": {"kind": "appstate", "app": "widgetapp/parkinglot.py", "port": 8815, "v2": True, "pass2_invalid": True},
     "96-slide-diff": {"kind": "appstate", "app": "widgetapp/slidediff.py", "port": 8816, "v2": True, "saturated": True},
     # ---- v2.4 (2026-09-03): real-world browser angles (locale, icon-only UI, seat maps, dual axes, sort bugs, fine print)
     "97-locale-ledger": {"kind": "appstate", "app": "widgetapp/localeledger.py", "port": 8817, "v2": True, "saturated": True},
@@ -192,9 +192,9 @@ TASKS = {
     "127-clock-ticks": {"kind": "appstate", "app": "widgetapp/clockticks.py", "port": 8839, "v2": True, "pass2_invalid": True},
     "128-remote-desktop": {"kind": "appstate", "app": "widgetapp/remotedesktop.py", "port": 8842, "v2": True, "pass2_invalid": True},
     "136-dashcam-speed": {"kind": "appstate", "app": "widgetapp/dashcam.py", "port": 8843, "v2": True, "saturated": True},
-    "137-crop-corners": {"kind": "appstate", "app": "widgetapp/cropcorners.py", "port": 8845, "v2": True},
-    "138-virtual-keypad": {"kind": "appstate", "app": "widgetapp/keypad.py", "port": 8844, "v2": True},
-    "139-traffic-count": {"kind": "appstate", "app": "widgetapp/carcount.py", "port": 8846, "v2": True},
+    "137-crop-corners": {"kind": "appstate", "app": "widgetapp/cropcorners.py", "port": 8845, "v2": True, "pass2_invalid": True},
+    "138-virtual-keypad": {"kind": "appstate", "app": "widgetapp/keypad.py", "port": 8844, "v2": True, "pass2_invalid": True},
+    "139-traffic-count": {"kind": "appstate", "app": "widgetapp/carcount.py", "port": 8846, "v2": True, "pass2_invalid": True},
     # ---- v2.9 (2026-09-03): sub-tick interpolation and analog reading in realistic wrappers
     "141-wind-vane": {"kind": "appstate", "app": "widgetapp/windvane.py", "port": 8847, "v2": True, "saturated": True},
     "149-area-share": {"kind": "appstate", "app": "widgetapp/areashare.py", "port": 8848, "v2": True, "saturated": True},
@@ -210,41 +210,41 @@ TASKS = {
     "161-defect-marking": {"kind": "appstate", "app": "widgetapp/defects.py", "port": 8857, "v2": True, "pass2_invalid": True},
     "162-utility-meter": {"kind": "appstate", "app": "widgetapp/utilitymeter.py", "port": 8858, "v2": True, "pass2_invalid": True},
     "163-gmaps-route-options": {"kind": "judge", "v2": True, "pass2_invalid": True},
-    "164-gcal-recurring": {"profile": True, "kind": "judge", "v2": True},
+    "164-gcal-recurring": {"profile": True, "kind": "judge", "v2": True, "pass2_invalid": True},
     "167-github-issue-pr": {"kind": "judge", "v2": True},
-    "171-spreadsheet-grid": {"kind": "appstate", "app": "widgetapp/gridsheet.py", "port": 8859, "v2": True},
-    "172-nested-modal-terms": {"kind": "appstate", "app": "widgetapp/termsmodal.py", "port": 8860, "v2": True},
-    "177-hover-megamenu": {"kind": "appstate", "app": "widgetapp/megamenu.py", "port": 8861, "v2": True},
-    "178-dense-count": {"kind": "appstate", "app": "widgetapp/densecount.py", "port": 8862, "v2": True},
+    "171-spreadsheet-grid": {"kind": "appstate", "app": "widgetapp/gridsheet.py", "port": 8859, "v2": True, "pass2_invalid": True},
+    "172-nested-modal-terms": {"kind": "appstate", "app": "widgetapp/termsmodal.py", "port": 8860, "v2": True, "pass2_invalid": True},
+    "177-hover-megamenu": {"kind": "appstate", "app": "widgetapp/megamenu.py", "port": 8861, "v2": True, "pass2_invalid": True},
+    "178-dense-count": {"kind": "appstate", "app": "widgetapp/densecount.py", "port": 8862, "v2": True, "pass2_invalid": True},
     "179-people-count": {"kind": "appstate", "app": "widgetapp/peoplecount.py", "port": 8863, "v2": True},
-    "180-radio-tuner": {"kind": "appstate", "app": "widgetapp/tuner.py", "port": 8864, "v2": True},
-    "182-map-measure": {"kind": "appstate", "app": "widgetapp/mapmeasure.py", "port": 8865, "v2": True},
-    "183-odd-glyph": {"kind": "appstate", "app": "widgetapp/oddglyph.py", "port": 8866, "v2": True},
+    "180-radio-tuner": {"kind": "appstate", "app": "widgetapp/tuner.py", "port": 8864, "v2": True, "pass2_invalid": True},
+    "182-map-measure": {"kind": "appstate", "app": "widgetapp/mapmeasure.py", "port": 8865, "v2": True, "pass2_invalid": True},
+    "183-odd-glyph": {"kind": "appstate", "app": "widgetapp/oddglyph.py", "port": 8866, "v2": True, "pass2_invalid": True},
     "184-queue-peak": {"kind": "appstate", "app": "widgetapp/queuepeak.py", "port": 8867, "v2": True},
     "185-belt-defects": {"kind": "appstate", "app": "widgetapp/beltdefects.py", "port": 8868, "v2": True},
-    "188-wikipedia-category-latest": {"kind": "judge", "v2": True},
-    "189-github-release-fix": {"kind": "judge", "v2": True},
+    "188-wikipedia-category-latest": {"kind": "judge", "v2": True, "pass2_invalid": True},
+    "189-github-release-fix": {"kind": "judge", "v2": True, "pass2_invalid": True},
     "190-gmaps-nearby-filter": {"kind": "judge", "v2": True, "pass2_invalid": True},
     "191-direction-count": {"kind": "appstate", "app": "widgetapp/dircount.py", "port": 8869, "v2": True},
     "192-parcel-sort": {"kind": "appstate", "app": "widgetapp/parcelsort.py", "port": 8870, "v2": True},
     "193-door-events": {"kind": "appstate", "app": "widgetapp/doorevents.py", "port": 8871, "v2": True},
-    "194-wikipedia-revert": {"kind": "judge", "v2": True},
-    "195-github-oldest-approved-pr": {"kind": "judge", "v2": True},
+    "194-wikipedia-revert": {"kind": "judge", "v2": True, "pass2_invalid": True},
+    "195-github-oldest-approved-pr": {"kind": "judge", "v2": True, "pass2_invalid": True},
     "196-turn-count": {"kind": "appstate", "app": "widgetapp/turncount.py", "port": 8872, "v2": True},
-    "197-checkout-scans": {"kind": "appstate", "app": "widgetapp/checkoutscans.py", "port": 8873, "v2": True},
+    "197-checkout-scans": {"kind": "appstate", "app": "widgetapp/checkoutscans.py", "port": 8873, "v2": True, "pass2_invalid": True},
     "198-pen-entry": {"kind": "appstate", "app": "widgetapp/penentry.py", "port": 8874, "v2": True},
     "204-gcal-week-hours": {"profile": True, "kind": "judge", "v2": True, "pass2_invalid": True},
     "205-gmaps-transit-compare": {"kind": "judge", "v2": True, "pass2_invalid": True},
-    "206-elevator-stops": {"kind": "appstate", "app": "widgetapp/elevatorstops.py", "port": 8875, "v2": True},
+    "206-elevator-stops": {"kind": "appstate", "app": "widgetapp/elevatorstops.py", "port": 8875, "v2": True, "pass2_invalid": True},
     "208-red-crossers": {"kind": "appstate", "app": "widgetapp/redcrossers.py", "port": 8876, "v2": True},
     "210-tray-racks": {"kind": "appstate", "app": "widgetapp/trayracks.py", "port": 8877, "v2": True, "pass2_invalid": True},
     "211-bus-boarding": {"kind": "appstate", "app": "widgetapp/busboard.py", "port": 8878, "v2": True},
     "213-github-reopened-issue": {"kind": "judge", "v2": True},
     "214-gmaps-cycle-savings": {"kind": "judge", "v2": True},
-    "216-forklift-trips": {"kind": "appstate", "app": "widgetapp/forklift.py", "port": 8879, "v2": True},
+    "216-forklift-trips": {"kind": "appstate", "app": "widgetapp/forklift.py", "port": 8879, "v2": True, "pass2_invalid": True},
     "217-queue-leavers": {"kind": "appstate", "app": "widgetapp/queueleavers.py", "port": 8880, "v2": True},
-    "218-vending-dispensed": {"kind": "appstate", "app": "widgetapp/vending.py", "port": 8882, "v2": True},
-    "219-no-parking": {"kind": "appstate", "app": "widgetapp/noparking.py", "port": 8881, "v2": True},
+    "218-vending-dispensed": {"kind": "appstate", "app": "widgetapp/vending.py", "port": 8882, "v2": True, "pass2_invalid": True},
+    "219-no-parking": {"kind": "appstate", "app": "widgetapp/noparking.py", "port": 8881, "v2": True, "pass2_invalid": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -642,9 +642,9 @@ def _judge(task, bundle):
     t = TASKS[task]; kind = t["kind"]
     if kind == "judge":
         return None
-    if kind in ("pixelstate", "appstate"):   # objective: the widget server judged the interaction
-        if widget_bypass(bundle):             # ...unless the agent drove the server's endpoints directly
-            return False
+    if kind in ("pixelstate", "appstate"):   # objective: the widget server judged the interaction.
+        # Endpoint probing is NOT a failure (2026-09-04 rule): the per-page key gate answers probes with 403, so the
+        # environment itself denies the shortcut; widget_bypass() remains an audit annotation only.
         return bool((bundle.get("pixel_state") or {}).get("complete"))
     if kind == "cart":
         ev = bundle.get("cart_evidence") or {}; hay = (ev.get("text", "") + " " + ev.get("asins", "")).lower()

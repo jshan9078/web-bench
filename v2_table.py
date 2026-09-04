@@ -16,8 +16,8 @@ for t in harness.TASKS_V2:
         b = json.load(open(rawf)); res = json.load(open(f)); ann = []
         if b.get("budget_hit"): ann.append("budget")
         if harness.TASKS[t]["kind"] == "appstate":
-            if harness.widget_bypass(b): ann.append("bypass")
-            ok = bool(res.get("success"))
+            if harness.widget_bypass(b): ann.append("probed")     # audit annotation only; probes get 403
+            ok = bool((b.get("pixel_state") or {}).get("complete"))
         elif k in v:
             ok = bool(v[k].get("pass"))
             if v[k].get("blocked"): ann.append("blocked")

@@ -816,3 +816,12 @@ G2: 204 Calendar hours: Sonnet covered all seven days on retry (INVALID). 205 Ma
 retry, and its retry showed that the numerals in the route rows are TTC line numbers, not transfer counts, which
 means the attempt-1 verdicts (two passes for "2 transfers") rest on a misread the judge shared; the task's answer
 is too ambiguous in Maps' current UI to keep. INVALID and noted as a task-design flaw.
+
+## Scoring rule change (2026-09-04): endpoint probing is not a failure
+
+The user's rule: probing private endpoints is an efficiency attempt, and the environment must simply not let it
+succeed. It does not (every private endpoint has answered 403 to anything but the page's own script since the
+gate on 2026-09-03 12:51), so an appstate verdict is now the server state alone; widget_bypass() stays as an
+audit annotation ("probed" in tables). Runs from BEFORE the gate that probed and reached a complete state are
+tainted and count as failures (58, 59, 75, 76 Spark attempt 1; a Gemini run on 75). Results were re-scored from
+the recorded server state (38 runs flipped). Tasks that held only through probing are now invalid under pass@2.
