@@ -4,7 +4,7 @@
   v2_pass2.py summary <task...>  -> per-task table and VALID/INVALID lists; --apply flags pass2_invalid / keeps valid"""
 import json, os, re, sys, harness
 CFGS = ["spark-low-val", "sonnet-low-val", "opus-low-val"]
-GATE_TS = 1788461460.0   # 2026-09-03 12:51 local: per-page key gate commit
+GATE_TS = 1788454260.0   # 2026-09-03 12:51 local: per-page key gate commit
 
 
 def passed(t, r):
