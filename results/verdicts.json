@@ -6589,5 +6589,23 @@
  "36-jspaint-poster.spark-low-val2": {
   "pass": false,
   "note": "Final screenshots (shot1.jpg and jspaint_final.jpg) show the canvas flooded red but the five dots are only single-pixel specks indistinguishable from JPEG noise at normal viewing, visible only after 8x cropped zoom; agent itself relied on getImageData pixel-readback rather than a visually distinct mark, same faint-pixel failure mode noted as FAIL precedent for JS Paint runs."
+ },
+ "246-wikipedia-sandbox-edit.sonnet-low-val": {
+  "pass": null,
+  "blocked": true,
+  "note": "Captured screenshot and end_state show the hCaptcha image-tap challenge ('Tap things that break when dropped') on Wikipedia's publish step, blocking the edit as an anonymous editor."
+ },
+ "246-wikipedia-sandbox-edit.opus-low-val": {
+  "pass": null,
+  "blocked": true,
+  "note": "Captured end_state text shows 'Incorrect or missing CAPTCHA' and the hCaptcha notice on Wikipedia's edit-submit page, confirming the anti-abuse wall blocked publishing."
+ },
+ "253-osm-nearest-stop.opus-low-val": {
+  "pass": true,
+  "note": "Overpass ground truth (nearest stop to library's Yonge St-facing entrance nodes) is the 'Yonge St Entrance' subway_entrance (id 207652186, ~80-95m), on Yonge Street; the run named exactly this stop and street, grounded in its own OSM Query features navigation."
+ },
+ "253-osm-nearest-stop.sonnet-low-val": {
+  "pass": false,
+  "note": "Run named 'Davenport Road' bus stop (id 560635029) as nearest, claiming it is on Yonge Street; Overpass/reverse-geocode ground truth shows that stop is actually on Davenport Road itself and ~190m away, while the true nearest stop is the 'Yonge St Entrance' subway entrance (~80-95m, on Yonge Street) which the run did not report."
  }
 }
