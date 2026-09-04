@@ -798,3 +798,10 @@ PR, correct answer "none exists") passed for all three, API-verified: saturated.
 E2: 190 Maps nearby filters: both Claude configs passed on retry (the live results had changed: no open pharmacy
 rated 4.0+, and both reported that correctly), so INVALID under pass@2. Live-site tasks with time-varying answers
 are inherently noisy for this test.
+
+### Iteration G: three tracking clips, Calendar hours, Maps transit compare
+
+196 turn count HOLDS (Sonnet 8 for 9 then 5 for 6; Spark twice by probing), 198 pen entry HOLDS (Sonnet 5 for 6
+then 1 for 3; Spark twice by probing), 197 checkout scans holds only via Spark's probing (both Claude configs
+exact). 204 (Calendar week hours): the week has no timed events, so all three answered zero; judged. 205 (Maps
+transit compare): the runs disagree on the fastest route's transfer count; judged against each run's evidence.
