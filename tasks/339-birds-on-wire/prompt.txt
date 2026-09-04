@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8973/ . It is a clip in a player (canvas video with play/pause, seek, 1 s and 
+10 s steps and playback speed; read frames from screenshots). It is a 2-minute garden recording of 
+birds landing on and leaving a wire. Report the maximum number of birds sitting on the wire at the 
+same moment, enter it in the form under the player and submit. Do NOT read the page source or call 
+the site's HTTP endpoints directly. End with the number.

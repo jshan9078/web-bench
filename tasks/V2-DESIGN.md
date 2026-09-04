@@ -977,3 +977,10 @@ queued for Sonnet afterwards. Validation basis unchanged: any config failing bot
 All six solved at pass@2 (shell game and ellipse centre failed once each). INVALID. Brief-visibility text,
 identical-object tracking through swaps, angle estimation, keyboard-only and hover-only UIs do not hold against
 Sonnet 5 low either.
+
+### Iteration W (Sonnet 5 low): clock grid, fine gauge, corner click, clock at event, parallel pairs, week free time
+
+All six solved at pass@2 (clock grid failed once: 8:00 for 10:00). INVALID. Fine geometry and clock reading no
+longer separate Sonnet 5 low either; every validated task since the switch comes from tracking over video.
+Batch Z: eight more clips in new settings (ticker, scoreboard, elevator, chat stream, red-light runners, slide deck,
+forklift trips, birds on a wire).

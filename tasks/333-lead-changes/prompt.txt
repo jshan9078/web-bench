@@ -1,0 +1,7 @@
+Open http://127.0.0.1:8967/ . It is a clip in a player (canvas video with play/pause, seek, 1 s and 
+10 s steps and playback speed; read frames from screenshots). It is a 2-minute arena scoreboard 
+recording (Hawks vs Otters); scores update every few seconds. Count exactly how many times the LEAD 
+changed hands during the clip (a tie that is then broken by the team that already led is not a 
+change; the first team to lead does not count as a change). Enter the number in the form under the 
+player and submit. Do NOT read the page source or call the site's HTTP endpoints directly. End with 
+the count.
