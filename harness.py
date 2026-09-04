@@ -522,7 +522,13 @@ def setup(task, run=None):
             create += ["--profile", bp]
     else:
         create.append("--ephemeral")
-    sid = subprocess.run(create, capture_output=True, text=True, env=ENV).stdout.strip()
+    sid = ""
+    for attempt in range(3):   # Linux workers occasionally see "Chromium exited before printing a DevTools URL"
+        cp = subprocess.run(create, capture_output=True, text=True, env=ENV); sid = cp.stdout.strip()
+        if sid: break
+        print(f"setup: session create failed (attempt {attempt + 1}): {cp.stderr.strip()[:200]}", file=sys.stderr); time.sleep(3)
+    if not sid:
+        sys.exit("setup failed: no browser session (the run must not proceed with an empty session id)")
     # cart tasks: start from a clean cart and snapshot the BEFORE state (harness-owned unique filename,
     # keyed to this run — no reliance on the agent to name files). All of this is before t0 so it is
     # excluded from the run's metrics.
