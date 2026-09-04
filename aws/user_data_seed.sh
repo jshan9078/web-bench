@@ -9,7 +9,7 @@ curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && apt-get install -y 
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip && unzip -q /tmp/awscliv2.zip -d /tmp && /tmp/aws/install
 sudo -u ubuntu bash -lc '
   set -eux; cd ~
-  pip3 install --break-system-packages --user pillow numpy boto3 "botocore[crt]"
+  pip3 install --break-system-packages --user pillow numpy boto3 "botocore[crt]" websockets
   mkdir -p ~/.local/bin; echo "export PATH=\$HOME/.local/bin:\$PATH" >> ~/.bashrc
   curl -fsSL https://raw.githubusercontent.com/jshan9078/browser-automation-cli/main/install.sh | BROWSER_CLI_BIN=$HOME/.local/bin sh
   PATH=$HOME/.local/bin:$PATH browser install

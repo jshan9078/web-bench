@@ -850,7 +850,7 @@ def score(only=None):
              "blocked": blocked, "judge_note": note, "answer": b.get("answer"), **_metrics(b)}
         d = RES / task; d.mkdir(exist_ok=True)
         (d / f"{r['run']}.json").write_text(json.dumps(r, indent=1)); n += 1
-    pend = sum(1 for f in RES.glob("*/*.json") if json.loads(f.read_text()).get("needs_judge"))
+    pend = sum(1 for f in RES.glob("*/*.json") if not f.name.startswith("._") and json.loads(f.read_text()).get("needs_judge"))
     print(f"scored {n} run(s) -> results/  ({pend} awaiting LLM judgment; run `judge_manifest`)")
 
 

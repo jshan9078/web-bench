@@ -13,7 +13,7 @@ set -u; cd "$(dirname "$0")/.."; BUCKET=${BUCKET:-webbench-matrix-966239516827};
 export AWS_DEFAULT_REGION=$REGION; export MATRIX_STORE=s3://$BUCKET/final63
 case "${1:-status}" in
 bundle)
-  tar --exclude=./raw --exclude=./results/attempt1 --exclude=./results/voided --exclude=./results/matrix_store --exclude='*.mp4' --exclude='*.jpg' --exclude='*.png' --exclude=__pycache__ --exclude=./.git --exclude=./scratch --exclude=./archive --exclude='*.cpu.jsonl' -czf /tmp/web-bench.tar.gz .
+  COPYFILE_DISABLE=1 tar --exclude='._*' --exclude=.DS_Store --exclude=./raw --exclude=./results/attempt1 --exclude=./results/voided --exclude=./results/matrix_store --exclude='*.mp4' --exclude='*.jpg' --exclude='*.png' --exclude=__pycache__ --exclude=./.git --exclude=./scratch --exclude=./archive --exclude='*.cpu.jsonl' -czf /tmp/web-bench.tar.gz .
   aws s3 cp /tmp/web-bench.tar.gz s3://$BUCKET/bundle/web-bench.tar.gz && ls -la /tmp/web-bench.tar.gz ;;
 prereqs)
   aws iam get-role --role-name webbench-worker >/dev/null 2>&1 || {
