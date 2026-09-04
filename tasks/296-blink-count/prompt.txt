@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8940/ . It is a 1-minute control-panel clip in a player (canvas video with 
+play/pause, seek, 1 s and 10 s steps and playback speed; read frames from screenshots). Three lamps 
+blink on their own schedules; each blink lasts under a second. Count exactly how many times the 
+AMBER lamp blinked during the clip, enter the number in the form under the player and submit. Do 
+NOT read the page source or call the site's HTTP endpoints directly. End with the count.

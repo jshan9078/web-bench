@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8939/ . The page shows a 12x12 letter grid as an IMAGE at the top-left (read 
+it from screenshots; click with raw coordinates via click --at X,Y; screenshot pixels map 1:1). The 
+text under the grid names a hidden word that appears once, horizontally, vertically or diagonally, 
+forwards or backwards. Click the cell containing the word's FIRST letter (a red circle marks your 
+click; re-click to move it), then click Confirm. Do NOT read the page source or call the site's 
+HTTP endpoints directly. End with the cell you chose.

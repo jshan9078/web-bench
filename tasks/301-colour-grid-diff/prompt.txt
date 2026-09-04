@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8942/ . The page shows two 7x7 colour grids side by side as an IMAGE (read it 
+from screenshots). They are identical except one cell whose colour differs. Report that cell as row 
+letter plus column number (for example D3), enter it in the form and submit. Do NOT read the page 
+source or call the site's HTTP endpoints directly. End with the cell.

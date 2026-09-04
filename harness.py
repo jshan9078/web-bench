@@ -307,6 +307,12 @@ TASKS = {
     "288-tiny-targets": {"kind": "appstate", "app": "widgetapp/tinytarget.py", "port": 8936, "v2": True},
     "290-freeze-sum": {"kind": "appstate", "app": "widgetapp/freezesum.py", "port": 8937, "v2": True},
     "292-strip-order": {"kind": "appstate", "app": "widgetapp/striporder.py", "port": 8938, "v2": True},
+    "293-word-search": {"kind": "appstate", "app": "widgetapp/wordsearch.py", "port": 8939, "v2": True},
+    "296-blink-count": {"kind": "appstate", "app": "widgetapp/blinkcount.py", "port": 8940, "v2": True},
+    "297-perspective-sign": {"kind": "appstate", "app": "widgetapp/perspectivesign.py", "port": 8941, "v2": True},
+    "301-colour-grid-diff": {"kind": "appstate", "app": "widgetapp/griddiff.py", "port": 8942, "v2": True},
+    "303-symbol-tally": {"kind": "appstate", "app": "widgetapp/symboltally.py", "port": 8943, "v2": True},
+    "304-connect-the-numbers": {"kind": "appstate", "app": "widgetapp/connectdots.py", "port": 8944, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

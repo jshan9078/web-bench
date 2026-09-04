@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8943/ . The page shows an IMAGE of about 180 small symbols (stars, circles, 
+squares, triangles, diamonds) in random colours and rotations (read it from screenshots). Count 
+exactly how many STARS there are, enter the number in the form and submit. Do NOT read the page 
+source or call the site's HTTP endpoints directly. End with the count.

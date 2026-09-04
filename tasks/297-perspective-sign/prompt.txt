@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8941/ . The page shows a street photo with a road sign seen at a steep angle 
+(read it from screenshots). The question under the photo names a destination; report the distance 
+in km shown for it on the sign, enter it in the form and submit. Do NOT read the page source or 
+call the site's HTTP endpoints directly. End with the distance.
