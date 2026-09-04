@@ -1,0 +1,7 @@
+Open English Wikipedia's sandbox page (https://en.wikipedia.org/wiki/Wikipedia:Sandbox) and edit it 
+(no account needed; use the source editor if the visual editor does not load). Add a new line at 
+the END of the page with exactly this text: "webbench check: harbor 4471" and publish the edit with 
+the edit summary "webbench test line". Then open the page's View history and confirm your edit 
+appears as the latest revision. Do not remove or change anything else on the page. If an edit is 
+blocked by a CAPTCHA or a protection notice, say exactly what appeared instead of working around 
+it. End with the revision timestamp shown in the history.

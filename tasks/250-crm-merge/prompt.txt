@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8911/ . It is a CRM contacts list. One person appears twice with the same 
+email address. Find the two duplicate records and merge them into one record that keeps the phone 
+number from the more recently created record and the created date from the older record (other 
+fields may come from either). Do not change or delete any other contact. Do NOT read the page 
+source or call the site's HTTP endpoints directly. End with the merged contact's name, phone and 
+created date.

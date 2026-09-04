@@ -1,0 +1,7 @@
+Open http://127.0.0.1:8909/ . It is a document editor (a contenteditable page with a toolbar; 
+select text with the keyboard, for example Shift+End or Shift+ArrowRight, or with the mouse). Make 
+exactly these changes: (1) make the words "vendor shortlist" in the first paragraph bold; (2) turn 
+the line "Budget review" into a Heading 2; (3) insert a bullet list with three items, Flights, 
+Hotels, Meals, in that order, directly after the paragraph about travel receipts (before the 
+"Questions" paragraph). Change nothing else, then click Save. Do NOT read the page source or call 
+the site's HTTP endpoints directly. End with a one-line confirmation.

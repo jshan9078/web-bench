@@ -271,6 +271,15 @@ TASKS = {
     "243-atm-cash": {"kind": "appstate", "app": "widgetapp/atmqueue.py", "port": 8906, "v2": True, "pass2_invalid": True},
     "244-dog-park": {"kind": "appstate", "app": "widgetapp/dogpark.py", "port": 8907, "v2": True},
     "245-recycling-sort": {"kind": "appstate", "app": "widgetapp/recyclesort.py", "port": 8908, "v2": True, "pass2_invalid": True},
+    # ---- v4 (2026-09-04): browser control and navigation, validated on Sonnet 5 low and Opus 5 low
+    "246-wikipedia-sandbox-edit": {"kind": "judge", "v2": True},
+    "247-rich-text-format": {"kind": "appstate", "app": "widgetapp/richtext.py", "port": 8909, "v2": True},
+    "248-flight-booking": {"kind": "appstate", "app": "widgetapp/flightbook.py", "port": 8912, "v2": True},
+    "249-inbox-triage": {"kind": "appstate", "app": "widgetapp/inboxtriage.py", "port": 8910, "v2": True},
+    "250-crm-merge": {"kind": "appstate", "app": "widgetapp/crmmerge.py", "port": 8911, "v2": True},
+    "251-edit-conflict": {"kind": "appstate", "app": "widgetapp/conflictform.py", "port": 8913, "v2": True},
+    "252-keyboard-datagrid": {"kind": "appstate", "app": "widgetapp/datagrid.py", "port": 8914, "v2": True},
+    "253-osm-nearest-stop": {"kind": "judge", "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -645,7 +654,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu", "__book", "__merge", "__edit", "__bulk")
 
 
 def widget_bypass(bundle):

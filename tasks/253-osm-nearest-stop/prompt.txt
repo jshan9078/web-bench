@@ -1,0 +1,6 @@
+Open OpenStreetMap (https://www.openstreetmap.org), search for "Toronto Reference Library" and 
+centre the map on it. Using the map and its Query features tool (the question-mark icon in the 
+right toolbar, then click a feature) or by zooming in and reading the map, find the nearest public 
+transport stop (bus, streetcar or subway entrance) to the library's main entrance on Yonge Street, 
+and report the stop's name as shown in OpenStreetMap and which street it is on. Read everything 
+from the site; do not guess. End with the stop name and street.
