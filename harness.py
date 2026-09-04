@@ -286,7 +286,7 @@ TASKS = {
     "257-team-calendar-slot": {"kind": "appstate", "app": "widgetapp/teamcal.py", "port": 8918, "v2": True, "pass2_invalid": True},
     "259-shop-variants": {"kind": "appstate", "app": "widgetapp/shopvariants.py", "port": 8919, "v2": True, "pass2_invalid": True},
     "260-survey-builder": {"kind": "appstate", "app": "widgetapp/formbuilder.py", "port": 8920, "v2": True, "pass2_invalid": True},
-    "262-github-blame": {"kind": "judge", "v2": True},
+    "262-github-blame": {"kind": "judge", "v2": True, "pass2_invalid": True},
     "263-multi-page-checkout": {"kind": "appstate", "app": "widgetapp/checkoutflow.py", "port": 8921, "v2": True},
     "264-password-reset": {"kind": "appstate", "app": "widgetapp/pwreset.py", "port": 8922, "v2": True},
     "265-timesheet-entry": {"kind": "appstate", "app": "widgetapp/timesheet.py", "port": 8923, "v2": True},

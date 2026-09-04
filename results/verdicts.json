@@ -6607,5 +6607,13 @@
  "253-osm-nearest-stop.sonnet-low-val": {
   "pass": false,
   "note": "Run named 'Davenport Road' bus stop (id 560635029) as nearest, claiming it is on Yonge Street; Overpass/reverse-geocode ground truth shows that stop is actually on Davenport Road itself and ~190m away, while the true nearest stop is the 'Yonge St Entrance' subway entrance (~80-95m, on Yonge Street) which the run did not report."
+ },
+ "262-github-blame.sonnet-low-val": {
+  "pass": true,
+  "note": "Reported 0ec7f71/pgjones/Aug 19 2023 matches ground truth (gh graphql blame confirms committer date Aug 19 2023, author date Jun 11 2023 but blame UI displays committer date); requests_log shows navigation to blame view, scroll/eval on line 633, and commit page. [judge: sonnet batch-262]"
+ },
+ "262-github-blame.opus-low-val": {
+  "pass": true,
+  "note": "Reported 0ec7f71/pgjones/Aug 19 2023 matches ground truth; requests_log shows navigation to blame view at #L633 and the commit page confirming hash/author/date. [judge: sonnet batch-262]"
  }
 }
