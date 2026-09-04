@@ -239,6 +239,12 @@ TASKS = {
     "208-red-crossers": {"kind": "appstate", "app": "widgetapp/redcrossers.py", "port": 8876, "v2": True},
     "210-tray-racks": {"kind": "appstate", "app": "widgetapp/trayracks.py", "port": 8877, "v2": True},
     "211-bus-boarding": {"kind": "appstate", "app": "widgetapp/busboard.py", "port": 8878, "v2": True},
+    "213-github-reopened-issue": {"kind": "judge", "v2": True},
+    "214-gmaps-cycle-savings": {"kind": "judge", "v2": True},
+    "216-forklift-trips": {"kind": "appstate", "app": "widgetapp/forklift.py", "port": 8879, "v2": True},
+    "217-queue-leavers": {"kind": "appstate", "app": "widgetapp/queueleavers.py", "port": 8880, "v2": True},
+    "218-vending-dispensed": {"kind": "appstate", "app": "widgetapp/vending.py", "port": 8882, "v2": True},
+    "219-no-parking": {"kind": "appstate", "app": "widgetapp/noparking.py", "port": 8881, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

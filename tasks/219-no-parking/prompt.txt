@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8881/ . It is a 2-minute street camera clip in a player (canvas video with 
+play/pause, seek, 1 s and 10 s steps and playback speed; read frames from screenshots). Cars arrive 
+from the left; some park in the marked bays, some stop in the hatched NO PARKING zone, and some 
+just drive past without stopping. Count exactly how many different cars stopped in the NO PARKING 
+zone during the clip, enter the number in the form under the player and submit. Do NOT read the 
+page source or call the site's HTTP endpoints directly. End with the count.
