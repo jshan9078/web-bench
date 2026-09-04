@@ -1006,3 +1006,16 @@ merged on 03-18. Second attempt queued (X2).
 VALID: 327 bike lane (6 and 12 for 19: cyclists cross in about 2 s among pedestrians) and 331 counter pickups
 (4 for 11, 8 for 9: attributing brief pickups to one of three actors). Solved at pass@2: crosswalk signal (8 for 9,
 then exact), drone landings, parking lot, ball bins. Validated set: 36.
+
+### 2026-09-04: two-tier final set
+
+The pass@2 filter leaves no forms, multi-page flows, keyboard-only, hover, iframe or scrolling tasks in the
+validated set, because every config solves them. For a benchmark about real browser work those properties must
+still be measured, so the final set has two tiers, reported separately:
+
+- Core tier (results/core_set.json, 27 tasks): deterministic browser-control workflows that every config passed at
+  pass@2, grouped by property (forms and multi-page flows; data editing, tables and validation; triage and
+  scheduling; input modalities: keyboard, hover, precision, canvas; embedding and layout: iframes, shadow DOM,
+  nested scroll; real-site navigation). It is the competence floor: a good agent should score near 100%.
+- Discriminating tier (results/validated_set.json, target 60): tasks some config fails on both attempts. It leans on
+  perception over time (video tracking, exact counting, fine reading) because that is where current models fail.

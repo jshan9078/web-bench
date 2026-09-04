@@ -1,0 +1,211 @@
+{
+ "247-rich-text-format": {
+  "property": "data editing, tables and validation",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "250-crm-merge": {
+  "property": "data editing, tables and validation",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "251-edit-conflict": {
+  "property": "data editing, tables and validation",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "252-keyboard-datagrid": {
+  "property": "data editing, tables and validation",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "255-config-editor": {
+  "property": "data editing, tables and validation",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "270-shadow-iframe-form": {
+  "property": "embedding and layout: iframes, shadow DOM, nested scroll",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "274-nested-scroll-code": {
+  "property": "embedding and layout: iframes, shadow DOM, nested scroll",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "248-flight-booking": {
+  "property": "forms and multi-page flows",
+  "kind": "appstate",
+  "pass2": {
+   "opus-low-val": true
+  }
+ },
+ "260-survey-builder": {
+  "property": "forms and multi-page flows",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "263-multi-page-checkout": {
+  "property": "forms and multi-page flows",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "264-password-reset": {
+  "property": "forms and multi-page flows",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true
+  }
+ },
+ "265-timesheet-entry": {
+  "property": "forms and multi-page flows",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "254-map-pan-find": {
+  "property": "input modalities: keyboard, hover, precision, canvas",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "271-moving-target": {
+  "property": "input modalities: keyboard, hover, precision, canvas",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "288-tiny-targets": {
+  "property": "input modalities: keyboard, hover, precision, canvas",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "304-connect-the-numbers": {
+  "property": "input modalities: keyboard, hover, precision, canvas",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "311-keyboard-only": {
+  "property": "input modalities: keyboard, hover, precision, canvas",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true
+  }
+ },
+ "312-hover-menu": {
+  "property": "input modalities: keyboard, hover, precision, canvas",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true
+  }
+ },
+ "262-github-blame": {
+  "property": "real-site navigation",
+  "kind": "judge",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "269-github-compare-tags": {
+  "property": "real-site navigation",
+  "kind": "judge",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "319-github-first-release": {
+  "property": "real-site navigation",
+  "kind": "judge",
+  "pass2": {
+   "sonnet-low-val": true
+  }
+ },
+ "321-wiki-last-2024-edit": {
+  "property": "real-site navigation",
+  "kind": "judge",
+  "pass2": {
+   "sonnet-low-val": true
+  }
+ },
+ "249-inbox-triage": {
+  "property": "triage and scheduling workflows",
+  "kind": "appstate",
+  "pass2": {
+   "opus-low-val": true
+  }
+ },
+ "256-helpdesk-escalate": {
+  "property": "triage and scheduling workflows",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "257-team-calendar-slot": {
+  "property": "triage and scheduling workflows",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "259-shop-variants": {
+  "property": "triage and scheduling workflows",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ },
+ "267-gallery-tagging": {
+  "property": "triage and scheduling workflows",
+  "kind": "appstate",
+  "pass2": {
+   "sonnet-low-val": true,
+   "opus-low-val": true
+  }
+ }
+}
