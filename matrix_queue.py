@@ -145,6 +145,13 @@ def cmd_heartbeat(S, args):
 
 def cmd_complete(S, args, quiet=False):
     t, l, w = args[:3]; k = key(t, l)
+    if w != "local-import":
+        # the lease must still be ours: a worker whose lease was reclaimed (hung > LEASE_S) must not overwrite the
+        # reclaiming worker's run; its artifacts are kept aside for audit instead
+        cl = json.loads(S.get(f"claims/{k}") or b"{}")
+        if cl.get("worker") not in (None, w):
+            for f in glob.glob(f"raw/{t}.{l}.*") + glob.glob(f"results/{t}/{l}.*"): S.put_file(f"attempts/{k}/orphan-{w}/{os.path.basename(f)}", f); os.remove(f)
+            print("lease lost to", cl.get("worker"), "; artifacts set aside"); return
     if "--blocked" in args or "--error" in args:
         fk = "failed/" + k if "--error" in args else "blocked/" + k; prev = json.loads(S.get(fk) or b"{}"); n = prev.get("attempts", prev.get("count", 0)) + 1
         msg = args[args.index("--error") + 1] if "--error" in args else "bot wall"
