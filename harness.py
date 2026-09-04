@@ -331,6 +331,12 @@ TASKS = {
     "322-intersection-peak": {"kind": "appstate", "app": "widgetapp/intersectionpeak.py", "port": 8957, "v2": True},
     "323-two-lane-defects": {"kind": "appstate", "app": "widgetapp/twolanebelt.py", "port": 8958, "v2": True},
     "324-room-peak": {"kind": "appstate", "app": "widgetapp/roompeak.py", "port": 8959, "v2": True},
+    "326-crosswalk-signal": {"kind": "appstate", "app": "widgetapp/crosswalksignal.py", "port": 8960, "v2": True},
+    "327-bike-lane": {"kind": "appstate", "app": "widgetapp/bikelane.py", "port": 8961, "v2": True},
+    "328-drone-landings": {"kind": "appstate", "app": "widgetapp/dronepads.py", "port": 8962, "v2": True},
+    "329-parking-lot": {"kind": "appstate", "app": "widgetapp/parkinglot.py", "port": 8963, "v2": True},
+    "330-ball-bins": {"kind": "appstate", "app": "widgetapp/ballbins.py", "port": 8964, "v2": True},
+    "331-counter-pickups": {"kind": "appstate", "app": "widgetapp/counterpickups.py", "port": 8965, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8961/ . It is a clip in a player (canvas video with play/pause, seek, 1 s and 
+10 s steps and playback speed; read frames from screenshots). It shows a shared path for 2 minutes 
+with cyclists (two wheels) and pedestrians passing in both directions across a dashed yellow marker 
+line. Count exactly how many CYCLISTS passed the marker line, enter the number in the form under 
+the player and submit. Do NOT read the page source or call the site's HTTP endpoints directly. End 
+with the count.
