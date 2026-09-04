@@ -845,3 +845,10 @@ both destinations) judged separately; Spark's 213 run hit the budget with no ans
 Judged: 214 (Maps cycling savings) passed for all three, a correct tie: INVALID. 213 (most recently reopened
 issue): Opus correct once the ground truth excludes pull requests; Sonnet reported the close date and hedged;
 Spark produced no answer inside the budget. Retries queued for Sonnet and Spark (I2).
+
+### Iteration J: six tracking clips
+
+222 escalator up (Sonnet 17 for 16, then 16 for 17), 223 goal shots (Sonnet 5 for 9, then 12 for 13) and 225
+library returns (Sonnet 14 for 17 then 10 for 12; Spark no answer then 16 for 13) HOLD. 220 ferry boarding, 221
+drone drops and 224 crane lifts were solved by all three: INVALID. Under the state-only rule the validated set
+stands at 20.

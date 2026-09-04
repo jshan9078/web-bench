@@ -245,11 +245,11 @@ TASKS = {
     "217-queue-leavers": {"kind": "appstate", "app": "widgetapp/queueleavers.py", "port": 8880, "v2": True},
     "218-vending-dispensed": {"kind": "appstate", "app": "widgetapp/vending.py", "port": 8882, "v2": True, "pass2_invalid": True},
     "219-no-parking": {"kind": "appstate", "app": "widgetapp/noparking.py", "port": 8881, "v2": True, "pass2_invalid": True},
-    "220-ferry-boarding": {"kind": "appstate", "app": "widgetapp/ferrycars.py", "port": 8883, "v2": True},
-    "221-drone-drops": {"kind": "appstate", "app": "widgetapp/dronedrops.py", "port": 8884, "v2": True},
+    "220-ferry-boarding": {"kind": "appstate", "app": "widgetapp/ferrycars.py", "port": 8883, "v2": True, "pass2_invalid": True},
+    "221-drone-drops": {"kind": "appstate", "app": "widgetapp/dronedrops.py", "port": 8884, "v2": True, "pass2_invalid": True},
     "222-escalator-up": {"kind": "appstate", "app": "widgetapp/escalator.py", "port": 8885, "v2": True},
     "223-goal-shots": {"kind": "appstate", "app": "widgetapp/goalshots.py", "port": 8886, "v2": True},
-    "224-crane-lifts": {"kind": "appstate", "app": "widgetapp/cranelifts.py", "port": 8887, "v2": True},
+    "224-crane-lifts": {"kind": "appstate", "app": "widgetapp/cranelifts.py", "port": 8887, "v2": True, "pass2_invalid": True},
     "225-library-returns": {"kind": "appstate", "app": "widgetapp/libraryreturns.py", "port": 8888, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
