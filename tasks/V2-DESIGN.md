@@ -872,3 +872,8 @@ and 231 car wash resolved per the table below; 227 bin pickup solved by all thre
 
 233 bag belt (all three fail twice), 234 hand hygiene (Sonnet twice) and 235 tennis serves (Spark and Sonnet
 twice) HOLD; 232 toll booth, 236 bike dock and 237 barrier reversals solved by all three on retry (INVALID).
+
+233 bag belt was VOIDED after inspection: bags placed at similar belt phases overlapped for the whole clip (the
+end frame showed 7 distinct bags for an answer of 8), so the count was not legitimately readable. Fixed (phases
+evenly spaced with jitter, at least 7 percent of the loop apart) and re-run as iteration M. Until then the
+validated set is 29.
