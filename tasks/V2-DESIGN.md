@@ -971,3 +971,9 @@ Opus 5 low fails only 5 of 155 v2 tasks at pass@2 (4 video clips, 1 GitHub trace
 nothing. The user decided to shift the pilot to Sonnet 5 low, whose double failures are concentrated in
 tracking-over-video clips. V restarted on Sonnet; W, R2 and X follow; U2 (batch U) and S2 (batches S and T) are
 queued for Sonnet afterwards. Validation basis unchanged: any config failing both attempts.
+
+### Iteration V (Sonnet 5 low): plate read, shell game, angle read, ellipse centre, keyboard-only list, hover menu
+
+All six solved at pass@2 (shell game and ellipse centre failed once each). INVALID. Brief-visibility text,
+identical-object tracking through swaps, angle estimation, keyboard-only and hover-only UIs do not hold against
+Sonnet 5 low either.
