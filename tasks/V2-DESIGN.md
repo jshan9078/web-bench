@@ -862,3 +862,8 @@ Only two v1 pairs had failed at pass@1 among Spark 1.2 low, Sonnet 5 low and Opu
 Sonnet passed on retry (INVALID as a discriminator for these configs). 36 JS Paint poster: Spark failed again
 (single-pixel dots, indistinguishable from noise): HOLDS. So the v1 set contributes 1 task under this rule, for a
 combined validated set of 22 (21 v2 + JS Paint).
+
+### Iteration K: six clips
+
+226 fare gates (Sonnet twice) and 228 pool pots (Sonnet and Opus twice) HOLD; 229 bridge boats, 230 coffee cups
+and 231 car wash resolved per the table below; 227 bin pickup solved by all three (INVALID).

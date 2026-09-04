@@ -252,7 +252,7 @@ TASKS = {
     "224-crane-lifts": {"kind": "appstate", "app": "widgetapp/cranelifts.py", "port": 8887, "v2": True, "pass2_invalid": True},
     "225-library-returns": {"kind": "appstate", "app": "widgetapp/libraryreturns.py", "port": 8888, "v2": True},
     "226-fare-gates": {"kind": "appstate", "app": "widgetapp/fareevaders.py", "port": 8889, "v2": True},
-    "227-bin-pickup": {"kind": "appstate", "app": "widgetapp/binpickup.py", "port": 8890, "v2": True},
+    "227-bin-pickup": {"kind": "appstate", "app": "widgetapp/binpickup.py", "port": 8890, "v2": True, "pass2_invalid": True},
     "228-pool-pots": {"kind": "appstate", "app": "widgetapp/pooltable.py", "port": 8891, "v2": True},
     "229-bridge-boats": {"kind": "appstate", "app": "widgetapp/liftbridge.py", "port": 8892, "v2": True},
     "230-coffee-cups": {"kind": "appstate", "app": "widgetapp/coffeeorders.py", "port": 8893, "v2": True},
