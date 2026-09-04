@@ -15,7 +15,7 @@ ROWS = 12; COLS = "ABCDEF"
 
 
 def reset():
-    S["booking"] = None; S["date"] = random.choice(["2026-10-14", "2026-10-21", "2026-11-04"]); random.seed(None)
+    S["booking"] = None; S["date"] = "2026-10-21"
     S["taken"] = sorted(random.sample([f"{r}{c}" for r in range(1, ROWS + 1) for c in COLS], 40))
 
 
@@ -43,7 +43,7 @@ def state():
         ok = (b.get("flight") == "HB205" and b.get("fare") == "Standard" and b.get("date") == S["date"] and int(b.get("adults", 0)) == 2
               and len(seats) == 2 and adj(seats[0], seats[1]) and not any(s in S["taken"] for s in seats)
               and sorted(p.get("name", "").strip().lower() for p in (b.get("pax") or [])) == ["ana silva", "tomas berg"])
-    return {"booking": b, "date": S["date"], "complete": ok}
+    return {"booking": b, "date": S["date"], "taken": S["taken"], "complete": ok}
 
 
 PAGE = r"""<!doctype html><meta charset=utf-8><title>Harbor Air, book</title>

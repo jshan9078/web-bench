@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import base
 THREADS = [
  {"id": 1, "from": "Northwind Weekly <news@northwind.example>", "subj": "Weekly digest: 12 new features", "msgs": ["Here is what shipped this week..."], "kind": "newsletter"},
- {"id": 2, "from": "Dana Ferreira <dana@northwind.example>", "subj": "Status update for the board pack?", "msgs": ["Hi, can you send me a status update on Harbor by end of day? Thanks, Dana (Manager)"], "kind": "manager"},
+ {"id": 2, "from": "Dana Ferreira <dana@northwind.example>", "subj": "Status update for the board pack?", "msgs": ["Hi, can you send me a quick status update on Harbor when you get a chance? Thanks, Dana (Manager)"], "kind": "manager"},
  {"id": 3, "from": "Acme Billing <billing@acme.example>", "subj": "Invoice INV-4471 attached", "msgs": ["Please find invoice INV-4471 for August services."], "kind": "invoice"},
  {"id": 4, "from": "Priya Nair <priya@northwind.example>", "subj": "Can you review the spec by Thursday?", "msgs": ["Could you review the attached spec and reply by Thursday?"], "kind": "deadline"},
  {"id": 5, "from": "Tomas Berg <tomas@northwind.example>", "subj": "Need your sign-off by Friday", "msgs": ["Please sign off the vendor list by Friday.", "Update: never mind, Dana already signed it off. No action needed."], "kind": "cancelled"},

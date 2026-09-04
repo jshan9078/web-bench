@@ -23,7 +23,11 @@ def post(path, data, ctype):
     return None
 
 
-def norm(h): return re.sub(r"\s+", " ", re.sub(r"<br\s*/?>", "", h)).replace("<strong>", "<b>").replace("</strong>", "</b>").strip()
+def norm(h):
+    h = re.sub(r"<br\s*/?>", "", h).replace("<strong>", "<b>").replace("</strong>", "</b>")
+    h = re.sub(r"<p>\s*(<ul>.*?</ul>)\s*</p>", r"\1", h, flags=re.S)      # editors often wrap an inserted list in a <p>
+    h = re.sub(r"<p>\s*</p>", "", h)
+    return re.sub(r"\s+", " ", h).strip()
 
 
 def state():

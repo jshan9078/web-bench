@@ -912,3 +912,13 @@ Batches in flight: P (Wikipedia sandbox edit, rich text, flight booking, inbox t
 keyboard grid, OSM nearest stop), Q (map pan, config editor, helpdesk, team calendar, shop variants, survey builder,
 GitHub blame), R (checkout, password reset, timesheet, gallery tagging, GitHub compare), S (shadow/iframe form,
 moving target, line trace, maze exit, nested scroll, memory pairs, intersections, hue order).
+
+### Iteration P: browser-control batch 1
+
+250 CRM merge, 251 edit conflict and 252 keyboard grid: solved by both configs (INVALID). 247 rich text: three of four
+runs produced the right document with the list wrapped in a stray <p> (what the browser's own editor emits), which
+the checker wrongly rejected; checker fixed and runs re-scored (Sonnet's second attempt bolded the period too:
+that one stays a fail). 248 flight booking: the task itself was wrong (random target date vs a fixed date in the
+prompt); fixed and re-run. 249 inbox triage: the manager's "by end of day" made the star rule ambiguous; wording
+fixed and re-run. 246 Wikipedia sandbox edit: hCaptcha blocks anonymous publishing, recorded as an environment
+wall. 253 OSM nearest stop: judged against Overpass.
