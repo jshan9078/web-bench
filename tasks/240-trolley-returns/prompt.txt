@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8903/ . It is a 2-minute supermarket car park camera clip in a player (canvas 
+video with play/pause, seek, 1 s and 10 s steps and playback speed; read frames from screenshots). 
+Shoppers push trolleys from the bay (top left) to their cars; afterwards some return the trolley to 
+the bay and others leave it beside the car. Count exactly how many trolleys were left by a car 
+instead of returned, enter the number in the form under the player and submit. Do NOT read the page 
+source or call the site's HTTP endpoints directly. End with the count.
