@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8916/ . It is a web code editor holding a JSON config (it auto-indents on 
+Enter and auto-closes brackets and quotes as you type, like an IDE). Make exactly these changes: 
+set "retries" to 5, set features.tracing to true, and add "ap-south-1" as the last entry of the 
+regions list. Keep the file valid JSON and change nothing else, then Save (the editor reports Saved 
+or a JSON error). Do NOT read the page source or call the site's HTTP endpoints directly. End with 
+a one-line confirmation.

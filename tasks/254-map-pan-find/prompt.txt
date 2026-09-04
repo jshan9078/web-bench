@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8915/ . It is a web map drawn on a canvas (read it from screenshots): pan 
+with the arrow buttons or arrow keys after clicking the map, zoom with the +/- buttons; street 
+names show from zoom 2 and place names from zoom 3. The form under the map names a place to find. 
+Explore the map until you find it, then enter the street it is on (an east-west street such as King 
+St) and the cross street at its corner (an avenue such as 3rd Ave) in the form and submit. Do NOT 
+read the page source or call the site's HTTP endpoints directly. End with the two street names.

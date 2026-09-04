@@ -280,6 +280,13 @@ TASKS = {
     "251-edit-conflict": {"kind": "appstate", "app": "widgetapp/conflictform.py", "port": 8913, "v2": True},
     "252-keyboard-datagrid": {"kind": "appstate", "app": "widgetapp/datagrid.py", "port": 8914, "v2": True},
     "253-osm-nearest-stop": {"kind": "judge", "v2": True},
+    "254-map-pan-find": {"kind": "appstate", "app": "widgetapp/mapapp.py", "port": 8915, "v2": True},
+    "255-config-editor": {"kind": "appstate", "app": "widgetapp/codeeditor.py", "port": 8916, "v2": True},
+    "256-helpdesk-escalate": {"kind": "appstate", "app": "widgetapp/helpdesk.py", "port": 8917, "v2": True},
+    "257-team-calendar-slot": {"kind": "appstate", "app": "widgetapp/teamcal.py", "port": 8918, "v2": True},
+    "259-shop-variants": {"kind": "appstate", "app": "widgetapp/shopvariants.py", "port": 8919, "v2": True},
+    "260-survey-builder": {"kind": "appstate", "app": "widgetapp/formbuilder.py", "port": 8920, "v2": True},
+    "262-github-blame": {"kind": "judge", "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -654,7 +661,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu", "__book", "__merge", "__edit", "__bulk")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu", "__book", "__merge", "__edit", "__bulk", "__create", "__cart", "__publish")
 
 
 def widget_bypass(bundle):

@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8918/ . It is a team calendar week view showing Dana's and Priya's events 
+(working hours 09:00-17:00; an amber bar marks an all-day out-of-office). Using the form under the 
+calendar, create a 45-minute event titled "Harbor sync" with BOTH Dana and Priya invited at the 
+EARLIEST time in the week when both are free for the full 45 minutes within working hours, skipping 
+any day where either is out of office. Create exactly one event. Do NOT read the page source or 
+call the site's HTTP endpoints directly. End with the day and start time.

@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8917/ . It is a helpdesk ticket queue with filters, sortable columns and a 
+detail pane. Find the OLDEST ticket (by created time) that is Open, from a Gold-tier customer, 
+mentions a refund in its subject, and has NO agent reply yet (open the ticket to check the 
+conversation). Update that ticket only: priority High, assignee Dana, internal note "Escalated per 
+refund policy", status Escalated. Do NOT read the page source or call the site's HTTP endpoints 
+directly. End with the ticket number.

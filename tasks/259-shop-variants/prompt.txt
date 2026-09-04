@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8919/ . It is a product page with size, colour and storage options; prices 
+differ by configuration and some configurations are out of stock (shown struck through once the 
+other options are picked). Add to the cart, with quantity 2 and promo code HARBOR10, the CHEAPEST 
+in-stock configuration that is size M or L, NOT red, and has at least 128 GB of storage. Do NOT 
+read the page source or call the site's HTTP endpoints directly. End with the configuration and the 
+cart total shown.
