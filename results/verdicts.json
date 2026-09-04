@@ -6615,5 +6615,13 @@
  "262-github-blame.opus-low-val": {
   "pass": true,
   "note": "Reported 0ec7f71/pgjones/Aug 19 2023 matches ground truth; requests_log shows navigation to blame view at #L633 and the commit page confirming hash/author/date. [judge: sonnet batch-262]"
+ },
+ "269-github-compare-tags.sonnet-low-val": {
+  "pass": true,
+  "note": "API truth confirmed: 34 commits, 44 files, last commit 7fff56f davidism 'release version 3.1.1'; run navigated to compare URL, end_state text shows page verbatim matching (Commits 34, Files changed 44), commit list extracted via eval matches [judge: sonnet batch-269]"
+ },
+ "269-github-compare-tags.opus-low-val": {
+  "pass": true,
+  "note": "API truth confirmed: 34 commits, 44 files, last commit 7fff56f davidism 'release version 3.1.1'; run navigated to compare URL, end_state text shows page verbatim matching (Commits 34, Files changed 44) [judge: sonnet batch-269]"
  }
 }

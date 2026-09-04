@@ -937,3 +937,11 @@ Per-config attempt-1 pass rates over the 185 tasks all three configs ran: Opus 5
 Sonnet 5 low 84%. The user decided that further runs use Opus 5 low only and that a task counts as validated when
 ANY config has failed it on both pass@2 attempts (earlier Sonnet and Spark evidence is kept). v2_validated.py
 recomputes results/validated_set.json on that basis. Iteration R's pending Sonnet reruns were cancelled.
+
+### Iteration R: browser-control batch 3
+
+263 checkout, 265 timesheet, 267 gallery tagging: both configs passed at attempt 1 (INVALID). 269 GitHub compare
+tags: both passed (judged against the compare API). 264 password reset: every run failed, but the failure was
+ours: the app's password-set endpoint was named /__reset, which collides with the harness's own reset endpoint
+(harness-secret only), so the page's submit got 403 and showed nothing. Endpoint renamed to /__setpw; all 264
+runs voided (raw/voided, results/voided) and the task re-queued on Opus 5 low.
