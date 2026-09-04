@@ -258,7 +258,7 @@ TASKS = {
     "230-coffee-cups": {"kind": "appstate", "app": "widgetapp/coffeeorders.py", "port": 8893, "v2": True},
     "231-car-wash": {"kind": "appstate", "app": "widgetapp/carwash.py", "port": 8894, "v2": True},
     "232-toll-booth": {"kind": "appstate", "app": "widgetapp/tollbooth.py", "port": 8895, "v2": True, "pass2_invalid": True},
-    "233-bag-belt": {"kind": "appstate", "app": "widgetapp/bagbelt.py", "port": 8896, "v2": True},
+    "233-bag-belt": {"kind": "appstate", "app": "widgetapp/bagbelt.py", "port": 8896, "v2": True, "pass2_invalid": True},
     "234-hand-hygiene": {"kind": "appstate", "app": "widgetapp/handwash.py", "port": 8897, "v2": True},
     "235-tennis-serves": {"kind": "appstate", "app": "widgetapp/tennisserves.py", "port": 8898, "v2": True},
     "236-bike-dock": {"kind": "appstate", "app": "widgetapp/bikedock.py", "port": 8899, "v2": True, "pass2_invalid": True},

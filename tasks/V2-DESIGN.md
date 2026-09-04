@@ -877,3 +877,6 @@ twice) HOLD; 232 toll booth, 236 bike dock and 237 barrier reversals solved by a
 end frame showed 7 distinct bags for an answer of 8), so the count was not legitimately readable. Fixed (phases
 evenly spaced with jitter, at least 7 percent of the loop apart) and re-run as iteration M. Until then the
 validated set is 29.
+
+Iteration M (corrected 233 bag belt): Opus missed by one, then read it exactly on retry; Spark and Sonnet exact:
+INVALID. Validated set 29 (28 v2 + JS Paint). One more batch (N) of four clips follows to reach the target of 30.
