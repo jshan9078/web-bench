@@ -10,9 +10,9 @@ S = {"birds": [], "peak": 0}
 
 def reset():
     for _ in range(300):
-        birds = []
-        for _ in range(random.randint(16, 22)):
-            a = random.uniform(2, 108); birds.append({"t_in": round(a, 1), "t_out": round(min(DUR + 3, a + random.uniform(4, 30)), 1), "x": random.randint(60, 740), "col": random.choice(["#1c1917", "#44403c", "#7c2d12", "#374151"]), "ang": random.uniform(-1, 1)})
+        birds = []; slots = random.sample([60 + k * 31 for k in range(22)], 22)
+        for i in range(random.randint(16, 22)):
+            a = random.uniform(2, 108); birds.append({"t_in": round(a, 1), "t_out": round(min(DUR + 3, a + random.uniform(4, 30)), 1), "x": slots[i], "col": random.choice(["#1c1917", "#44403c", "#7c2d12", "#374151"]), "ang": random.uniform(-1, 1)})
         peak = max(sum(1 for c in birds if c["t_in"] <= x["t_in"] < c["t_out"]) for x in birds)
         if 6 <= peak <= 10: break
     S["birds"] = birds; S["peak"] = peak

@@ -21,7 +21,7 @@ def data(): return {"slides": S["slides"]}
 def answer(): return S["answer"]
 
 
-SCENE_JS = r"""function scene(t){cx.fillStyle='#f8fafc';cx.fillRect(0,0,800,450);var s=D.slides[0];D.slides.forEach(function(x){if(t>=x.t)s=x});cx.fillStyle='#1e3a8a';cx.fillRect(0,0,800,70);cx.fillStyle='#fff';cx.font='bold 28px system-ui';cx.fillText(s.title,30,48);
+SCENE_JS = r"""function scene(t){cx.fillStyle='#f8fafc';cx.fillRect(0,0,800,450);var s=D.slides[0];D.slides.forEach(function(x){if(t>=x.t)s=x});cx.fillStyle='#1e3a8a';cx.fillRect(0,0,800,70);cx.fillStyle='#fff';cx.font='bold 28px system-ui';cx.fillText(s.title,360,48);
  cx.fillStyle='#0f172a';cx.font='16px system-ui';['Region','Q1','Q2','Q3'].forEach(function(h,i){cx.fillText(h,80+i*160,130)});var tot=[0,0,0];s.rows.forEach(function(r,j){var y=175+j*40;cx.fillText(r[0],80,y);for(var i=1;i<4;i++){cx.fillText(r[i]+'k',80+i*160,y);tot[i-1]+=r[i]}});cx.font='bold 16px system-ui';cx.fillText('Total',80,345);for(var i=0;i<3;i++)cx.fillText(tot[i]+'k',240+i*160,345);
  cx.fillStyle='#94a3b8';cx.font='12px system-ui';cx.fillText('slide '+(D.slides.indexOf(s)+1)+' / '+D.slides.length,700,430);
  overlay(t,'TOWNHALL')}"""
