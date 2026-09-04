@@ -884,7 +884,10 @@ INVALID. Validated set 29 (28 v2 + JS Paint). One more batch (N) of four clips f
 ### Iteration N and final standing (2026-09-04)
 
 239 loading bay HOLDS (Sonnet 12 for 14 then 8 for 19; Spark 12 for 14 then exact); 238, 240, 241 solved on
-retry (INVALID). The validated set reaches the target: **30 tasks** where at least one of Spark 1.2 low, Sonnet 5
-low or Opus 5 low fails both attempts, under the state-only rule (endpoint probing is not a failure). The list is
-in results/validated_set.json. The v1 set contributes one (36 JS Paint poster, Spark); the other 29 are v2 tasks,
+retry (INVALID). Correction: 99 seat map does not hold under the state-only rule (Spark's first attempt reached the right pair while
+probing), so the validated set is **29 tasks** where at least one of Spark 1.2 low, Sonnet 5 low or Opus 5 low
+fails both attempts. The list is in results/validated_set.json. The v1 set contributes one (36 JS Paint poster,
+Spark); the other 28 are v2 tasks,
 dominated by tracking-over-video clips that Sonnet 5 low fails repeatedly and Opus 5 low fails on several.
+
+One more batch (O) of four clips runs to reach 30.
