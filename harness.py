@@ -263,10 +263,10 @@ TASKS = {
     "235-tennis-serves": {"kind": "appstate", "app": "widgetapp/tennisserves.py", "port": 8898, "v2": True},
     "236-bike-dock": {"kind": "appstate", "app": "widgetapp/bikedock.py", "port": 8899, "v2": True, "pass2_invalid": True},
     "237-barrier-reversals": {"kind": "appstate", "app": "widgetapp/barrierreverse.py", "port": 8900, "v2": True, "pass2_invalid": True},
-    "238-jaywalkers": {"kind": "appstate", "app": "widgetapp/pedxing.py", "port": 8901, "v2": True},
+    "238-jaywalkers": {"kind": "appstate", "app": "widgetapp/pedxing.py", "port": 8901, "v2": True, "pass2_invalid": True},
     "239-loading-bay": {"kind": "appstate", "app": "widgetapp/dockloading.py", "port": 8902, "v2": True},
-    "240-trolley-returns": {"kind": "appstate", "app": "widgetapp/lostcart.py", "port": 8903, "v2": True},
-    "241-printer-jams": {"kind": "appstate", "app": "widgetapp/printqueue.py", "port": 8904, "v2": True},
+    "240-trolley-returns": {"kind": "appstate", "app": "widgetapp/lostcart.py", "port": 8903, "v2": True, "pass2_invalid": True},
+    "241-printer-jams": {"kind": "appstate", "app": "widgetapp/printqueue.py", "port": 8904, "v2": True, "pass2_invalid": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

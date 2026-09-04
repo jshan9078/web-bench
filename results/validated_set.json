@@ -1,0 +1,94 @@
+{
+ "59-spot-difference": [
+  "spark-low-val"
+ ],
+ "90-dial-set": [
+  "sonnet-low-val"
+ ],
+ "118-odometer-read": [
+  "spark-low-val"
+ ],
+ "154-tower-clock": [
+  "spark-low-val"
+ ],
+ "167-github-issue-pr": [
+  "opus-low-val"
+ ],
+ "179-people-count": [
+  "sonnet-low-val"
+ ],
+ "184-queue-peak": [
+  "opus-low-val"
+ ],
+ "185-belt-defects": [
+  "opus-low-val"
+ ],
+ "191-direction-count": [
+  "sonnet-low-val"
+ ],
+ "192-parcel-sort": [
+  "sonnet-low-val"
+ ],
+ "193-door-events": [
+  "sonnet-low-val"
+ ],
+ "196-turn-count": [
+  "sonnet-low-val"
+ ],
+ "198-pen-entry": [
+  "sonnet-low-val"
+ ],
+ "208-red-crossers": [
+  "spark-low-val",
+  "sonnet-low-val"
+ ],
+ "211-bus-boarding": [
+  "sonnet-low-val"
+ ],
+ "213-github-reopened-issue": [
+  "spark-low-val"
+ ],
+ "217-queue-leavers": [
+  "sonnet-low-val"
+ ],
+ "222-escalator-up": [
+  "sonnet-low-val"
+ ],
+ "223-goal-shots": [
+  "sonnet-low-val"
+ ],
+ "225-library-returns": [
+  "spark-low-val",
+  "sonnet-low-val"
+ ],
+ "226-fare-gates": [
+  "sonnet-low-val"
+ ],
+ "228-pool-pots": [
+  "sonnet-low-val",
+  "opus-low-val"
+ ],
+ "229-bridge-boats": [
+  "sonnet-low-val"
+ ],
+ "230-coffee-cups": [
+  "sonnet-low-val",
+  "opus-low-val"
+ ],
+ "231-car-wash": [
+  "sonnet-low-val"
+ ],
+ "234-hand-hygiene": [
+  "sonnet-low-val"
+ ],
+ "235-tennis-serves": [
+  "spark-low-val",
+  "sonnet-low-val"
+ ],
+ "239-loading-bay": [
+  "sonnet-low-val"
+ ],
+ "36-jspaint-poster": [
+  "spark-low-val"
+ ]
+}
