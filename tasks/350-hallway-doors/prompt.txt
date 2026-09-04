@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8983/ . It is a clip in a player (canvas video with play/pause, seek, 1 s and 
+10 s steps and playback speed; read frames from screenshots). It shows a hallway with five numbered 
+doors for 2 minutes; people walk along it and either enter a room or walk through. Count exactly 
+how many people entered ROOM 3, enter the number in the form under the player and submit. Do NOT 
+read the page source or call the site's HTTP endpoints directly. End with the count.

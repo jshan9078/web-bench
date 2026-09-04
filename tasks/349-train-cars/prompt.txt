@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8982/ . It is a clip in a player (canvas video with play/pause, seek, 1 s and 
+10 s steps and playback speed; read frames from screenshots). It shows a level crossing for 90 
+seconds; a freight train passes at speed. Count exactly how many TANK cars (cylindrical grey tanks) 
+the train had, enter the number in the form under the player and submit. Do NOT read the page 
+source or call the site's HTTP endpoints directly. End with the count.

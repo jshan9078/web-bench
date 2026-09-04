@@ -351,6 +351,12 @@ TASKS = {
     "343-dot-cluster": {"kind": "appstate", "app": "widgetapp/dotcluster.py", "port": 8977, "v2": True},
     "344-graph-degree": {"kind": "appstate", "app": "widgetapp/graphdegree.py", "port": 8978, "v2": True},
     "345-rectangle-pile": {"kind": "appstate", "app": "widgetapp/rectpile.py", "port": 8979, "v2": True},
+    "347-checkout-lanes": {"kind": "appstate", "app": "widgetapp/checkoutlanes.py", "port": 8980, "v2": True},
+    "348-butterflies": {"kind": "appstate", "app": "widgetapp/butterflies.py", "port": 8981, "v2": True},
+    "349-train-cars": {"kind": "appstate", "app": "widgetapp/traincars.py", "port": 8982, "v2": True},
+    "350-hallway-doors": {"kind": "appstate", "app": "widgetapp/hallwaydoors.py", "port": 8983, "v2": True},
+    "351-fish-ring": {"kind": "appstate", "app": "widgetapp/fishring.py", "port": 8984, "v2": True},
+    "353-arrow-field": {"kind": "appstate", "app": "widgetapp/arrowfield.py", "port": 8985, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
