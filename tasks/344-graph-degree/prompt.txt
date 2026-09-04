@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8978/ . The page shows an IMAGE (read it from screenshots). It shows a 
+network diagram with 22 numbered nodes and about 30 edges. Count exactly how many nodes have 
+exactly three edges, enter the number in the form and submit. Do NOT read the page source or call 
+the site's HTTP endpoints directly. End with the count.

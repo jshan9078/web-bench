@@ -345,6 +345,12 @@ TASKS = {
     "337-slide-deck-value": {"kind": "appstate", "app": "widgetapp/slidedeck.py", "port": 8971, "v2": True},
     "338-forklift-trips": {"kind": "appstate", "app": "widgetapp/forklifttrips.py", "port": 8972, "v2": True},
     "339-birds-on-wire": {"kind": "appstate", "app": "widgetapp/birdswire.py", "port": 8973, "v2": True},
+    "340-tangled-lines": {"kind": "appstate", "app": "widgetapp/tangledlines.py", "port": 8974, "v2": True},
+    "341-coin-pile": {"kind": "appstate", "app": "widgetapp/coinpile.py", "port": 8975, "v2": True},
+    "342-crowd-hats": {"kind": "appstate", "app": "widgetapp/crowdhats.py", "port": 8976, "v2": True},
+    "343-dot-cluster": {"kind": "appstate", "app": "widgetapp/dotcluster.py", "port": 8977, "v2": True},
+    "344-graph-degree": {"kind": "appstate", "app": "widgetapp/graphdegree.py", "port": 8978, "v2": True},
+    "345-rectangle-pile": {"kind": "appstate", "app": "widgetapp/rectpile.py", "port": 8979, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]

@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8975/ . The page shows an IMAGE (read it from screenshots). It shows coins of 
+two sizes scattered on a table, some partly overlapping. Count exactly how many coins there are, 
+enter the number in the form and submit. Do NOT read the page source or call the site's HTTP 
+endpoints directly. End with the count.

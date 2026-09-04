@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8977/ . The page shows an IMAGE (read it from screenshots). It shows an 
+irregular cluster of blue dots. Count exactly how many dots there are, enter the number in the form 
+and submit. Do NOT read the page source or call the site's HTTP endpoints directly. End with the 
+count.
