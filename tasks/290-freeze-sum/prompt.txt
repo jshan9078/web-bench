@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8937/ . It is a live metrics table whose six values change every 3 seconds. 
+Press Freeze to lock the table, then add up the six frozen Requests values and enter the sum in the 
+form and submit. Do NOT read the page source or call the site's HTTP endpoints directly. End with 
+the sum.

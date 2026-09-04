@@ -1,0 +1,4 @@
+Open http://127.0.0.1:8934/ . The page shows an IMAGE of overlapping coloured discs (read it from 
+screenshots). The question under the image names a colour: count exactly how many discs of that 
+colour there are, including ones partly hidden behind other discs, enter the number in the form and 
+submit. Do NOT read the page source or call the site's HTTP endpoints directly. End with the count.

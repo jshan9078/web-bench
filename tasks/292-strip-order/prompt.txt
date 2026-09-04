@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8938/ . The page shows an IMAGE of a landscape picture cut into six vertical 
+strips and shuffled (read it from screenshots; click with raw coordinates via click --at X,Y; 
+screenshot pixels map 1:1). Click the strips in the order that reconstructs the original picture 
+from left to right so the road, the river and the hills join up (a number appears on each clicked 
+strip; click again to unselect), then click Confirm order. Do NOT read the page source or call the 
+site's HTTP endpoints directly. End with a one-line confirmation.

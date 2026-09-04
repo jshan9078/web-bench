@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8935/ . It is a sequence-recall game: press Play, watch six tiles light up 
+one after another (each stays lit 1.5 seconds; take screenshots quickly or watch with repeated 
+snapshots), then click the tiles in the same order. A wrong tile clears your input; you may press 
+Play again to re-watch. Complete the sequence (the page says Sequence complete). Do NOT read the 
+page source or call the site's HTTP endpoints directly. End with a one-line confirmation.

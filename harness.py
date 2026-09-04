@@ -301,6 +301,12 @@ TASKS = {
     "275-memory-pairs": {"kind": "appstate", "app": "widgetapp/memorypairs.py", "port": 8929, "v2": True},
     "281-count-intersections": {"kind": "appstate", "app": "widgetapp/intersections.py", "port": 8926, "v2": True},
     "282-hue-order": {"kind": "appstate", "app": "widgetapp/huesort.py", "port": 8928, "v2": True},
+    "284-rotated-odd-one-out": {"kind": "appstate", "app": "widgetapp/rotglyph.py", "port": 8933, "v2": True},
+    "285-occluded-circles": {"kind": "appstate", "app": "widgetapp/occluded.py", "port": 8934, "v2": True},
+    "287-sequence-recall": {"kind": "appstate", "app": "widgetapp/simon.py", "port": 8935, "v2": True},
+    "288-tiny-targets": {"kind": "appstate", "app": "widgetapp/tinytarget.py", "port": 8936, "v2": True},
+    "290-freeze-sum": {"kind": "appstate", "app": "widgetapp/freezesum.py", "port": 8937, "v2": True},
+    "292-strip-order": {"kind": "appstate", "app": "widgetapp/striporder.py", "port": 8938, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
@@ -675,7 +681,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu", "__book", "__merge", "__edit", "__bulk", "__create", "__cart", "__publish", "__order", "__request", "__login", "__mail", "__tag", "__savetags", "__board", "__flip", "__layout", "__press")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu", "__book", "__merge", "__edit", "__bulk", "__create", "__cart", "__publish", "__order", "__request", "__login", "__mail", "__tag", "__savetags", "__board", "__flip", "__layout", "__press", "__lit", "__play", "__tile", "__undo", "__vals", "__freeze")
 
 
 def widget_bypass(bundle):

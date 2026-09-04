@@ -1,0 +1,5 @@
+Open http://127.0.0.1:8936/ . The page shows an IMAGE at the top-left with many small grey dots and 
+exactly five small BLUE dots (read it from screenshots; click with raw coordinates via click --at 
+X,Y; screenshot pixels map 1:1). Click each of the five blue dots precisely (within a few pixels; a 
+red ring marks each click and Undo removes the last one), then click Confirm. Do NOT read the page 
+source or call the site's HTTP endpoints directly. End with a one-line confirmation.
