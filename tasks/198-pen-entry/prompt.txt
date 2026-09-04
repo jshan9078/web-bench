@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8874/ . It is a 2-minute barn camera clip in a player (canvas video with 
+play/pause, seek, 1 s and 10 s steps and playback speed; read frames from screenshots). Animals 
+pass through the gate from the field into the pen and from the pen back to the field; the number in 
+the pen at the start is shown on screen. Work out exactly how many animals are in the pen at the 
+END of the clip, enter the number in the form under the player and submit. Do NOT read the page 
+source or call the site's HTTP endpoints directly. End with the count.

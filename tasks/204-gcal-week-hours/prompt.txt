@@ -1,0 +1,7 @@
+You are running on a browser profile where the user is already signed in. If a login page appears 
+anyway, show the window and ask the user to sign in, then continue. On Google Calendar 
+(https://calendar.google.com), look at NEXT week (Monday to Sunday). Report the total number of 
+hours of timed events (events with a start and end time; ignore all-day events and holidays) on the 
+calendar that week, and the day with the most timed hours. Read every event's times from the 
+calendar (open events if the grid truncates them); do not modify anything. End with the total hours 
+(to the nearest quarter hour), the busiest day, and the list of events you counted with their times.

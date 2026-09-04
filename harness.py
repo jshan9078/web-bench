@@ -230,6 +230,11 @@ TASKS = {
     "193-door-events": {"kind": "appstate", "app": "widgetapp/doorevents.py", "port": 8871, "v2": True},
     "194-wikipedia-revert": {"kind": "judge", "v2": True},
     "195-github-oldest-approved-pr": {"kind": "judge", "v2": True},
+    "196-turn-count": {"kind": "appstate", "app": "widgetapp/turncount.py", "port": 8872, "v2": True},
+    "197-checkout-scans": {"kind": "appstate", "app": "widgetapp/checkoutscans.py", "port": 8873, "v2": True},
+    "198-pen-entry": {"kind": "appstate", "app": "widgetapp/penentry.py", "port": 8874, "v2": True},
+    "204-gcal-week-hours": {"profile": True, "kind": "judge", "v2": True},
+    "205-gmaps-transit-compare": {"kind": "judge", "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
