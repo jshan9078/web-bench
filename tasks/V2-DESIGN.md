@@ -898,6 +898,6 @@ One more batch (O) of four clips runs to reach 30.
 set reaches **30 tasks** where at least one of Spark 1.2 low, Sonnet 5 low or Opus 5 low fails both attempts,
 scored on server state only (endpoint probing is not a failure) with pre-gate probe passes treated as failures.
 The list is results/validated_set.json: 29 v2 tasks plus 36 JS Paint from v1. Failing configs across the set:
-Sonnet on 24 tasks, Spark on 9, Opus on 5 (some tasks fail more than one). The set is dominated by tracking and
+Sonnet on 22 tasks, Spark on 8, Opus on 5 (some tasks fail more than one). The set is dominated by tracking and
 counting over two-minute clips, plus fine perception (dial, odometer, tower clock, spot difference), two
 real-site navigation tasks (GitHub issue trace, GitHub reopened issue) and the JS Paint drawing task.
