@@ -699,7 +699,7 @@ def record(task, kw):
 
 
 # ------------------------------------------------------------------ score (derive metrics + verdict)
-WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__cal", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu", "__book", "__merge", "__edit", "__bulk", "__create", "__cart", "__publish", "__order", "__request", "__login", "__mail", "__tag", "__savetags", "__board", "__flip", "__layout", "__press", "__lit", "__play", "__tile", "__undo", "__vals", "__freeze")
+WIDGET_PRIVATE = ("__submit", "__click", "__reset", "__step3", "__state", "__data", "__resolve", "__act", "__cal", "__save", "__settings", "__move", "__lock", "__closelinked", "__rows", "__restart", "__start", "__choose", "__finish", "__validate", "__catalog", "__verify", "__answer", "__accept_offer", "__pause", "__keep", "__cancel", "__turn", "__confirm", "__frame", "__lines", "__slide", "__hello", "__codes", "__book", "__apply", "__set", "__event", "__wish", "__menu", "__book", "__merge", "__edit", "__bulk", "__create", "__cart", "__publish", "__order", "__request", "__login", "__mail", "__tag", "__savetags", "__board", "__flip", "__layout", "__press", "__lit", "__play", "__tile", "__undo", "__vals", "__freeze", "__setpw")
 
 
 def widget_bypass(bundle):
