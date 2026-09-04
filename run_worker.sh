@@ -1,10 +1,11 @@
 #!/bin/bash
-# Fleet worker: claim -> run -> upload, until the queue is empty. Usage: run_worker.sh <worker-name> [lane]
+# Fleet worker: claim -> run -> upload, until the queue is empty. Usage: run_worker.sh <worker-name> [lane] [family]
+#   family: comma-separated config prefixes (spark13,sonnet,opus,gemini-3.8-flash,luna) so parallel workers hit different providers
 #   lane: local (default on the fleet) | realsite | all.  Env: MATRIX_STORE=s3://bucket/prefix, DRY=1 to fake runs.
 # Idempotent: a claimed item whose bundle exists is completed without re-running; leases are heartbeated every
 # 60 s so a dead worker's items are reclaimed after LEASE_S (default 1500 s).
-set -u; cd "$(dirname "$0")"; W=${1:-$(hostname)}; LANE=${2:-local}; LOG=results/matrix63.log; Q="python3 matrix_queue.py"
-LANEARG=(); [ "$LANE" != all ] && LANEARG=(--lane "$LANE")
+set -u; cd "$(dirname "$0")"; W=${1:-$(hostname)}; LANE=${2:-local}; FAMILY=${3:-${FAMILY:-all}}; LOG=results/matrix63.log; Q="python3 matrix_queue.py"
+LANEARG=(); [ "$LANE" != all ] && LANEARG=(--lane "$LANE"); [ "$FAMILY" != all ] && LANEARG+=(--family "$FAMILY")
 while :; do
   read -r T R < <($Q claim "$W" "${LANEARG[@]}")
   [ -z "${T:-}" ] && { echo "$(date +%H:%M:%S) queue empty for lane $LANE" | tee -a "$LOG"; break; }

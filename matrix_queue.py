@@ -9,7 +9,7 @@ Store: env MATRIX_STORE = s3://bucket/prefix (fleet) or a local directory (tests
   raw/<task>.<label>.json (+ .mp4, .shot*.jpg, .stream.txt) and results/<task>/<label>.json
 Commands:
   init [--attempts N]            add pending markers for every missing (task,label) in the final set
-  claim <worker> [--lane L]      atomically claim one pending item (stale leases > LEASE_S are reclaimed); prints "task label"
+  claim <worker> [--lane L] [--family f1,f2]   atomically claim one pending item (family = config prefixes, spreads providers across workers) (stale leases > LEASE_S are reclaimed); prints "task label"
   heartbeat <task> <label> <worker>
   complete <task> <label> <worker> [--blocked | --error MSG]   upload artifacts, mark done / requeue / fail
   status [--configs]             per-config table: done / running / pending / failed / blocked, plus pass counts
@@ -122,11 +122,13 @@ def stale(S, k):
 
 def cmd_claim(S, args):
     worker = args[0]; lane = args[args.index("--lane") + 1] if "--lane" in args else None
+    fams = args[args.index("--family") + 1].split(",") if "--family" in args else None   # config family prefixes, e.g. sonnet,opus
     pend = S.list("pending/"); import random; random.shuffle(pend)
     claimed = {k.split("/", 1)[1] for k in S.list("claims/")}
     for k in pend:
         item = json.loads(S.get(k) or b"{}")
         if lane and item.get("lane") != lane: continue
+        if fams and not any(cfg_of(item["label"]) == f or cfg_of(item["label"]).startswith(f + "-") for f in fams): continue
         ck = "claims/" + k.split("/", 1)[1]; body = j({"worker": worker, "host": socket.gethostname(), "ts": time.time(), "task": item["task"], "label": item["label"]})
         if k.split("/", 1)[1] in claimed:
             if not stale(S, ck): continue
@@ -163,8 +165,7 @@ def cmd_complete(S, args, quiet=False):
     res = {}
     for cand in (f"results/{t}/{l}.json", f"results/{t}/{cfg_of(l)}.json"):
         if os.path.exists(cand): res = json.load(open(cand)); break
-    ps = res.get("pixel_state") or {}; verdict = res.get("verdict") or res.get("judge", {}).get("verdict")
-    S.put(f"done/{k}", j({"task": t, "label": l, "worker": w, "ts": time.time(), "complete": ps.get("complete"), "verdict": verdict, "cli_calls": res.get("cli_calls"), "wall_s": res.get("wall_s")}))
+    S.put(f"done/{k}", j({"task": t, "label": l, "worker": w, "ts": time.time(), "success": res.get("success"), "needs_judge": res.get("needs_judge"), "blocked": res.get("blocked"), "cli_calls": res.get("cli_calls"), "wall_s": res.get("wall_s")}))
     S.delete(f"pending/{k}"); S.delete(f"claims/{k}")
     if not quiet: print("done", t, l)
 
@@ -175,8 +176,8 @@ def table(S):
         t, l = k.split("/", 1)[1].split("__"); c = cfg_of(l); r = rows.setdefault(c, {"done": 0, "running": 0, "pending": 0, "failed": 0, "blocked": 0, "pass": 0, "judge_pending": 0})
         r[kind] += 1
         if kind == "done" and extra:
-            if extra.get("complete") or extra.get("verdict") == "pass": r["pass"] += 1
-            elif extra.get("complete") is None and extra.get("verdict") is None: r["judge_pending"] += 1
+            if extra.get("success") is True: r["pass"] += 1
+            elif extra.get("needs_judge") and extra.get("success") is None: r["judge_pending"] += 1
     claims = {k.split("/", 1)[1] for k in S.list("claims/") if not stale(S, k)}
     for k in S.list("pending/"):
         add("running" if k.split("/", 1)[1] in claims else "pending", k)
@@ -188,13 +189,13 @@ def table(S):
 
 def cmd_status(S, args):
     rows = table(S); tot = {"done": 0, "running": 0, "pending": 0, "failed": 0, "pass": 0}
-    print(f"{'config':26} {'done':>5} {'pass':>5} {'run':>4} {'pend':>5} {'fail':>4} {'blk':>4}")
+    print(f"{'config':26} {'done':>5} {'pass':>5} {'judg':>4} {'run':>4} {'pend':>5} {'fail':>4} {'blk':>4}")
     for c in CONFIGS + [c for c in rows if c not in CONFIGS]:
         r = rows.get(c)
         if not r: continue
-        print(f"{c:26} {r['done']:5} {r['pass']:5} {r['running']:4} {r['pending']:5} {r['failed']:4} {r['blocked']:4}")
+        print(f"{c:26} {r['done']:5} {r['pass']:5} {r['judge_pending']:4} {r['running']:4} {r['pending']:5} {r['failed']:4} {r['blocked']:4}")
         for k in tot: tot[k] += r[k]
-    print(f"{'TOTAL':26} {tot['done']:5} {tot['pass']:5} {tot['running']:4} {tot['pending']:5} {tot['failed']:4}")
+    print(f"{'TOTAL':26} {tot['done']:5} {tot['pass']:5} {'':4} {tot['running']:4} {tot['pending']:5} {tot['failed']:4}")
 
 
 def cmd_workers(S, args):
@@ -210,6 +211,16 @@ def cmd_sync(S, args):
     print("downloaded", n, "files")
 
 
+def cmd_reindex(S, args):
+    n = 0
+    for k in S.list("done/"):
+        t, l = k.split("/", 1)[1].split("__"); d = json.loads(S.get(k) or b"{}")
+        for cand in (f"results/{t}/{l}.json", f"results/{t}/{cfg_of(l)}.json"):
+            if os.path.exists(cand):
+                res = json.load(open(cand)); d.update(success=res.get("success"), needs_judge=res.get("needs_judge"), blocked=res.get("blocked"), cli_calls=res.get("cli_calls"), wall_s=res.get("wall_s")); S.put(k, j(d)); n += 1; break
+    print("reindexed", n)
+
+
 def cmd_reset_stale(S, args):
     for k in S.list("claims/"):
         if stale(S, k): S.delete(k); print("released", k)
@@ -217,4 +228,4 @@ def cmd_reset_stale(S, args):
 
 if __name__ == "__main__":
     S = store(); cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
-    {"init": cmd_init, "claim": cmd_claim, "heartbeat": cmd_heartbeat, "complete": cmd_complete, "status": cmd_status, "workers": cmd_workers, "sync": cmd_sync, "reset-stale": cmd_reset_stale}[cmd](S, sys.argv[2:])
+    {"init": cmd_init, "claim": cmd_claim, "heartbeat": cmd_heartbeat, "complete": cmd_complete, "status": cmd_status, "workers": cmd_workers, "sync": cmd_sync, "reindex": cmd_reindex, "reset-stale": cmd_reset_stale}[cmd](S, sys.argv[2:])

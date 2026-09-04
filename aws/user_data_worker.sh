@@ -10,6 +10,6 @@ sudo -u ubuntu bash -lc '
   sleep 3
   export MATRIX_STORE=s3://__BUCKET__/final63 LEASE_S=1500
   W=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
-  ./run_worker.sh "$W" __LANE__ > ~/worker.log 2>&1 || true
+  ./run_worker.sh "$W" __LANE__ __FAMILY__ > ~/worker.log 2>&1 || true
   aws s3 cp ~/worker.log s3://__BUCKET__/logs/$W.worker.log || true'
 __SHUTDOWN__

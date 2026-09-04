@@ -4,7 +4,8 @@
 #   fleet.sh prereqs                IAM role + instance profile (S3 access to the bucket), key pair, security group (SSH from your IP)
 #   fleet.sh seed                   launch ONE Ubuntu seed instance with the seed bootstrap; prints its IP for the operator's sign-ins
 #   fleet.sh ami <instance-id>      stop the signed-in seed and create the AMI; prints the AMI id
-#   fleet.sh launch <ami-id> <N> [lane] [type]   launch N workers (lane local|realsite|all, default local; type default c7i.xlarge); self-terminate when the lane is empty
+#   fleet.sh launch <ami-id> <N> [lane] [family] [type]   launch N workers for one lane and config family (family: spark13|sonnet|opus|gemini-3.8-flash|luna|all); self-terminate when their queue slice is empty
+#   fleet.sh launch-all <ami-id> <N-per-family> [lane]     one launch per family, N workers each (spreads provider rate limits)
 #   fleet.sh status                 queue status + active leases + instances
 #   fleet.sh terminate              terminate every instance tagged webbench=worker
 # Env: BUCKET (default webbench-matrix-966239516827), REGION (us-east-1), KEY_NAME (webbench), SSH_CIDR (default your IP/32)
@@ -35,10 +36,12 @@ ami)
   ID=$2; aws ec2 stop-instances --instance-ids $ID >/dev/null; aws ec2 wait instance-stopped --instance-ids $ID
   AMI=$(aws ec2 create-image --instance-id $ID --name "webbench-worker-$(date +%Y%m%d-%H%M)" --query ImageId --output text); aws ec2 wait image-available --image-ids $AMI; echo "AMI $AMI" ;;
 launch)
-  AMI=$2; N=$3; LANE=${4:-local}; TYPE=${5:-c7i.xlarge}
+  AMI=$2; N=$3; LANE=${4:-local}; FAM=${5:-all}; TYPE=${6:-c7i.xlarge}
   SG=$(aws ec2 describe-security-groups --filters Name=group-name,Values=webbench-worker --query 'SecurityGroups[0].GroupId' --output text)
-  sed "s/__BUCKET__/$BUCKET/g; s/__LANE__/$LANE/g; s/__SHUTDOWN__/shutdown -h now/" aws/user_data_worker.sh > /tmp/ud_worker.sh
-  aws ec2 run-instances --image-id $AMI --count $N --instance-type $TYPE --key-name $KEY_NAME --security-group-ids $SG --iam-instance-profile Name=webbench-worker --user-data file:///tmp/ud_worker.sh --instance-initiated-shutdown-behavior terminate --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=webbench-worker-$LANE},{Key=webbench,Value=worker}]" --query 'Instances[].InstanceId' --output text ;;
+  sed "s/__BUCKET__/$BUCKET/g; s/__LANE__/$LANE/g; s/__FAMILY__/$FAM/g; s/__SHUTDOWN__/shutdown -h now/" aws/user_data_worker.sh > /tmp/ud_worker.sh
+  aws ec2 run-instances --image-id $AMI --count $N --instance-type $TYPE --key-name $KEY_NAME --security-group-ids $SG --iam-instance-profile Name=webbench-worker --user-data file:///tmp/ud_worker.sh --instance-initiated-shutdown-behavior terminate --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=webbench-worker-$LANE-$FAM},{Key=webbench,Value=worker}]" --query 'Instances[].InstanceId' --output text ;;
+launch-all)
+  AMI=$2; N=$3; LANE=${4:-local}; for FAM in spark13 sonnet opus gemini-3.8-flash luna; do echo "$FAM: $("$0" launch $AMI $N $LANE $FAM | tr '\n' ' ')"; done ;;
 status)
   python3 matrix_queue.py status; echo; python3 matrix_queue.py workers; echo
   aws ec2 describe-instances --filters Name=tag:webbench,Values=worker,seed Name=instance-state-name,Values=pending,running,stopping --query 'Reservations[].Instances[].[InstanceId,Tags[?Key==`Name`].Value|[0],State.Name,PublicIpAddress]' --output table ;;
