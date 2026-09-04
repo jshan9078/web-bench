@@ -6517,5 +6517,29 @@
  "190-gmaps-nearby-filter.opus-low-val2": {
   "pass": true,
   "note": "Same live result set as the sonnet run (verified via scrolled list text and a Directions navigation confirming 5 min/400 m to the closest open pharmacy), All-filters screenshot/text shows no rating control, and highest-rated open pharmacy is 3.6 (Rexall); the agent correctly and transparently reported zero pharmacies meet Open now + 4.0+ rather than estimating or fabricating a match. [judge: sonnet 190-batch]"
+ },
+ "204-gcal-week-hours.opus-low-val": {
+  "pass": true,
+  "note": "Agent navigated both the Sep6-12 and Sep13-19 Google-week views, covering the full target Mon Sep7-Sun Sep13 range, and its own captured text shows 'No events' for every day and only the all-day Labour Day holiday, supporting its 0-hours/no-timed-events answer. [judge: sonnet 204-205-batch]"
+ },
+ "204-gcal-week-hours.sonnet-low-val": {
+  "pass": false,
+  "note": "Agent only navigated to the Sep6-12 Google-week view (clicking Next week once from the current week) and never captured the Sep13-19 view, so its claim of zero timed events for the full Mon Sep7-Sun Sep13 target week leaves Sunday Sep13 completely unverified in this run's evidence. [judge: sonnet 204-205-batch]"
+ },
+ "204-gcal-week-hours.spark-low-val": {
+  "pass": true,
+  "note": "Agent explicitly navigated to and captured both the week-of-Sep6 and week-of-Sep13 views (stream shows url r/week/2026/9/13, 'Week of September 13, 2026', all days 'No events'), covering the whole target week, matching its 0-hours/no-timed-events answer. [judge: sonnet 204-205-batch]"
+ },
+ "205-gmaps-transit-compare.opus-low-val": {
+  "pass": false,
+  "note": "Agent's own captured page text shows distinct transfer numerals for different routes ('58 min ... 1 UP' vs '54 min ... 2 UP'), but the agent claimed all routes tie at 1 transfer and that fewest-transfers and fastest routes are the same (54 min, 1 transfer) -- a misread of its own evidence's transfer count per the numeral-next-to-transfer-icon convention. [judge: sonnet 204-205-batch]"
+ },
+ "205-gmaps-transit-compare.sonnet-low-val": {
+  "pass": true,
+  "note": "Captured route list (arrive by Mon, Sep 7, 8:00 AM) shows '58 min 6:51AM-7:49AM 1 UP' and '54 min 6:55AM-7:49AM 2 UP'; agent correctly reported fewest transfers = 1 (58 min, 6:51-7:49) and fastest = 54 min (6:55-7:49, 2 transfers) as different routes, matching the evidence. [judge: sonnet 204-205-batch]"
+ },
+ "205-gmaps-transit-compare.spark-low-val": {
+  "pass": true,
+  "note": "Captured route list and details (arrive by Mon, Sep 7, 8:00 AM) show the same numerals as sonnet's run (1 for the 58-min route, 2 for the 54-min routes); agent correctly reported fewest transfers = 1 (58 min, 6:51-7:49) and fastest = 54 min (6:55-7:49, 2 transfers) as different routes. [judge: sonnet 204-205-batch]"
  }
 }
