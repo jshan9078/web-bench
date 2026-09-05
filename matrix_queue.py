@@ -185,7 +185,12 @@ def cmd_complete(S, args, quiet=False):
     res = {}
     for cand in (f"results/{t}/{l}.json", f"results/{t}/{cfg_of(l)}.json"):
         if os.path.exists(cand): res = json.load(open(cand)); break
-    S.put(f"done/{k}", j({"task": t, "label": l, "worker": w, "ts": time.time(), "success": res.get("success"), "needs_judge": res.get("needs_judge"), "blocked": res.get("blocked"), "cli_calls": res.get("cli_calls"), "wall_s": res.get("wall_s")}))
+    cost = None
+    try:
+        import run_cost; rp = f"raw/{t}.{l}.json" if os.path.exists(f"raw/{t}.{l}.json") else f"raw/{t}.{cfg_of(l)}.json"
+        if os.path.exists(rp): cost = run_cost.cost(rp)
+    except Exception: cost = None
+    S.put(f"done/{k}", j({"task": t, "label": l, "worker": w, "ts": time.time(), "success": res.get("success"), "needs_judge": res.get("needs_judge"), "blocked": res.get("blocked"), "cli_calls": res.get("cli_calls"), "wall_s": res.get("wall_s"), "cost_usd": cost}))
     S.delete(f"pending/{k}"); S.delete(f"claims/{k}")
     if not quiet: print("done", t, l)
 

@@ -2,7 +2,7 @@
 """Localhost dashboard for the final-set matrix sweep. Refreshes a snapshot of the S3 queue every 30 s (cached done
 markers; only unjudged ones are re-read) and serves: per-config scoreboard, running runs, task x config grid,
 recent completions, failures/blocked, judge log. http://127.0.0.1:8600/  (JSON at /api)"""
-import os, sys, json, time, threading, html
+import os, sys, json, time, threading, html, statistics
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from concurrent.futures import ThreadPoolExecutor
 os.chdir(os.path.dirname(os.path.abspath(__file__))); sys.path.insert(0, ".")
@@ -30,7 +30,7 @@ def refresh():
     for k in done_keys:
         d = CACHE.get(k, {}); t, l = k.split("/", 1)[1].split("__"); c = mq.cfg_of(l)
         st = "pass" if d.get("success") is True else ("judge" if (d.get("needs_judge") and d.get("success") is None) else ("blocked" if d.get("blocked") else "fail"))
-        cells[(t, c)] = {"state": st, "cli": d.get("cli_calls"), "wall": d.get("wall_s"), "worker": d.get("worker"), "ts": d.get("ts"), "note": d.get("judge_note", "")}
+        cells[(t, c)] = {"state": st, "cli": d.get("cli_calls"), "wall": d.get("wall_s"), "cost": d.get("cost_usd"), "worker": d.get("worker"), "ts": d.get("ts"), "note": d.get("judge_note", "")}
     fl = []; bl = []
     for k in failed:
         t, l = k.split("/", 1)[1].split("__"); d = fb.get(k, {})
@@ -41,7 +41,15 @@ def refresh():
     for c in CONFIGS:
         s = {"pass": 0, "fail": 0, "judge": 0, "running": 0, "pending": 0, "failed": 0, "blocked": 0}
         for t in TASKS: s[cells.get((t, c), {"state": "pending"})["state"]] = s.get(cells.get((t, c), {"state": "pending"})["state"], 0) + 1
-        s["done"] = s["pass"] + s["fail"] + s["judge"] + s["blocked"]; s["rate"] = (100 * s["pass"] / (s["pass"] + s["fail"])) if (s["pass"] + s["fail"]) else None; summary[c] = s
+        s["done"] = s["pass"] + s["fail"] + s["judge"] + s["blocked"]; s["rate"] = (100 * s["pass"] / (s["pass"] + s["fail"])) if (s["pass"] + s["fail"]) else None
+        ws = [cells[(t, c)]["wall"] for t in TASKS if (t, c) in cells and cells[(t, c)].get("wall")]; cs = [cells[(t, c)]["cost"] for t in TASKS if (t, c) in cells and cells[(t, c)].get("cost") is not None]
+        s["med_wall"] = statistics.median(ws) if ws else None; s["med_cost"] = statistics.median(cs) if cs else None; s["n_cost"] = len(cs); summary[c] = s
+    per_task = {}
+    for t in TASKS:
+        ws = [v["wall"] for (tt, c), v in cells.items() if tt == t and v.get("wall")]; cs = [v["cost"] for (tt, c), v in cells.items() if tt == t and v.get("cost") is not None]
+        ps = sum(1 for (tt, c), v in cells.items() if tt == t and v["state"] == "pass"); fs = sum(1 for (tt, c), v in cells.items() if tt == t and v["state"] == "fail")
+        per_task[t] = {"med_wall": statistics.median(ws) if ws else None, "med_cost": statistics.median(cs) if cs else None, "pass": ps, "fail": fs, "n": len(ws)}
+    SNAP["per_task"] = per_task
     recent = sorted([{"task": t, "config": c, **v} for (t, c), v in cells.items() if v.get("ts")], key=lambda x: -x["ts"])[:40]
     SNAP.update(ts=now, cells={f"{t}|{c}": v for (t, c), v in cells.items()}, workers=sorted(workers, key=lambda w: w["config"]), recent=recent, failed=fl, blocked=bl, summary=summary)
 def loop():
@@ -58,8 +66,9 @@ def page():
 .grid td{{padding:0;width:16px;height:16px;border:1px solid #fff}}.grid th{{font-size:10px;padding:2px}}.grid td:first-child{{width:auto;font-size:11px;padding:0 6px;text-align:left}}.legend span{{display:inline-block;padding:2px 8px;margin-right:6px;border-radius:3px;color:#fff}}small{{color:#666}}</style>
 <h1>Final-set matrix sweep <small>{len(TASKS)} tasks x {len(CONFIGS)} configs, pass@1</small></h1><small>snapshot {age if age is not None else '?'} s ago, refreshes every 30 s. {e(s.get('error',''))}</small>
 <h2>Totals</h2><p>done <b>{tot.get('done',0)}</b> (pass {tot.get('pass',0)}, fail {tot.get('fail',0)}, awaiting judge {tot.get('judge',0)}, blocked {tot.get('blocked',0)}) · running <b>{tot.get('running',0)}</b> · pending {tot.get('pending',0)} · gave up {tot.get('failed',0)}</p>
-<h2>Per config</h2><table><tr><th>config</th><th>done</th><th>pass</th><th>fail</th><th>judge</th><th>pass rate</th><th>running</th><th>pending</th><th>gave up</th></tr>"""]
-    for c, v in s["summary"].items(): out.append(f"<tr><td>{c}</td><td>{v['done']}</td><td style=color:#15803d>{v['pass']}</td><td style=color:#b91c1c>{v['fail']}</td><td>{v['judge']}</td><td><b>{'' if v['rate'] is None else f'{v['rate']:.0f}%'}</b></td><td>{v['running']}</td><td>{v['pending']}</td><td>{v['failed']}</td></tr>")
+<h2>Per config</h2><small>medians are over this config's completed runs (wall = agent wall-clock seconds; cost = USD, from the CLI's reported cost for Claude and the repo price tables for the others)</small><table><tr><th>config</th><th>done</th><th>pass</th><th>fail</th><th>judge</th><th>pass rate</th><th>median wall s</th><th>median cost $</th><th>running</th><th>pending</th><th>gave up</th></tr>"""]
+    fm = lambda x, f: "" if x is None else f.format(x)
+    for c, v in s["summary"].items(): out.append(f"<tr><td>{c}</td><td>{v['done']}</td><td style=color:#15803d>{v['pass']}</td><td style=color:#b91c1c>{v['fail']}</td><td>{v['judge']}</td><td><b>{'' if v['rate'] is None else f'{v['rate']:.0f}%'}</b></td><td>{fm(v.get('med_wall'), '{:.0f}')}</td><td>{fm(v.get('med_cost'), '{:.2f}')}<small> ({v.get('n_cost', 0)})</small></td><td>{v['running']}</td><td>{v['pending']}</td><td>{v['failed']}</td></tr>")
     out.append("</table><h2>Running now</h2><table><tr><th>worker</th><th>task</th><th>config</th><th>lease age</th></tr>")
     for w in s["workers"]: out.append(f"<tr><td>{e(str(w['worker']))}</td><td style=text-align:left>{e(w['task'])}</td><td style=text-align:left>{e(w['config'])}</td><td>{w['age']} s</td></tr>")
     out.append("</table><h2>Task x config</h2><div class=legend>" + "".join(f"<span style=background:{COLORS[k]}>{k}</span>" for k in COLORS) + "</div><table class=grid><tr><th></th>" + "".join(f"<th>{c.replace('gemini-3.8-flash','gem').replace('spark13','sp13')}</th>" for c in CONFIGS) + "</tr>")
@@ -69,8 +78,11 @@ def page():
             v = s["cells"].get(f"{t}|{c}", {"state": "pending"}); tip = f"{t} / {c}: {v['state']}" + (f", {v.get('cli')} cli calls, {v.get('wall')} s" if v.get("cli") is not None else "") + (f", {v.get('note')}" if v.get("note") else "")
             out.append(f"<td style=background:{COLORS[v['state']]} title=\"{e(tip)}\"></td>")
         out.append("</tr>")
-    out.append("</table><h2>Recent completions</h2><table><tr><th>when</th><th>task</th><th>config</th><th>result</th><th>cli calls</th><th>wall s</th><th>worker</th></tr>")
-    for r in s["recent"]: out.append(f"<tr><td>{time.strftime('%H:%M:%S', time.localtime(r['ts']))}</td><td style=text-align:left>{e(r['task'])}</td><td style=text-align:left>{e(r['config'])}</td><td style=color:{COLORS[r['state']]}><b>{r['state']}</b></td><td>{r.get('cli','')}</td><td>{r.get('wall','')}</td><td>{e(str(r.get('worker','')))}</td></tr>")
+    out.append("</table><h2>Per task (medians across configs)</h2><table><tr><th>task</th><th>runs</th><th>pass</th><th>fail</th><th>median wall s</th><th>median cost $</th></tr>")
+    for t, v in sorted(s.get("per_task", {}).items(), key=lambda kv: -(kv[1]["med_wall"] or 0)):
+        if v["n"]: out.append(f"<tr><td>{e(t)}</td><td>{v['n']}</td><td style=color:#15803d>{v['pass']}</td><td style=color:#b91c1c>{v['fail']}</td><td>{fm(v['med_wall'], '{:.0f}')}</td><td>{fm(v['med_cost'], '{:.2f}')}</td></tr>")
+    out.append("</table><h2>Recent completions</h2><table><tr><th>when</th><th>task</th><th>config</th><th>result</th><th>cli calls</th><th>wall s</th><th>cost $</th><th>worker</th></tr>")
+    for r in s["recent"]: out.append(f"<tr><td>{time.strftime('%H:%M:%S', time.localtime(r['ts']))}</td><td style=text-align:left>{e(r['task'])}</td><td style=text-align:left>{e(r['config'])}</td><td style=color:{COLORS[r['state']]}><b>{r['state']}</b></td><td>{r.get('cli','')}</td><td>{r.get('wall','')}</td><td>{fm(r.get('cost'), '{:.2f}')}</td><td>{e(str(r.get('worker','')))}</td></tr>")
     out.append("</table>")
     if s["failed"] or s["blocked"]:
         out.append("<h2>Gave up / blocked</h2><table><tr><th>task</th><th>config</th><th>attempts</th><th>last</th></tr>")

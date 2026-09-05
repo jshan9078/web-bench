@@ -3,7 +3,9 @@
 is invalid, because retries distort the wall-clock measurement). Markers are harness-specific API error strings; plain
 "429" is not used because it matches ordinary numbers. Usage: ratelimit.py <stream-file>... (prints hits per file)."""
 import re, sys
-PAT = re.compile(r'rate_limit_error|overloaded_error|"Retrying in|Retrying in \d|429 Too Many|status 429|HTTP 429|HTTP error: 429|Reconnecting\.\.\.|hit your usage limit|quota reached|RESOURCE_EXHAUSTED|Individual quota|rate limit exceeded|Rate limit reached|rate_limit_exceeded|insufficient_quota')
+# provider-side markers only: GitHub's own "API rate limit exceeded" page text (a site limit the agent hit, not the
+# model's) must not match, so no bare "rate limit exceeded" / 429
+PAT = re.compile(r'rate_limit_error|overloaded_error|"Retrying in \d|Reconnecting\.\.\. \d|HTTP error: 429|hit your usage limit|quota reached|RESOURCE_EXHAUSTED|Individual quota|Rate limit reached for|rate_limit_exceeded|insufficient_quota')
 def hits(path, limit=3):
     out = []
     try:

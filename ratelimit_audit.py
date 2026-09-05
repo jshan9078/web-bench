@@ -27,7 +27,13 @@ def once():
         if not str(d.get("worker", "")).startswith("i-") or k in st["checked"]: continue
         t, l = d["task"], d["label"]; key = f"raw/{t}.{l}.stream.txt"
         with tempfile.NamedTemporaryFile(delete=False, suffix=".txt") as tf: path = tf.name
-        try: S.get_file(key, path); marks = ratelimit.hits(path)
+        try:
+            S.get_file(key, path); marks = ratelimit.hits(path)
+            if not marks and d.get("cost_usd") is None:   # backfill the run's cost while the stream is at hand
+                import run_cost; rp = f"raw/{t}.{l}.json"
+                if not os.path.exists(rp): S.get_file(rp, rp)
+                c = run_cost.cost(rp, path)
+                if c is not None: d["cost_usd"] = c; S.put(k, mq.j(d))
         except Exception as e: marks = []; log(f"no stream for {t} {l}: {type(e).__name__}")
         finally:
             try: os.remove(path)
