@@ -6,6 +6,7 @@
 #   fleet.sh ami <instance-id>      stop the signed-in seed and create the AMI; prints the AMI id
 #   fleet.sh launch <ami-id> <N> [lane] [family] [type]   launch N workers for one lane and config family (family: spark13|sonnet|opus|gemini-3.8-flash|luna|all); self-terminate when their queue slice is empty
 #   fleet.sh launch-all <ami-id> <N-per-family> [lane]     one launch per family, N workers each (spreads provider rate limits)
+#   fleet.sh judge <ami-id>         launch the judge instance (runs judge_daemon.py forever; log mirrored to s3://$BUCKET/logs/judge_daemon.log)
 #   fleet.sh status                 queue status + active leases + instances
 #   fleet.sh terminate              terminate every instance tagged webbench=worker
 # Env: BUCKET (default webbench-matrix-966239516827), REGION (us-east-1), KEY_NAME (webbench), SSH_CIDR (default your IP/32)
@@ -42,9 +43,13 @@ launch)
   aws ec2 run-instances --image-id $AMI --count $N --instance-type $TYPE --key-name $KEY_NAME --security-group-ids $SG --iam-instance-profile Name=webbench-worker --user-data file:///tmp/ud_worker.sh --instance-initiated-shutdown-behavior terminate --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=webbench-worker-$LANE-$(echo $FAM | tr , _)},{Key=webbench,Value=worker}]" --query 'Instances[].InstanceId' --output text ;;
 launch-all)
   AMI=$2; N=$3; LANE=${4:-local}; for FAM in spark13 sonnet opus gemini-3.8-flash luna; do echo "$FAM: $("$0" launch $AMI $N $LANE $FAM | tr '\n' ' ')"; done ;;
+judge)
+  AMI=$2; SG=$(aws ec2 describe-security-groups --filters Name=group-name,Values=webbench-worker --query 'SecurityGroups[0].GroupId' --output text)
+  sed "s/__BUCKET__/$BUCKET/g" aws/user_data_judge.sh > /tmp/ud_judge.sh
+  aws ec2 run-instances --image-id $AMI --instance-type t3.medium --key-name $KEY_NAME --security-group-ids $SG --iam-instance-profile Name=webbench-worker --user-data file:///tmp/ud_judge.sh --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=webbench-judge},{Key=webbench,Value=judge}]" --query 'Instances[].InstanceId' --output text ;;
 status)
   python3 matrix_queue.py status; echo; python3 matrix_queue.py workers; echo
-  aws ec2 describe-instances --filters Name=tag:webbench,Values=worker,seed Name=instance-state-name,Values=pending,running,stopping --query 'Reservations[].Instances[].[InstanceId,Tags[?Key==`Name`].Value|[0],State.Name,PublicIpAddress]' --output table ;;
+  aws ec2 describe-instances --filters Name=tag:webbench,Values=worker,seed,judge Name=instance-state-name,Values=pending,running,stopping --query 'Reservations[].Instances[].[InstanceId,Tags[?Key==`Name`].Value|[0],State.Name,PublicIpAddress]' --output table ;;
 terminate)
   IDS=$(aws ec2 describe-instances --filters Name=tag:webbench,Values=worker Name=instance-state-name,Values=pending,running,stopped --query 'Reservations[].Instances[].InstanceId' --output text); if [ -n "$IDS" ]; then aws ec2 terminate-instances --instance-ids $IDS --query 'TerminatingInstances[].InstanceId' --output text; else echo "no workers"; fi ;;
 esac

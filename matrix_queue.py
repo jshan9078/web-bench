@@ -15,6 +15,7 @@ Commands:
   status [--configs]             per-config table: done / running / pending / failed / blocked, plus pass counts
   workers                        active leases per worker with age
   sync                           download every done run's raw bundle and result json into local raw/ and results/
+  sync-verdicts                  merge the fleet judge's verdicts into results/verdicts.json
   reset-stale                    release leases older than LEASE_S (also done implicitly by claim)"""
 import json, os, sys, time, socket, glob, io
 LEASE_S = int(os.environ.get("LEASE_S", "1500")); MAX_TRIES = 3
@@ -248,6 +249,15 @@ def cmd_reindex(S, args):
     print("reindexed", n)
 
 
+def cmd_sync_verdicts(S, args):
+    """Merge the fleet judge's verdicts (verdicts/ prefix) into the local results/verdicts.json and re-score those runs."""
+    import harness; v = harness._verdicts(); n = 0
+    for k in S.list("verdicts/"):
+        t, l = k.split("/", 1)[1].split("__"); e = json.loads(S.get(k) or b"{}")
+        if v.get(f"{t}.{l}") != e: v[f"{t}.{l}"] = e; n += 1
+    harness.VERDICTS.write_text(json.dumps(v, indent=1)); print("merged", n, "verdicts")
+
+
 def cmd_reset_stale(S, args):
     for k in S.list("claims/"):
         if stale(S, k): S.delete(k); print("released", k)
@@ -255,4 +265,4 @@ def cmd_reset_stale(S, args):
 
 if __name__ == "__main__":
     S = store(); cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
-    {"init": cmd_init, "claim": cmd_claim, "heartbeat": cmd_heartbeat, "complete": cmd_complete, "status": cmd_status, "workers": cmd_workers, "sync": cmd_sync, "reindex": cmd_reindex, "reset-stale": cmd_reset_stale}[cmd](S, sys.argv[2:])
+    {"init": cmd_init, "claim": cmd_claim, "heartbeat": cmd_heartbeat, "complete": cmd_complete, "status": cmd_status, "workers": cmd_workers, "sync": cmd_sync, "reindex": cmd_reindex, "sync-verdicts": cmd_sync_verdicts, "reset-stale": cmd_reset_stale}[cmd](S, sys.argv[2:])

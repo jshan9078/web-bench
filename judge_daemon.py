@@ -36,6 +36,7 @@ Instructions for this item: work in {os.getcwd()}. Read tasks/{t}/verifier.md an
 API method it describes (gh api, curl to the MediaWiki API, etc.) before reading the agent's claims. Evidence files:
 raw/{t}.{l}.json (requests_log, end_state, agent_result_text), screenshots {', '.join(shots) if shots else '(none)'}
 (use the Read tool on a few if the page state matters), stream raw/{t}.{l}.stream.txt (grep it, it is large).
+{"GitHub truth: `gh` is NOT authenticated on this machine; use `curl -s https://api.github.com/...` (public API, 60 requests/hour, so make few calls) or `curl -s https://api.github.com/repos/<o>/<r>/compare/<a>...<b>` etc." if os.environ.get("JUDGE_GH") == "curl" else ""}
 Then record exactly one verdict with:
   python3 harness.py set_verdict "{key}" pass|fail|blocked "<one-line reason> [judge: sonnet daemon]"
 Do not modify any other file. End with one line: VERDICT: pass|fail|blocked."""
