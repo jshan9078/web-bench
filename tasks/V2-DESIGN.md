@@ -1042,3 +1042,5 @@ Validated set: 39.
 VALID: 347 checkout lanes (budget exhausted without a submission, then 5 for 13), 350 hallway doors (no submission,
 then 1 for 10), 351 fish ring (7 for 13, 2 for 9), 353 arrow field (19 for 17, 12 for 15). Solved at pass@2:
 butterflies (3 for 7, then exact), train cars (13 exact). Validated set: 43.
+
+### Iteration Z2 (Sonnet 5 low): fixed ticker task solved at attempt 1 (5 distinct headlines, exact). INVALID.

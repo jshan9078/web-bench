@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8990/ . It is a clip in a player (canvas video with play/pause, seek, 1 s and 
+10 s steps and playback speed; read frames from screenshots). It shows a bird feeder for 2 minutes 
+visited by red, yellow and blue birds; a visit is one landing followed by a departure, and two 
+birds may be present at once. Count exactly how many visits BLUE birds made, enter the number in 
+the form under the player and submit. Do NOT read the page source or call the site's HTTP endpoints 
+directly. End with the count.

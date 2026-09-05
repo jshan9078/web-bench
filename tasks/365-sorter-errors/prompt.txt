@@ -1,0 +1,6 @@
+Open http://127.0.0.1:8992/ . It is a clip in a player (canvas video with play/pause, seek, 1 s and 
+10 s steps and playback speed; read frames from screenshots). It shows a colour sorter for 90 
+seconds: items drop onto a belt and are diverted left or right; blue items should go LEFT and all 
+other colours RIGHT, but the sorter sometimes misroutes. Count exactly how many items went to the 
+WRONG side, enter the number in the form under the player and submit. Do NOT read the page source 
+or call the site's HTTP endpoints directly. End with the count.

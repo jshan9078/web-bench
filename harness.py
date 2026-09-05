@@ -337,7 +337,7 @@ TASKS = {
     "329-parking-lot": {"kind": "appstate", "app": "widgetapp/parkinglot.py", "port": 8963, "v2": True, "pass2_invalid": True},
     "330-ball-bins": {"kind": "appstate", "app": "widgetapp/ballbins.py", "port": 8964, "v2": True, "pass2_invalid": True},
     "331-counter-pickups": {"kind": "appstate", "app": "widgetapp/counterpickups.py", "port": 8965, "v2": True},
-    "332-ticker-mentions": {"kind": "appstate", "app": "widgetapp/newsticker.py", "port": 8966, "v2": True},
+    "332-ticker-mentions": {"kind": "appstate", "app": "widgetapp/newsticker.py", "port": 8966, "v2": True, "pass2_invalid": True},
     "333-lead-changes": {"kind": "appstate", "app": "widgetapp/scoreboardleads.py", "port": 8967, "v2": True, "pass2_invalid": True},
     "334-elevator-stops": {"kind": "appstate", "app": "widgetapp/elevatorstops.py", "port": 8968, "v2": True, "pass2_invalid": True},
     "335-chat-stream": {"kind": "appstate", "app": "widgetapp/chatstream.py", "port": 8969, "v2": True, "pass2_invalid": True},
@@ -357,6 +357,14 @@ TASKS = {
     "350-hallway-doors": {"kind": "appstate", "app": "widgetapp/hallwaydoors.py", "port": 8983, "v2": True},
     "351-fish-ring": {"kind": "appstate", "app": "widgetapp/fishring.py", "port": 8984, "v2": True},
     "353-arrow-field": {"kind": "appstate", "app": "widgetapp/arrowfield.py", "port": 8985, "v2": True},
+    "355-parking-exits": {"kind": "appstate", "app": "widgetapp/parkingexits.py", "port": 8986, "v2": True},
+    "356-dice-sum": {"kind": "appstate", "app": "widgetapp/dicesum.py", "port": 8987, "v2": True},
+    "357-swim-laps": {"kind": "appstate", "app": "widgetapp/swimlaps.py", "port": 8988, "v2": True},
+    "359-vending": {"kind": "appstate", "app": "widgetapp/vending.py", "port": 8989, "v2": True},
+    "360-bird-feeder": {"kind": "appstate", "app": "widgetapp/birdfeeder.py", "port": 8990, "v2": True},
+    "362-letter-grid": {"kind": "appstate", "app": "widgetapp/lettergrid.py", "port": 8991, "v2": True},
+    "365-sorter-errors": {"kind": "appstate", "app": "widgetapp/sorterrors.py", "port": 8992, "v2": True},
+    "366-stamp-collage": {"kind": "appstate", "app": "widgetapp/stampcollage.py", "port": 8993, "v2": True},
 }
 TASKS_V1 = [k for k, v in TASKS.items() if not v.get("v2") and not v.get("retired")]
 TASKS_V2 = [k for k, v in TASKS.items() if v.get("v2")]
