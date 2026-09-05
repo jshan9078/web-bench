@@ -7,6 +7,7 @@ sudo -u ubuntu bash -lc '
   set -eux; export PATH=$HOME/.local/bin:$PATH; cd ~
   python3 -m pip install --break-system-packages --user -U boto3 botocore "botocore[crt]" websockets >/dev/null 2>&1 || true   # the apt botocore predates S3 conditional writes
   python3 -c "import botocore,sys; print(\"botocore\", botocore.__version__)"
+  for i in $(seq 1 30); do aws sts get-caller-identity >/dev/null 2>&1 && break; sleep 5; done
   aws s3 cp s3://__BUCKET__/bundle/web-bench.tar.gz /tmp/web-bench.tar.gz && mkdir -p ~/web-bench && tar -C ~/web-bench -xzf /tmp/web-bench.tar.gz
   cd ~/web-bench; mkdir -p raw results
   nohup xvfb-run -a -s "-screen 0 1280x900x24" browser daemon --auto > ~/daemon.log 2>&1 &   # headed launches need a display on Linux
