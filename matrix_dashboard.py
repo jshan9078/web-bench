@@ -32,7 +32,10 @@ def refresh():
         st = "pass" if d.get("success") is True else ("judge" if (d.get("needs_judge") and d.get("success") is None) else ("blocked" if d.get("blocked") else "fail"))
         cells[(t, c)] = {"state": st, "cli": d.get("cli_calls"), "wall": d.get("wall_s"), "worker": d.get("worker"), "ts": d.get("ts"), "note": d.get("judge_note", "")}
     fl = []; bl = []
-    for k in failed: t, l = k.split("/", 1)[1].split("__"); cells[(t, mq.cfg_of(l))] = {"state": "failed"}; fl.append({"task": t, "config": mq.cfg_of(l), **fb.get(k, {})})
+    for k in failed:
+        t, l = k.split("/", 1)[1].split("__"); d = fb.get(k, {})
+        if d.get("attempts", 0) >= mq.MAX_TRIES: cells[(t, mq.cfg_of(l))] = {"state": "failed"}; fl.append({"task": t, "config": mq.cfg_of(l), **d})
+        else: cells.setdefault((t, mq.cfg_of(l)), {"state": "pending"})["retries"] = d.get("attempts")
     for k in blocked: t, l = k.split("/", 1)[1].split("__"); bl.append({"task": t, "config": mq.cfg_of(l), **fb.get(k, {})}); cells.setdefault((t, mq.cfg_of(l)), {"state": "pending"})["blk"] = fb.get(k, {}).get("count")
     summary = {}
     for c in CONFIGS:

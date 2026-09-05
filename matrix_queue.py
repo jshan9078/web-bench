@@ -194,7 +194,9 @@ def table(S):
     for k in S.list("pending/"):
         add("running" if k.split("/", 1)[1] in claims else "pending", k)
     for k in S.list("done/"): add("done", k, json.loads(S.get(k) or b"{}"))
-    for k in S.list("failed/"): add("failed", k)
+    for k in S.list("failed/"):
+        d = json.loads(S.get(k) or b"{}")
+        if d.get("attempts", 0) >= MAX_TRIES: add("failed", k)   # partial attempt records stay pending
     for k in S.list("blocked/"): add("blocked", k)
     return rows
 
