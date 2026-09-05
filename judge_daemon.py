@@ -40,6 +40,11 @@ Then record exactly one verdict with:
   python3 harness.py set_verdict "{key}" pass|fail|blocked "<one-line reason> [judge: sonnet daemon]"
 Do not modify any other file. End with one line: VERDICT: pass|fail|blocked."""
     env = {"HOME": os.environ["HOME"], "PATH": os.environ["PATH"], "TMPDIR": os.environ.get("TMPDIR", "/tmp")}
+    tok = os.environ.get("CLAUDE_CODE_OAUTH_TOKEN")   # same headless auth as run_one.sh: long-lived token from the repo .env
+    if not tok and os.path.exists(".env"):
+        for line in open(".env"):
+            if line.startswith(("CLAUDE_CODE_OAUTH_TOKEN=", "export CLAUDE_CODE_OAUTH_TOKEN=")): tok = line.split("=", 1)[1].strip().strip("\"'")
+    if tok: env["CLAUDE_CODE_OAUTH_TOKEN"] = tok
     try:
         cp = subprocess.run(["claude", "-p", prompt, "--model", "sonnet", "--effort", "medium", "--allowedTools", "Bash,Read,Grep", "--dangerously-skip-permissions", "--max-turns", "60"], capture_output=True, text=True, env=env, timeout=900)
         tail = (cp.stdout or "").strip().splitlines()[-1:] 
