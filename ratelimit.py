@@ -5,7 +5,7 @@ is invalid, because retries distort the wall-clock measurement). Markers are har
 import re, sys
 # provider-side markers only: GitHub's own "API rate limit exceeded" page text (a site limit the agent hit, not the
 # model's) must not match, so no bare "rate limit exceeded" / 429
-PAT = re.compile(r'rate_limit_error|overloaded_error|"Retrying in \d|Reconnecting\.\.\. \d|HTTP error: 429|hit your usage limit|quota reached|RESOURCE_EXHAUSTED|Individual quota|Rate limit reached for|rate_limit_exceeded|insufficient_quota')
+PAT = re.compile(r'rate_limit_error|overloaded_error|"Retrying in \d|Reconnecting\.\.\. \d|HTTP error: 429|hit your usage limit|quota reached|RESOURCE_EXHAUSTED|Individual quota|Rate limit reached for|rate_limit_exceeded|insufficient_quota|usage limit|Usage limit|limit reached|out of extra usage|resets at \d|You.ve reached your')
 def hits(path, limit=3):
     out = []
     try:
