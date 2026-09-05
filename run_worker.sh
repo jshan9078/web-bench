@@ -31,6 +31,8 @@ while :; do
       $Q complete "$T" "$R" "$W" --defer | tee -a "$LOG"; echo "$(date +%H:%M:%S) provider quota/rate limit for $FAMILY: sleeping 20 min" | tee -a "$LOG"; rm -f raw/$T.$R.failstream.txt; sleep 1200; continue
     fi
     $Q complete "$T" "$R" "$W" --error "no raw bundle (harness failure)" | tee -a "$LOG"
+  elif [ -n "$(python3 -c "import ratelimit,sys; print(' '.join(ratelimit.hits(sys.argv[1])))" "raw/$T.$R.stream.txt")" ]; then
+    $Q complete "$T" "$R" "$W" --ratelimited | tee -a "$LOG"; echo "$(date +%H:%M:%S) rate limit inside the run for $FAMILY: run voided, sleeping 20 min" | tee -a "$LOG"; sleep 1200; continue
   elif python3 - "$T" "$R" <<'PY'
 import json,sys; t,r=sys.argv[1:3]; d=json.load(open(f"raw/{t}.{r}.json")); txt=(d.get("agent_result_text") or "")
 sys.exit(0 if ("BLOCKED:" in txt or "Verify you are human" in txt or "Whoa there" in txt) else 1)

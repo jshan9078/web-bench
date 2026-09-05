@@ -152,6 +152,14 @@ def cmd_complete(S, args, quiet=False):
         if cl.get("worker") not in (None, w):
             for f in glob.glob(f"raw/{t}.{l}.*") + glob.glob(f"results/{t}/{l}.*"): S.put_file(f"attempts/{k}/orphan-{w}/{os.path.basename(f)}", f); os.remove(f)
             print("lease lost to", cl.get("worker"), "; artifacts set aside"); return
+    if "--ratelimited" in args:
+        # the model hit a provider rate limit mid-run: the run is void (timing distorted); keep the artifacts for audit,
+        # release the lease, leave the item pending, count nothing
+        n = len([k2 for k2 in S.list(f"attempts/{k}/ratelimited-")]) + 1
+        for f in glob.glob(f"raw/{t}.{l}.*") + glob.glob(f"results/{t}/{l}.*"):
+            if not f.endswith(".mp4"): S.put_file(f"attempts/{k}/ratelimited-{n}/{os.path.basename(f)}", f)
+            os.remove(f)
+        S.delete(f"claims/{k}"); print("rate-limited, voided and requeued", t, l); return
     if "--defer" in args:
         # provider quota / rate limit: release the lease, keep the item pending, do not count an attempt
         S.delete(f"claims/{k}")
