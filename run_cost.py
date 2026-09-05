@@ -12,11 +12,11 @@ def cost(raw_path, stream_path=None):
             if sp and os.path.exists(sp):
                 with open(sp, "rb") as f:
                     f.seek(max(0, os.path.getsize(sp) - 200000)); tail = f.read().decode("utf-8", "replace")
+                import re
                 for line in reversed(tail.splitlines()):
-                    if '"costUSD"' in line and '"type":"result"' in line:
-                        try: return float(json.loads(line).get("total_cost_usd") or json.loads(line).get("costUSD") or 0) or None
-                        except Exception:
-                            import re; m = re.search(r'"(?:total_cost_usd|costUSD)":([0-9.]+)', line); return float(m.group(1)) if m else None
+                    if '"type":"result"' in line.replace(" ", "") or '"type":"result"' in line:
+                        m = re.search(r'"(?:total_cost_usd|costUSD|cost_usd)"\s*:\s*([0-9.]+)', line)
+                        if m: return float(m.group(1))
             return None
         if h == "muse": import muse_cost; return muse_cost.run_cost(d.get("model"), u)
         if h == "codex": import codex_cost; return codex_cost.run_cost(d.get("model"), u)

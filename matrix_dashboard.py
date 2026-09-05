@@ -16,7 +16,7 @@ def getj(k):
 def refresh():
     pend = {k.split("/", 1)[1] for k in S.list("pending/")}; claims = {k.split("/", 1)[1]: k for k in S.list("claims/")}
     done_keys = S.list("done/"); failed = S.list("failed/"); blocked = S.list("blocked/")
-    todo = [k for k in done_keys if k not in CACHE or (CACHE[k].get("needs_judge") and CACHE[k].get("success") is None)]
+    todo = [k for k in done_keys if k not in CACHE or (CACHE[k].get("needs_judge") and CACHE[k].get("success") is None) or CACHE[k].get("cost_usd") is None]   # re-read until judged and costed
     with ThreadPoolExecutor(16) as ex:
         for k, d in zip(todo, ex.map(getj, todo)): CACHE[k] = d
         claim_d = dict(zip(claims.values(), ex.map(getj, list(claims.values()))))
