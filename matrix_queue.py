@@ -11,7 +11,7 @@ Commands:
   init [--attempts N]            add pending markers for every missing (task,label) in the final set
   claim <worker> [--lane L] [--family f1,f2]   atomically claim one pending item (family = config prefixes, spreads providers across workers) (stale leases > LEASE_S are reclaimed); prints "task label"
   heartbeat <task> <label> <worker>
-  complete <task> <label> <worker> [--blocked | --error MSG]   upload artifacts, mark done / requeue / fail
+  complete <task> <label> <worker> [--blocked | --error MSG | --defer]   upload artifacts, mark done / requeue / fail / defer (quota)
   status [--configs]             per-config table: done / running / pending / failed / blocked, plus pass counts
   workers                        active leases per worker with age
   sync                           download every done run's raw bundle and result json into local raw/ and results/
@@ -152,6 +152,11 @@ def cmd_complete(S, args, quiet=False):
         if cl.get("worker") not in (None, w):
             for f in glob.glob(f"raw/{t}.{l}.*") + glob.glob(f"results/{t}/{l}.*"): S.put_file(f"attempts/{k}/orphan-{w}/{os.path.basename(f)}", f); os.remove(f)
             print("lease lost to", cl.get("worker"), "; artifacts set aside"); return
+    if "--defer" in args:
+        # provider quota / rate limit: release the lease, keep the item pending, do not count an attempt
+        S.delete(f"claims/{k}")
+        for f in glob.glob(f"raw/{t}.{l}.*") + glob.glob(f"results/{t}/{l}.*"): os.remove(f)
+        print("deferred", t, l); return
     if "--blocked" in args or "--error" in args:
         fk = "failed/" + k if "--error" in args else "blocked/" + k; prev = json.loads(S.get(fk) or b"{}"); n = prev.get("attempts", prev.get("count", 0)) + 1
         msg = args[args.index("--error") + 1] if "--error" in args else "bot wall"

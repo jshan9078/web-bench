@@ -26,7 +26,11 @@ while :; do
     esac; fi
   fi
   kill $HB 2>/dev/null; wait $HB 2>/dev/null
-  if [ ! -f "raw/$T.$R.json" ]; then $Q complete "$T" "$R" "$W" --error "no raw bundle (harness failure)" | tee -a "$LOG"
+  if [ ! -f "raw/$T.$R.json" ]; then
+    if cat raw/$T.$R.failstream.txt results/suite.log 2>/dev/null | tail -c 20000 | grep -qiE "quota reached|usage limit|rate limit|too many requests|429|insufficient_quota|resource_exhausted"; then
+      $Q complete "$T" "$R" "$W" --defer | tee -a "$LOG"; echo "$(date +%H:%M:%S) provider quota/rate limit for $FAMILY: sleeping 20 min" | tee -a "$LOG"; rm -f raw/$T.$R.failstream.txt; sleep 1200; continue
+    fi
+    $Q complete "$T" "$R" "$W" --error "no raw bundle (harness failure)" | tee -a "$LOG"
   elif python3 - "$T" "$R" <<'PY'
 import json,sys; t,r=sys.argv[1:3]; d=json.load(open(f"raw/{t}.{r}.json")); txt=(d.get("agent_result_text") or "")
 sys.exit(0 if ("BLOCKED:" in txt or "Verify you are human" in txt or "Whoa there" in txt) else 1)
