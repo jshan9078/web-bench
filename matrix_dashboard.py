@@ -16,6 +16,13 @@ def getj(k):
 def refresh():
     pend = {k.split("/", 1)[1] for k in S.list("pending/")}; claims = {k.split("/", 1)[1]: k for k in S.list("claims/")}
     done_keys = S.list("done/"); failed = S.list("failed/"); blocked = S.list("blocked/")
+    rl = {}   # runs voided by the per-run rate-limit check (kept under attempts/<item>/ratelimited-N/)
+    for k in S.list("attempts/"):
+        if "/ratelimited-" in k: item = k.split("/")[1]; rl[item] = max(rl.get(item, 0), int(k.split("/ratelimited-")[1].split("/")[0]))
+    voided = {}
+    for item, n in rl.items():
+        c = mq.cfg_of(item.split("__")[1]); voided[c] = voided.get(c, 0) + n
+    SNAP["voided"] = voided; SNAP["voided_total"] = sum(voided.values())
     todo = [k for k in done_keys if k not in CACHE or (CACHE[k].get("needs_judge") and CACHE[k].get("success") is None) or CACHE[k].get("cost_usd") is None]   # re-read until judged and costed
     with ThreadPoolExecutor(16) as ex:
         for k, d in zip(todo, ex.map(getj, todo)): CACHE[k] = d
@@ -72,7 +79,7 @@ def page():
 <style>body{{font:13px system-ui;margin:16px;color:#111;background:#fff}}h1{{font-size:18px;margin:0 0 4px}}h2{{font-size:15px;margin:18px 0 6px}}table{{border-collapse:collapse}}td,th{{padding:3px 8px;border-bottom:1px solid #eee;text-align:right;white-space:nowrap}}th{{background:#f8fafc;position:sticky;top:0}}td:first-child,th:first-child{{text-align:left}}
 .grid td{{padding:0;width:16px;height:16px;border:1px solid #fff}}.grid th{{font-size:10px;padding:2px}}.grid td:first-child{{width:auto;font-size:11px;padding:0 6px;text-align:left}}.legend span{{display:inline-block;padding:2px 8px;margin-right:6px;border-radius:3px;color:#fff}}small{{color:#666}}</style>
 <h1>Final-set matrix sweep <small>{len(TASKS)} tasks x {len(CONFIGS)} configs, pass@1</small></h1><small>snapshot {age if age is not None else '?'} s ago, refreshes every 30 s. {e(s.get('error',''))}</small>
-<h2>Totals</h2><p>done <b>{tot.get('done',0)}</b> (pass {tot.get('pass',0)}, fail {tot.get('fail',0)}, awaiting judge {tot.get('judge',0)}, blocked {tot.get('blocked',0)}) · running <b>{tot.get('running',0)}</b> · pending {tot.get('pending',0)} · gave up {tot.get('failed',0)}</p>
+<h2>Totals</h2><p>done <b>{tot.get('done',0)}</b> (pass {tot.get('pass',0)}, fail {tot.get('fail',0)}, awaiting judge {tot.get('judge',0)}, blocked {tot.get('blocked',0)}) · running <b>{tot.get('running',0)}</b> · pending {tot.get('pending',0)} · gave up {tot.get('failed',0)} · <b>voided for provider rate limits: {s.get('voided_total',0)}</b> <small>({', '.join(f"{c} {n}" for c, n in sorted(s.get('voided',{}).items()))})</small></p>
 <h2>Per config</h2><small>medians are over this config's completed runs (wall = agent wall-clock seconds; cost = USD, from the CLI's reported cost for Claude and the repo price tables for the others)</small><table><tr><th>config</th><th>done</th><th>pass</th><th>fail</th><th>judge</th><th>pass rate</th><th>median wall s</th><th>median cost $</th><th>running</th><th>pending</th><th>gave up</th></tr>"""]
     fm = lambda x, f: "" if x is None else f.format(x)
     for c, v in s["summary"].items(): out.append(f"<tr><td>{c}</td><td>{v['done']}</td><td style=color:#15803d>{v['pass']}</td><td style=color:#b91c1c>{v['fail']}</td><td>{v['judge']}</td><td><b>{'' if v['rate'] is None else f'{v['rate']:.0f}%'}</b></td><td>{fm(v.get('med_wall'), '{:.0f}')}</td><td>{fm(v.get('med_cost'), '{:.2f}')}<small> ({v.get('n_cost', 0)})</small></td><td>{v['running']}</td><td>{v['pending']}</td><td>{v['failed']}</td></tr>")
