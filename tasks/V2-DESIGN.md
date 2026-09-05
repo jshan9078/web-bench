@@ -1036,3 +1036,9 @@ items is within reach; tracing through crossings is not. Validated set: 38.
 320 GitHub merged count: second Sonnet attempt repeated the mistake (took the first item of the default-ordered list,
 #2857, as the latest merge; #2840 merged two days later). Judged FAIL both times: VALID (real-site judgement).
 Validated set: 39.
+
+### Iteration AB (Sonnet 5 low)
+
+VALID: 347 checkout lanes (budget exhausted without a submission, then 5 for 13), 350 hallway doors (no submission,
+then 1 for 10), 351 fish ring (7 for 13, 2 for 9), 353 arrow field (19 for 17, 12 for 15). Solved at pass@2:
+butterflies (3 for 7, then exact), train cars (13 exact). Validated set: 43.

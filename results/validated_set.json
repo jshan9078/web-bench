@@ -120,5 +120,17 @@
  ],
  "344-graph-degree": [
   "sonnet-low-val"
+ ],
+ "347-checkout-lanes": [
+  "sonnet-low-val"
+ ],
+ "350-hallway-doors": [
+  "sonnet-low-val"
+ ],
+ "351-fish-ring": [
+  "sonnet-low-val"
+ ],
+ "353-arrow-field": [
+  "sonnet-low-val"
  ]
 }
