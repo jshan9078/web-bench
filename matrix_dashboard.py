@@ -51,6 +51,13 @@ def refresh():
         per_task[t] = {"med_wall": statistics.median(ws) if ws else None, "med_cost": statistics.median(cs) if cs else None, "pass": ps, "fail": fs, "n": len(ws)}
     SNAP["per_task"] = per_task
     recent = sorted([{"task": t, "config": c, **v} for (t, c), v in cells.items() if v.get("ts")], key=lambda x: -x["ts"])[:40]
+    try:   # the judge runs on its own instance and mirrors its log to S3 every 10 min; fall back to a local log
+        jl = (S.get("../logs/judge_daemon.log") if False else None)
+        import boto3; jl = boto3.client("s3").get_object(Bucket="webbench-matrix-966239516827", Key="logs/judge_daemon.log")["Body"].read().decode("utf-8", "replace").splitlines()[-25:]
+    except Exception:
+        try: jl = open("results/judge_daemon.log").read().splitlines()[-25:]
+        except FileNotFoundError: jl = ["(no judge log yet)"]
+    SNAP["judge_log"] = jl
     SNAP.update(ts=now, cells={f"{t}|{c}": v for (t, c), v in cells.items()}, workers=sorted(workers, key=lambda w: w["config"]), recent=recent, failed=fl, blocked=bl, summary=summary)
 def loop():
     while True:
@@ -88,8 +95,7 @@ def page():
         out.append("<h2>Gave up / blocked</h2><table><tr><th>task</th><th>config</th><th>attempts</th><th>last</th></tr>")
         for r in s["failed"] + s["blocked"]: out.append(f"<tr><td>{e(r['task'])}</td><td style=text-align:left>{e(r['config'])}</td><td>{r.get('attempts', r.get('count'))}</td><td style=text-align:left>{e(str(r.get('last_error','')))[:120]}</td></tr>")
         out.append("</table>")
-    try: jl = open("results/judge_daemon.log").read().splitlines()[-25:]
-    except FileNotFoundError: jl = ["(judge daemon log not found)"]
+    jl = SNAP.get("judge_log") or ["(judge log not fetched yet)"]
     out.append("<h2>Judge daemon</h2><pre style=font-size:12px>" + e("\n".join(jl)) + "</pre>")
     return "".join(out)
 class H(BaseHTTPRequestHandler):
