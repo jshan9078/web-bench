@@ -10,10 +10,29 @@ S = {"stamps": []}
 
 
 def reset():
-    st = []
-    for _ in range(55):
-        st.append((random.randint(30, W - 90), random.randint(30, H - 90), random.choice(["tri", "circle", "star", "square"]), random.uniform(-20, 20), (random.randint(120, 240), random.randint(120, 240), random.randint(120, 240))))
-    S["stamps"] = st
+    for _ in range(60):
+        st = [(random.randint(30, W - 90), random.randint(30, H - 90), random.choice(["tri", "circle", "star", "square"]), random.uniform(-20, 20), (random.randint(120, 240), random.randint(120, 240), random.randint(120, 240))) for _ in range(55)]
+        S["stamps"] = st; vis = motif_visibility()
+        if all(v <= 0.25 or v >= 0.85 for v in vis): break   # no ambiguous partly-hidden motifs
+
+
+def motif_visibility():
+    """Fraction of each stamp's motif pixels still visible after later stamps are pasted (exact, by rendering)."""
+    idx = Image.new("I", (W, H), -1); masks = []
+    for i, (x, y, motif, ang, col) in enumerate(S["stamps"]):
+        tile = Image.new("L", (80, 80), 0); d = ImageDraw.Draw(tile); d.rectangle([6, 6, 73, 73], fill=255); tile = tile.rotate(ang, resample=Image.NEAREST, expand=True)
+        m = Image.new("L", (80, 80), 0); dm = ImageDraw.Draw(m); dm.ellipse([40 - 16, 40 - 16, 40 + 16, 40 + 16], fill=255); m = m.rotate(ang, resample=Image.NEAREST, expand=True)
+        idx.paste(Image.new("I", tile.size, i), (x, y), tile); masks.append((x, y, m))
+    px = idx.load(); out = []
+    for i, (x, y, m) in enumerate(masks):
+        mp = m.load(); tot = vis = 0
+        for yy in range(m.size[1]):
+            for xx in range(m.size[0]):
+                if mp[xx, yy]:
+                    tot += 1
+                    if 0 <= x + xx < W and 0 <= y + yy < H and px[x + xx, y + yy] == i: vis += 1
+        out.append(vis / tot if tot else 0)
+    return out
 
 
 def draw():
@@ -30,13 +49,7 @@ def draw():
 
 
 def visible_tris():
-    # a stamp's motif is visible unless a later stamp covers its centre
-    n = 0
-    for i, (x, y, motif, ang, col) in enumerate(S["stamps"]):
-        if motif != "tri": continue
-        cx, cy = x + 40, y + 40; covered = any(abs(cx - (x2 + 40)) < 30 and abs(cy - (y2 + 40)) < 30 for x2, y2, *_ in S["stamps"][i + 1:])
-        if not covered: n += 1
-    return n
+    vis = motif_visibility(); return sum(1 for s, v in zip(S["stamps"], vis) if s[2] == "tri" and v >= 0.85)
 
 
 def check(s):
