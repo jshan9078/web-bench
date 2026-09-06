@@ -5547,7 +5547,7 @@
    "model": "Claude Opus 5",
    "effort": "xhigh",
    "runs": 70,
-   "scored": 69,
+   "scored": 70,
    "pass": 63,
    "core_pass": 26,
    "core_n": 26,
@@ -5867,10 +5867,10 @@
      "judge_pending": false
     },
     "269-github-compare-tags": {
-     "pass": null,
-     "wall_s": 0,
-     "cli_calls": 0,
-     "cost_usd": 0.0,
+     "pass": true,
+     "wall_s": 1.57,
+     "cli_calls": 2,
+     "cost_usd": 0.17425149999999998,
      "judge_pending": false
     },
     "270-shadow-iframe-form": {
