@@ -6639,5 +6639,617 @@
  "320-github-merged-count.sonnet-low-val2": {
   "pass": false,
   "note": "Count correct (7) but title wrong: agent read the /pulls?q=...merged:2025-01-01..2025-03-31 list (captured, grounded) and picked the first-listed PR (#2857, 'Rewrite testing docs and move from rst to myst') as most-recently-merged, but GitHub's default list order is by creation/number, not merged date -- #2857 was merged 2025-03-16 while #2840 'Move --help option defaults from its class to its decorator' was merged later, 2025-03-18 (verified via gh api search/issues and gh pr list, total_count=7, same set as captured). Agent never checked individual merge dates or re-sorted, so the reported title/PR does not match ground truth. [judge: sonnet]"
+ },
+ "269-github-compare-tags.opus-high-val": {
+  "pass": true,
+  "note": "matches API ground truth (34 commits, 44 files, 7fff56f davidism); grounded in navigated compare page [judge: sonnet daemon]"
+ },
+ "262-github-blame.sonnet-high-val": {
+  "pass": true,
+  "note": "commit 0ec7f71/pgjones/Aug 19, 2023 confirmed via git blame + git show committer date, matches agent answer exactly [judge: sonnet daemon]"
+ },
+ "262-github-blame.spark13-low-val": {
+  "pass": true,
+  "note": "hash 0ec7f71/author pgjones confirmed via git blame+show; commit page date Aug 19 2023 matches GitHub's displayed commit date (author date differs but prompt asks for date as shown on commit page) [judge: sonnet daemon]"
+ },
+ "319-github-first-release.opus-max-val": {
+  "pass": true,
+  "note": "gh api confirms 3.0.0 compare status=behind (contains commit), 2.3.3 diverged/2.3.2 ahead (don't), release date 2023-09-30 matches agent's grounded navigation [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.spark13-ultra-val": {
+  "pass": true,
+  "note": "API confirms #5817 asyncio/gevent, reopened 2025-09-19T08:53:54Z by awoimbee, is the most recent non-PR reopen event (page4-10 reopens are all PRs, excluded per 2026-09-04 re-audit) [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.sonnet-high-val": {
+  "pass": true,
+  "note": "API ground truth (34 commits, 44 files, 7fff56f davidism) matches agent report; agent navigated to actual compare page this run [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.spark13-high-val": {
+  "pass": true,
+  "note": "API ground truth confirms user 2400:9800:b60:b6df:f46b:2bff:feae:1821, 8 Nov 2024, no edit summary, matching agent's answer grounded in the navigated history page [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.sonnet-max-val": {
+  "pass": true,
+  "note": "API ground truth (34 commits, 44 files, 7fff56f davidism) matches agent's grounded report from the compare page [judge: sonnet daemon]"
+ },
+ "319-github-first-release.sonnet-medium-val": {
+  "pass": true,
+  "note": "API confirms 3.0.0 is earliest release containing the commit (2.3.3 diverged/does not contain it, 3.0.0 behind_by=26 i.e. contains it, published 2023-09-30); agent's answer 3.0.0/Sep 30 2023 matches, grounded in its own compare navigations [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.sonnet-medium-val": {
+  "pass": true,
+  "note": "API ground truth (34 commits, 44 files, 7fff56f davidism) matches agent's reported answer, grounded in navigated compare/commit pages [judge: sonnet daemon]"
+ },
+ "262-github-blame.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "verified via git blame/git show on fresh clone: commit 0ec7f713d, author pgjones, committer date 2023-08-19 18:35:14+01:00 = Aug 19 2023 5:35 PM UTC, exact match; agent navigated to blame view and commit page this run [judge: sonnet daemon]"
+ },
+ "262-github-blame.sonnet-max-val": {
+  "pass": true,
+  "note": "hash 0ec7f71/pgjones/Aug 19 2023 17:35:14 UTC matches local git blame+commit date exactly; agent navigated blame view and commit page this run [judge: sonnet daemon]"
+ },
+ "262-github-blame.spark13-medium-val": {
+  "pass": true,
+  "note": "ground truth via git blame confirms 0ec7f713 pgjones committer-date Aug 19 2023 17:35 UTC matches agent's grounded blame+commit page navigation [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.opus-max-val": {
+  "pass": true,
+  "note": "GraphQL closer field confirms #4297/4355/4295/4037 closed manually (closer:null), #3776 closed by merged PR #3794 (mbpreble, merged 2021-02-02) matching agent's answer exactly [judge: sonnet daemon]"
+ },
+ "262-github-blame.gemini-3.8-flash-low-val": {
+  "pass": true,
+  "note": "matches git blame ground truth (0ec7f713d67, pgjones, committer date 2023-08-19), grounded in captured blame-page evidence (hash/author/date found in stream) [judge: sonnet daemon]"
+ },
+ "319-github-first-release.sonnet-high-val": {
+  "pass": true,
+  "note": "gh api confirms 3.0.0 is earliest release containing 0ec7f713 (status behind; prior release 2.3.3 diverges) with published_at 2023-09-30; agent navigated commit page, expanded tags, opened 3.0.0 release page [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.sonnet-medium-val": {
+  "pass": true,
+  "note": "ground truth via events API confirms #5817 reopened 2025-09-19T08:53:54Z by awoimbee (first non-PR reopened event), matches agent answer exactly [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "API confirms #4295 (closed 2021-11-15) is most recent bug-labeled issue closed by a merged PR\u2014#4297 and #4355 are later-closed but closed manually with no PR (timeline commit_id null); PR #4298 by delicb merged 2021-11-15 matches exactly; agent navigated to issue and PR pages this run [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.spark13-low-val": {
+  "pass": true,
+  "note": "matches API ground truth (34 commits, 44 files, davidism 7fff56f), grounded in navigated compare page [judge: sonnet daemon]"
+ },
+ "319-github-first-release.sonnet-max-val": {
+  "pass": true,
+  "note": "matches ground truth (gh api compare shows 3.0.0 is earliest tag behind the commit, released 2023-09-30T14:38:50Z); agent navigated commit and release pages this run [judge: sonnet daemon]"
+ },
+ "262-github-blame.sonnet-medium-val": {
+  "pass": true,
+  "note": "confirmed via local git blame on src/flask/app.py line 633: 0ec7f71, pgjones, Aug 19, 2023 \u2014 matches agent's answer and captured commit page evidence [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.gemini-3.8-flash-low-val": {
+  "pass": true,
+  "note": "IP, 02:55 8 Nov 2024, empty comment match MediaWiki API rvstart query exactly; agent navigated to and read the history page this run [judge: sonnet daemon]"
+ },
+ "319-github-first-release.gemini-3.8-flash-high-val": {
+  "pass": true,
+  "note": "gh api confirms 3.0.0 is behind (contains commit) and 2.3.3 diverged (doesn't); agent navigated commit page and release page for tag/date, matches ground truth [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.gemini-3.8-flash-low-val": {
+  "pass": false,
+  "note": "Agent reported issue #4295/PR #4298 (closed 2021-11-15), but ground truth shows a more recently closed bug issue #4297 was closed by merged PR #4487 (davidism, merged 2022-03-15T15:36:16Z, one minute before issue closed) [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.luna-medium-val": {
+  "pass": true,
+  "note": "captured history page text shows 8 Nov 2024 02:55 edit by 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821 with no edit summary, matching MediaWiki API ground truth exactly [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.spark13-medium-val": {
+  "pass": true,
+  "note": "Confirmed via issues/events API (paged to Sep 2025): most recent reopened ISSUE (excluding PRs #6067/#5918/#5827/#5761/#5736) is #5817, reopened 2025-09-19T08:53:54Z by awoimbee, matching agent's answer; timeline grounded in captured navigation [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.gemini-3.8-flash-high-val": {
+  "pass": true,
+  "note": "Ground truth via GitHub API confirms #4295/'error handler type check fails' closed by merged PR #4298 (delicb, merged 2021-11-15) is the most recently closed bug-labeled issue closed by a merged PR (newer #4297, #4355 were closed manually, no PR); agent's answer matches exactly and trace shows it navigated/inspected these issue and PR pages this run [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.gemini-3.8-flash-medium-val": {
+  "pass": false,
+  "note": "Ground truth: issue #4297 (closed 2022-03-15T15:37:17Z) closed by merged PR #4487 (davidism, merged 2022-03-15T15:36:16Z), which the agent's own trace shows it navigated to and correctly identified in-body as the most recent, but its final 'Requested Items' answer reports #4295/PR #4298 instead, an incorrect final answer [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.luna-medium-val": {
+  "pass": true,
+  "note": "Verified via GitHub API/page: #4295 is the most recently closed bug-labeled issue closed by a merged PR (#4297 and #4355 closed more recently but have no linked PR); PR #4298 by delicb merged 2021-11-15T21:37 matches agent's answer exactly [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.opus-high-val": {
+  "pass": true,
+  "note": "API confirms #4295 (closed 2021-11-15T21:37:50Z) is the most recent bug-labeled closed issue with a merged-PR closure (#4298, delicb, merged 2021-11-15T21:37:42Z); #4297/#4355 closed more recently but manually with no merged PR, matching agent's grounded rejection [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.opus-medium-val": {
+  "pass": true,
+  "note": "API confirms #4295 (closed 2021-11-15) is the most recent bug-labeled closed issue with a merged PR; #4297/#4355 (closed later) verified via agent's own captured page text as having no linked PR; PR #4298/delicb/2021-11-15 match [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.opus-xhigh-val": {
+  "pass": true,
+  "note": "Verified via GitHub API: #4297 and #4355 (more recently closed bug issues) closed without a merged PR; #4295 closed by merged PR #4298 (delicb, merged 2021-11-15T21:37:42Z) matching agent's answer exactly; agent navigated to all relevant pages [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.sonnet-high-val": {
+  "pass": true,
+  "note": "API confirms #4297 is most recently closed bug-labeled issue (43 total, none after 2022-03-15); agent navigated to issue #4297 and PR #4487 pages, correctly reporting davidism as PR author merged 2022-03-15T15:36:16Z [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.sonnet-max-val": {
+  "pass": true,
+  "note": "Verified via API: #4295 (closed 2021-11-15) is the most recent bug-labeled issue with a formally linked merged PR (#4298, delicb, merged 2021-11-15T21:37:42Z); more recent closures #4297/#4355 were manual with no linked PR per Development sidebar and timeline, as agent correctly checked [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.sonnet-medium-val": {
+  "pass": true,
+  "note": "Verified via API: #4295 (bug label) closed 2021-11-15 by merged PR #4298 (delicb, merged by davidism, 2021-11-15T21:37:42Z into 2.0.x); more recent bug issues #4297/#4355 closed manually with no merged PR, matching agent's answer [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.spark13-high-val": {
+  "pass": true,
+  "note": "API confirms #4297 (bug label) is the most recently closed bug issue, closed by merged PR #4487 by davidism merged 2022-03-15; agent's answer matches and trace shows navigation/reading of both pages [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.spark13-low-val": {
+  "pass": true,
+  "note": "API confirms #4297 (closed 2022-03-15T15:37) is most recent closed bug issue, agent's PR #4487/davidism/2022-03-15 merge details match page evidence [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.spark13-medium-val": {
+  "pass": true,
+  "note": "API confirms #4297 (closed 2022-03-15) is the most recently closed bug issue among 36, closed by merged PR #4487 by davidism merged 2022-03-15; matches agent's answer and its navigation trace [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.spark13-ultra-val": {
+  "pass": true,
+  "note": "API confirms #4297 (closed 2022-03-15T15:37:17Z) is most recent closed bug issue, closed via merged PR #4487 by davidism merged 2022-03-15T15:36:16Z; agent's answer matches and is grounded in navigated pages [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.spark13-xhigh-val": {
+  "pass": true,
+  "note": "API confirms #4295/PR#4298 (delicb, merged 2021-11-15T21:37:42Z) is the most recently closed bug-labeled issue closed by a merged PR; #4297 and #4355 closed later but manually with no linking PR [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.gemini-3.8-flash-high-val": {
+  "pass": true,
+  "note": "Agent's own API scan across pages found #5817 (asyncio/gevent), reopened 2025-09-19T08:53:54Z by awoimbee, as most recent reopened non-PR issue, matching the established ground truth from the 2026-09-04 re-audit; navigated to and captured issue #5817's page/timeline this run confirming author awoimbee [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.gemini-3.8-flash-low-val": {
+  "pass": true,
+  "note": "API ground truth (issues/events, filtering PRs per 2026-09-04 re-audit) confirms #5817 reopened 2025-09-19T08:53:54Z by awoimbee is the most recent issue reopen; agent's answer matches exactly and it navigated to the issue page/timeline. [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.gemini-3.8-flash-medium-val": {
+  "pass": true,
+  "note": "Matches ground truth: most recent reopened *issue* (excluding PRs) is #5817, reopened 2025-09-19T08:53:54Z by awoimbee per /repos/pallets/flask/issues/events; agent navigated to and read the issue timeline this run. [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.opus-high-val": {
+  "pass": true,
+  "note": "Matches 2026-09-04 re-audit ground truth (#5817 reopened 2025-09-19 by awoimbee, filtering PRs per verifier's issues-only scope); agent navigated to the issue page and read its timeline this run [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.opus-max-val": {
+  "pass": true,
+  "note": "API confirms #5817 (issue, not PR) reopened by awoimbee at 2025-09-19T08:53:54Z is the most recent reopened issue after excluding PRs per 2026-09-04 re-audit rule; agent navigated issues/events and issue timeline this run and reported matching number/title/date/actor [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.opus-medium-val": {
+  "pass": true,
+  "note": "confirmed via API (filtering PRs per re-audit rule): most recent reopened issue is #5817, reopened 2025-09-19T08:53:54Z by awoimbee; agent's answer matches exactly and is grounded in its own timeline navigation [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.opus-xhigh-val": {
+  "pass": true,
+  "note": "API confirms most recent reopened ISSUE (excluding PRs) is #5817 reopened 2025-09-19T08:53:54Z by awoimbee, matching agent's answer exactly; agent verified via timeline navigation [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.sonnet-high-val": {
+  "pass": true,
+  "note": "Matches confirmed ground truth (2026-09-04 re-audit): #5817 reopened by awoimbee 2025-09-19T08:53:54Z, non-PR issue; agent grounded via API cross-check and issue page navigation [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.sonnet-max-val": {
+  "pass": true,
+  "note": "API-verified: most recent reopened issue (excluding PRs) is #5817 reopened 2025-09-19T08:53:54Z by awoimbee, matches agent answer exactly [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "API-confirmed most recent reopened issue (excluding PRs) is #5817, reopened 2025-09-19T08:53:54Z by awoimbee; agent navigated the issue timeline and correctly filtered out PR events, matching answer key [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.spark13-high-val": {
+  "pass": true,
+  "note": "Ground truth via issues/events API confirms #5817 reopened 2025-09-19T08:53:54Z by awoimbee is the most recent issue-type reopen (PR reopens excluded per re-audit); agent answer matches exactly and cites live timeline evidence. [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.spark13-low-val": {
+  "pass": true,
+  "note": "API confirms most recent reopened *issue* event (excluding PRs per 2026-09-04 re-audit) is #5817 reopened 2025-09-19T08:53:54Z by awoimbee, matching agent's answer exactly [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.spark13-xhigh-val": {
+  "pass": true,
+  "note": "Confirmed via GitHub API timeline for #5817: closed 2025-09-16, reopened 2025-09-19T08:53:54Z by awoimbee, matching prior re-audit ground truth; agent's grounded search across 300 recent issues found this correctly. [judge: sonnet daemon]"
+ },
+ "262-github-blame.gemini-3.8-flash-high-val": {
+  "pass": true,
+  "note": "Commit 0ec7f71 by pgjones, Aug 19, 2023 matches GitHub API commit data and expected answer; agent's trace shows it read the actual blame view. [judge: sonnet daemon]"
+ },
+ "262-github-blame.gemini-3.8-flash-medium-val": {
+  "pass": true,
+  "note": "Blame confirmed: commit 0ec7f713d (0ec7f71), author pgjones, committer/GitHub date Aug 19 2023 matches line 633 def run( \u2014 agent answer correct and grounded in blame/commit page navigation [judge: sonnet daemon]"
+ },
+ "262-github-blame.luna-max-val": {
+  "pass": true,
+  "note": "Verified via local git blame + GitHub API: commit 0ec7f713d by pgjones, committer date 2023-08-19 (shown as Aug 19, 2023 in blame gutter) \u2014 matches agent's answer exactly [judge: sonnet daemon]"
+ },
+ "262-github-blame.opus-high-val": {
+  "pass": true,
+  "note": "Agent's reported hash/author/date (0ec7f71, pgjones, Aug 19 2023 5:35PM UTC) matches GitHub API commit data exactly; agent navigated blame view then commit page for grounding [judge: sonnet daemon]"
+ },
+ "262-github-blame.opus-max-val": {
+  "pass": true,
+  "note": "GitHub API confirms commit 0ec7f713 (pgjones, 2023-08-19T17:35:14Z) added the 'def run(' line in src/flask/app.py, matching agent's blame/commit findings [judge: sonnet daemon]"
+ },
+ "262-github-blame.opus-medium-val": {
+  "pass": true,
+  "note": "Matches ground truth: commit 0ec7f713 (short 0ec7f71), author pgjones, committer date 2023-08-19; agent navigated blame view then commit page and grounded answer in captured evidence [judge: sonnet daemon]"
+ },
+ "262-github-blame.opus-xhigh-val": {
+  "pass": true,
+  "note": "hash 0ec7f71/author pgjones/date Aug 19 2023 (committer date) confirmed via git blame + GitHub API; agent navigated blame view and commit page [judge: sonnet daemon]"
+ },
+ "262-github-blame.spark13-high-val": {
+  "pass": true,
+  "note": "Blame ground truth confirmed by local git blame/show: commit 0ec7f713, author pgjones, commit date 2023-08-19T17:35:14Z, matching agent's reported hash 0ec7f71/pgjones/Aug 19 2023 exactly, grounded in navigated blame and commit pages [judge: sonnet daemon]"
+ },
+ "262-github-blame.spark13-ultra-val": {
+  "pass": true,
+  "note": "verified via local git blame -L633: commit 0ec7f71 pgjones Aug 19 2023 matches agent's blame+commit page findings [judge: sonnet daemon]"
+ },
+ "262-github-blame.spark13-xhigh-val": {
+  "pass": true,
+  "note": "Commit 0ec7f713 (0ec7f71) by pgjones, committer date Aug 19 2023 confirmed via GitHub API, matches agent's grounded blame/commit-page findings and expected answer [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.gemini-3.8-flash-high-val": {
+  "pass": true,
+  "note": "matches API ground truth (34 commits, 44 files, davidism, 7fff56f) and grounded in this run's navigation to the compare page [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.gemini-3.8-flash-low-val": {
+  "pass": true,
+  "note": "API compare confirms 34 commits, 44 files changed, most recent commit 7fff56f by davidism, matching agent's grounded answer [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.gemini-3.8-flash-medium-val": {
+  "pass": true,
+  "note": "matches GitHub API ground truth: 34 commits, 44 files changed, most recent commit davidism 7fff56f [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.luna-medium-val": {
+  "pass": true,
+  "note": "matches API ground truth (34 commits, 44 files, davidism 7fff56f), grounded in navigated compare page [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.luna-xhigh-val": {
+  "pass": true,
+  "note": "API confirms 34 commits, 44 files changed, last commit davidism 7fff56f, matches agent's grounded report [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.opus-max-val": {
+  "pass": true,
+  "note": "API confirms 34 commits, 44 files, last commit 7fff56f davidism release version 3.1.1; agent's compare-page read matches exactly [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.opus-medium-val": {
+  "pass": true,
+  "note": "git log confirms 34 commits, 44 files changed, most recent 7fff56f5 davidism 'release version 3.1.1', matches agent report [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "matches API ground truth exactly (34 commits, 44 files, 7fff56f davidism release version 3.1.1), grounded in navigated compare page [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.spark13-high-val": {
+  "pass": true,
+  "note": "Matches API ground truth: 34 commits, 44 files, most recent 7fff56f by davidism; grounded in navigated compare page [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.spark13-medium-val": {
+  "pass": true,
+  "note": "34 commits, 44 files changed, most recent commit 7fff56f by davidism match API ground truth; grounded in compare page navigation [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.spark13-ultra-val": {
+  "pass": true,
+  "note": "API confirms 34 commits, 44 files changed, last commit 7fff56f by davidism 'release version 3.1.1'; agent navigated compare page and read commits_bucket [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.spark13-xhigh-val": {
+  "pass": true,
+  "note": "API confirms 34 commits, 44 files changed, most recent 7fff56f by davidism, matching agent's answer exactly [judge: sonnet daemon]"
+ },
+ "319-github-first-release.gemini-3.8-flash-low-val": {
+  "pass": true,
+  "note": "Agent found 3.0.0 (Sept 30, 2023) via commit page tag list and release page; API confirms 3.0.0 contains the commit (ahead_by=0) while 2.3.3 does not (diverged) [judge: sonnet daemon]"
+ },
+ "319-github-first-release.gemini-3.8-flash-medium-val": {
+  "pass": true,
+  "note": "GitHub API confirms 3.0.0 (2023-09-30) is earliest tag containing the commit (2.3.3 diverged, commit ancestor of 3.0.0 by compare); agent navigated commit/releases pages and matches ground truth [judge: sonnet daemon]"
+ },
+ "319-github-first-release.luna-medium-val": {
+  "pass": true,
+  "note": "API confirms compare 3.0.0...commit=behind (contains it), 2.3.3...commit=diverged (does not); release 3.0.0 published 2023-09-30; agent grounded via commit page's tags widget (3.0.0 shown as earliest tag after 'Show more tags') and releases/tag/3.0.0 page [judge: sonnet daemon]"
+ },
+ "319-github-first-release.opus-high-val": {
+  "pass": true,
+  "note": "API confirms 3.0.0 is earliest tag containing commit (compare status=behind vs diverged for 2.3.3), released 2023-09-30T14:38:50Z matching agent's answer and grounded navigation [judge: sonnet daemon]"
+ },
+ "319-github-first-release.opus-low-val": {
+  "pass": true,
+  "note": "API confirms 3.0.0 (2023-09-30) is earliest release containing commit; agent navigated to commit and release pages [judge: sonnet daemon]"
+ },
+ "319-github-first-release.opus-medium-val": {
+  "pass": true,
+  "note": "API confirms 3.0.0 is earliest release containing commit (compare shows commit ahead of 2.3.3/diverged, behind 3.0.0 by 0), release date 2023-09-30 matches; agent navigated to commit and release pages this run [judge: sonnet daemon]"
+ },
+ "319-github-first-release.opus-xhigh-val": {
+  "pass": true,
+  "note": "API confirms 3.0.0 (published 2023-09-30) contains commit 0ec7f713 (behind_by=26) while 2.3.3 diverges; agent navigated commit page + tags + release page, matches ground truth [judge: sonnet daemon]"
+ },
+ "319-github-first-release.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "API confirms 3.0.0 is behind (contains commit) while prior tag 2.3.3 diverged (does not), release date 2023-09-30T14:38:50Z matches agent's answer; grounded via commit tag list and release page navigation [judge: sonnet daemon]"
+ },
+ "319-github-first-release.spark13-high-val": {
+  "pass": true,
+  "note": "API confirms 0ec7f713 is behind/ancestor of 3.0.0 (earliest tag) and diverged from prior tag 2.3.3; release date Sep 30, 2023 matches; agent navigated commit page and release page on github.com [judge: sonnet daemon]"
+ },
+ "319-github-first-release.spark13-low-val": {
+  "pass": true,
+  "note": "Agent found 3.0.0 released 2023-09-30 as earliest release containing commit 0ec7f713, matching API ground truth (2.3.3 diverged, 3.0.0 behind_by 26 i.e. contains it); navigated github.com commit/releases pages this run [judge: sonnet daemon]"
+ },
+ "319-github-first-release.spark13-medium-val": {
+  "pass": true,
+  "note": "API confirms 3.0.0 is earliest tag containing commit (2.3.3 diverged, 3.0.0 behind by 0) released 2023-09-30T14:38:50Z, matches agent's grounded answer [judge: sonnet daemon]"
+ },
+ "319-github-first-release.spark13-ultra-val": {
+  "pass": true,
+  "note": "GitHub API confirms 3.0.0 contains commit (behind 0/26), 2.3.3 does not (diverged); release date 2023-09-30 matches; agent navigated to commit and release pages [judge: sonnet daemon]"
+ },
+ "319-github-first-release.spark13-xhigh-val": {
+  "pass": true,
+  "note": "Ground truth confirmed via API: 2.3.3 diverged (doesn't contain commit), 3.0.0 behind commit (contains it), release published 2023-09-30T14:38:50Z matches; agent navigated commit/branch_commits/release pages this run [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.gemini-3.8-flash-high-val": {
+  "pass": true,
+  "note": "API confirms total_count=7 merged 2025-01-01..2025-03-31, latest is #2840 merged 2025-03-18T17:59:13Z matching agent's answer [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.gemini-3.8-flash-low-val": {
+  "pass": true,
+  "note": "Ground truth (API) confirms 7 PRs merged 2025-01-01..2025-03-31, most recent #2840 'Move --help option defaults from its class to its decorator'; matches agent's grounded answer from GitHub PR list navigation [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.gemini-3.8-flash-medium-val": {
+  "pass": true,
+  "note": "count=7 and title match GitHub API ground truth (PR #2840, merged 2025-03-18) [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.luna-high-val": {
+  "pass": true,
+  "note": "GH API confirms 7 merged PRs in range, most recent #2840 merged 2025-03-18 matching title exactly; agent navigated PR pages to ground the answer [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.luna-xhigh-val": {
+  "pass": true,
+  "note": "count=7 and most-recent PR #2840 (merged 2025-03-18) match agent's answer; grounded via navigations to PR pages [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.opus-high-val": {
+  "pass": true,
+  "note": "Ground truth via GitHub search API confirms 7 merged PRs in range with #2840 most recent (2025-03-18), matching agent's answer exactly; grounded in navigated PR pages [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.opus-low-val": {
+  "pass": true,
+  "note": "Ground truth via GitHub search API confirms count=7 and latest merged PR #2840 (2025-03-18) 'Move --help option defaults...'; agent's answer matches exactly and is grounded in navigated github.com PR list + eval extraction this run [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.opus-max-val": {
+  "pass": true,
+  "note": "API confirms 7 PRs merged 2025-01-01..2025-03-31, most recent #2840 matches agent answer exactly; grounded via search+PR navigation [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.opus-medium-val": {
+  "pass": true,
+  "note": "GitHub search API confirms total_count=7 merged 2025-01-01..2025-03-31, and #2840 merged 2025-03-18 is latest (after #2838 on 3-17); matches agent's answer exactly [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.opus-xhigh-val": {
+  "pass": true,
+  "note": "API confirms 7 merged PRs in window, most recent 2025-03-18 #2840 matching agent's title exactly; agent grounded via GitHub search filter and PR page navigation [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.sonnet-high-val": {
+  "pass": true,
+  "note": "API confirms total_count=7 and PR #2857 'Rewrite testing docs and move from rst to myst' is most recently merged in range, matching agent answer [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.sonnet-max-val": {
+  "pass": true,
+  "note": "Ground truth via GitHub search API confirms 7 PRs merged 2025-01-01..2025-03-31 with most recent #2840 'Move --help option defaults from its class to its decorator' (2025-03-18), matching agent's answer exactly; grounded via per-PR navigation/eval calls [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.sonnet-medium-val": {
+  "pass": false,
+  "note": "count 7 is correct but most recently merged PR was #2840 (merged 2025-03-18T17:59:13Z, 'Move --help option defaults...'), not #2857 (merged 2025-03-16) which the agent named based on GitHub's default list order, not actual merge recency [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "GitHub search API confirms 7 PRs merged in window, most recent #2840 same title as agent's answer [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.spark13-high-val": {
+  "pass": true,
+  "note": "Ground truth via API confirms 7 PRs merged in window, latest is #2840 'Move --help option defaults from its class to its decorator'; matches agent's answer and per-PR navigation evidence [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.spark13-low-val": {
+  "pass": true,
+  "note": "count=7 and latest PR #2840 'Move --help option defaults from its class to its decorator' (merged 2025-03-18) confirmed via GitHub API, matches agent answer [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.spark13-medium-val": {
+  "pass": false,
+  "note": "count 7 is correct but final ANSWER title is #2857 (Mar 16), not the most recently merged #2840 'Move --help option defaults from its class to its decorator' (Mar 18) per GitHub API, contradicting the agent's own stated reasoning [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.spark13-ultra-val": {
+  "pass": true,
+  "note": "count=7 and latest PR #2840 (merged 2025-03-18) match API ground truth, agent navigated github.com search and PR pages [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.spark13-xhigh-val": {
+  "pass": true,
+  "note": "API confirms 7 PRs merged in range, most recent #2840 title matches exactly [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.gemini-3.8-flash-high-val": {
+  "pass": true,
+  "note": "Matches MediaWiki API ground truth (revid 1256081070, IP editor, 02:55 8 Nov 2024, empty comment); agent navigated history/diff pages this run [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.gemini-3.8-flash-medium-val": {
+  "pass": true,
+  "note": "API confirms last 2024 revision (1256081070, 2024-11-08T02:55:35Z, empty comment) by 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821 matches agent's answer, grounded in navigated history/diff page [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.luna-max-val": {
+  "pass": true,
+  "note": "Matches API ground truth (2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, 2024-11-08T02:55:35Z, empty comment) and grounded in the single navigate+text capture of the history page this run [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.opus-high-val": {
+  "pass": true,
+  "note": "API confirms user 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, 2024-11-08T02:55:35Z, empty comment matches agent's answer; grounded in navigated history page [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.opus-low-val": {
+  "pass": true,
+  "note": "Matches API ground truth (IP editor, 02:55 8 Nov 2024, no summary); grounded in navigated history page evidence [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.opus-max-val": {
+  "pass": true,
+  "note": "Matches MediaWiki API ground truth (same IP, 2024-11-08T02:55:35Z, empty comment); agent grounded answer via history/diff page navigation [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.opus-medium-val": {
+  "pass": true,
+  "note": "matches API ground truth (IP 2400:9800:b60:b6df:f46b:2bff:feae:1821, 2024-11-08 02:55 UTC, no summary); agent read the actual history page [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.opus-xhigh-val": {
+  "pass": true,
+  "note": "API confirms revid 1256081070: 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, 2024-11-08 02:55 UTC, empty summary \u2014 matches agent's grounded answer from history page [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.sonnet-high-val": {
+  "pass": true,
+  "note": "API confirms last 2024 revision is the IP 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821 at 2024-11-08T02:55:35Z with empty comment, matching agent's grounded answer from the history page [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.sonnet-max-val": {
+  "pass": true,
+  "note": "Matches API ground truth (revid 1256081070, IP editor, 2024-11-08T02:55:35Z, empty summary); agent navigated to and read the actual diff page [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.sonnet-medium-val": {
+  "pass": true,
+  "note": "API ground truth (revid 1256081070, 2024-11-08T02:55:35Z, IP 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, no summary) matches agent's answer exactly; agent navigated to the diff page confirming grounding [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.sonnet-xhigh-val": {
+  "pass": true,
+  "note": "API confirms last 2024 edit is revid 1256081070 by 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821 at 02:55, 8 Nov 2024, no comment; matches agent's grounded answer from history page [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.spark13-low-val": {
+  "pass": true,
+  "note": "Matches MediaWiki API ground truth (user 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, 8 Nov 2024, no summary); agent navigated to and read the actual history page [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.spark13-medium-val": {
+  "pass": true,
+  "note": "Matches MediaWiki API ground truth (2400:...1821, 8 Nov 2024 02:55 UTC, no summary); agent navigated to and quoted the actual history page [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.spark13-ultra-val": {
+  "pass": true,
+  "note": "API ground truth matches: 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, 02:55 8 Nov 2024, empty summary; agent navigated Wikipedia history page and reported same [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.spark13-xhigh-val": {
+  "pass": true,
+  "note": "API confirms last 2024 edit was 2400:9800:b60:b6df:f46b:2bff:feae:1821, 8 Nov 2024, no summary; agent's captured history page matches and answer is exact [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.astra-low-val": {
+  "pass": true,
+  "note": "Issue #4297/PR #4487/davidism/2022-03-15 confirmed via GitHub API, matches agent's grounded answer [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.astra-max-val": {
+  "pass": true,
+  "note": "GitHub API confirms #4295 is the most recently closed bug-labeled issue closed by a merged PR (#4298 by delicb, merged 2021-11-15); newer closed bug issues #4297/#4355 were closed manually, not via merged PRs [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.astra-medium-val": {
+  "pass": true,
+  "note": "Issue #4297 (only 43 closed bug issues total, #4297 most recent), closed by merged PR #4487 by davidism merged 2022-03-15 \u2014 matches API ground truth and agent's answer [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.astra-xhigh-val": {
+  "pass": true,
+  "note": "API confirms #4297 (closed 2022-03-15) is most recent closed bug issue, closed by merged PR #4487 by davidism merged 2022-03-15; agent's answer matches and end_text_excerpt shows it navigated to and read the issue search results page [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.astra-high-val": {
+  "pass": true,
+  "note": "API confirms #5817 reopened 2025-09-19T08:53:54Z by awoimbee, matches agent answer exactly [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.astra-low-val": {
+  "pass": true,
+  "note": "ground truth via issues/events API (excluding PRs per 2026-09-04 re-audit) confirms #5817 reopened 2025-09-19T08:53:54Z by awoimbee as most recent, matching agent answer exactly, grounded in issue timeline navigation [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.astra-max-val": {
+  "pass": true,
+  "note": "API confirms #5817 asyncio/gevent is the most recent reopened event on an actual issue (2025-09-19T08:53:54Z, by awoimbee), matching agent's grounded answer exactly [judge: sonnet daemon]"
+ },
+ "262-github-blame.astra-high-val": {
+  "pass": true,
+  "note": "hash 0ec7f71, author pgjones, committer date 2023-08-19 all confirmed via GitHub API against agent's answer [judge: sonnet daemon]"
+ },
+ "262-github-blame.astra-low-val": {
+  "pass": true,
+  "note": "0ec7f71/pgjones/Aug 19 2023 confirmed via local git blame of src/flask/app.py line 633, matches agent's grounded answer from blame/commit pages [judge: sonnet daemon]"
+ },
+ "262-github-blame.astra-max-val": {
+  "pass": true,
+  "note": "API confirms commit 0ec7f713 by pgjones, committer date 2023-08-19, matches reported hash/author/date; agent navigated blame view and read commit page [judge: sonnet daemon]"
+ },
+ "262-github-blame.astra-medium-val": {
+  "pass": true,
+  "note": "hash 0ec7f71, author pgjones, and Aug 19 2023 (committer date shown in GitHub blame/commit UI) all verified via local git blame and GitHub API [judge: sonnet daemon]"
+ },
+ "262-github-blame.astra-xhigh-val": {
+  "pass": true,
+  "note": "Agent's reported hash/author/date (0ec7f71; Phil Jones/pgjones; Aug 19, 2023) matches GitHub API commit data and manifest ground truth, grounded in blame-view navigation and commit page read [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.astra-high-val": {
+  "pass": true,
+  "note": "API confirms 34 commits, 44 files, most recent 7fff56f by davidism, matches agent answer exactly [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.astra-low-val": {
+  "pass": true,
+  "note": "API confirms 34 commits, 44 files, last commit 7fff56f by davidism, matching agent's grounded answer from compare page [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.astra-max-val": {
+  "pass": true,
+  "note": "matches API ground truth (34 commits, 44 files, davidism 7fff56f), grounded in compare page navigation [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.astra-xhigh-val": {
+  "pass": true,
+  "note": "API confirms 34 commits, 44 files changed, last commit davidism 7fff56f matching agent's answer [judge: sonnet daemon]"
+ },
+ "319-github-first-release.astra-high-val": {
+  "pass": true,
+  "note": "API confirms 3.0.0 is earliest tag containing commit (behind/ahead_by=0 vs 3.0.0, diverged vs 2.3.3), released 2023-09-30T14:38:50Z, matches agent's answer grounded in commit/release page navigation [judge: sonnet daemon]"
+ },
+ "319-github-first-release.astra-low-val": {
+  "pass": true,
+  "note": "GitHub commit page's own tag list confirms 3.0.0 is earliest containing tag (no 2.3.x listed), release page date 2023-09-30 matches API ground truth (compare 3.0.0...commit=behind, 2.3.3...commit=diverged); grounded in this run's navigation [judge: sonnet daemon]"
+ },
+ "319-github-first-release.astra-max-val": {
+  "pass": true,
+  "note": "API confirms commit is ancestor of 3.0.0 but not 2.3.3, and 3.0.0 released 2023-09-30 matches agent's grounded report [judge: sonnet daemon]"
+ },
+ "319-github-first-release.astra-medium-val": {
+  "pass": true,
+  "note": "API confirms 3.0.0 is earliest tag behind (containing) the commit, released 2023-09-30; matches agent's grounded GitHub navigation and answer [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.astra-low-val": {
+  "pass": true,
+  "note": "API confirms 7 PRs merged in range, latest #2840 same title/date matches agent answer [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.astra-medium-val": {
+  "pass": true,
+  "note": "count=7 and latest PR #2840 (merged 2025-03-18) verified via GitHub API, matches agent's grounded answer [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.astra-xhigh-val": {
+  "pass": true,
+  "note": "gh search API confirms total_count=7 merged PRs in range, latest is #2840 'Move --help option defaults from its class to its decorator' merged 2025-03-18, matching agent's answer exactly [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.astra-high-val": {
+  "pass": true,
+  "note": "Matches MediaWiki API ground truth (revid 1256081070, IP editor, 2024-11-08T02:55:35Z, empty summary); grounded via history page navigation and diff view [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.astra-low-val": {
+  "pass": true,
+  "note": "editor/date/summary match API ground truth (2400:9800:b60:b6df:f46b:2bff:feae:1821, 2024-11-08T02:55:35Z, empty comment); agent navigated to history page [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.astra-max-val": {
+  "pass": true,
+  "note": "MediaWiki API confirms revid 1256081070 (2024-11-08T02:55:35Z, IP 2400:9800:b60:b6df:f46b:2bff:feae:1821, no comment) is the last 2024 edit; matches agent's grounded answer [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.astra-medium-val": {
+  "pass": true,
+  "note": "API ground truth (rvstart=2024-12-31T23:59:59Z, rvdir=older) matches agent's answer exactly: IP 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, 2024-11-08T02:55:35Z, empty comment; agent navigated to the article's history page this run [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.astra-high-val": {
+  "pass": false,
+  "note": "no screenshots or video file exist on disk to verify the mandated visual proof (red canvas + 5-dot X); insufficient evidence per rule 8 [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.astra-low-val": {
+  "pass": true,
+  "note": "Final screenshot shows red-flooded canvas with 5 black dots in clear X pattern (center+4 corners), trace shows palette/fill/pencil clicks [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.astra-medium-val": {
+  "pass": false,
+  "note": "No screenshots or video file exist on disk for this run despite this being a vision-evidence task requiring the judge to open them (verifier.md); trace shows plausible click sequence but final canvas state is unverifiable [judge: sonnet daemon]"
  }
 }
