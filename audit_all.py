@@ -12,6 +12,7 @@ def check(k):
     if not str(d.get("worker", "")).startswith("i-"): return None
     t, l = d["task"], d["label"]; reasons = []
     raw = S.get(f"raw/{t}.{l}.json")
+    if not raw: reasons.append("no raw bundle recorded")
     if raw:
         r = json.loads(raw)
         if not r.get("sid"): reasons.append("empty session id")
