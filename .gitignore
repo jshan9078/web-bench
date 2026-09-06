@@ -12,3 +12,8 @@ results/*.out
 results/*.html
 
 widgetapp/.token
+scratch/
+results/matrix_store/
+results/shards/
+results/*.cpu.jsonl
+results/**/*.cpu.jsonl
