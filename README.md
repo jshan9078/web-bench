@@ -19,8 +19,6 @@ What the 70 tasks contain:
 
 62 tasks run against small deterministic web apps in [`widgetapp/`](widgetapp/) served on localhost. Each run starts from a fresh random state and the verdict is read from the server's state afterwards: the last submitted answer, the confirmed click, the saved record. The apps' private endpoints are gated behind a per-page-load key, so an agent that calls the API instead of using the page gets a 403; the attempt is logged but is not itself a failure. Live-site tasks are judged by a Claude Sonnet judge that first establishes the truth from the site's API ([JUDGE_PROMPT.md](JUDGE_PROMPT.md)).
 
-Known bias: because Sonnet 5 low was the pilot for most of the selection, its score on v2 measures the selection rather than the model. Configurations at other thinking levels did not take part in selection.
-
 Each task folder under [`tasks/`](tasks/) holds `prompt.txt` (sent verbatim to the agent), `task.md` (what it tests) and `verifier.md` (the pass criteria). The task list is [`results/v2_summary.json`](results/v2_summary.json) (`tasks`).
 
 ## Scoring rules
