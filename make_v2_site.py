@@ -31,22 +31,21 @@ for c in summ["configs"]:
     ot = [x for x in (out_tokens(raw) for v, r, raw in metrics) if x]; rt = [x for x in (reason_tokens(raw) for v, r, raw in metrics) if x is not None]
     name, harness = NAMES[fam]
     rows.append({"model": name, "thinking": eff, "harness": harness, "score": round(100 * passes / len(scored), 1), "time": med(walls) or 0, "cost": round(statistics.median(costs), 3) if costs else 0,
-                 "outTok": med(ot) or 0, "steps": med(steps) or 0, "passes": passes, "tasks": len(scored), "wallTotal": med(wt), "reasonTok": med(rt) if rt else None,
-                 "corePasses": sum(1 for t in core if scored.get(t, {}).get("pass")), "coreTasks": len(core), "discPasses": sum(1 for t in disc if scored.get(t, {}).get("pass")), "discTasks": len(disc)})
+                 "outTok": med(ot) or 0, "steps": med(steps) or 0, "passes": passes, "tasks": len(scored), "wallTotal": med(wt), "reasonTok": med(rt) if rt else None})
 order = ["GPT-6 Astra", "Opus 5", "Sonnet 5", "Gemini 3.8 Flash", "Muse Spark 1.3", "GPT-5.6 Luna"]; EFF = ["low", "medium", "high", "xhigh", "max", "ultra"]
 rows.sort(key=lambda r: (order.index(r["model"]), EFF.index(r["thinking"])))
 vid = sum(1 for t in summ["tasks"] if t["video"]); real = sum(1 for t in summ["tasks"] if t["site"] == "real")
 partial_txt = ", ".join(f"{NAMES[f][0]} {e} ({n}/{len(tasks)})" for f, e, n in partial)
-desc = (f"{len(tasks)} tasks in two tiers, run at pass@1 over the same browser tool. The **core tier** ({len(core)} tasks) is deterministic browser-control work every configuration should pass: forms and multi-page flows, table editing and validation, triage and scheduling, keyboard-only and hover-only UIs, precision clicks, iframes and nested scrolling, and read-only GitHub and Wikipedia navigation. "
-        f"The **discriminating tier** ({len(disc)} tasks) holds tasks that at least one frontier configuration failed on both of two attempts during construction: {vid} are counting and tracking over rendered video clips, the rest are exact visual counting, tracing and real-site judgement. "
-        f"{len(tasks) - real} tasks run on deterministic local sites scored from server state; {real} run on live GitHub, Wikipedia and JS Paint and are judged by a Claude Sonnet judge against API ground truth. "
-        f"Runs that hit a provider rate or usage limit were voided and rerun, never scored. Configurations still in progress and not shown: {partial_txt}. "
-        f"[Task set](https://github.com/jshan9078/web-bench/blob/main/results/core_set.json), [discriminating set](https://github.com/jshan9078/web-bench/blob/main/results/validated_set.json), [per-run results](https://github.com/jshan9078/web-bench/tree/main/results).")
-caption = [f"{len(tasks)} tasks per configuration ({len(core)} core, {len(disc)} discriminating); time (agent wall-clock seconds), cost, tokens and steps are per-task medians; hover a configuration for the per-tier split.",
-           "Score is pass@1: local tasks are scored from the site's server state, real-site tasks by a Claude Sonnet judge against API ground truth.",
-           "The discriminating tier was selected with Sonnet 5 low as the main pilot, so its Sonnet 5 low column reflects that selection rather than a neutral measurement.",
-           "Every run has a 10-minute budget; runs that hit a provider rate or usage limit were voided and rerun on AWS workers (one run per instance)."]
+desc = (f"{len(tasks)} tasks, run at pass@1 with the same browser tool and a 10-minute budget. v1 stopped separating frontier models, so v2's tasks were written in batches and run on Claude Sonnet 5, Claude Opus 5 and Muse Spark 1.2 at low thinking; a task was kept when a configuration failed it on two independent attempts (pass@2), or when it covered browser-control work the set would otherwise lack, and every kept failure was checked by hand. "
+        f"{vid} tasks count or track something in a rendered video clip (occupancy peaks, events attributed to actors, direction-filtered crossings, defects on a belt); the rest are exact visual work on generated images (counting rotated or occluded shapes, tracing a line through crossings, reading an angle, a gauge or an unnumbered clock), browser workflows on local web apps (multi-page checkout, password reset through an in-app inbox, keyboard-only and hover-only UIs, a form inside a shadow root inside an iframe, table editing with conflicts), and {real} read-only tasks on live GitHub, Wikipedia and JS Paint. "
+        f"{len(tasks) - real} tasks run on deterministic local apps and are scored from the server's state after the run; the live-site tasks are judged by a Claude Sonnet judge against API ground truth. Runs that hit a provider rate or usage limit were voided and rerun, never scored. "
+        f"Because Sonnet 5 low was the pilot for most of the selection, its score measures the selection rather than the model. Not shown (partial): {partial_txt}. "
+        f"[Tasks](https://github.com/jshan9078/web-bench/tree/main/tasks), [design log](https://github.com/jshan9078/web-bench/blob/main/tasks/V2-DESIGN.md), [per-run results](https://github.com/jshan9078/web-bench/tree/main/results).")
+caption = [f"{len(tasks)} tasks per configuration; time (agent wall-clock seconds), cost, tokens and steps are per-task medians.",
+           "Score is pass@1: local tasks are scored from the site's server state, live-site tasks by a Claude Sonnet judge against API ground truth.",
+           "Sonnet 5 low was the pilot configuration for most of the task selection, so its column reflects that selection rather than a neutral measurement.",
+           "Every run has a 10-minute budget; runs that hit a provider rate or usage limit were voided and rerun on AWS workers, one run per instance."]
 out = {"tableDesc": desc, "webRows": rows, "tableCaption": caption, "defaultOff": []}
 dst = "/Users/jonathan/Desktop/personal-site/jshan9078.github.io/src/data/webbench-v2.json"; json.dump(out, open(dst, "w"), indent=1)
 print(f"{len(rows)} complete configurations written; partial: {partial_txt}")
-for r in rows: print(f"  {r['model']:16} {r['thinking']:6} score {r['score']:5} core {r['corePasses']}/{r['coreTasks']} disc {r['discPasses']}/{r['discTasks']} time {r['time']} wallTotal {r['wallTotal']} cost {r['cost']} outTok {r['outTok']} reason {r['reasonTok']} steps {r['steps']}")
+for r in rows: print(f"  {r['model']:16} {r['thinking']:6} score {r['score']:5} time {r['time']} wallTotal {r['wallTotal']} cost {r['cost']} outTok {r['outTok']} reason {r['reasonTok']} steps {r['steps']}")
