@@ -35,15 +35,19 @@ for c in summ["configs"]:
 order = ["GPT-6 Astra", "Opus 5", "Sonnet 5", "Gemini 3.8 Flash", "Muse Spark 1.3", "GPT-5.6 Luna"]; EFF = ["low", "medium", "high", "xhigh", "max", "ultra"]
 rows.sort(key=lambda r: (order.index(r["model"]), EFF.index(r["thinking"])))
 vid = sum(1 for t in summ["tasks"] if t["video"]); real = sum(1 for t in summ["tasks"] if t["site"] == "real")
-partial_txt = ", ".join(f"{NAMES[f][0]} {e} ({n}/{len(tasks)})" for f, e, n in partial)
-desc = (f"{len(tasks)} tasks, run at pass@1 with the same browser tool and a 10-minute budget. v1 stopped separating frontier models, so v2's tasks were written in batches and run on Claude Sonnet 5, Claude Opus 5 and Muse Spark 1.2 at low thinking; a task was kept when a configuration failed it on two independent attempts (pass@2), or when it covered browser-control work the set would otherwise lack, and every kept failure was checked by hand. "
-        f"{vid} tasks count or track something in a rendered video clip (occupancy peaks, events attributed to actors, direction-filtered crossings, defects on a belt); the rest are exact visual work on generated images (counting rotated or occluded shapes, tracing a line through crossings, reading an angle, a gauge or an unnumbered clock), browser workflows on local web apps (multi-page checkout, password reset through an in-app inbox, keyboard-only and hover-only UIs, a form inside a shadow root inside an iframe, table editing with conflicts), and {real} read-only tasks on live GitHub, Wikipedia and JS Paint. "
-        f"{len(tasks) - real} tasks run on deterministic local apps and are scored from the server's state after the run; the live-site tasks are judged by a Claude Sonnet judge against API ground truth. Runs that hit a provider rate or usage limit were voided and rerun, never scored. "
-        f"Not shown (partial): {partial_txt}. "
-        f"[Tasks](https://github.com/jshan9078/web-bench/tree/main/tasks), [design log](https://github.com/jshan9078/web-bench/blob/main/tasks/V2-DESIGN.md), [per-run results](https://github.com/jshan9078/web-bench/tree/main/results).")
-caption = [f"{len(tasks)} tasks per configuration; time (agent wall-clock seconds), cost, tokens and steps are per-task medians.",
-           "Score is pass@1: local tasks are scored from the site's server state, live-site tasks by a Claude Sonnet judge against API ground truth.",
-           "Every run has a 10-minute budget; runs that hit a provider rate or usage limit were voided and rerun on AWS workers, one run per instance."]
+from collections import defaultdict
+pf = defaultdict(list)
+for f, e, n in partial: pf[NAMES[f][0]].append(e)
+partial_txt = "; ".join(f"{m} {', '.join(sorted(es, key=lambda x: ['low','medium','high','xhigh','max','ultra'].index(x)))}" for m, es in pf.items())
+desc = ""   # v2 explains itself in the bullet points rendered after the charts
+caption = [f"{len(tasks)} tasks per configuration at pass@1, same browser tool, 10-minute budget; time, cost, tokens and steps are per-task medians.",
+           "Tasks were written in batches and run on Claude Sonnet 5, Claude Opus 5 and Muse Spark 1.2 at low thinking; a task was kept when a configuration failed it on two independent attempts (pass@2), or when it covered browser-control work the set would otherwise lack; every kept failure was checked by hand.",
+           f"{vid} tasks count or track something in a rendered video clip: occupancy peaks, events attributed to actors, direction-filtered crossings, defects on a belt.",
+           f"The rest are exact visual work on generated images (rotated or occluded shapes, a line traced through crossings, an angle, a gauge, an unnumbered clock), browser workflows on local web apps (multi-page checkout, password reset through an in-app inbox, keyboard-only and hover-only UIs, a form inside a shadow root inside an iframe, table editing with conflicts), and {real} read-only tasks on live GitHub, Wikipedia and JS Paint.",
+           f"{len(tasks) - real} tasks run on deterministic local apps and are scored from the server's state after the run; the live-site tasks are judged by a Claude Sonnet judge against API ground truth.",
+           "Runs that hit a provider rate or usage limit were voided and rerun on AWS workers, one run per instance; they are never scored.",
+           f"Partial and not shown: {partial_txt}.",
+           "[Tasks](https://github.com/jshan9078/web-bench/tree/main/tasks) · [design log](https://github.com/jshan9078/web-bench/blob/main/tasks/V2-DESIGN.md) · [per-run results](https://github.com/jshan9078/web-bench/tree/main/results)"]
 out = {"tableDesc": desc, "webRows": rows, "tableCaption": caption, "defaultOff": []}
 dst = "/Users/jonathan/Desktop/personal-site/jshan9078.github.io/src/data/webbench-v2.json"; json.dump(out, open(dst, "w"), indent=1)
 print(f"{len(rows)} complete configurations written; partial: {partial_txt}")
