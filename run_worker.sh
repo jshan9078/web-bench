@@ -1,6 +1,6 @@
 #!/bin/bash
 # Fleet worker: claim -> run -> upload, until the queue is empty. Usage: run_worker.sh <worker-name> [lane] [family]
-#   family: comma-separated config prefixes (spark13,sonnet,opus,gemini-3.8-flash,luna) so parallel workers hit different providers
+#   family: comma-separated config prefixes (spark13,sonnet,opus,gemini-3.8-flash,luna,astra) so parallel workers hit different providers
 #   lane: local (default on the fleet) | realsite | all.  Env: MATRIX_STORE=s3://bucket/prefix, DRY=1 to fake runs.
 # Idempotent: a claimed item whose bundle exists is completed without re-running; leases are heartbeated every
 # 60 s so a dead worker's items are reclaimed after LEASE_S (default 1500 s).
@@ -21,6 +21,7 @@ while :; do
       spark13)           SPARK_PREFIX=spark13 ./muse_one.sh "$T" muse-spark-1.3-contributor "$EFF" "$R" >> "$LOG" 2>&1 ;;
       spark)             ./muse_one.sh "$T" muse-spark-1.2-contributor "$EFF" "$R" >> "$LOG" 2>&1 ;;
       luna)              ./codex_one.sh "$T" gpt-5.6-luna "$EFF" "$R" >> "$LOG" 2>&1 ;;
+      astra)             ./codex_one.sh "$T" gpt-6-astra "$EFF" "$R" >> "$LOG" 2>&1 ;;
       gemini-*)          ./agy_one.sh "$T" "$CFG" "$R" >> "$LOG" 2>&1 ;;
       *) echo "unknown config $CFG" | tee -a "$LOG" ;;
     esac; fi

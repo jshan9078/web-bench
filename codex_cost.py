@@ -12,6 +12,7 @@ PRICING = {  # model -> (input, cached_input, cache_write, output) $/M
     "gpt-5.6-sol":   (4.00, 0.40, 5.00, 20.00),
     "gpt-5.6-terra": (2.00, 0.20, 2.50, 12.00),
     "gpt-5.6-luna":  (0.20, 0.02, 0.25, 1.20),
+    "gpt-6-astra":   (10.00, 1.00, 12.50, 50.00),   # platform page 2026-09-06: input 10, cached 1, cache write 12.50, output 50
 }
 
 def run_cost(model, u):

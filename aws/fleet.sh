@@ -4,7 +4,7 @@
 #   fleet.sh prereqs                IAM role + instance profile (S3 access to the bucket), key pair, security group (SSH from your IP)
 #   fleet.sh seed                   launch ONE Ubuntu seed instance with the seed bootstrap; prints its IP for the operator's sign-ins
 #   fleet.sh ami <instance-id>      stop the signed-in seed and create the AMI; prints the AMI id
-#   fleet.sh launch <ami-id> <N> [lane] [family] [type]   launch N workers for one lane and config family (family: spark13|sonnet|opus|gemini-3.8-flash|luna|all); self-terminate when their queue slice is empty
+#   fleet.sh launch <ami-id> <N> [lane] [family] [type]   launch N workers for one lane and config family (family: spark13|sonnet|opus|gemini-3.8-flash|luna|astra|all); self-terminate when their queue slice is empty
 #   fleet.sh launch-all <ami-id> <N-per-family> [lane]     one launch per family, N workers each (spreads provider rate limits)
 #   fleet.sh judge <ami-id>         launch the judge instance (runs judge_daemon.py forever; log mirrored to s3://$BUCKET/logs/judge_daemon.log)
 #   fleet.sh status                 queue status + active leases + instances
