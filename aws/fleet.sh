@@ -9,7 +9,7 @@
 #   fleet.sh judge <ami-id>         launch the judge instance (runs judge_daemon.py forever; log mirrored to s3://$BUCKET/logs/judge_daemon.log)
 #   fleet.sh status                 queue status + active leases + instances
 #   fleet.sh terminate              terminate every instance tagged webbench=worker
-# Env: BUCKET (default webbench-matrix-966239516827), REGION (us-east-1), KEY_NAME (webbench), SSH_CIDR (default your IP/32)
+# Env: MAX_RUNS=N (each launched worker stops after N recorded runs), BUCKET (default webbench-matrix-966239516827), REGION (us-east-1), KEY_NAME (webbench), SSH_CIDR (default your IP/32)
 set -u; cd "$(dirname "$0")/.."; BUCKET=${BUCKET:-webbench-matrix-966239516827}; REGION=${REGION:-us-east-1}; KEY_NAME=${KEY_NAME:-webbench}
 export AWS_DEFAULT_REGION=$REGION; export MATRIX_STORE=s3://$BUCKET/final63
 case "${1:-status}" in
@@ -39,7 +39,7 @@ ami)
 launch)
   AMI=$2; N=$3; LANE=${4:-local}; FAM=${5:-all}; TYPE=${6:-c7i.xlarge}
   SG=$(aws ec2 describe-security-groups --filters Name=group-name,Values=webbench-worker --query 'SecurityGroups[0].GroupId' --output text)
-  sed "s/__BUCKET__/$BUCKET/g; s/__LANE__/$LANE/g; s/__FAMILY__/$FAM/g; s/__SHUTDOWN__/shutdown -h now/" aws/user_data_worker.sh > /tmp/ud_worker.sh
+  sed "s/__BUCKET__/$BUCKET/g; s/__LANE__/$LANE/g; s/__FAMILY__/$FAM/g; s/__MAXRUNS__/${MAX_RUNS:-0}/g; s/__SHUTDOWN__/shutdown -h now/" aws/user_data_worker.sh > /tmp/ud_worker.sh
   aws ec2 run-instances --image-id $AMI --count $N --instance-type $TYPE --key-name $KEY_NAME --security-group-ids $SG --iam-instance-profile Name=webbench-worker --user-data file:///tmp/ud_worker.sh --instance-initiated-shutdown-behavior terminate --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=webbench-worker-$LANE-$(echo $FAM | tr , _)},{Key=webbench,Value=worker}]" --query 'Instances[].InstanceId' --output text ;;
 launch-all)
   AMI=$2; N=$3; LANE=${4:-local}; for FAM in spark13 sonnet opus gemini-3.8-flash luna; do echo "$FAM: $("$0" launch $AMI $N $LANE $FAM | tr '\n' ' ')"; done ;;

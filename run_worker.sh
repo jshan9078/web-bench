@@ -5,6 +5,7 @@
 # Idempotent: a claimed item whose bundle exists is completed without re-running; leases are heartbeated every
 # 60 s so a dead worker's items are reclaimed after LEASE_S (default 1500 s).
 set -u; cd "$(dirname "$0")"; W=${1:-$(hostname)}; LANE=${2:-local}; FAMILY=${3:-${FAMILY:-all}}; LOG=results/matrix63.log; Q="python3 matrix_queue.py"
+MAX_RUNS=${MAX_RUNS:-0}; DONE_RUNS=0   # MAX_RUNS>0: stop after that many recorded runs (batching for cost checkpoints)
 LANEARG=(); [ "$LANE" != all ] && LANEARG=(--lane "$LANE"); [ "$FAMILY" != all ] && LANEARG+=(--family "$FAMILY")
 while :; do
   OUT=$($Q claim "$W" "${LANEARG[@]}" 2>>"$LOG"); RC=$?
@@ -39,5 +40,6 @@ import json,sys; t,r=sys.argv[1:3]; d=json.load(open(f"raw/{t}.{r}.json")); txt=
 sys.exit(0 if ("BLOCKED:" in txt or "Verify you are human" in txt or "Whoa there" in txt) else 1)
 PY
   then $Q complete "$T" "$R" "$W" --blocked | tee -a "$LOG"
-  else $Q complete "$T" "$R" "$W" | tee -a "$LOG"; fi
+  else $Q complete "$T" "$R" "$W" | tee -a "$LOG"; DONE_RUNS=$((DONE_RUNS+1)); fi
+  if [ "$MAX_RUNS" -gt 0 ] && [ "$DONE_RUNS" -ge "$MAX_RUNS" ]; then echo "$(date +%H:%M:%S) reached MAX_RUNS=$MAX_RUNS, stopping" | tee -a "$LOG"; break; fi
 done
