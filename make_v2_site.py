@@ -4,7 +4,7 @@ authoritative from the fleet queue) plus the synced results/<task>/<label>.json 
 Only complete configurations (all 70 tasks scored) become rows; partial families are named in the description."""
 import json, os, statistics, sys
 summ = json.load(open("results/v2_summary.json")); tasks = [t["id"] for t in summ["tasks"]]; core = [t["id"] for t in summ["tasks"] if t["tier"] == "core"]; disc = [t["id"] for t in summ["tasks"] if t["tier"] != "core"]
-NAMES = {"spark13": ("Muse Spark 1.3", "Muse Code"), "sonnet": ("Sonnet 5", "Claude Code"), "opus": ("Opus 5", "Claude Code"), "gemini-3.8-flash": ("Gemini 3.8 Flash", "Antigravity"), "luna": ("GPT-5.6 Luna", "Codex CLI"), "astra": ("GPT-6 Astra", "Codex CLI")}
+NAMES = {"spark13": ("Muse Spark 1.3", "Muse Code"), "sonnet": ("Sonnet 5", "Claude Code"), "opus": ("Opus 5", "Claude Code"), "gemini-3.8-flash": ("Gemini 3.8 Flash", "Antigravity"), "luna": ("GPT-5.6 Luna", "Codex CLI"), "astra": ("GPT-6 Astra", "Codex CLI"), "fable": ("Fable 5.1", "Claude Code")}
 def load(t, l):
     r = raw = {}
     for cand in (f"results/{t}/{l}.json", f"results/{t}/{l.replace('-val','')}.json"):
@@ -32,7 +32,7 @@ for c in summ["configs"]:
     name, harness = NAMES[fam]
     rows.append({"model": name, "thinking": eff, "harness": harness, "score": round(100 * passes / len(scored), 1), "time": med(walls) or 0, "cost": round(statistics.median(costs), 3) if costs else 0,
                  "outTok": med(ot) or 0, "steps": med(steps) or 0, "passes": passes, "tasks": len(scored), "wallTotal": med(wt), "reasonTok": med(rt) if rt else None})
-order = ["GPT-6 Astra", "Opus 5", "Sonnet 5", "Gemini 3.8 Flash", "Muse Spark 1.3", "GPT-5.6 Luna"]; EFF = ["low", "medium", "high", "xhigh", "max", "ultra"]
+order = ["GPT-6 Astra", "Fable 5.1", "Opus 5", "Sonnet 5", "Gemini 3.8 Flash", "Muse Spark 1.3", "GPT-5.6 Luna"]; EFF = ["low", "medium", "high", "xhigh", "max", "ultra"]
 rows.sort(key=lambda r: (order.index(r["model"]), EFF.index(r["thinking"])))
 vid = sum(1 for t in summ["tasks"] if t["video"]); real = sum(1 for t in summ["tasks"] if t["site"] == "real")
 from collections import defaultdict

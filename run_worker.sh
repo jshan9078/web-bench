@@ -1,6 +1,6 @@
 #!/bin/bash
 # Fleet worker: claim -> run -> upload, until the queue is empty. Usage: run_worker.sh <worker-name> [lane] [family]
-#   family: comma-separated config prefixes (spark13,sonnet,opus,gemini-3.8-flash,luna,astra) so parallel workers hit different providers
+#   family: comma-separated config prefixes (spark13,sonnet,opus,fable,gemini-3.8-flash,luna,astra) so parallel workers hit different providers
 #   lane: local (default on the fleet) | realsite | all.  Env: MATRIX_STORE=s3://bucket/prefix, DRY=1 to fake runs.
 # Idempotent: a claimed item whose bundle exists is completed without re-running; leases are heartbeated every
 # 60 s so a dead worker's items are reclaimed after LEASE_S (default 1500 s).
@@ -19,6 +19,7 @@ while :; do
     if [ "${DRY:-0}" = 1 ]; then mkdir -p "results/$T"; echo '{"dry":true}' > "raw/$T.$R.json"; echo '{"pixel_state":{"complete":false}}' > "results/$T/$R.json"; sleep 1
     else case "$FAM" in
       sonnet|opus|haiku) env -i HOME="$HOME" PATH="$PATH" TMPDIR="${TMPDIR:-}" MAX_TURNS=500 ./run_one.sh "$T" "$FAM" "$EFF" "$R" >> "$LOG" 2>&1 ;;
+      fable)             env -i HOME="$HOME" PATH="$PATH" TMPDIR="${TMPDIR:-}" MAX_TURNS=500 ./run_one.sh "$T" claude-fable-5-1 "$EFF" "$R" >> "$LOG" 2>&1 ;;
       spark13)           SPARK_PREFIX=spark13 ./muse_one.sh "$T" muse-spark-1.3-contributor "$EFF" "$R" >> "$LOG" 2>&1 ;;
       spark)             ./muse_one.sh "$T" muse-spark-1.2-contributor "$EFF" "$R" >> "$LOG" 2>&1 ;;
       luna)              ./codex_one.sh "$T" gpt-5.6-luna "$EFF" "$R" >> "$LOG" 2>&1 ;;
