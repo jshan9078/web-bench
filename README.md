@@ -37,6 +37,7 @@ Each task folder under [`tasks/`](tasks/) holds `prompt.txt` (sent verbatim to t
 | Fable 5.1 low | 60/70 (86%) | 79 | $0.62 |
 | Fable 5.1 medium | 60/70 (86%) | 90 | $0.70 |
 | Fable 5.1 high | 62/70 (89%) | 106 | $0.86 |
+| Fable 5.1 xhigh | 63/70 (90%) | 140 | $1.13 |
 | Opus 5 low | 57/70 (81%) | 102 | $0.64 |
 | Opus 5 medium | 57/70 (81%) | 139 | $0.70 |
 | Opus 5 high | 60/70 (86%) | 157 | $0.81 |
