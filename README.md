@@ -34,6 +34,7 @@ Each task folder under [`tasks/`](tasks/) holds `prompt.txt` (sent verbatim to t
 | Configuration | Pass@1 | Median seconds | Median cost |
 |---|---|---|---|
 | GPT-6 Astra low | 66/70 (94%) | 35 | $0.71 |
+| Fable 5.1 low | 60/70 (86%) | 63 | $0.57 |
 | Opus 5 low | 57/70 (81%) | 90 | $0.53 |
 | Opus 5 medium | 57/70 (81%) | 88 | $0.59 |
 | Opus 5 high | 60/70 (86%) | 99 | $0.73 |

@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-06T15:16",
+ "generated": "2026-09-06T18:05",
  "tasks": [
   {
    "id": "247-rich-text-format",
@@ -732,10 +732,6 @@
    "runs": 13,
    "scored": 13,
    "pass": 12,
-   "core_pass": 7,
-   "core_n": 7,
-   "disc_pass": 5,
-   "disc_n": 6,
    "median_wall_s": 28.2,
    "median_cost_usd": 0.66,
    "total_cost_usd": 13.87,
@@ -842,10 +838,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 66,
-   "core_pass": 26,
-   "core_n": 27,
-   "disc_pass": 40,
-   "disc_n": 43,
    "median_wall_s": 35.1,
    "median_cost_usd": 0.714,
    "total_cost_usd": 270.02,
@@ -1351,10 +1343,6 @@
    "runs": 17,
    "scored": 17,
    "pass": 16,
-   "core_pass": 8,
-   "core_n": 9,
-   "disc_pass": 8,
-   "disc_n": 8,
    "median_wall_s": 77.3,
    "median_cost_usd": 1.184,
    "total_cost_usd": 43.25,
@@ -1489,10 +1477,6 @@
    "runs": 12,
    "scored": 12,
    "pass": 11,
-   "core_pass": 4,
-   "core_n": 4,
-   "disc_pass": 7,
-   "disc_n": 8,
    "median_wall_s": 30.8,
    "median_cost_usd": 0.71,
    "total_cost_usd": 24.76,
@@ -1592,10 +1576,6 @@
    "runs": 9,
    "scored": 9,
    "pass": 9,
-   "core_pass": 4,
-   "core_n": 4,
-   "disc_pass": 5,
-   "disc_n": 5,
    "median_wall_s": 58.8,
    "median_cost_usd": 1.53,
    "total_cost_usd": 17.0,
@@ -1667,6 +1647,511 @@
    }
   },
   {
+   "config": "fable-low",
+   "family": "fable",
+   "model": "Claude Fable 5.1",
+   "effort": "low",
+   "runs": 70,
+   "scored": 70,
+   "pass": 60,
+   "median_wall_s": 62.8,
+   "median_cost_usd": 0.575,
+   "total_cost_usd": 43.1,
+   "complete": true,
+   "per_task": {
+    "118-odometer-read": {
+     "pass": true,
+     "wall_s": 24.86,
+     "cli_calls": 11,
+     "cost_usd": 0.42407474999999994,
+     "judge_pending": false
+    },
+    "154-tower-clock": {
+     "pass": true,
+     "wall_s": 18.32,
+     "cli_calls": 8,
+     "cost_usd": 0.34090575,
+     "judge_pending": false
+    },
+    "167-github-issue-pr": {
+     "pass": true,
+     "wall_s": 55.91,
+     "cli_calls": 10,
+     "cost_usd": 0.5669242499999999,
+     "judge_pending": false
+    },
+    "179-people-count": {
+     "pass": false,
+     "wall_s": 116.55,
+     "cli_calls": 246,
+     "cost_usd": 0.7932405,
+     "judge_pending": false
+    },
+    "184-queue-peak": {
+     "pass": true,
+     "wall_s": 78.62,
+     "cli_calls": 185,
+     "cost_usd": 0.6342107499999999,
+     "judge_pending": false
+    },
+    "185-belt-defects": {
+     "pass": true,
+     "wall_s": 103.68,
+     "cli_calls": 342,
+     "cost_usd": 0.7660022500000001,
+     "judge_pending": false
+    },
+    "191-direction-count": {
+     "pass": false,
+     "wall_s": 108.75,
+     "cli_calls": 11,
+     "cost_usd": 0.67501325,
+     "judge_pending": false
+    },
+    "192-parcel-sort": {
+     "pass": true,
+     "wall_s": 125.03,
+     "cli_calls": 245,
+     "cost_usd": 0.71014425,
+     "judge_pending": false
+    },
+    "193-door-events": {
+     "pass": true,
+     "wall_s": 110.23,
+     "cli_calls": 6,
+     "cost_usd": 0.57076925,
+     "judge_pending": false
+    },
+    "196-turn-count": {
+     "pass": false,
+     "wall_s": 93.49,
+     "cli_calls": 245,
+     "cost_usd": 0.6187225000000001,
+     "judge_pending": false
+    },
+    "198-pen-entry": {
+     "pass": true,
+     "wall_s": 124.15,
+     "cli_calls": 6,
+     "cost_usd": 0.6129242500000002,
+     "judge_pending": false
+    },
+    "208-red-crossers": {
+     "pass": false,
+     "wall_s": 102.13,
+     "cli_calls": 245,
+     "cost_usd": 0.6421255,
+     "judge_pending": false
+    },
+    "211-bus-boarding": {
+     "pass": true,
+     "wall_s": 104.24,
+     "cli_calls": 281,
+     "cost_usd": 0.966165,
+     "judge_pending": false
+    },
+    "213-github-reopened-issue": {
+     "pass": true,
+     "wall_s": 94.35,
+     "cli_calls": 51,
+     "cost_usd": 0.47464724999999997,
+     "judge_pending": false
+    },
+    "217-queue-leavers": {
+     "pass": true,
+     "wall_s": 118.76,
+     "cli_calls": 247,
+     "cost_usd": 0.71432125,
+     "judge_pending": false
+    },
+    "222-escalator-up": {
+     "pass": true,
+     "wall_s": 123.33,
+     "cli_calls": 324,
+     "cost_usd": 1.07872075,
+     "judge_pending": false
+    },
+    "223-goal-shots": {
+     "pass": true,
+     "wall_s": 106.84,
+     "cli_calls": 245,
+     "cost_usd": 0.6319445,
+     "judge_pending": false
+    },
+    "225-library-returns": {
+     "pass": true,
+     "wall_s": 115.36,
+     "cli_calls": 245,
+     "cost_usd": 0.707958,
+     "judge_pending": false
+    },
+    "226-fare-gates": {
+     "pass": true,
+     "wall_s": 87.42,
+     "cli_calls": 274,
+     "cost_usd": 0.7608752499999999,
+     "judge_pending": false
+    },
+    "228-pool-pots": {
+     "pass": false,
+     "wall_s": 172.34,
+     "cli_calls": 318,
+     "cost_usd": 1.2803280000000001,
+     "judge_pending": false
+    },
+    "229-bridge-boats": {
+     "pass": true,
+     "wall_s": 187.27,
+     "cli_calls": 7,
+     "cost_usd": 1.16813825,
+     "judge_pending": false
+    },
+    "230-coffee-cups": {
+     "pass": true,
+     "wall_s": 344.57,
+     "cli_calls": 20,
+     "cost_usd": 1.5618012499999998,
+     "judge_pending": false
+    },
+    "231-car-wash": {
+     "pass": false,
+     "wall_s": 111.83,
+     "cli_calls": 303,
+     "cost_usd": 0.968903,
+     "judge_pending": false
+    },
+    "234-hand-hygiene": {
+     "pass": true,
+     "wall_s": 146.33,
+     "cli_calls": 265,
+     "cost_usd": 0.6845807500000001,
+     "judge_pending": false
+    },
+    "235-tennis-serves": {
+     "pass": true,
+     "wall_s": 111.45,
+     "cli_calls": 9,
+     "cost_usd": 0.762923,
+     "judge_pending": false
+    },
+    "239-loading-bay": {
+     "pass": true,
+     "wall_s": 129.64,
+     "cli_calls": 247,
+     "cost_usd": 0.864856,
+     "judge_pending": false
+    },
+    "244-dog-park": {
+     "pass": true,
+     "wall_s": 161.24,
+     "cli_calls": 245,
+     "cost_usd": 1.069093,
+     "judge_pending": false
+    },
+    "247-rich-text-format": {
+     "pass": true,
+     "wall_s": 69.68,
+     "cli_calls": 26,
+     "cost_usd": 0.6344527499999999,
+     "judge_pending": false
+    },
+    "248-flight-booking": {
+     "pass": true,
+     "wall_s": 100.41,
+     "cli_calls": 34,
+     "cost_usd": 0.550629,
+     "judge_pending": false
+    },
+    "249-inbox-triage": {
+     "pass": true,
+     "wall_s": 22.04,
+     "cli_calls": 39,
+     "cost_usd": 0.38725174999999995,
+     "judge_pending": false
+    },
+    "250-crm-merge": {
+     "pass": true,
+     "wall_s": 28.89,
+     "cli_calls": 13,
+     "cost_usd": 0.36724475,
+     "judge_pending": false
+    },
+    "251-edit-conflict": {
+     "pass": true,
+     "wall_s": 7.16,
+     "cli_calls": 9,
+     "cost_usd": 0.2646905,
+     "judge_pending": false
+    },
+    "252-keyboard-datagrid": {
+     "pass": true,
+     "wall_s": 41.76,
+     "cli_calls": 27,
+     "cost_usd": 0.64828375,
+     "judge_pending": false
+    },
+    "254-map-pan-find": {
+     "pass": true,
+     "wall_s": 52.62,
+     "cli_calls": 24,
+     "cost_usd": 0.6386135000000001,
+     "judge_pending": false
+    },
+    "255-config-editor": {
+     "pass": true,
+     "wall_s": 11.68,
+     "cli_calls": 7,
+     "cost_usd": 0.27856200000000003,
+     "judge_pending": false
+    },
+    "256-helpdesk-escalate": {
+     "pass": true,
+     "wall_s": 22.12,
+     "cli_calls": 20,
+     "cost_usd": 0.3969475,
+     "judge_pending": false
+    },
+    "257-team-calendar-slot": {
+     "pass": true,
+     "wall_s": 27.42,
+     "cli_calls": 14,
+     "cost_usd": 0.4474402500000001,
+     "judge_pending": false
+    },
+    "259-shop-variants": {
+     "pass": true,
+     "wall_s": 18.78,
+     "cli_calls": 36,
+     "cost_usd": 0.36940474999999995,
+     "judge_pending": false
+    },
+    "260-survey-builder": {
+     "pass": true,
+     "wall_s": 23.99,
+     "cli_calls": 21,
+     "cost_usd": 0.37982350000000004,
+     "judge_pending": false
+    },
+    "262-github-blame": {
+     "pass": true,
+     "wall_s": 34.62,
+     "cli_calls": 10,
+     "cost_usd": 0.64300675,
+     "judge_pending": false
+    },
+    "263-multi-page-checkout": {
+     "pass": true,
+     "wall_s": 31.04,
+     "cli_calls": 28,
+     "cost_usd": 0.47318150000000003,
+     "judge_pending": false
+    },
+    "264-password-reset": {
+     "pass": true,
+     "wall_s": 46.47,
+     "cli_calls": 17,
+     "cost_usd": 0.36886050000000004,
+     "judge_pending": false
+    },
+    "265-timesheet-entry": {
+     "pass": true,
+     "wall_s": 8.68,
+     "cli_calls": 6,
+     "cost_usd": 0.269573,
+     "judge_pending": false
+    },
+    "267-gallery-tagging": {
+     "pass": true,
+     "wall_s": 43.0,
+     "cli_calls": 125,
+     "cost_usd": 0.5790010000000001,
+     "judge_pending": false
+    },
+    "269-github-compare-tags": {
+     "pass": true,
+     "wall_s": 3.87,
+     "cli_calls": 4,
+     "cost_usd": 0.263724,
+     "judge_pending": false
+    },
+    "270-shadow-iframe-form": {
+     "pass": true,
+     "wall_s": 25.35,
+     "cli_calls": 8,
+     "cost_usd": 0.32880375,
+     "judge_pending": false
+    },
+    "271-moving-target": {
+     "pass": true,
+     "wall_s": 49.6,
+     "cli_calls": 21,
+     "cost_usd": 0.3677715,
+     "judge_pending": false
+    },
+    "272-line-trace": {
+     "pass": true,
+     "wall_s": 180.92,
+     "cli_calls": 5,
+     "cost_usd": 1.2505519999999999,
+     "judge_pending": false
+    },
+    "274-nested-scroll-code": {
+     "pass": true,
+     "wall_s": 8.39,
+     "cli_calls": 6,
+     "cost_usd": 0.43465299999999996,
+     "judge_pending": false
+    },
+    "285-occluded-circles": {
+     "pass": true,
+     "wall_s": 24.54,
+     "cli_calls": 8,
+     "cost_usd": 0.38694325,
+     "judge_pending": false
+    },
+    "288-tiny-targets": {
+     "pass": true,
+     "wall_s": 13.96,
+     "cli_calls": 10,
+     "cost_usd": 0.30111925000000006,
+     "judge_pending": false
+    },
+    "303-symbol-tally": {
+     "pass": true,
+     "wall_s": 26.22,
+     "cli_calls": 5,
+     "cost_usd": 0.524169,
+     "judge_pending": false
+    },
+    "304-connect-the-numbers": {
+     "pass": true,
+     "wall_s": 45.47,
+     "cli_calls": 42,
+     "cost_usd": 0.5469125,
+     "judge_pending": false
+    },
+    "311-keyboard-only": {
+     "pass": true,
+     "wall_s": 20.29,
+     "cli_calls": 7,
+     "cost_usd": 0.378724,
+     "judge_pending": false
+    },
+    "312-hover-menu": {
+     "pass": true,
+     "wall_s": 14.05,
+     "cli_calls": 11,
+     "cost_usd": 0.29443374999999994,
+     "judge_pending": false
+    },
+    "319-github-first-release": {
+     "pass": true,
+     "wall_s": 10.48,
+     "cli_calls": 8,
+     "cost_usd": 0.4789565,
+     "judge_pending": false
+    },
+    "320-github-merged-count": {
+     "pass": true,
+     "wall_s": 21.96,
+     "cli_calls": 20,
+     "cost_usd": 0.3038995,
+     "judge_pending": false
+    },
+    "321-wiki-last-2024-edit": {
+     "pass": true,
+     "wall_s": 0.01,
+     "cli_calls": 2,
+     "cost_usd": 0.20581624999999998,
+     "judge_pending": false
+    },
+    "323-two-lane-defects": {
+     "pass": true,
+     "wall_s": 84.64,
+     "cli_calls": 10,
+     "cost_usd": 0.49554950000000003,
+     "judge_pending": false
+    },
+    "327-bike-lane": {
+     "pass": true,
+     "wall_s": 112.03,
+     "cli_calls": 245,
+     "cost_usd": 0.61916325,
+     "judge_pending": false
+    },
+    "331-counter-pickups": {
+     "pass": false,
+     "wall_s": 98.05,
+     "cli_calls": 246,
+     "cost_usd": 0.59370075,
+     "judge_pending": false
+    },
+    "340-tangled-lines": {
+     "pass": false,
+     "wall_s": 105.15,
+     "cli_calls": 7,
+     "cost_usd": 0.6918097500000001,
+     "judge_pending": false
+    },
+    "344-graph-degree": {
+     "pass": false,
+     "wall_s": 154.95,
+     "cli_calls": 14,
+     "cost_usd": 1.023479,
+     "judge_pending": false
+    },
+    "347-checkout-lanes": {
+     "pass": true,
+     "wall_s": 124.64,
+     "cli_calls": 15,
+     "cost_usd": 0.7102815,
+     "judge_pending": false
+    },
+    "350-hallway-doors": {
+     "pass": true,
+     "wall_s": 320.96,
+     "cli_calls": 1335,
+     "cost_usd": 1.795456,
+     "judge_pending": false
+    },
+    "351-fish-ring": {
+     "pass": false,
+     "wall_s": 213.88,
+     "cli_calls": 1693,
+     "cost_usd": 0.5834205000000001,
+     "judge_pending": false
+    },
+    "353-arrow-field": {
+     "pass": true,
+     "wall_s": 30.11,
+     "cli_calls": 5,
+     "cost_usd": 0.53697025,
+     "judge_pending": false
+    },
+    "36-jspaint-poster": {
+     "pass": true,
+     "wall_s": 21.37,
+     "cli_calls": 5,
+     "cost_usd": 0.37549074999999993,
+     "judge_pending": false
+    },
+    "59-spot-difference": {
+     "pass": true,
+     "wall_s": 14.66,
+     "cli_calls": 8,
+     "cost_usd": 0.373627,
+     "judge_pending": false
+    },
+    "90-dial-set": {
+     "pass": true,
+     "wall_s": 35.08,
+     "cli_calls": 26,
+     "cost_usd": 0.4878712499999999,
+     "judge_pending": false
+    }
+   }
+  },
+  {
    "config": "gemini-3.8-flash-high",
    "family": "gemini-3.8-flash",
    "model": "Gemini 3.8 Flash",
@@ -1674,10 +2159,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 56,
-   "core_pass": 27,
-   "core_n": 27,
-   "disc_pass": 29,
-   "disc_n": 43,
    "median_wall_s": 155.5,
    "median_cost_usd": 0.378,
    "total_cost_usd": 29.32,
@@ -2183,10 +2664,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 49,
-   "core_pass": 26,
-   "core_n": 27,
-   "disc_pass": 23,
-   "disc_n": 43,
    "median_wall_s": 75.1,
    "median_cost_usd": 0.223,
    "total_cost_usd": 20.01,
@@ -2692,10 +3169,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 57,
-   "core_pass": 26,
-   "core_n": 27,
-   "disc_pass": 31,
-   "disc_n": 43,
    "median_wall_s": 111.7,
    "median_cost_usd": 0.338,
    "total_cost_usd": 25.66,
@@ -3201,10 +3674,6 @@
    "runs": 2,
    "scored": 2,
    "pass": 2,
-   "core_pass": 0,
-   "core_n": 0,
-   "disc_pass": 2,
-   "disc_n": 2,
    "median_wall_s": 33.1,
    "median_cost_usd": 0.016,
    "total_cost_usd": 0.03,
@@ -3234,10 +3703,6 @@
    "runs": 10,
    "scored": 10,
    "pass": 3,
-   "core_pass": 3,
-   "core_n": 5,
-   "disc_pass": 0,
-   "disc_n": 5,
    "median_wall_s": 25.0,
    "median_cost_usd": 0.011,
    "total_cost_usd": 0.13,
@@ -3323,10 +3788,6 @@
    "runs": 3,
    "scored": 3,
    "pass": 2,
-   "core_pass": 2,
-   "core_n": 2,
-   "disc_pass": 0,
-   "disc_n": 1,
    "median_wall_s": 51.1,
    "median_cost_usd": 0.028,
    "total_cost_usd": 0.07,
@@ -3363,10 +3824,6 @@
    "runs": 8,
    "scored": 8,
    "pass": 7,
-   "core_pass": 6,
-   "core_n": 6,
-   "disc_pass": 1,
-   "disc_n": 2,
    "median_wall_s": 12.3,
    "median_cost_usd": 0.008,
    "total_cost_usd": 0.1,
@@ -3438,10 +3895,6 @@
    "runs": 8,
    "scored": 8,
    "pass": 4,
-   "core_pass": 2,
-   "core_n": 4,
-   "disc_pass": 2,
-   "disc_n": 4,
    "median_wall_s": 45.3,
    "median_cost_usd": 0.013,
    "total_cost_usd": 0.15,
@@ -3513,10 +3966,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 60,
-   "core_pass": 27,
-   "core_n": 27,
-   "disc_pass": 33,
-   "disc_n": 43,
    "median_wall_s": 99.1,
    "median_cost_usd": 0.729,
    "total_cost_usd": 56.45,
@@ -4022,10 +4471,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 57,
-   "core_pass": 27,
-   "core_n": 27,
-   "disc_pass": 30,
-   "disc_n": 43,
    "median_wall_s": 90.0,
    "median_cost_usd": 0.528,
    "total_cost_usd": 44.94,
@@ -4531,10 +4976,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 60,
-   "core_pass": 27,
-   "core_n": 27,
-   "disc_pass": 33,
-   "disc_n": 43,
    "median_wall_s": 129.3,
    "median_cost_usd": 0.789,
    "total_cost_usd": 60.14,
@@ -5040,10 +5481,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 57,
-   "core_pass": 27,
-   "core_n": 27,
-   "disc_pass": 30,
-   "disc_n": 43,
    "median_wall_s": 87.6,
    "median_cost_usd": 0.59,
    "total_cost_usd": 48.78,
@@ -5548,14 +5985,10 @@
    "effort": "xhigh",
    "runs": 70,
    "scored": 70,
-   "pass": 63,
-   "core_pass": 26,
-   "core_n": 26,
-   "disc_pass": 37,
-   "disc_n": 43,
-   "median_wall_s": 106.9,
-   "median_cost_usd": 0.798,
-   "total_cost_usd": 57.57,
+   "pass": 64,
+   "median_wall_s": 104.7,
+   "median_cost_usd": 0.744,
+   "total_cost_usd": 57.75,
    "complete": true,
    "per_task": {
     "118-odometer-read": {
@@ -6058,10 +6491,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 47,
-   "core_pass": 27,
-   "core_n": 27,
-   "disc_pass": 20,
-   "disc_n": 43,
    "median_wall_s": 146.7,
    "median_cost_usd": 0.556,
    "total_cost_usd": 56.61,
@@ -6567,10 +6996,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 34,
-   "core_pass": 27,
-   "core_n": 27,
-   "disc_pass": 7,
-   "disc_n": 43,
    "median_wall_s": 137.9,
    "median_cost_usd": 1.009,
    "total_cost_usd": 106.61,
@@ -7076,10 +7501,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 39,
-   "core_pass": 25,
-   "core_n": 27,
-   "disc_pass": 14,
-   "disc_n": 43,
    "median_wall_s": 250.3,
    "median_cost_usd": 0.418,
    "total_cost_usd": 29.66,
@@ -7585,10 +8006,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 48,
-   "core_pass": 26,
-   "core_n": 27,
-   "disc_pass": 22,
-   "disc_n": 43,
    "median_wall_s": 135.6,
    "median_cost_usd": 0.581,
    "total_cost_usd": 54.47,
@@ -8094,10 +8511,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 47,
-   "core_pass": 27,
-   "core_n": 27,
-   "disc_pass": 20,
-   "disc_n": 43,
    "median_wall_s": 152.1,
    "median_cost_usd": 0.469,
    "total_cost_usd": 45.24,
@@ -8603,10 +9016,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 48,
-   "core_pass": 23,
-   "core_n": 27,
-   "disc_pass": 25,
-   "disc_n": 43,
    "median_wall_s": 212.3,
    "median_cost_usd": 0.312,
    "total_cost_usd": 24.35,
@@ -9112,10 +9521,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 44,
-   "core_pass": 23,
-   "core_n": 27,
-   "disc_pass": 21,
-   "disc_n": 43,
    "median_wall_s": 184.9,
    "median_cost_usd": 0.242,
    "total_cost_usd": 21.41,
@@ -9621,10 +10026,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 45,
-   "core_pass": 26,
-   "core_n": 27,
-   "disc_pass": 19,
-   "disc_n": 43,
    "median_wall_s": 200.1,
    "median_cost_usd": 0.271,
    "total_cost_usd": 21.74,
@@ -10130,10 +10531,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 52,
-   "core_pass": 26,
-   "core_n": 27,
-   "disc_pass": 26,
-   "disc_n": 43,
    "median_wall_s": 170.8,
    "median_cost_usd": 0.328,
    "total_cost_usd": 26.49,
@@ -10639,10 +11036,6 @@
    "runs": 70,
    "scored": 70,
    "pass": 53,
-   "core_pass": 26,
-   "core_n": 27,
-   "disc_pass": 27,
-   "disc_n": 43,
    "median_wall_s": 193.0,
    "median_cost_usd": 0.321,
    "total_cost_usd": 25.82,
@@ -11142,9 +11535,7 @@
   }
  ],
  "notes": {
-  "core_tier": 27,
-  "discriminating_tier": 43,
-  "pass_rule": "pass@1; appstate tasks scored on server state only; real-site tasks judged by Claude Sonnet against API ground truth",
+  "pass_rule": "pass@1; local tasks scored on server state only; real-site tasks judged by Claude Sonnet against API ground truth",
   "voided": "runs that hit a provider rate or usage limit were voided and rerun"
  }
 }
