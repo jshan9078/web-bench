@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-06T18:05",
+ "generated": "2026-09-06T21:03",
  "tasks": [
   {
    "id": "247-rich-text-format",
@@ -2147,6 +2147,511 @@
      "wall_s": 35.08,
      "cli_calls": 26,
      "cost_usd": 0.4878712499999999,
+     "judge_pending": false
+    }
+   }
+  },
+  {
+   "config": "fable-medium",
+   "family": "fable",
+   "model": "Claude Fable 5.1",
+   "effort": "medium",
+   "runs": 70,
+   "scored": 70,
+   "pass": 60,
+   "median_wall_s": 63.1,
+   "median_cost_usd": 0.597,
+   "total_cost_usd": 48.8,
+   "complete": true,
+   "per_task": {
+    "118-odometer-read": {
+     "pass": true,
+     "wall_s": 25.64,
+     "cli_calls": 5,
+     "cost_usd": 0.409822,
+     "judge_pending": false
+    },
+    "154-tower-clock": {
+     "pass": true,
+     "wall_s": 31.41,
+     "cli_calls": 8,
+     "cost_usd": 0.34301975,
+     "judge_pending": false
+    },
+    "167-github-issue-pr": {
+     "pass": true,
+     "wall_s": 47.24,
+     "cli_calls": 18,
+     "cost_usd": 0.642397,
+     "judge_pending": false
+    },
+    "179-people-count": {
+     "pass": true,
+     "wall_s": 160.88,
+     "cli_calls": 6,
+     "cost_usd": 1.0758385000000001,
+     "judge_pending": false
+    },
+    "184-queue-peak": {
+     "pass": true,
+     "wall_s": 82.14,
+     "cli_calls": 173,
+     "cost_usd": 0.8855927499999998,
+     "judge_pending": false
+    },
+    "185-belt-defects": {
+     "pass": true,
+     "wall_s": 159.84,
+     "cli_calls": 245,
+     "cost_usd": 0.9723452500000002,
+     "judge_pending": false
+    },
+    "191-direction-count": {
+     "pass": true,
+     "wall_s": 154.45,
+     "cli_calls": 245,
+     "cost_usd": 0.9059685000000001,
+     "judge_pending": false
+    },
+    "192-parcel-sort": {
+     "pass": true,
+     "wall_s": 198.28,
+     "cli_calls": 8,
+     "cost_usd": 1.3598370000000002,
+     "judge_pending": false
+    },
+    "193-door-events": {
+     "pass": true,
+     "wall_s": 115.95,
+     "cli_calls": 6,
+     "cost_usd": 0.6073400000000001,
+     "judge_pending": false
+    },
+    "196-turn-count": {
+     "pass": true,
+     "wall_s": 137.55,
+     "cli_calls": 8,
+     "cost_usd": 1.13935275,
+     "judge_pending": false
+    },
+    "198-pen-entry": {
+     "pass": true,
+     "wall_s": 123.25,
+     "cli_calls": 6,
+     "cost_usd": 0.88425725,
+     "judge_pending": false
+    },
+    "208-red-crossers": {
+     "pass": false,
+     "wall_s": 186.24,
+     "cli_calls": 25,
+     "cost_usd": 1.1541750000000002,
+     "judge_pending": false
+    },
+    "211-bus-boarding": {
+     "pass": true,
+     "wall_s": 77.94,
+     "cli_calls": 282,
+     "cost_usd": 0.7835354999999999,
+     "judge_pending": false
+    },
+    "213-github-reopened-issue": {
+     "pass": true,
+     "wall_s": 53.67,
+     "cli_calls": 25,
+     "cost_usd": 0.5729395000000002,
+     "judge_pending": false
+    },
+    "217-queue-leavers": {
+     "pass": true,
+     "wall_s": 154.36,
+     "cli_calls": 245,
+     "cost_usd": 1.5022082499999998,
+     "judge_pending": false
+    },
+    "222-escalator-up": {
+     "pass": true,
+     "wall_s": 108.36,
+     "cli_calls": 67,
+     "cost_usd": 0.8866014999999999,
+     "judge_pending": false
+    },
+    "223-goal-shots": {
+     "pass": true,
+     "wall_s": 214.21,
+     "cli_calls": 250,
+     "cost_usd": 1.0390935000000001,
+     "judge_pending": false
+    },
+    "225-library-returns": {
+     "pass": false,
+     "wall_s": 122.56,
+     "cli_calls": 7,
+     "cost_usd": 0.8024717500000002,
+     "judge_pending": false
+    },
+    "226-fare-gates": {
+     "pass": true,
+     "wall_s": 266.88,
+     "cli_calls": 3549,
+     "cost_usd": 0.7109302500000001,
+     "judge_pending": false
+    },
+    "228-pool-pots": {
+     "pass": false,
+     "wall_s": 179.66,
+     "cli_calls": 391,
+     "cost_usd": 1.41727675,
+     "judge_pending": false
+    },
+    "229-bridge-boats": {
+     "pass": false,
+     "wall_s": 106.76,
+     "cli_calls": 245,
+     "cost_usd": 0.5504647500000001,
+     "judge_pending": false
+    },
+    "230-coffee-cups": {
+     "pass": false,
+     "wall_s": 178.53,
+     "cli_calls": 246,
+     "cost_usd": 1.0178642500000001,
+     "judge_pending": false
+    },
+    "231-car-wash": {
+     "pass": false,
+     "wall_s": 111.83,
+     "cli_calls": 245,
+     "cost_usd": 0.6851680000000001,
+     "judge_pending": false
+    },
+    "234-hand-hygiene": {
+     "pass": true,
+     "wall_s": 172.04,
+     "cli_calls": 253,
+     "cost_usd": 0.9908155,
+     "judge_pending": false
+    },
+    "235-tennis-serves": {
+     "pass": true,
+     "wall_s": 105.57,
+     "cli_calls": 6,
+     "cost_usd": 0.72242675,
+     "judge_pending": false
+    },
+    "239-loading-bay": {
+     "pass": true,
+     "wall_s": 185.14,
+     "cli_calls": 247,
+     "cost_usd": 1.22324925,
+     "judge_pending": false
+    },
+    "244-dog-park": {
+     "pass": true,
+     "wall_s": 109.34,
+     "cli_calls": 246,
+     "cost_usd": 0.8390865000000001,
+     "judge_pending": false
+    },
+    "247-rich-text-format": {
+     "pass": true,
+     "wall_s": 195.38,
+     "cli_calls": 80,
+     "cost_usd": 0.9234,
+     "judge_pending": false
+    },
+    "248-flight-booking": {
+     "pass": true,
+     "wall_s": 54.9,
+     "cli_calls": 45,
+     "cost_usd": 0.6568867499999999,
+     "judge_pending": false
+    },
+    "249-inbox-triage": {
+     "pass": true,
+     "wall_s": 24.96,
+     "cli_calls": 41,
+     "cost_usd": 0.40666325,
+     "judge_pending": false
+    },
+    "250-crm-merge": {
+     "pass": true,
+     "wall_s": 24.41,
+     "cli_calls": 15,
+     "cost_usd": 0.4488067499999999,
+     "judge_pending": false
+    },
+    "251-edit-conflict": {
+     "pass": true,
+     "wall_s": 10.51,
+     "cli_calls": 6,
+     "cost_usd": 0.29783575,
+     "judge_pending": false
+    },
+    "252-keyboard-datagrid": {
+     "pass": true,
+     "wall_s": 31.36,
+     "cli_calls": 15,
+     "cost_usd": 0.59089375,
+     "judge_pending": false
+    },
+    "254-map-pan-find": {
+     "pass": true,
+     "wall_s": 32.77,
+     "cli_calls": 15,
+     "cost_usd": 0.502473,
+     "judge_pending": false
+    },
+    "255-config-editor": {
+     "pass": true,
+     "wall_s": 32.72,
+     "cli_calls": 40,
+     "cost_usd": 0.42482925000000005,
+     "judge_pending": false
+    },
+    "256-helpdesk-escalate": {
+     "pass": true,
+     "wall_s": 35.11,
+     "cli_calls": 33,
+     "cost_usd": 0.49837750000000003,
+     "judge_pending": false
+    },
+    "257-team-calendar-slot": {
+     "pass": true,
+     "wall_s": 32.71,
+     "cli_calls": 10,
+     "cost_usd": 0.50917525,
+     "judge_pending": false
+    },
+    "259-shop-variants": {
+     "pass": true,
+     "wall_s": 22.38,
+     "cli_calls": 19,
+     "cost_usd": 0.34696524999999995,
+     "judge_pending": false
+    },
+    "260-survey-builder": {
+     "pass": true,
+     "wall_s": 25.46,
+     "cli_calls": 21,
+     "cost_usd": 0.41944049999999994,
+     "judge_pending": false
+    },
+    "262-github-blame": {
+     "pass": true,
+     "wall_s": 46.69,
+     "cli_calls": 18,
+     "cost_usd": 0.66401625,
+     "judge_pending": false
+    },
+    "263-multi-page-checkout": {
+     "pass": true,
+     "wall_s": 33.47,
+     "cli_calls": 30,
+     "cost_usd": 0.501031,
+     "judge_pending": false
+    },
+    "264-password-reset": {
+     "pass": true,
+     "wall_s": 22.63,
+     "cli_calls": 17,
+     "cost_usd": 0.35784649999999996,
+     "judge_pending": false
+    },
+    "265-timesheet-entry": {
+     "pass": true,
+     "wall_s": 14.22,
+     "cli_calls": 7,
+     "cost_usd": 0.32386899999999996,
+     "judge_pending": false
+    },
+    "267-gallery-tagging": {
+     "pass": true,
+     "wall_s": 45.22,
+     "cli_calls": 201,
+     "cost_usd": 0.554361,
+     "judge_pending": false
+    },
+    "269-github-compare-tags": {
+     "pass": true,
+     "wall_s": 6.89,
+     "cli_calls": 4,
+     "cost_usd": 0.2647355,
+     "judge_pending": false
+    },
+    "270-shadow-iframe-form": {
+     "pass": true,
+     "wall_s": 24.7,
+     "cli_calls": 11,
+     "cost_usd": 0.39646075000000003,
+     "judge_pending": false
+    },
+    "271-moving-target": {
+     "pass": true,
+     "wall_s": 199.42,
+     "cli_calls": 290,
+     "cost_usd": 1.003253,
+     "judge_pending": false
+    },
+    "272-line-trace": {
+     "pass": true,
+     "wall_s": 29.98,
+     "cli_calls": 5,
+     "cost_usd": 0.350948,
+     "judge_pending": false
+    },
+    "274-nested-scroll-code": {
+     "pass": true,
+     "wall_s": 15.62,
+     "cli_calls": 7,
+     "cost_usd": 0.50931025,
+     "judge_pending": false
+    },
+    "285-occluded-circles": {
+     "pass": true,
+     "wall_s": 15.57,
+     "cli_calls": 5,
+     "cost_usd": 0.360341,
+     "judge_pending": false
+    },
+    "288-tiny-targets": {
+     "pass": true,
+     "wall_s": 75.31,
+     "cli_calls": 14,
+     "cost_usd": 0.60211075,
+     "judge_pending": false
+    },
+    "303-symbol-tally": {
+     "pass": true,
+     "wall_s": 37.62,
+     "cli_calls": 5,
+     "cost_usd": 0.5845627500000001,
+     "judge_pending": false
+    },
+    "304-connect-the-numbers": {
+     "pass": true,
+     "wall_s": 13.97,
+     "cli_calls": 20,
+     "cost_usd": 0.3178095,
+     "judge_pending": false
+    },
+    "311-keyboard-only": {
+     "pass": true,
+     "wall_s": 17.72,
+     "cli_calls": 7,
+     "cost_usd": 0.3177425,
+     "judge_pending": false
+    },
+    "312-hover-menu": {
+     "pass": true,
+     "wall_s": 58.05,
+     "cli_calls": 11,
+     "cost_usd": 0.30263825000000005,
+     "judge_pending": false
+    },
+    "319-github-first-release": {
+     "pass": true,
+     "wall_s": 6.72,
+     "cli_calls": 5,
+     "cost_usd": 0.42618224999999993,
+     "judge_pending": false
+    },
+    "320-github-merged-count": {
+     "pass": true,
+     "wall_s": 16.99,
+     "cli_calls": 9,
+     "cost_usd": 0.30928700000000003,
+     "judge_pending": false
+    },
+    "321-wiki-last-2024-edit": {
+     "pass": true,
+     "wall_s": 0.01,
+     "cli_calls": 2,
+     "cost_usd": 0.21921624999999997,
+     "judge_pending": false
+    },
+    "323-two-lane-defects": {
+     "pass": true,
+     "wall_s": 83.74,
+     "cli_calls": 185,
+     "cost_usd": 0.54414875,
+     "judge_pending": false
+    },
+    "327-bike-lane": {
+     "pass": true,
+     "wall_s": 137.15,
+     "cli_calls": 7,
+     "cost_usd": 0.90992325,
+     "judge_pending": false
+    },
+    "331-counter-pickups": {
+     "pass": true,
+     "wall_s": 134.26,
+     "cli_calls": 275,
+     "cost_usd": 1.20649575,
+     "judge_pending": false
+    },
+    "340-tangled-lines": {
+     "pass": true,
+     "wall_s": 19.27,
+     "cli_calls": 5,
+     "cost_usd": 0.34398975000000004,
+     "judge_pending": false
+    },
+    "344-graph-degree": {
+     "pass": false,
+     "wall_s": 160.3,
+     "cli_calls": 9,
+     "cost_usd": 1.4386855,
+     "judge_pending": false
+    },
+    "347-checkout-lanes": {
+     "pass": false,
+     "wall_s": 261.84,
+     "cli_calls": 4053,
+     "cost_usd": 1.02704575,
+     "judge_pending": false
+    },
+    "350-hallway-doors": {
+     "pass": true,
+     "wall_s": 179.54,
+     "cli_calls": 10,
+     "cost_usd": 0.98870675,
+     "judge_pending": false
+    },
+    "351-fish-ring": {
+     "pass": false,
+     "wall_s": 356.24,
+     "cli_calls": 1935,
+     "cost_usd": 1.7405634999999995,
+     "judge_pending": false
+    },
+    "353-arrow-field": {
+     "pass": true,
+     "wall_s": 68.13,
+     "cli_calls": 5,
+     "cost_usd": 0.6904635000000001,
+     "judge_pending": false
+    },
+    "36-jspaint-poster": {
+     "pass": false,
+     "wall_s": 22.33,
+     "cli_calls": 5,
+     "cost_usd": 0.39842874999999994,
+     "judge_pending": false
+    },
+    "59-spot-difference": {
+     "pass": true,
+     "wall_s": 20.58,
+     "cli_calls": 9,
+     "cost_usd": 0.40530475,
+     "judge_pending": false
+    },
+    "90-dial-set": {
+     "pass": true,
+     "wall_s": 84.35,
+     "cli_calls": 22,
+     "cost_usd": 0.58835075,
      "judge_pending": false
     }
    }
