@@ -94,7 +94,7 @@ def final_tasks(): return list(json.load(open("results/core_set.json"))) + list(
 CONFIGS = os.environ.get("MATRIX_CONFIGS", "").split() or (
     [f"spark13-{e}" for e in ("low", "medium", "high", "xhigh", "ultra")] + [f"sonnet-{e}" for e in ("low", "medium", "high", "xhigh", "max")]
     + [f"opus-{e}" for e in ("low", "medium", "high", "xhigh", "max")] + [f"gemini-3.8-flash-{e}" for e in ("low", "medium", "high")]
-    + [f"luna-{e}" for e in ("low", "medium", "high", "xhigh", "max")] + [f"astra-{e}" for e in ("low", "medium", "high", "xhigh", "max")] + ["fable-low"])
+    + [f"luna-{e}" for e in ("low", "medium", "high", "xhigh", "max")] + [f"astra-{e}" for e in ("low", "medium", "high", "xhigh", "max")] + ["fable-low", "fable-medium"])
 def label(cfg, a): return f"{cfg}-val" + ("" if a == 1 else str(a))
 def cfg_of(label_): return label_.split("-val")[0]
 
