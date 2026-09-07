@@ -7287,5 +7287,69 @@
  "36-jspaint-poster.fable-low-val": {
   "pass": true,
   "note": "red-flooded canvas confirmed; pixel readback shows black (0,0,0,255) at center+4 corners, red elsewhere, matching X pattern [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.fable-high-val": {
+  "pass": true,
+  "note": "API confirms issue #4295 closed 2021-11-15 by merged PR #4298 (delicb, merged 2021-11-15T21:37:42Z); #4297/#4355 correctly ruled out as manually closed with no merged PR; agent grounded in navigated pages [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.fable-medium-val": {
+  "pass": true,
+  "note": "Issue #4297 (closed 2022-03-15, most recent bug-labeled) closed by merged PR #4487 by davidism, merged 2022-03-15T15:36:16Z, all verified via GitHub API and matches agent's grounded navigation [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.fable-high-val": {
+  "pass": true,
+  "note": "Matches ground truth from issues/events API (paged to page 11): #5817 reopened 2025-09-19T08:53:54Z by awoimbee, excluding PR-only reopens per re-audit rule; agent's own trace navigated the events API and the issue timeline. [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.fable-medium-val": {
+  "pass": true,
+  "note": "API events (filtered to issues, excluding PRs) confirm #5817 reopened 2025-09-19T08:53:54Z by awoimbee is the most recent; agent's answer matches and is grounded in the issue timeline it navigated to [judge: sonnet daemon]"
+ },
+ "262-github-blame.fable-high-val": {
+  "pass": true,
+  "note": "Git blame confirms 0ec7f71/pgjones/2023-08-19 for def run( line 633; agent navigated blame view and commit page matching this exactly [judge: sonnet daemon]"
+ },
+ "262-github-blame.fable-medium-val": {
+  "pass": true,
+  "note": "commit 0ec7f71/pgjones/2023-08-19 confirmed via api.github.com commit endpoint, matches expected answer and grounded in blame+commit page navigation [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.fable-high-val": {
+  "pass": true,
+  "note": "API ground truth (34 commits, 44 files, davidism 7fff56f) matches agent's answer, grounded in navigated compare page [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.fable-medium-val": {
+  "pass": true,
+  "note": "matches API ground truth (34 commits, 44 files, 7fff56f davidism) with grounded navigation to compare page [judge: sonnet daemon]"
+ },
+ "319-github-first-release.fable-high-val": {
+  "pass": true,
+  "note": "API confirms 3.0.0 is earliest tag containing commit (2.3.3 diverged, 3.0.0 behind/contains), release date 2023-09-30 matches; agent navigated commit and release pages [judge: sonnet daemon]"
+ },
+ "319-github-first-release.fable-medium-val": {
+  "pass": true,
+  "note": "GitHub API confirms 3.0.0 is earliest tag containing the commit (compare 3.0.0...commit: behind_by 26, ahead_by 0) and release date 2023-09-30 matches; agent navigated to commit and release pages [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.fable-high-val": {
+  "pass": true,
+  "note": "count=7 and latest PR #2840 match GitHub API ground truth, agent navigated to search results and PR page [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.fable-medium-val": {
+  "pass": true,
+  "note": "API confirms 7 PRs merged 2025-01-01..2025-03-31, most recent #2840 'Move --help option defaults from its class to its decorator' (2025-03-18), matches agent answer exactly [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.fable-high-val": {
+  "pass": true,
+  "note": "API confirms last 2024 revision is IP 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821 at 02:55, 8 Nov 2024 UTC with empty summary, matching agent's answer and grounded navigation to history page [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.fable-medium-val": {
+  "pass": true,
+  "note": "Matches MediaWiki API ground truth (2024-11-08T02:55:35Z, IPv6 editor, empty comment), grounded in captured history page text [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.fable-high-val": {
+  "pass": false,
+  "note": "Final screenshot shows red canvas with no clearly visible dark dots (per shot2.jpg); agent relied on pixel-readback via eval rather than visible marks, matching the precedent (faint single pixels, pixel-readback reliance = fail) [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.fable-medium-val": {
+  "pass": false,
+  "note": "final screenshot shows solid red canvas but the five pencil dots are not visibly distinct/dark (agent itself says faint, confirmed only via pixel readback), failing the visual X-pattern criterion [judge: sonnet daemon]"
  }
 }
