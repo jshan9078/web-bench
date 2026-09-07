@@ -7251,5 +7251,41 @@
  "36-jspaint-poster.astra-medium-val": {
   "pass": false,
   "note": "No screenshots or video file exist on disk for this run despite this being a vision-evidence task requiring the judge to open them (verifier.md); trace shows plausible click sequence but final canvas state is unverifiable [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.opus-xhigh-val": {
+  "pass": true,
+  "note": "API ground truth (compare/3.1.0...3.1.1): 34 commits, 44 files, last commit 7fff56f davidism 'release version 3.1.1' \u2014 matches agent's reported answer exactly [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.fable-low-val": {
+  "pass": true,
+  "note": "Matches GitHub API ground truth: issue #4297 (closed 2022-03-15, most recent bug-labeled) closed by merged PR #4487 by davidism merged 2022-03-15; agent navigated issue and PR pages [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.fable-low-val": {
+  "pass": true,
+  "note": "Ground truth confirmed via issues/events API: #5817 reopened 2025-09-19 by awoimbee is the most recent issue reopen (PRs #6067/#5918/#5827 excluded per 2026-09-04 re-audit); agent's answer and grounding match exactly [judge: sonnet daemon]"
+ },
+ "262-github-blame.fable-low-val": {
+  "pass": true,
+  "note": "Local git blame of line 633 confirms 0ec7f71/pgjones/Aug 19 2023, matching agent's answer; trace shows blame view + commit page navigation [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.fable-low-val": {
+  "pass": true,
+  "note": "API confirms 34 commits, 44 files changed, last commit 7fff56f by davidism, matches agent report and captured evidence [judge: sonnet daemon]"
+ },
+ "319-github-first-release.fable-low-val": {
+  "pass": true,
+  "note": "3.0.0 (2023-09-30) confirmed via GitHub API compare/releases, matches agent's grounded navigation to commit and release pages [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.fable-low-val": {
+  "pass": true,
+  "note": "count=7 and title match GitHub API ground truth (PR #2840, merged 2025-03-18) [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.fable-low-val": {
+  "pass": true,
+  "note": "Matches API ground truth: last 2024 edit 8 Nov 2024 02:55 UTC by 2400:9800:b60:b6df:f46b:2bff:feae:1821, no edit summary; agent navigated to and read history page [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.fable-low-val": {
+  "pass": true,
+  "note": "red-flooded canvas confirmed; pixel readback shows black (0,0,0,255) at center+4 corners, red elsewhere, matching X pattern [judge: sonnet daemon]"
  }
 }
