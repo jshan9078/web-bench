@@ -27,7 +27,7 @@ Each task folder under [`tasks/`](tasks/) holds `prompt.txt` (sent verbatim to t
 - Local tasks are scored from server state; live-site tasks by the judge against API ground truth.
 - A run in which the model hit a provider rate, quota or usage limit is void and is rerun later, because the retries distort its timing. [`ratelimit.py`](ratelimit.py) holds the markers; the worker checks every run and [`audit_all.py`](audit_all.py) re-checks recorded ones. 114 runs were voided this way, all of them recorded as failures before the check existed.
 - Verified bot walls are excluded and retried.
-- Cost is the CLI's reported cost for Claude and the provider's list prices applied to the captured token usage for the others ([`run_cost.py`](run_cost.py)). Time is the agent's wall-clock seconds from the start of the run to its final answer. The table reports per-task means.
+- Cost is the CLI's reported cost for Claude and the provider's list prices applied to the captured token usage for the others ([`run_cost.py`](run_cost.py)). Time is the agent's wall-clock seconds from the start of the run to its final answer. The table reports per-task means. A Claude run killed at the 10-minute budget reports no cost; those runs (46 across Sonnet 5 and Opus 5) count in pass rate and time but not in the cost mean.
 
 ## Results
 

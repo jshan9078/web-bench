@@ -18,14 +18,15 @@ def reason_tokens(raw):
     u = raw.get("agent_usage_raw") or {}
     return (u.get("output_tokens_details") or {}).get("thinking_tokens", None) if "output_tokens_details" in u else u.get("reasoning_tokens", u.get("reasoning_output_tokens", u.get("thinking_tokens")))
 mean = lambda xs: round(statistics.mean(xs), 1) if xs else None
-rows = []; partial = []
+rows = []; partial = []; costless = []
 for c in summ["configs"]:
     fam, eff = c["family"], c["effort"]; per = c["per_task"]; scored = {t: v for t, v in per.items() if v["pass"] is not None}
     if len(scored) < len(tasks): partial.append((fam, eff, len(scored))); continue
     metrics = []
     for t, v in scored.items():
         r, raw = load(t, f"{c['config']}-val"); metrics.append((v, r, raw))
-    passes = sum(1 for v in scored.values() if v["pass"])
+    passes = sum(1 for v in scored.values() if v["pass"]); nocost = sum(1 for v in scored.values() if v.get("cost_usd") is None)
+    if nocost: costless.append((NAMES[fam][0], eff, nocost))
     walls = [r.get("wall_s") for v, r, raw in metrics if r.get("wall_s")]; wt = [r.get("wall_total_s") for v, r, raw in metrics if r.get("wall_total_s")]
     costs = [v["cost_usd"] for v in scored.values() if v.get("cost_usd") is not None]; steps = [v["cli_calls"] for v in scored.values() if v.get("cli_calls")]
     ot = [x for x in (out_tokens(raw) for v, r, raw in metrics) if x]; rt = [x for x in (reason_tokens(raw) for v, r, raw in metrics) if x is not None]
@@ -45,7 +46,7 @@ caption = [f"{len(tasks)} tasks per configuration at pass@1, same browser tool, 
            f"{vid} tasks count or track something in a rendered video clip: occupancy peaks, events attributed to actors, direction-filtered crossings, defects on a belt.",
            f"The rest are exact visual work on generated images (rotated or occluded shapes, a line traced through crossings, an angle, a gauge, an unnumbered clock), browser workflows on local web apps (multi-page checkout, password reset through an in-app inbox, keyboard-only and hover-only UIs, a form inside a shadow root inside an iframe, table editing with conflicts), and {real} read-only tasks on live GitHub, Wikipedia and JS Paint.",
            f"Scoring: the {len(tasks) - real} local-app tasks are scored from the server's state after the run (their private endpoints are gated, so calling the API instead of using the page yields nothing); the {real} live-site tasks are judged by a Claude Sonnet judge against API ground truth. Runs that hit a provider rate or usage limit were voided and rerun.",
-           "Cost is the CLI's reported cost for Claude and list prices applied to captured token usage for the others; runs took place one per AWS instance.",
+           "Cost is the CLI's reported cost for Claude and list prices applied to captured token usage for the others; runs took place one per AWS instance. A Claude run killed at the 10-minute budget reports no cost, so " + f"{sum(n for _, _, n in costless)} such runs ({'; '.join(f'{m} {e} {n}' for m, e, n in costless)}) are missing from the cost means; every other metric includes them.",
            f"Partial and not shown: {partial_txt}.",
            "[Tasks](https://github.com/jshan9078/web-bench/tree/main/tasks) · [design log](https://github.com/jshan9078/web-bench/blob/main/tasks/V2-DESIGN.md) · [per-run results](https://github.com/jshan9078/web-bench/tree/main/results)"]
 out = {"tableDesc": desc, "webRows": rows, "tableCaption": caption, "defaultOff": []}
