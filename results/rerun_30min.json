@@ -1,0 +1,828 @@
+[
+ {
+  "task": "239-loading-bay",
+  "config": "gemini-3.8-flash-high",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "351-fish-ring",
+  "config": "gemini-3.8-flash-high",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "192-parcel-sort",
+  "config": "opus-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "211-bus-boarding",
+  "config": "opus-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "228-pool-pots",
+  "config": "opus-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "344-graph-degree",
+  "config": "opus-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": false
+ },
+ {
+  "task": "344-graph-degree",
+  "config": "opus-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": false
+ },
+ {
+  "task": "211-bus-boarding",
+  "config": "sonnet-high",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "217-queue-leavers",
+  "config": "sonnet-high",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "226-fare-gates",
+  "config": "sonnet-high",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "235-tennis-serves",
+  "config": "sonnet-high",
+  "passed_at_10min": true,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "350-hallway-doors",
+  "config": "sonnet-high",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "217-queue-leavers",
+  "config": "sonnet-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "226-fare-gates",
+  "config": "sonnet-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "228-pool-pots",
+  "config": "sonnet-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "234-hand-hygiene",
+  "config": "sonnet-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "340-tangled-lines",
+  "config": "sonnet-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": false
+ },
+ {
+  "task": "347-checkout-lanes",
+  "config": "sonnet-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "350-hallway-doors",
+  "config": "sonnet-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "179-people-count",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "184-queue-peak",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "185-belt-defects",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "192-parcel-sort",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "196-turn-count",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "208-red-crossers",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "211-bus-boarding",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "222-escalator-up",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "225-library-returns",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "226-fare-gates",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "228-pool-pots",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "229-bridge-boats",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "230-coffee-cups",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "234-hand-hygiene",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "235-tennis-serves",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "239-loading-bay",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "255-config-editor",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": false
+ },
+ {
+  "task": "271-moving-target",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": false
+ },
+ {
+  "task": "327-bike-lane",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "331-counter-pickups",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "350-hallway-doors",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "351-fish-ring",
+  "config": "sonnet-max",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "231-car-wash",
+  "config": "sonnet-medium",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "239-loading-bay",
+  "config": "sonnet-medium",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "271-moving-target",
+  "config": "sonnet-medium",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": false
+ },
+ {
+  "task": "192-parcel-sort",
+  "config": "sonnet-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "198-pen-entry",
+  "config": "sonnet-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "208-red-crossers",
+  "config": "sonnet-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "223-goal-shots",
+  "config": "sonnet-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "228-pool-pots",
+  "config": "sonnet-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "234-hand-hygiene",
+  "config": "sonnet-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "244-dog-park",
+  "config": "sonnet-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "327-bike-lane",
+  "config": "sonnet-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "331-counter-pickups",
+  "config": "sonnet-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "350-hallway-doors",
+  "config": "sonnet-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "351-fish-ring",
+  "config": "sonnet-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": false,
+  "video": true
+ },
+ {
+  "task": "208-red-crossers",
+  "config": "spark13-high",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "211-bus-boarding",
+  "config": "spark13-high",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "217-queue-leavers",
+  "config": "spark13-high",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "229-bridge-boats",
+  "config": "spark13-high",
+  "passed_at_10min": true,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "249-inbox-triage",
+  "config": "spark13-high",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": false
+ },
+ {
+  "task": "254-map-pan-find",
+  "config": "spark13-high",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": false
+ },
+ {
+  "task": "271-moving-target",
+  "config": "spark13-high",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": false
+ },
+ {
+  "task": "344-graph-degree",
+  "config": "spark13-high",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": false
+ },
+ {
+  "task": "347-checkout-lanes",
+  "config": "spark13-high",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "351-fish-ring",
+  "config": "spark13-high",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "353-arrow-field",
+  "config": "spark13-high",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": false
+ },
+ {
+  "task": "192-parcel-sort",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "198-pen-entry",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "217-queue-leavers",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "223-goal-shots",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "228-pool-pots",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "230-coffee-cups",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "231-car-wash",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "239-loading-bay",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "244-dog-park",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "248-flight-booking",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": false
+ },
+ {
+  "task": "249-inbox-triage",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": false
+ },
+ {
+  "task": "254-map-pan-find",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": false
+ },
+ {
+  "task": "304-connect-the-numbers",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": false
+ },
+ {
+  "task": "327-bike-lane",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "331-counter-pickups",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "350-hallway-doors",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "351-fish-ring",
+  "config": "spark13-low",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "185-belt-defects",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "196-turn-count",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "198-pen-entry",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "208-red-crossers",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "217-queue-leavers",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "229-bridge-boats",
+  "config": "spark13-medium",
+  "passed_at_10min": true,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "230-coffee-cups",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "231-car-wash",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "234-hand-hygiene",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "239-loading-bay",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "267-gallery-tagging",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": false
+ },
+ {
+  "task": "303-symbol-tally",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": false
+ },
+ {
+  "task": "327-bike-lane",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "350-hallway-doors",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "351-fish-ring",
+  "config": "spark13-medium",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "185-belt-defects",
+  "config": "spark13-ultra",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "192-parcel-sort",
+  "config": "spark13-ultra",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "198-pen-entry",
+  "config": "spark13-ultra",
+  "passed_at_10min": true,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "228-pool-pots",
+  "config": "spark13-ultra",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "230-coffee-cups",
+  "config": "spark13-ultra",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "234-hand-hygiene",
+  "config": "spark13-ultra",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "239-loading-bay",
+  "config": "spark13-ultra",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "331-counter-pickups",
+  "config": "spark13-ultra",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "344-graph-degree",
+  "config": "spark13-ultra",
+  "passed_at_10min": true,
+  "cost_recorded": true,
+  "video": false
+ },
+ {
+  "task": "351-fish-ring",
+  "config": "spark13-ultra",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "208-red-crossers",
+  "config": "spark13-xhigh",
+  "passed_at_10min": true,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "217-queue-leavers",
+  "config": "spark13-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "226-fare-gates",
+  "config": "spark13-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "228-pool-pots",
+  "config": "spark13-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "230-coffee-cups",
+  "config": "spark13-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "239-loading-bay",
+  "config": "spark13-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "327-bike-lane",
+  "config": "spark13-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "347-checkout-lanes",
+  "config": "spark13-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "350-hallway-doors",
+  "config": "spark13-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ },
+ {
+  "task": "351-fish-ring",
+  "config": "spark13-xhigh",
+  "passed_at_10min": false,
+  "cost_recorded": true,
+  "video": true
+ }
+]

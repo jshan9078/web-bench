@@ -12,7 +12,7 @@ sudo -u ubuntu bash -lc '
   cd ~/web-bench; mkdir -p raw results
   nohup xvfb-run -a -s "-screen 0 1280x900x24" browser daemon --auto > ~/daemon.log 2>&1 &   # headed launches need a display on Linux
   sleep 3
-  export MATRIX_STORE=s3://__BUCKET__/final63 LEASE_S=1500 MAX_RUNS=__MAXRUNS__
+  export MATRIX_STORE=s3://__BUCKET__/final63 LEASE_S=2400 MAX_RUNS=__MAXRUNS__ RUN_BUDGET_S=__BUDGET__
   TOK=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 300" || true)
   W=$(curl -s -H "X-aws-ec2-metadata-token: $TOK" http://169.254.169.254/latest/meta-data/instance-id || true); W=${W:-$(hostname)}
   ./run_worker.sh "$W" __LANE__ __FAMILY__ > ~/worker.log 2>&1 || true

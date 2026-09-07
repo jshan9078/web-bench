@@ -6,7 +6,7 @@
 # Env: MAX_TURNS (500, runaway valve), BENCH_PROFILE (default), CLAUDE_BIN (override binary), BROWSER_CLI/BROWSER_DAEMON.
 set -u
 cd "$(dirname "$0")"
-RUN_BUDGET_S=${RUN_BUDGET_S:-600}   # wall-clock budget per run (2026-09-03 rule: no run over 10 minutes)
+RUN_BUDGET_S=${RUN_BUDGET_S:-1800}  # wall-clock budget per run (2026-09-06 rule: 30 minutes; was 600 s until the 118 budget-hit runs were redone)
 TASK=$1; MODEL=$2; EFFORT=$3; RUN=$4
 CONFIG="$MODEL-$EFFORT"
 MAX_TURNS=${MAX_TURNS:-500}   # uncapped harness (2026-09-01 amendment); 500 is a runaway valve only
@@ -62,6 +62,10 @@ python3 budget_exec.py "$RUN_BUDGET_S" "$CLAUDE" -p "$prompt" --model "$MODEL" "
 AGENT_RC=$?; BUDGET_HIT=0; [ "$AGENT_RC" -eq 124 ] && BUDGET_HIT=1 && echo "$(date +%H:%M:%S) $RUN $TASK BUDGET HIT (${RUN_BUDGET_S}s): recorded as a terminated run" >> "$LOG"
 kill $SAMPLER 2>/dev/null
 kill -TERM $REC 2>/dev/null; wait $REC 2>/dev/null       # finalize the mp4
+if [ "$BUDGET_HIT" -eq 1 ]; then   # a killed CLI may skip its result event: keep its session transcript (per-message usage) for cost
+  CSID=$(head -c 4000 "$STREAM" | grep -o '"session_id":"[^"]*"' | head -1 | cut -d'"' -f4)
+  [ -n "$CSID" ] && TR=$(find "$HOME/.claude/projects" -name "$CSID.jsonl" 2>/dev/null | head -1) && [ -n "$TR" ] && cp "$TR" "raw/$TASK.$RUN.transcript.jsonl"
+fi
 
 $PY harness.py record "$TASK" "run=$RUN" "config=$CONFIG" "harness=claude" "model=$MODEL" "effort=$EFFORT" "stream=$STREAM" "cpu=$CPU" "budget=$BUDGET_HIT" "budget_s=$RUN_BUDGET_S"
 $PY harness.py score "$TASK.$RUN"

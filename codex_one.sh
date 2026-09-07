@@ -8,7 +8,7 @@
 # enforced for this harness (recorded as a harness difference, like Antigravity's own loop).
 set -u
 cd "$(dirname "$0")"
-RUN_BUDGET_S=${RUN_BUDGET_S:-600}   # wall-clock budget per run (2026-09-03 rule: no run over 10 minutes)
+RUN_BUDGET_S=${RUN_BUDGET_S:-1800}  # wall-clock budget per run (2026-09-06 rule: 30 minutes; was 600 s until the 118 budget-hit runs were redone)
 TASK=$1; MODEL=$2; EFFORT=$3; RUN=$4
 SHORT=${MODEL#gpt-5.6-}
 CONFIG="$SHORT-$EFFORT"

@@ -18,7 +18,7 @@ Commands:
   sync-verdicts                  merge the fleet judge's verdicts into results/verdicts.json
   reset-stale                    release leases older than LEASE_S (also done implicitly by claim)"""
 import json, os, sys, time, socket, glob, io
-LEASE_S = int(os.environ.get("LEASE_S", "1500")); MAX_TRIES = 3
+LEASE_S = int(os.environ.get("LEASE_S", "2400")); MAX_TRIES = 3
 STORE = os.environ.get("MATRIX_STORE", "results/matrix_store")
 REALSITE_KINDS = {"judge"}
 
@@ -258,6 +258,26 @@ def cmd_sync_verdicts(S, args):
     harness.VERDICTS.write_text(json.dumps(v, indent=1)); print("merged", n, "verdicts")
 
 
+def cmd_requeue(S, args):
+    """requeue <items.json> --void <tag>: for each {task, config|label} item, move the recorded run (done marker, raw JSON,
+    stream, results JSON) to voided/<tag>/, delete the run's other raw objects (media would otherwise mix with the redo's),
+    and put the item back in pending/. Idempotent: an item with no done marker is only (re)registered as pending."""
+    items = json.load(open(args[0])); tag = args[args.index("--void") + 1]; n = 0
+    for it in items:
+        t = it["task"]; l = it.get("label") or label(it["config"], 1); k = key(t, l)
+        dm = S.get(f"done/{k}")
+        if dm is not None:
+            S.put(f"voided/{tag}/done/{k}", dm)
+            for rk in S.list(f"raw/{t}.{l}."):
+                if rk.endswith(".json") or rk.endswith(".stream.txt"): S.put(f"voided/{tag}/{rk}", S.get(rk))
+                S.delete(rk)
+            for rk in S.list(f"results/{t}/{l}."): S.put(f"voided/{tag}/{rk}", S.get(rk)); S.delete(rk)
+            S.delete(f"done/{k}")
+        S.delete(f"claims/{k}"); S.delete(f"failed/{k}")
+        S.put(f"pending/{k}", j({"task": t, "label": l, "lane": lane_of(t)})); n += 1; print("requeued", t, l, "(voided to", f"voided/{tag})" if dm is not None else "(no prior run)")
+    print("requeue:", n, "items pending")
+
+
 def cmd_reset_stale(S, args):
     for k in S.list("claims/"):
         if stale(S, k): S.delete(k); print("released", k)
@@ -265,4 +285,4 @@ def cmd_reset_stale(S, args):
 
 if __name__ == "__main__":
     S = store(); cmd = sys.argv[1] if len(sys.argv) > 1 else "status"
-    {"init": cmd_init, "claim": cmd_claim, "heartbeat": cmd_heartbeat, "complete": cmd_complete, "status": cmd_status, "workers": cmd_workers, "sync": cmd_sync, "reindex": cmd_reindex, "sync-verdicts": cmd_sync_verdicts, "reset-stale": cmd_reset_stale}[cmd](S, sys.argv[2:])
+    {"init": cmd_init, "claim": cmd_claim, "heartbeat": cmd_heartbeat, "complete": cmd_complete, "status": cmd_status, "workers": cmd_workers, "sync": cmd_sync, "reindex": cmd_reindex, "sync-verdicts": cmd_sync_verdicts, "reset-stale": cmd_reset_stale, "requeue": cmd_requeue}[cmd](S, sys.argv[2:])

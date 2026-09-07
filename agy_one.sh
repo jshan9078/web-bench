@@ -9,7 +9,7 @@
 #      PRINT_TIMEOUT (default 10m), BENCH_PROFILE, BROWSER_CLI/BROWSER_DAEMON.
 set -u
 cd "$(dirname "$0")"
-RUN_BUDGET_S=${RUN_BUDGET_S:-600}   # wall-clock budget per run (2026-09-03 rule: no run over 10 minutes)
+RUN_BUDGET_S=${RUN_BUDGET_S:-1800}  # wall-clock budget per run (2026-09-06 rule: 30 minutes; was 600 s until the 118 budget-hit runs were redone)
 TASK=$1; SLUG=$2; RUN=$3
 CONFIG="$SLUG"
 # BENCH_PROFILE: only pass through if the caller set it (see run_one.sh note; empty = daemon's
