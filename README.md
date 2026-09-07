@@ -1,6 +1,6 @@
 # WebBench v2
 
-WebBench measures how well an LLM agent drives a browser. Each configuration (model, thinking level, agent CLI) gets the same tool, [browser-automation-cli](https://github.com/jshan9078/browser-automation-cli), the same [skill file](SKILL.md), a fresh headless session and a 10-minute budget per task, and is scored at pass@1 on 70 tasks.
+WebBench measures how well an LLM agent drives a browser. Each configuration (model, thinking level, agent CLI) gets the same tool, [browser-automation-cli](https://github.com/jshan9078/browser-automation-cli), the same [skill file](SKILL.md), a fresh headless session and a 30-minute budget per task, and is scored at pass@1 on 70 tasks.
 
 The earlier v1 set (44 live-site tasks, 36 configurations) is described in [README-v1.md](README-v1.md). Its results remain in `results/`.
 
@@ -23,11 +23,11 @@ Each task folder under [`tasks/`](tasks/) holds `prompt.txt` (sent verbatim to t
 
 ## Scoring rules
 
-- One attempt per configuration per task (pass@1), 10-minute budget, no turn cap.
+- One attempt per configuration per task (pass@1), 30-minute budget, no turn cap. The budget was 10 minutes at first; the 118 runs that hit it were rerun at 30 minutes and the first attempts discarded, so every run in the table had the same budget.
 - Local tasks are scored from server state; live-site tasks by the judge against API ground truth.
 - A run in which the model hit a provider rate, quota or usage limit is void and is rerun later, because the retries distort its timing. [`ratelimit.py`](ratelimit.py) holds the markers; the worker checks every run and [`audit_all.py`](audit_all.py) re-checks recorded ones. 114 runs were voided this way, all of them recorded as failures before the check existed.
 - Verified bot walls are excluded and retried.
-- Cost is the CLI's reported cost for Claude and the provider's list prices applied to the captured token usage for the others ([`run_cost.py`](run_cost.py)). Codex models are priced at short-context rates throughout: the Codex CLI reports usage per turn, not per request, so a request above the 272K long-context threshold cannot be identified. Time is the agent's wall-clock seconds from the start of the run to its final answer. The table reports per-task means. A Claude run killed at the 10-minute budget reports no cost; those runs (46 across Sonnet 5 and Opus 5) count in pass rate and time but not in the cost mean.
+- Cost is the CLI's reported cost for Claude and the provider's list prices applied to the captured token usage for the others ([`run_cost.py`](run_cost.py)). Codex models are priced at short-context rates throughout: the Codex CLI reports usage per turn, not per request, so a request above the 272K long-context threshold cannot be identified. Time is the agent's wall-clock seconds from the start of the run to its final answer. The table reports per-task means.
 
 ## Results
 
@@ -39,21 +39,21 @@ Each task folder under [`tasks/`](tasks/) holds `prompt.txt` (sent verbatim to t
 | Opus 5 low | 57/70 (81%) | 102 | $0.64 |
 | Opus 5 medium | 57/70 (81%) | 139 | $0.70 |
 | Opus 5 high | 60/70 (86%) | 157 | $0.81 |
-| Opus 5 xhigh | 64/70 (91%) | 165 | $0.84 |
-| Opus 5 max | 60/70 (86%) | 198 | $0.91 |
-| Sonnet 5 low | 34/70 (49%) | 208 | $1.52 |
-| Sonnet 5 medium | 48/70 (69%) | 203 | $0.81 |
-| Sonnet 5 high | 47/70 (67%) | 219 | $0.87 |
-| Sonnet 5 xhigh | 47/70 (67%) | 235 | $0.77 |
-| Sonnet 5 max | 39/70 (56%) | 285 | $0.62 |
+| Opus 5 xhigh | 65/70 (93%) | 175 | $0.86 |
+| Opus 5 max | 62/70 (89%) | 198 | $0.96 |
+| Sonnet 5 low | 36/70 (51%) | 190 | $1.16 |
+| Sonnet 5 medium | 49/70 (70%) | 196 | $0.84 |
+| Sonnet 5 high | 48/70 (69%) | 227 | $0.98 |
+| Sonnet 5 xhigh | 51/70 (73%) | 261 | $0.94 |
+| Sonnet 5 max | 50/70 (71%) | 330 | $1.08 |
 | Gemini 3.8 Flash low | 49/70 (70%) | 117 | $0.29 |
 | Gemini 3.8 Flash medium | 57/70 (81%) | 152 | $0.37 |
-| Gemini 3.8 Flash high | 56/70 (80%) | 184 | $0.42 |
-| Muse Spark 1.3 low | 44/70 (63%) | 216 | $0.31 |
-| Muse Spark 1.3 medium | 45/70 (64%) | 236 | $0.31 |
-| Muse Spark 1.3 high | 48/70 (69%) | 234 | $0.35 |
-| Muse Spark 1.3 xhigh | 53/70 (76%) | 219 | $0.37 |
-| Muse Spark 1.3 ultra | 52/70 (74%) | 205 | $0.38 |
+| Gemini 3.8 Flash high | 56/70 (80%) | 183 | $0.42 |
+| Muse Spark 1.3 low | 53/70 (76%) | 207 | $0.28 |
+| Muse Spark 1.3 medium | 53/70 (76%) | 308 | $0.36 |
+| Muse Spark 1.3 high | 54/70 (77%) | 226 | $0.34 |
+| Muse Spark 1.3 xhigh | 59/70 (84%) | 232 | $0.38 |
+| Muse Spark 1.3 ultra | 53/70 (76%) | 217 | $0.36 |
 
 GPT-6 Astra at medium, high, xhigh and max, and GPT-5.6 Luna at all levels, are partial and not listed. Per-run records are in `results/<task>/<config>-val.json`, the summary with per-task outcomes in [`results/v2_summary.json`](results/v2_summary.json), judge verdicts in [`results/verdicts.json`](results/verdicts.json). Raw bundles (traces, screenshots, video) are not in git.
 

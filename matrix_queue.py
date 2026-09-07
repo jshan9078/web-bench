@@ -233,9 +233,15 @@ def cmd_workers(S, args):
 
 
 def cmd_sync(S, args):
-    n = 0
+    """sync [--json]: download raw/ and results/ objects missing locally; --json skips media (mp4, jpg, png) and only
+    fetches JSON, streams and transcripts. A local file whose S3 copy is newer (a redo) is refreshed."""
+    n = 0; js = "--json" in args; media = (".mp4", ".jpg", ".jpeg", ".png")
     for k in S.list("raw/") + S.list("results/"):
-        if not os.path.exists(k): S.get_file(k, k); n += 1
+        if js and k.endswith(media): continue
+        if os.path.exists(k):
+            lm = S.c.head_object(Bucket=S.b, Key=S._k(k))["LastModified"].timestamp() if hasattr(S, "c") else 0
+            if lm <= os.path.getmtime(k): continue
+        S.get_file(k, k); n += 1
     print("downloaded", n, "files")
 
 
