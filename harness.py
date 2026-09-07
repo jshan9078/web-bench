@@ -15,7 +15,7 @@ applies verifiers from those bundles. Change a verifier later -> just re-run `sc
                                                     -> capture raw bundle (NO judging)
   harness.py score  [<task>.<run>]                  -> (re)apply verifiers + metrics -> results/<task>/<run>.json
   harness.py report                                 -> flat table (from results/)
-  harness.py compare                                -> per-config medians + pass@k (the video's numbers)
+  harness.py compare                                -> per-config means + pass@k (the video's numbers)
 
 Env: BROWSER_CLI/BROWSER_DAEMON select the impl. BENCH_VISIBLE=1 -> headed. BENCH_PROFILE=<name> ->
      override the persistent profile for signed-in tasks (default: the daemon's active profile). BENCH_HARNESS=agy -> emit an
@@ -968,10 +968,10 @@ def compare():
     cfgs = {}
     for r in rows:
         cfgs.setdefault(r.get("config", r["run"]), []).append(r)
-    med = lambda a, k: statistics.median([x.get(k) or 0 for x in a]) if a else 0
-    print(f"{'config':24s} {'tasks':>5s} {'att':>4s} {'pass@1':>7s} {'pend':>4s} {'med calls':>9s} "
-          f"{'med wall':>8s} {'med cli s':>9s} {'med tool tok':>12s} {'med agent tok':>13s} "
-          f"{'med cpu s':>9s} {'med rss':>7s}")
+    mean = lambda a, k: statistics.mean([x.get(k) or 0 for x in a]) if a else 0
+    print(f"{'config':24s} {'tasks':>5s} {'att':>4s} {'pass@1':>7s} {'pend':>4s} {'mean calls':>10s} "
+          f"{'mean wall':>9s} {'mean cli s':>10s} {'mean tool tok':>13s} {'mean agent tok':>14s} "
+          f"{'mean cpu s':>10s} {'mean rss':>8s}")
     for cfg in sorted(cfgs):
         att = cfgs[cfg]
         # blocked runs (CAPTCHA/bot wall/forced re-login) are neither pass nor fail: exclude entirely
@@ -982,9 +982,9 @@ def compare():
         p1 = sum(all(r["success"] for r in judged if r["task"] == tk) for tk in tasks)
         nt = len(tasks) + pend
         print(f"{cfg:24s} {nt:5d} {len(att):4d} {p1:4d}/{len(tasks):<2d} {pend:4d} "
-              f"{med(att,'cli_calls'):9.0f} {med(att,'wall_s'):8.1f} {med(att,'cli_time_s'):9.2f} "
-              f"{med(att,'tool_output_tokens'):12.0f} {med(att,'agent_tokens'):13.0f} "
-              f"{med(att,'daemon_cpu_s'):9.2f} {med(att,'daemon_rss_mb'):7.0f}")
+              f"{mean(att,'cli_calls'):10.0f} {mean(att,'wall_s'):9.1f} {mean(att,'cli_time_s'):10.2f} "
+              f"{mean(att,'tool_output_tokens'):13.0f} {mean(att,'agent_tokens'):14.0f} "
+              f"{mean(att,'daemon_cpu_s'):10.2f} {mean(att,'daemon_rss_mb'):8.0f}")
 
 
 if __name__ == "__main__":

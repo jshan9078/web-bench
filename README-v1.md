@@ -21,8 +21,8 @@ reasons unrelated to browsing skill.
 Opus 5, Sonnet 5, and Haiku 4.5** via Claude Code, **Gemini 3.7 Flash** (its three levels)
 via Antigravity, **Gemini 3.8 Flash** (three levels) via Antigravity, **GPT-5.6 Luna** via the Codex CLI, and
 **Muse Spark 1.2 and 1.3** via Muse Code. Opus, Sonnet, Luna, and both Sparks swept
-five thinking levels each (Spark's scale tops out at `ultra` rather than `max`). Median time is
-browser-active seconds per task (the same field for every family). Haiku 4.5 does not support the
+five thinking levels each (Spark's scale tops out at `ultra` rather than `max`). Time and cost are
+per-task means; time is browser-active seconds (the same field for every family). Haiku 4.5 does not support the
 effort parameter (Claude Code silently ignores `--effort` on it; run telemetry confirms zero
 dose-response in thinking volume, turns, or time), so its five sweeps are replicate runs of one
 configuration and are reported below as a single averaged row. Every run used the same browser tool
@@ -32,40 +32,40 @@ ground truth), with a hostile second-opinion audit over every contested failure.
 evaluated at capture time: these are live sites, and the same question can have different correct
 answers an hour apart.
 
-| model | thinking | pass | rate | median time | median cost |
+| model | thinking | pass | rate | mean time | mean cost |
 |---|---|---|---|---|---|
-| Haiku 4.5 | n/a (5 replicate sweeps) | 153/220 | 69.5% | 51s | $0.198 |
-| Gemini 3.7 Flash | low | 43/44 | 97.7% | 26s | $0.117 |
-| Gemini 3.7 Flash | medium | 44/44 | 100.0% | 45s | $0.236 |
-| Gemini 3.7 Flash | high | 43/44 | 97.7% | 35s | $0.175 |
-| Gemini 3.8 Flash | low | 44/44 | 100.0% | 46s | $0.153 |
-| Gemini 3.8 Flash | medium | 44/44 | 100.0% | 58s | $0.192 |
-| Gemini 3.8 Flash | high | 42/44 | 95.5% | 70s | $0.221 |
-| GPT-5.6 Luna | low | 36/43 | 83.7% | 29s | $0.014 |
-| GPT-5.6 Luna | medium | 39/43 | 90.7% | 45s | $0.016 |
-| GPT-5.6 Luna | high | 38/44 | 86.4% | 49s | $0.022 |
-| GPT-5.6 Luna | xhigh | 42/44 | 95.5% | 66s | $0.023 |
-| GPT-5.6 Luna | max | 40/43 | 93.0% | 100s | $0.029 |
-| Muse Spark 1.2 | low | 43/44 | 97.7% | 40s | $0.156 |
-| Muse Spark 1.2 | medium | 40/44 | 90.9% | 55s | $0.215 |
-| Muse Spark 1.2 | high | 44/44 | 100.0% | 66s | $0.222 |
-| Muse Spark 1.2 | xhigh | 44/44 | 100.0% | 54s | $0.254 |
-| Muse Spark 1.2 | ultra | 44/44 | 100.0% | 71s | $0.280 |
-| Muse Spark 1.3 | low | 43/44 | 97.7% | 26s | $0.151 |
-| Muse Spark 1.3 | medium | 44/44 | 100.0% | 31s | $0.154 |
-| Muse Spark 1.3 | high | 43/44 | 97.7% | 29s | $0.162 |
-| Muse Spark 1.3 | xhigh | 44/44 | 100.0% | 43s | $0.154 |
-| Muse Spark 1.3 | ultra | 44/44 | 100.0% | 45s | $0.163 |
-| Sonnet 5 | low | 43/44 | 97.7% | 21s | $0.313 |
-| Sonnet 5 | medium | 41/44 | 93.2% | 27s | $0.393 |
-| Sonnet 5 | high | 41/44 | 93.2% | 39s | $0.454 |
-| Sonnet 5 | xhigh | 43/44 | 97.7% | 44s | $0.511 |
-| Sonnet 5 | max | 42/44 | 95.5% | 60s | $0.594 |
-| Opus 5 | low | 44/44 | 100.0% | 31s | $0.403 |
-| Opus 5 | medium | 43/44 | 97.7% | 39s | $0.508 |
-| Opus 5 | high | 44/44 | 100.0% | 55s | $0.583 |
-| Opus 5 | xhigh | 43/44 | 97.7% | 67s | $0.685 |
-| Opus 5 | max | 43/44 | 97.7% | 95s | $0.842 |
+| Haiku 4.5 | n/a (5 replicate sweeps) | 153/220 | 69.5% | 66s | $0.262 |
+| Gemini 3.7 Flash | low | 43/44 | 97.7% | 47s | $0.180 |
+| Gemini 3.7 Flash | medium | 44/44 | 100.0% | 68s | $0.312 |
+| Gemini 3.7 Flash | high | 43/44 | 97.7% | 50s | $0.235 |
+| Gemini 3.8 Flash | low | 44/44 | 100.0% | 51s | $0.179 |
+| Gemini 3.8 Flash | medium | 44/44 | 100.0% | 66s | $0.236 |
+| Gemini 3.8 Flash | high | 42/44 | 95.5% | 96s | $0.363 |
+| GPT-5.6 Luna | low | 36/43 | 83.7% | 83s | $0.019 |
+| GPT-5.6 Luna | medium | 39/43 | 90.7% | 73s | $0.021 |
+| GPT-5.6 Luna | high | 38/44 | 86.4% | 260s | $0.039 |
+| GPT-5.6 Luna | xhigh | 42/44 | 95.5% | 295s | $0.041 |
+| GPT-5.6 Luna | max | 40/43 | 93.0% | 333s | $0.036 |
+| Muse Spark 1.3 | low | 43/44 | 97.7% | 35s | $0.194 |
+| Muse Spark 1.3 | medium | 44/44 | 100.0% | 56s | $0.254 |
+| Muse Spark 1.3 | high | 43/44 | 97.7% | 42s | $0.216 |
+| Muse Spark 1.3 | xhigh | 44/44 | 100.0% | 88s | $0.291 |
+| Muse Spark 1.3 | ultra | 44/44 | 100.0% | 124s | $0.368 |
+| Muse Spark 1.2 | low | 43/44 | 97.7% | 49s | $0.217 |
+| Muse Spark 1.2 | medium | 40/44 | 90.9% | 73s | $0.328 |
+| Muse Spark 1.2 | high | 44/44 | 100.0% | 97s | $0.336 |
+| Muse Spark 1.2 | xhigh | 44/44 | 100.0% | 89s | $0.422 |
+| Muse Spark 1.2 | ultra | 44/44 | 100.0% | 75s | $0.373 |
+| Sonnet 5 | low | 43/44 | 97.7% | 48s | $0.562 |
+| Sonnet 5 | medium | 41/44 | 93.2% | 44s | $0.529 |
+| Sonnet 5 | high | 41/44 | 93.2% | 65s | $0.684 |
+| Sonnet 5 | xhigh | 43/44 | 97.7% | 70s | $0.769 |
+| Sonnet 5 | max | 42/44 | 95.5% | 109s | $0.881 |
+| Opus 5 | low | 44/44 | 100.0% | 48s | $0.524 |
+| Opus 5 | medium | 43/44 | 97.7% | 82s | $0.743 |
+| Opus 5 | high | 44/44 | 100.0% | 86s | $0.814 |
+| Opus 5 | xhigh | 43/44 | 97.7% | 86s | $0.808 |
+| Opus 5 | max | 43/44 | 97.7% | 154s | $1.131 |
 
 Claude costs are the CLI's own reported `total_cost_usd` per run; Gemini costs are computed from
 each run's measured token split at the introductory pricing in effect ($0.75/M input, $3.75/M
@@ -96,17 +96,17 @@ fixed along the way, is in `JUDGE_PROMPT.md`.
 
 - **Muse Spark 1.3 is the new efficiency frontier.** Three of its five tiers are perfect
   (medium, xhigh, ultra at 44/44) and the other two miss a single vision-gated widget task each,
-  at a flat $0.15-0.16 median and 26-45 browser-active seconds — Gemini-3.7-low speed at Opus
+  at $0.19-0.37 mean cost and 35-124 browser-active seconds — Gemini-3.7-low speed at Opus
   accuracy for a third of any Claude tier's cost. Its only two misses share one cause: on the
   OSM map and JS Paint canvas tasks it substituted a programmatic check (a geocoding API, a pixel
   readback) for the visible result the verifier demands, once while asserting it could not view
   its own screenshot even though it can. Effort saturates above high (reasoning tokens flat at
   ~1,250 for xhigh and ultra).
 - **Muse Spark 1.2 is nearly as strong.** Its high, xhigh, and ultra tiers are all 44/44, at
-  $0.22-0.28 median; only its medium tier dips (90.9%). Zero bot walls across 220 runs, and
+  $0.22-0.42 mean cost; only its medium tier dips (90.9%). Zero bot walls across 220 runs, and
   85-99% per-call cache hit rates keep even its six-thousand-token reasoning tiers economical.
 - **GPT-5.6 Luna is the cost frontier, and the one family where thinking bought accuracy.**
-  At $0.014-0.030 per task it undercuts everything else by an order of magnitude, and it
+  At $0.019-0.041 per task it undercuts everything else by an order of magnitude, and it
   climbs from 83.7% at low to 95.5% at xhigh with reasoning telemetry rising in lockstep — the
   clearest effort dose-response in the matrix — though from a lower floor: its low tiers make
   careless errors the other families' low tiers don't.
@@ -126,7 +126,7 @@ fixed along the way, is in `JUDGE_PROMPT.md`.
   timing, date discipline on UTC sites. Opus never produced a careless factual error; its only
   remaining failures are the two hardest widget tasks at the highest effort tiers, where it
   grinds on the Desmos editor for over half an hour without producing the native label.
-- **Sonnet 5 is the speed frontier.** Sonnet-low's 21s median is the fastest config in the
+- **Sonnet 5 is the speed frontier.** Sonnet-low's 48s mean is among the fastest configs in the
   matrix at 97.7%, making it the best latency-sensitive pick.
 - **Haiku 4.5 is the cautionary tale.** Its five sweeps (64-73% each, binomial noise around the
   69.5% pooled rate) double as a run-to-run variance estimate for the suite, and its failures

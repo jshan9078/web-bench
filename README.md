@@ -27,33 +27,33 @@ Each task folder under [`tasks/`](tasks/) holds `prompt.txt` (sent verbatim to t
 - Local tasks are scored from server state; live-site tasks by the judge against API ground truth.
 - A run in which the model hit a provider rate, quota or usage limit is void and is rerun later, because the retries distort its timing. [`ratelimit.py`](ratelimit.py) holds the markers; the worker checks every run and [`audit_all.py`](audit_all.py) re-checks recorded ones. 114 runs were voided this way, all of them recorded as failures before the check existed.
 - Verified bot walls are excluded and retried.
-- Cost is the CLI's reported cost for Claude and the provider's list prices applied to the captured token usage for the others ([`run_cost.py`](run_cost.py)). Time is the agent's wall-clock seconds from the start of the run to its final answer.
+- Cost is the CLI's reported cost for Claude and the provider's list prices applied to the captured token usage for the others ([`run_cost.py`](run_cost.py)). Time is the agent's wall-clock seconds from the start of the run to its final answer. The table reports per-task means.
 
 ## Results
 
-| Configuration | Pass@1 | Median seconds | Median cost |
+| Configuration | Pass@1 | Mean seconds | Mean cost |
 |---|---|---|---|
-| GPT-6 Astra low | 66/70 (94%) | 35 | $0.71 |
-| Fable 5.1 low | 60/70 (86%) | 63 | $0.57 |
-| Fable 5.1 medium | 60/70 (86%) | 63 | $0.60 |
-| Opus 5 low | 57/70 (81%) | 90 | $0.53 |
-| Opus 5 medium | 57/70 (81%) | 88 | $0.59 |
-| Opus 5 high | 60/70 (86%) | 99 | $0.73 |
-| Opus 5 xhigh | 64/70 (91%) | 105 | $0.74 |
-| Opus 5 max | 60/70 (86%) | 129 | $0.79 |
-| Sonnet 5 low | 34/70 (49%) | 138 | $1.01 |
-| Sonnet 5 medium | 48/70 (69%) | 136 | $0.58 |
-| Sonnet 5 high | 47/70 (67%) | 147 | $0.56 |
-| Sonnet 5 xhigh | 47/70 (67%) | 152 | $0.47 |
-| Sonnet 5 max | 39/70 (56%) | 250 | $0.42 |
-| Gemini 3.8 Flash low | 49/70 (70%) | 75 | $0.22 |
-| Gemini 3.8 Flash medium | 57/70 (81%) | 112 | $0.34 |
-| Gemini 3.8 Flash high | 56/70 (80%) | 156 | $0.38 |
-| Muse Spark 1.3 low | 44/70 (63%) | 185 | $0.24 |
-| Muse Spark 1.3 medium | 45/70 (64%) | 200 | $0.27 |
-| Muse Spark 1.3 high | 48/70 (69%) | 212 | $0.31 |
-| Muse Spark 1.3 xhigh | 53/70 (76%) | 193 | $0.32 |
-| Muse Spark 1.3 ultra | 52/70 (74%) | 171 | $0.33 |
+| GPT-6 Astra low | 66/70 (94%) | 74 | $3.86 |
+| Fable 5.1 low | 60/70 (86%) | 79 | $0.62 |
+| Fable 5.1 medium | 60/70 (86%) | 90 | $0.70 |
+| Opus 5 low | 57/70 (81%) | 102 | $0.64 |
+| Opus 5 medium | 57/70 (81%) | 139 | $0.70 |
+| Opus 5 high | 60/70 (86%) | 157 | $0.81 |
+| Opus 5 xhigh | 64/70 (91%) | 165 | $0.84 |
+| Opus 5 max | 60/70 (86%) | 198 | $0.91 |
+| Sonnet 5 low | 34/70 (49%) | 208 | $1.52 |
+| Sonnet 5 medium | 48/70 (69%) | 203 | $0.81 |
+| Sonnet 5 high | 47/70 (67%) | 219 | $0.87 |
+| Sonnet 5 xhigh | 47/70 (67%) | 235 | $0.77 |
+| Sonnet 5 max | 39/70 (56%) | 285 | $0.62 |
+| Gemini 3.8 Flash low | 49/70 (70%) | 117 | $0.29 |
+| Gemini 3.8 Flash medium | 57/70 (81%) | 152 | $0.37 |
+| Gemini 3.8 Flash high | 56/70 (80%) | 184 | $0.42 |
+| Muse Spark 1.3 low | 44/70 (63%) | 216 | $0.31 |
+| Muse Spark 1.3 medium | 45/70 (64%) | 236 | $0.31 |
+| Muse Spark 1.3 high | 48/70 (69%) | 234 | $0.35 |
+| Muse Spark 1.3 xhigh | 53/70 (76%) | 219 | $0.37 |
+| Muse Spark 1.3 ultra | 52/70 (74%) | 205 | $0.38 |
 
 GPT-6 Astra at medium, high, xhigh and max, and GPT-5.6 Luna at all levels, are partial and not listed. Per-run records are in `results/<task>/<config>-val.json`, the summary with per-task outcomes in [`results/v2_summary.json`](results/v2_summary.json), judge verdicts in [`results/verdicts.json`](results/verdicts.json). Raw bundles (traces, screenshots, video) are not in git.
 
