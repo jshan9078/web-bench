@@ -7383,5 +7383,37 @@
  "36-jspaint-poster.fable-xhigh-val": {
   "pass": true,
   "note": "Final screenshot shows solid red canvas with five black dots forming a clear X (center + 4 corners), matching trace of fill+dot clicks [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.fable-max-val": {
+  "pass": true,
+  "note": "Matches ground truth: issue #4295 closed via merged PR #4298 by delicb, merged 2021-11-15T21:37:42Z; #4297/#4355 correctly excluded as manual closes [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.fable-max-val": {
+  "pass": true,
+  "note": "API confirms #5817 reopened 2025-09-19T08:53:54Z by awoimbee is the most recent reopened issue (later reopens were PRs, correctly excluded); matches agent's grounded answer [judge: sonnet daemon]"
+ },
+ "262-github-blame.fable-max-val": {
+  "pass": true,
+  "note": "API-verified commit 0ec7f713 by pgjones (Phil Jones) on 2023-08-19 matches agent's grounded blame+commit page findings exactly [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.fable-max-val": {
+  "pass": true,
+  "note": "matches API ground truth (34 commits, 44 files, davidism 7fff56f), grounded in compare page navigation [judge: sonnet daemon]"
+ },
+ "319-github-first-release.fable-max-val": {
+  "pass": true,
+  "note": "GitHub API confirms 3.0.0...commit is behind (contains commit), 2.3.3 diverged (doesn't); release 3.0.0 published 2023-09-30, matches agent's grounded answer [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.fable-max-val": {
+  "pass": true,
+  "note": "count=7 and most-recently-merged PR (#2840, merged 2025-03-18) title match GitHub API ground truth [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.fable-max-val": {
+  "pass": true,
+  "note": "Matches API ground truth (2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, 2024-11-08T02:55:35Z, no summary); agent navigated to and read the history page this run [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.fable-max-val": {
+  "pass": true,
+  "note": "Final screenshot shows red canvas with five black dots forming a clear X (center+4 corners), matches trace of fill+pencil clicks [judge: sonnet daemon]"
  }
 }
