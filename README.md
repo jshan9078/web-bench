@@ -60,6 +60,8 @@ Each task folder under [`tasks/`](tasks/) holds `prompt.txt` (sent verbatim to t
 
 GPT-6 Astra at medium, high, xhigh and max, and GPT-5.6 Luna at all levels, are partial and not listed. Per-run records are in `results/<task>/<config>-val.json`, the summary with per-task outcomes in [`results/v2_summary.json`](results/v2_summary.json), judge verdicts in [`results/verdicts.json`](results/verdicts.json). Raw bundles (traces, screenshots, video) are not in git.
 
+Agent traces for every scored run, 1,663 event streams and 1,762 harness bundles, are in the [traces-v2 release](https://github.com/jshan9078/web-bench/releases/tag/traces-v2). Embedded images were removed and personal identifiers redacted before upload.
+
 ## Running it
 
 - `harness.py`: task registry, widget servers, browser session, raw bundle capture, scoring.
