@@ -43,6 +43,7 @@ Each task folder under [`tasks/`](tasks/) holds `prompt.txt` (sent verbatim to t
 | Opus 5.5 medium | 62/70 (89%) | 80 | $0.28 |
 | Opus 5.5 high | 64/70 (91%) | 93 | $0.31 |
 | Opus 5.5 xhigh | 67/70 (96%) | 108 | $0.39 |
+| Opus 5.5 max | 67/70 (96%) | 150 | $0.62 |
 | Opus 5 low | 57/70 (81%) | 102 | $0.64 |
 | Opus 5 medium | 57/70 (81%) | 139 | $0.70 |
 | Opus 5 high | 60/70 (86%) | 157 | $0.81 |

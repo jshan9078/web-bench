@@ -7543,5 +7543,37 @@
  "36-jspaint-poster.opus55-xhigh-val": {
   "pass": true,
   "note": "Final screenshot shows canvas flooded red with five distinct black dots forming a clear X (center + 4 corners), trace shows palette/tool pixel clicks [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.opus55-max-val": {
+  "pass": true,
+  "note": "API confirms #4295/PR #4298 (delicb, merged 2021-11-15T21:37:42Z by davidism) is the most recent bug-issue closed by a merged/linked PR; #4297 and #4355 closed later but by hand with no linked merged PR [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.opus55-max-val": {
+  "pass": true,
+  "note": "API confirms #5817 (asyncio not compatible with gevent) reopened 2025-09-19T08:53:54Z by awoimbee is the most recent reopened issue (excluding PRs #6067/#5918/#5827); matches agent's answer, grounded via issue timeline read [judge: sonnet daemon]"
+ },
+ "262-github-blame.opus55-max-val": {
+  "pass": true,
+  "note": "API-verified commit 0ec7f71/pgjones/Aug 19 2023 matches agent's answer; trace shows navigation to blame view and commit page with matching text [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.opus55-max-val": {
+  "pass": true,
+  "note": "matches API ground truth (34 commits, 44 files, 7fff56f davidism); grounded in agent's navigation to compare page [judge: sonnet daemon]"
+ },
+ "319-github-first-release.opus55-max-val": {
+  "pass": true,
+  "note": "GitHub API confirms 3.0.0 is earliest tag containing commit 0ec7f713 (behind_by=26 vs 3.0.0, diverged vs 2.3.3, no rc tags between), released 2023-09-30T14:38:50Z; agent navigated commit tags list and release page matching this exactly [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.opus55-max-val": {
+  "pass": true,
+  "note": "Ground truth via GitHub search API confirms 7 merged PRs, latest #2840 'Move --help option defaults...' matching agent's grounded answer [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.opus55-max-val": {
+  "pass": true,
+  "note": "matches MediaWiki API ground truth (revid 1256081070, IP 2400:9800:b60:b6df:f46b:2bff:feae:1821, 8 Nov 2024 02:55 UTC, no summary), agent navigated history and diff page to confirm [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.opus55-max-val": {
+  "pass": true,
+  "note": "MANUAL OVERRIDE of judge fail (evidence miss): the judge found no screenshot files because the agent's screenshots went to the daemon's default shots dir, which the harness does not preserve; the final screenshot embedded in the run's stream shows a red-flooded canvas with five distinct black dots in an X (center + four corners), and the trace shows palette/fill/brush pixel clicks and five single clicks, no eval [judge: manual]"
  }
 }
