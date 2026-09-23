@@ -15,4 +15,5 @@ sudo -u ubuntu bash -lc '
   PATH=$HOME/.local/bin:$PATH browser install
   npm config set prefix ~/.local; npm install -g @anthropic-ai/claude-code @openai/codex
   aws s3 cp s3://__BUCKET__/bundle/web-bench.tar.gz /tmp/web-bench.tar.gz && mkdir -p ~/web-bench && tar -C ~/web-bench -xzf /tmp/web-bench.tar.gz
+  mkdir -p ~/.claude/skills/browser-cli && cp ~/web-bench/SKILL.md ~/.claude/skills/browser-cli/SKILL.md   # the pinned skill every earlier config used
   echo "SEED BOOTSTRAP DONE" > ~/SEED_DONE'

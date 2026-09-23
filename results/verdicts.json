@@ -7415,5 +7415,69 @@
  "36-jspaint-poster.fable-max-val": {
   "pass": true,
   "note": "Final screenshot shows red canvas with five black dots forming a clear X (center+4 corners), matches trace of fill+pencil clicks [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.opus55-low-val": {
+  "pass": true,
+  "note": "API confirms #4297 (closed 2022-03-15) is most recent bug-labeled issue closed via merged PR #4487 by davidism merged 2022-03-15, matches agent's grounded answer [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.opus55-medium-val": {
+  "pass": true,
+  "note": "API-verified: #4295 is the most recent bug-labeled issue closed by a merged PR (#4297, #4355 closed manually, no PR link); PR #4298 by delicb merged 2021-11-15 matches agent's answer exactly, grounded in navigated pages [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.opus55-low-val": {
+  "pass": true,
+  "note": "API ground truth confirms #5817 reopened 2025-09-19T08:53:54Z by awoimbee is the most recent reopened event among true issues (PRs #6067/#5918/#5827 excluded per 2026-09-04 re-audit rule); agent grounded answer via API and issue timeline navigation, matches exactly [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.opus55-medium-val": {
+  "pass": true,
+  "note": "matches ground truth: #5817 reopened 2025-09-19T08:53:54Z by awoimbee is the most recent issue (non-PR) reopened event per /issues/events; agent read the issue timeline and reported number/title/date/actor correctly [judge: sonnet daemon]"
+ },
+ "262-github-blame.opus55-low-val": {
+  "pass": true,
+  "note": "Blame commit 0ec7f71 by pgjones (committer date 2023-08-19) matches GitHub API commits endpoint for src/flask/app.py line 633 def run(; agent navigated to blame view and commit page [judge: sonnet daemon]"
+ },
+ "262-github-blame.opus55-medium-val": {
+  "pass": true,
+  "note": "hash 0ec7f71, author pgjones, date Aug 19 2023 match GitHub API commit data; grounded via blame view and commit page navigation [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.opus55-low-val": {
+  "pass": true,
+  "note": "matches API ground truth (34 commits, 44 files, 7fff56f davidism), grounded in compare page navigation [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.opus55-medium-val": {
+  "pass": true,
+  "note": "Verified via GitHub compare API: 34 commits, 44 files changed, most recent commit 7fff56f by davidism \u2014 matches agent's answer exactly [judge: sonnet daemon]"
+ },
+ "319-github-first-release.opus55-low-val": {
+  "pass": true,
+  "note": "compare API confirms commit is ancestor of 3.0.0 (ahead_by=0) but diverged from 2.3.3, and releases/tags/3.0.0 published_at=2023-09-30, matching agent's answer 3.0.0/2023-09-30 [judge: sonnet daemon]"
+ },
+ "319-github-first-release.opus55-medium-val": {
+  "pass": true,
+  "note": "Ground truth confirmed via API: commit is behind 3.0.0 (contained), diverged from 2.3.3 (not contained); release 3.0.0 published 2023-09-30T14:38:50Z. Agent navigated to commit page and releases/tag/3.0.0, answer matches exactly. [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.opus55-low-val": {
+  "pass": true,
+  "note": "API confirms 7 PRs merged in range, most recent is #2840 'Move --help option defaults...' on 2025-03-18, matching agent's answer exactly [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.opus55-medium-val": {
+  "pass": true,
+  "note": "API confirms 7 merged PRs in range with #2840 (merged 2025-03-18 17:59 UTC) most recent, matching agent's count and title exactly [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.opus55-low-val": {
+  "pass": true,
+  "note": "Matches MediaWiki API ground truth: last 2024 edit by 2400:9800:b60:b6df:f46b:2bff:feae:1821 on 8 Nov 2024, no edit summary [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.opus55-medium-val": {
+  "pass": true,
+  "note": "API confirms last 2024 edit was 02:55, 8 Nov 2024 by IP 2400:9800:b60:b6df:f46b:2bff:feae:1821 with no edit summary, matching agent's grounded answer from page history [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.opus55-low-val": {
+  "pass": true,
+  "note": "Final screenshot shows canvas flooded red with 5 black dots forming a clean X (center+4 corners), trace shows palette/fill/pencil clicks this run [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.opus55-medium-val": {
+  "pass": true,
+  "note": "final screenshot shows red-flooded canvas with 5 distinct black dots in clear X pattern (center + 4 corners), matching trace of fill+pencil/brush clicks [judge: sonnet daemon]"
  }
 }
