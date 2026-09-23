@@ -7479,5 +7479,69 @@
  "36-jspaint-poster.opus55-medium-val": {
   "pass": true,
   "note": "final screenshot shows red-flooded canvas with 5 distinct black dots in clear X pattern (center + 4 corners), matching trace of fill+pencil/brush clicks [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.opus55-high-val": {
+  "pass": true,
+  "note": "API confirms #4295 (closed 2021-11-15) is most recent bug-labeled issue closed by merged PR; #4297/#4355 closed later but not by merged PRs; PR #4298 by delicb merged 2021-11-15 matches [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.opus55-xhigh-val": {
+  "pass": true,
+  "note": "API confirms #4295 (closed by merged PR #4298 'fixes #4295', delicb, merged 2021-11-15T21:37:42Z) is the most recently closed bug issue with a genuine PR-link close; more recent #4297/#4355 correctly excluded (no closing-keyword link) [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.opus55-high-val": {
+  "pass": true,
+  "note": "API confirms #5817 reopened 2025-09-19T08:53:54Z by awoimbee, matches agent answer exactly [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.opus55-xhigh-val": {
+  "pass": true,
+  "note": "Confirmed via GitHub events API paging: #5817 is the most recently reopened issue (excl. PRs), reopened 2025-09-19T08:53:54Z by awoimbee, matching agent's answer exactly; agent correctly excluded later PR reopens (#6067,#5918,#5827) per 2026-09-04 re-audit rule [judge: sonnet daemon]"
+ },
+ "262-github-blame.opus55-high-val": {
+  "pass": true,
+  "note": "GitHub API confirms commit 0ec7f713 (short 0ec7f71), author/committer pgjones, committer date 2023-08-19 matches def run( line 633; agent navigated blame view then commit page for grounding [judge: sonnet daemon]"
+ },
+ "262-github-blame.opus55-xhigh-val": {
+  "pass": true,
+  "note": "matches ground truth from local git blame (0ec7f713d679, pgjones, committer-time 1692466514 = Aug 19 2023); agent navigated blame view and commit page [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.opus55-high-val": {
+  "pass": true,
+  "note": "API ground truth: 34 commits, 44 files, last commit 7fff56f by davidism \u2014 matches agent's answer exactly, grounded in navigated compare page [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.opus55-xhigh-val": {
+  "pass": true,
+  "note": "matches API ground truth (34 commits, 44 files, 7fff56f by davidism) and grounded in navigated compare page text [judge: sonnet daemon]"
+ },
+ "319-github-first-release.opus55-high-val": {
+  "pass": true,
+  "note": "API confirms 3.0.0 is earliest tag behind/containing commit 0ec7f713 (2.3.3 diverged), released 2023-09-30T14:38:50Z; matches agent's grounded answer from commit and releases pages [judge: sonnet daemon]"
+ },
+ "319-github-first-release.opus55-xhigh-val": {
+  "pass": true,
+  "note": "API confirms 3.0.0 (2023-09-30) is earliest tag containing commit 0ec7f713 (2.3.3 diverges, 3.0.0 behind_by 26/ahead 0); matches agent's grounded answer from commit+release pages [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.opus55-high-val": {
+  "pass": true,
+  "note": "Ground truth confirms 7 merged PRs 2025-01-01..03-31, latest #2840 'Move --help option defaults from its class to its decorator' (2025-03-18T17:59:13Z); agent's answer matches exactly and trace shows navigation to PR pages to compare merge timestamps [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.opus55-xhigh-val": {
+  "pass": true,
+  "note": "count=7 and most recent title match GitHub API ground truth (#2840 merged 2025-03-18T17:59:13Z) [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.opus55-high-val": {
+  "pass": true,
+  "note": "Editor, date (8 Nov 2024 02:55 UTC), and empty summary match MediaWiki API ground truth; agent navigated to and read the history page this run [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.opus55-xhigh-val": {
+  "pass": true,
+  "note": "MediaWiki API confirms revid 1256081070, 2024-11-08T02:55:35Z, IP 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, empty comment \u2014 matches agent's grounded answer exactly [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.opus55-high-val": {
+  "pass": true,
+  "note": "Final screenshot (extracted from stream) shows canvas fully red with five distinct black dots forming a clear X (center + 4 corners); trace shows palette/tool pixel clicks for fill and dots [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.opus55-xhigh-val": {
+  "pass": true,
+  "note": "Final screenshot shows canvas flooded red with five distinct black dots forming a clear X (center + 4 corners), trace shows palette/tool pixel clicks [judge: sonnet daemon]"
  }
 }
