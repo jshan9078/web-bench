@@ -7575,5 +7575,165 @@
  "36-jspaint-poster.opus55-max-val": {
   "pass": true,
   "note": "MANUAL OVERRIDE of judge fail (evidence miss): the judge found no screenshot files because the agent's screenshots went to the daemon's default shots dir, which the harness does not preserve; the final screenshot embedded in the run's stream shows a red-flooded canvas with five distinct black dots in an X (center + four corners), and the trace shows palette/fill/brush pixel clicks and five single clicks, no eval [judge: manual]"
+ },
+ "167-github-issue-pr.luna6-low-val": {
+  "pass": true,
+  "note": "Confirmed via GitHub API: #4295 is most recent bug-labeled issue closed by a merged PR (#4297, #4355 closed manually w/o PR merge); PR #4298 by delicb merged 2021-11-15 matches agent's answer exactly [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.luna6-medium-val": {
+  "pass": true,
+  "note": "API confirms #4297 (bug, closed 2022-03-15) is most recent, closed by merged PR #4487 by davidism merged 2022-03-15; matches agent's grounded answer [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.luna6-low-val": {
+  "pass": false,
+  "note": "MANUAL OVERRIDE of judge pass (wrong ground truth): the agent answered #1098 (reopened 2014-07-01), but the issues/events API's most recent reopen of a true issue is #5817 (2025-09-19T08:53:54Z, awoimbee), the ground truth every other configuration's verdict uses [judge: manual]"
+ },
+ "213-github-reopened-issue.luna6-medium-val": {
+  "pass": false,
+  "note": "Ground truth via issues/events API (excluding PRs): most recent issue reopen is #5817 (2025-09-19, by awoimbee, per 2026-09-04 re-audit); agent answered #5322 (Nov 2023), far older and wrong [judge: sonnet daemon]"
+ },
+ "262-github-blame.luna6-low-val": {
+  "pass": false,
+  "note": "Hash 0ec7f71 and author pgjones correct (git blame confirms line 633), but reported date 'May 25, 2023' is wrong (actual author date 2023-06-11, committer date 2023-08-19) and ungrounded - the captured commit-page text never shows any date at all [judge: sonnet daemon]"
+ },
+ "262-github-blame.luna6-medium-val": {
+  "pass": true,
+  "note": "Verified via clone: line 633 def run( blames to 0ec7f713 (pgjones, committer date 2023-08-19 matching GitHub blame gutter); agent navigated blame view and commit page, matches exactly [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.luna6-low-val": {
+  "pass": true,
+  "note": "API confirms 34 commits, 44 files, most recent davidism 7fff56f, matches agent answer [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.luna6-medium-val": {
+  "pass": true,
+  "note": "API ground truth (34 commits, 44 files, David Lord/7fff56f=davidism) matches agent's grounded compare-page read [judge: sonnet daemon]"
+ },
+ "319-github-first-release.luna6-low-val": {
+  "pass": true,
+  "note": "GitHub API confirms 3.0.0 is earliest tag containing the commit (2.3.3 diverged, 3.0.0 is ahead/contains it), released 2023-09-30, matching agent's grounded answer [judge: sonnet daemon]"
+ },
+ "319-github-first-release.luna6-medium-val": {
+  "pass": true,
+  "note": "GitHub API confirms 3.0.0 is earliest tag containing commit 0ec7f71 (compare status=behind vs 2.3.3=diverged), released 2023-09-30; agent's trace shows real navigation to commit/releases pages with matching evidence text [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.luna6-low-val": {
+  "pass": false,
+  "note": "Count 7 correct but most recently merged PR in range is #2840 (2025-03-18), not #2857 (2025-03-16) as claimed; title wrong [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.luna6-medium-val": {
+  "pass": true,
+  "note": "API confirms 7 merged PRs in range, most recent #2840 matches agent's title exactly [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.luna6-low-val": {
+  "pass": true,
+  "note": "Answer matches MediaWiki API ground truth exactly (2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, 8 Nov 2024 02:55 UTC, no summary); agent navigated to history page this run [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.luna6-medium-val": {
+  "pass": true,
+  "note": "Matches MediaWiki API ground truth (2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, 2024-11-08T02:55:35Z, empty comment); agent navigated to and read the article's history page this run, grounding confirmed [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.luna6-low-val": {
+  "pass": false,
+  "note": "Final screenshot pixel-scanned: no black pixels anywhere on canvas, only faint darker-red marks (~R205-230,G0,B0) at click coords, not a visible X of dark dots as verifier requires [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.luna6-medium-val": {
+  "pass": false,
+  "note": "Final screenshot shows canvas flooded red but no visible black dots/X pattern at all despite claimed pencil clicks [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.luna6-high-val": {
+  "pass": true,
+  "note": "API confirms #4297 is most recently closed bug issue, closed by merged PR #4487 by davidism merged 2022-03-15; agent navigated to both issue and PR pages [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.luna6-high-val": {
+  "pass": false,
+  "note": "API ground truth (issues/events, most recent reopened) is #6067 reopened 2026-06-29 by davidism; agent answered #5718 April 2025, over a year stale [judge: sonnet daemon]"
+ },
+ "262-github-blame.luna6-high-val": {
+  "pass": true,
+  "note": "hash 0ec7f71, author pgjones, committer date Aug 19 2023 all confirmed via API/git blame; grounded in agent's own blame navigation and commit page read [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.luna6-high-val": {
+  "pass": true,
+  "note": "API ground truth (34 commits, 44 files, davidism 7fff56f) matches agent's reported answer, grounded in navigated compare page text [judge: sonnet daemon]"
+ },
+ "319-github-first-release.luna6-high-val": {
+  "pass": true,
+  "note": "3.0.0 confirmed earliest tag containing commit via API compare (behind_by=0 vs 3.0.0, diverged vs 2.3.x line) and release date 2023-09-30 matches; agent navigated to releases/tag/3.0.0 page and reported same [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.luna6-high-val": {
+  "pass": true,
+  "note": "Agent found 7 merged PRs and correctly identified #2840 (merged 2025-03-18) as most recent, matching GitHub API ground truth [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.luna6-high-val": {
+  "pass": true,
+  "note": "Answer matches MediaWiki API ground truth (IP 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, 02:55 8 Nov 2024, no summary) exactly; agent's captured history page text contains this entry as last 2024 edit, grounded in this run's navigation [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.luna6-high-val": {
+  "pass": false,
+  "note": "final screenshot shows solid red canvas with no visible black dots at any of the 5 intended points (checked \u00b115px); agent relied on invisible single-pixel readback, not a visible X pattern [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.luna6-xhigh-val": {
+  "pass": true,
+  "note": "API confirms #4295 (closed 2021-11-15, label bug) is the most recent bug-closed issue actually closed by a merged PR (#4297, #4355 closed without a merged PR); PR #4298 by delicb merged 2021-11-15T21:37:42Z matches agent's answer exactly [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.luna6-max-val": {
+  "pass": true,
+  "note": "matches confirmed ground truth #5817 reopened 2025-09-19 by awoimbee, timeline grounded via navigation [judge: sonnet daemon]"
+ },
+ "213-github-reopened-issue.luna6-xhigh-val": {
+  "pass": false,
+  "note": "Ground truth via /issues/events is #5817 reopened 2025-09-19 by awoimbee (filtering out PRs per 2026-09-04 re-audit); agent answered stale #5322/Nov 2023/davidism [judge: sonnet daemon]"
+ },
+ "262-github-blame.luna6-max-val": {
+  "pass": true,
+  "note": "Blame page confirms line 633 def run( groups under 'Split the App and Blueprint into Sansio and IO parts' commit, agent navigated to commit 0ec7f71/pallets/flask, GitHub API confirms author pgjones and committer date 2023-08-19 [judge: sonnet daemon]"
+ },
+ "262-github-blame.luna6-xhigh-val": {
+  "pass": true,
+  "note": "hash 0ec7f71, author pgjones, committer date Aug 19 2023 5:35 PM UTC confirmed via git blame -L on fresh clone; agent's commit-page navigation shown in end_text_excerpt matches exactly [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.luna6-max-val": {
+  "pass": true,
+  "note": "API ground truth matches: 34 commits, 44 files, davidism, 7fff56f; agent read this from compare page it navigated to [judge: sonnet daemon]"
+ },
+ "269-github-compare-tags.luna6-xhigh-val": {
+  "pass": true,
+  "note": "matches API ground truth (34 commits, 44 files, davidism 7fff56f); agent navigated compare page and read data [judge: sonnet daemon]"
+ },
+ "319-github-first-release.luna6-xhigh-val": {
+  "pass": true,
+  "note": "GitHub compare API confirms 3.0.0 (2023-09-30) is earliest release containing the commit (2.3.3 diverges, 3.0.0 is 26 commits ahead/ancestor); agent navigated commit page, clicked tag badge, opened 3.0.0 release page and extracted matching date [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.luna6-max-val": {
+  "pass": true,
+  "note": "API confirms 7 merged PRs in window, latest is #2840 (merged 2025-03-18) 'Move --help option defaults from its class to its decorator', matching agent's answer [judge: sonnet daemon]"
+ },
+ "320-github-merged-count.luna6-xhigh-val": {
+  "pass": true,
+  "note": "GitHub search API confirms total_count=7 merged PRs in range and #2857 'Rewrite testing docs and move from rst to myst' matches agent's grounded navigation/answer [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.luna6-max-val": {
+  "pass": true,
+  "note": "Matches API ground truth (IP 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, 02:55 8 Nov 2024, empty summary); agent navigated to the history page this run [judge: sonnet daemon]"
+ },
+ "321-wiki-last-2024-edit.luna6-xhigh-val": {
+  "pass": true,
+  "note": "Matches API ground truth (IP 2400:9800:B60:B6DF:F46B:2BFF:FEAE:1821, 02:55 8 Nov 2024, no summary); agent navigated to and read the history page this run [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.luna6-max-val": {
+  "pass": false,
+  "note": "Final screenshot shows solid red canvas with zero black dots (only blue selection-handle marks at corners/edges), so the X pattern was never created [judge: sonnet daemon]"
+ },
+ "36-jspaint-poster.luna6-xhigh-val": {
+  "pass": false,
+  "note": "No screenshots or video archived for this run (raw/ has only json+stream, referenced shot files no longer exist on disk); verifier requires opening the visual evidence, which is unavailable, so cannot confirm the red-flood/X-dot pattern [judge: sonnet daemon]"
+ },
+ "319-github-first-release.luna6-max-val": {
+  "pass": true,
+  "note": "API confirms 3.0.0 compare status is behind (ancestor) while 2.3.3 diverged, and 3.0.0 published 2023-09-30T14:38:50Z; agent navigated commit page, expanded tags, and release page to ground both facts [judge: sonnet daemon]"
+ },
+ "167-github-issue-pr.luna6-max-val": {
+  "pass": false,
+  "note": "MARKED FAIL (user rule 2026-09-24: a run voided for provider rate limits 3+ times counts as a fail): 7 attempts were all voided because one GPT-6 Luna run on this GitHub task exceeds the key's 200K tokens/min; cost is the last attempt's spend, no time is recorded [judge: manual]"
  }
 }

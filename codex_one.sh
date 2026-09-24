@@ -17,6 +17,15 @@ export BENCH_HARNESS=codex
 RES=results; LOG=$RES/suite.log; PY=python3
 mkdir -p raw; RAW_MP4=raw/$TASK.$RUN.mp4
 
+# Headless codex auth: an OpenAI API key (CODEX_API_KEY, or OPENAI_API_KEY in the repo root .env) needs no `codex login`
+if [ -z "${CODEX_API_KEY:-}" ]; then
+  ENVF="$(pwd)/.env"
+  if [ -f "$ENVF" ]; then
+    _k=$(grep -E '^(export )?(CODEX_API_KEY|OPENAI_API_KEY)=' "$ENVF" | tail -1 | sed -E 's/^(export )?[A-Z_]+=//' | tr -d '\r' | sed -E 's/^["'"'"']//; s/["'"'"']$//')
+    [ -n "$_k" ] && export CODEX_API_KEY="$_k"
+  fi
+fi
+
 export BENCH_RECORD=1
 prompt=$($PY harness.py setup "$TASK" "$RUN") || { echo "setup failed"; exit 1; }
 SID=$($PY -c "import json;print(json.load(open('results/current.json'))['sid'])")

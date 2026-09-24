@@ -27,6 +27,9 @@ Each task folder under [`tasks/`](tasks/) holds `prompt.txt` (sent verbatim to t
 - Local tasks are scored from server state; live-site tasks by the judge against API ground truth.
 - A run in which the model hit a provider rate, quota or usage limit is void and is rerun later, because the retries distort its timing. [`ratelimit.py`](ratelimit.py) holds the markers; the worker checks every run and [`audit_all.py`](audit_all.py) re-checks recorded ones. 114 runs were voided this way, all of them recorded as failures before the check existed.
 - Verified bot walls are excluded and retried.
+- GPT-6 Luna ran on an OpenAI key limited to 200K tokens per minute, so it ran on a single worker. Its GitHub task at max was voided seven times because one run alone exceeded that limit; after three voids a run is counted as a failure, with its last attempt's cost and no time.
+- Judge verdicts corrected by hand after reading the evidence, each labeled "[judge: manual]" in [`results/verdicts.json`](results/verdicts.json) with the original verdict kept: 36-jspaint-poster on Opus 5.5 max (pass; the judge missed a screenshot the harness had not preserved) and 213-github-reopened-issue on GPT-6 Luna low (fail; the judge accepted an answer that contradicts the ground truth every other verdict uses).
+- The shared prompt preamble tells the agent not to place or confirm any order, while 248-flight-booking and 263-multi-page-checkout ask for a confirmed booking and a placed order on local test sites. Most configurations follow the task; a few follow the preamble and fail (GPT-6 Luna low and high, GPT-6 Astra low). The preamble also still says the budget is 10 minutes, although it has been 30 since 2026-09-06. Every configuration received the same text.
 - Cost is the CLI's reported cost for Claude and the provider's list prices applied to the captured token usage for the others ([`run_cost.py`](run_cost.py)). Codex models are priced at short-context rates throughout: the Codex CLI reports usage per turn, not per request, so a request above the 272K long-context threshold cannot be identified. Time is the agent's wall-clock seconds from the start of the run to its final answer. The table reports per-task means.
 
 ## Results
@@ -62,6 +65,11 @@ Each task folder under [`tasks/`](tasks/) holds `prompt.txt` (sent verbatim to t
 | Muse Spark 1.3 high | 54/70 (77%) | 226 | $0.34 |
 | Muse Spark 1.3 xhigh | 59/70 (84%) | 232 | $0.38 |
 | Muse Spark 1.3 ultra | 53/70 (76%) | 217 | $0.36 |
+| GPT-6 Luna low | 34/70 (49%) | 83 | $0.01 |
+| GPT-6 Luna medium | 42/70 (60%) | 219 | $0.02 |
+| GPT-6 Luna high | 49/70 (70%) | 171 | $0.02 |
+| GPT-6 Luna xhigh | 45/70 (64%) | 216 | $0.02 |
+| GPT-6 Luna max | 49/70 (70%) | 301 | $0.03 |
 
 GPT-6 Astra at medium, high, xhigh and max, and GPT-5.6 Luna at all levels, are partial and not listed. Per-run records are in `results/<task>/<config>-val.json`, the summary with per-task outcomes in [`results/v2_summary.json`](results/v2_summary.json), judge verdicts in [`results/verdicts.json`](results/verdicts.json). Raw bundles (traces, screenshots, video) are not in git.
 

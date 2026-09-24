@@ -15,7 +15,7 @@ for k, d in zip(keys, markers):
     if t not in tids or l != mq.label(cfg, 1): continue
     if d.get("blocked"): continue
     per[cfg][t] = {"pass": None if d.get("needs_judge") else bool(d.get("success")), "wall_s": d.get("wall_s"), "cli_calls": d.get("cli_calls"), "cost_usd": d.get("cost_usd"), "judge_pending": bool(d.get("needs_judge"))}
-NAMES = {"spark13": "Muse Spark 1.3", "sonnet": "Claude Sonnet 5", "opus": "Claude Opus 5", "gemini-3.8-flash": "Gemini 3.8 Flash", "luna": "GPT-5.6 Luna", "astra": "GPT-6 Astra", "fable": "Claude Fable 5.1", "opus55": "Claude Opus 5.5"}
+NAMES = {"spark13": "Muse Spark 1.3", "sonnet": "Claude Sonnet 5", "opus": "Claude Opus 5", "gemini-3.8-flash": "Gemini 3.8 Flash", "luna": "GPT-5.6 Luna", "astra": "GPT-6 Astra", "fable": "Claude Fable 5.1", "opus55": "Claude Opus 5.5", "luna6": "GPT-6 Luna"}
 configs = []; prev = {c["config"]: c for c in old["configs"]}
 for cfg in mq.CONFIGS:
     if cfg not in per and prev.get(cfg, {}).get("runs"): configs.append(prev[cfg]); continue   # a config run under an earlier (since deleted) queue keeps its recorded entry
